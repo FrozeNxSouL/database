@@ -43,11 +43,11 @@ table {
 }
 header {
     position: fixed;
-    z-index: 1;
-    left: 0;
+    z-index: 10;
+    left: 50%;
     top: 0;
-    width: 50%;
-    transform: translateX(50%);
+    min-width: 100vh;
+    transform: translateX(-50%);
 }
 .navbar {
     box-shadow: 0 0 20px rgba(37, 37, 37, 20%);
@@ -62,21 +62,21 @@ main {
 .sign-bg {
     display: none;
     position: fixed;
-    z-index: 2;
+    z-index: 98;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 80%);
 }
 .sign-in {
     display: none;
-    z-index: 4;
+    z-index: 99;
     padding: 1rem;
     background-color: rgb(255, 255, 255);
     border-radius: .3rem;
 }
 .sign-up {
     display: none;
-    z-index: 4;
+    z-index: 99;
     padding: 1rem;
     background-color: rgb(255, 255, 255);
     border-radius: .3rem;
@@ -88,7 +88,7 @@ main {
     top: 50%;
     transform: translate(-50%,-50%);
     width: 50vh;
-    z-index: 3;
+    z-index: 99;
     background: transparent;
 }
 .outer {
@@ -128,4 +128,9 @@ footer {
     max-width: 130vh;
     min-height: 80vh;
     background-color: #ffffff;
+}
+@media only screen and (max-width: 990px) {
+    header {
+        width: 100%;
+    }
 }
