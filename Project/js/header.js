@@ -1,7 +1,7 @@
 document.getElementById("header").innerHTML =
     "<nav class='navbar navbar-expand-lg bg-body-tertiary'>" +
     "<div class='container-fluid'>" +
-    "<a class='navbar-brand' href='#'>" +
+    "<a class='navbar-brand' href='index.html'>" +
     "<img src='assets/logo.png' alt='icon.png' width='30' height='24'>" +
     "</a>" +
     "<button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>" +
@@ -17,6 +17,9 @@ document.getElementById("header").innerHTML =
     "</li>" +
     "<li class='nav-item'>" +
     "<a class='nav-link' href='#'>Delivery</a>" +
+    "</li>" +
+    "<li class='nav-item'>" +
+    "<a class='nav-link' href='user.html'>User</a>" +
     "</li>" +
     "</ul>" +
     "<a class='navbar-brand' href='#'>" +

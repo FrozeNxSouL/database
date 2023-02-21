@@ -1,0 +1,23 @@
+.promo-item {
+    margin: 2rem 0;
+    padding: 1rem;
+    background-color: #ffffff;
+    max-width: 20rem;
+    border-radius: .3rem;
+}
+.promo-item img {
+    width: 100%;
+}
+.promo-text {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+.price::before {
+    content: "฿";
+}
+.carousel.slide {
+    width: 100%;
+    height: 70vh;
+    overflow: hidden;
+}

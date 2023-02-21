@@ -114,9 +114,18 @@ footer {
     min-height: 20vh;
     background-color: rgb(44, 44, 44);
 }
-.show {
-    display: 'initial' !important;
+.content-header {
+    display: flex;
+    justify-content: center;
+    column-gap: 5rem;
+    background-color: rgb(185, 0, 23);
+    max-width: 100%;
+    min-height: 30vh;
 }
-.hidden {
-    display: 'none' !important;
+.content-main {
+    margin: 0 auto;
+    padding: 2rem;
+    max-width: 130vh;
+    min-height: 80vh;
+    background-color: #ffffff;
 }
