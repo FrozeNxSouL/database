@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&family=Josefin+Sans:wght@500&family=Kanit:wght@300&family=Silkscreen&family=Sriracha&display=swap');
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-family: "Josefin Sans";
+}
+.box {
+    position: relative;
+    justify-content: center;
+    margin-top:20vh ;
+    font-family: "Josefin Sans";
+}
+
+.login {
+    position: relative;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    min-height: 60vh;
+    min-width: 50vh;
+    background: linear-gradient(to top,rgba(252, 204, 59, 0.392),rgb(174, 174, 174,0.392));
+    box-shadow: 2vh 5vh 30vh rgba(0, 0, 0, 0.392);
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+    border-radius: 2vh ;
+    font-family: "Josefin Sans";
+}
+
+.container {
+    font-size: 1rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-family: "Josefin Sans";
+}
+
+.container h1 {
+    font-size: 5vh;
+    justify-self: center;
+    align-self: center;
+    font-family: "Josefin Sans";
+}
+
+.container input {
+    margin: 1vh;
+    background: rgba(255, 255, 255, 0.442);
+    border-radius: 5vh;
+    border: none;
+    height: 6vh;
+    width: 30vh;
+    padding: 0 3vh;
+    justify-content: center;
+    font-family: "Josefin Sans";
+}
+
+.container input[type="submit"] {
+    margin: 1vh;
+    background: rgba(255, 255, 255, 0.442);
+    border-radius: 5vh;
+    border: none;
+    height: 5vh;
+    width: 40%;
+    padding: 0 3vh;
+    justify-self: center;
+    align-items: center;
+    align-self: center;
+    font-family: "Josefin Sans";
+}
+
+.to {
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+    justify-self: center;
+    align-items: center;
+    align-self: center;
+    font-family: "Josefin Sans";
+}
+.to input[type="submit"] {
+    background: rgba(255, 255, 255, 0.442);
+    border-radius: 5vh;
+    border: none;
+    height: 5vh;
+    width: 40%;
+    justify-self: center;
+    align-items: center;
+    align-self: center;
+    font-family: "Josefin Sans";
+}
+.to p {
+    margin: 1vh;
+    height: 5vh;
+    padding-top: 8%;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    justify-self: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: "Josefin Sans";
+}
+body {
+    margin:0;
+    background-image: url("fastfood.png");
+    overflow: hidden;
+    font-family: "Josefin Sans";
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
