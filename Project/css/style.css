@@ -70,9 +70,12 @@ main {
 .sign-in {
     display: none;
     z-index: 99;
-    padding: 1rem;
+    padding: 7vh 6vh 7vh 6vh;
     background-color: rgb(255, 255, 255);
     border-radius: .3rem;
+}
+.sign-in p {
+    margin-top: 2vh;
 }
 .sign-up {
     display: none;
@@ -115,6 +118,7 @@ footer {
     background-color: rgb(44, 44, 44);
 }
 .content-header {
+    margin: 3% 0 3% 0;
     display: flex;
     justify-content: center;
     column-gap: 5rem;
@@ -134,3 +138,16 @@ footer {
         width: 100%;
     }
 }
+
+/* #warning {
+    display: none;
+    z-index: 105;
+    position: absolute;
+    left: 40%;
+    width: 40vh;
+    height: 12vh;
+    background-color: #ffffff;
+    text-align: center;
+    padding: 4vh 0 0 0;
+    border-radius: .3rem;
+} */
