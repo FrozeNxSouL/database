@@ -151,3 +151,8 @@ footer {
     padding: 4vh 0 0 0;
     border-radius: .3rem;
 } */
+
+#errorinput {
+    height: 1rem;
+    width: 100%;
+}
