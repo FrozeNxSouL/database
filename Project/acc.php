@@ -14,8 +14,8 @@
     require_once('connect.php');    
     require_once('function.php');
 
-    // emptyInputSignup($email, $password,$name, $phonenum,$address,$subdis,$dis,$provice);
-    phonenumcheck($phonenum);
+    emptyInputSignup($email, $password,$name, $phonenum,$address,$subdis,$dis,$provice);
+    // phonenumcheck($phonenum);
     // checkemail($db,$email);
     // insertDB($db,$email,$hashpass,$name, $phonenum,$address,$subdis,$dis,$provice);
 // }
