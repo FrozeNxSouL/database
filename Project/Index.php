@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('process.php');
 ?>
 <!DOCTYPE html>
@@ -65,13 +66,15 @@ include('process.php');
 
             <form class="sign-in" id="sign-in-form" method="POST">
                 <h1>Login</h1>
-                <div class="mb-3">
-                  <input type="email" class="form-control" id="exampleInputEmail1" name="acc" placeholder="EMAIL ACCOUNT">
+                <div>
+                  <div class="mb-3">
+                    <input type="email" class="form-control" id="exampleInputEmail1" name="acc" placeholder="EMAIL ACCOUNT">
+                  </div>
+                  <div class="mb-3">
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="acc_password" placeholder="PASSWORD">
+                  </div>
                 </div>
-                <div class="mb-3">
-                  <input type="password" class="form-control" id="exampleInputPassword1" name="acc_password" placeholder="PASSWORD">
-                </div>
-                <p id="errorinput1" class="e3"></p>
+                <a href="#" id="errorinput1" class="e3"></a>
                 <button type="button" name="submit" class="btn btn-danger btn-form" id="submitlogin">login</button>
                 <p>No Account? <a href="#" style="color: #ffc600" onclick="signup()">SIGN UP</a></p>
             </form>
@@ -164,3 +167,6 @@ include('process.php');
 </body>
 
 </html>
+<?php
+session_destroy();
+?>

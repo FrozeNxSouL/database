@@ -36,7 +36,7 @@ if (isset($_POST['phone_check'])) {
 if (isset($_POST['save'])) {
     $name= $_POST['name'];
     $password = $_POST['password'];
-    $hashpass = password_hash($password, PASSWORD_DEFAULT);
+    $hashpass = md5($password) ;
     $email = $_POST['email'];
     $phonenum = $_POST['phonenum'];
     $address = $_POST['address'];
@@ -67,14 +67,14 @@ if (isset($_POST['save'])) {
 if (isset($_POST['search'])) {
     $acc = $_POST['acc'];
     $acc_password = $_POST['acc_password'];
-    $acc_hashpassword = password_hash($password, PASSWORD_DEFAULT);
+    $acc_hashpassword = md5($acc_password) ;
     $sql = "SELECT * FROM customer WHERE email = '$acc' AND password = '$acc_hashpassword' ";
     $results = mysqli_query($db, $sql);
     if (mysqli_num_rows($results) > 0) {
         echo 'correct';
     } 
     else {
-        $sql1 = "SELECT * FROM users WHERE email = '$acc'";
+        $sql1 = "SELECT * FROM customer WHERE email = '$acc'";
         $accresults = mysqli_query($db, $sql1);
         if (mysqli_num_rows($accresults) > 0) {
             echo 'wrongpw';

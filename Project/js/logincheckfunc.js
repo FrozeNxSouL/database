@@ -24,7 +24,7 @@ $('document').ready(function() {
                         $("#errorinput1").text("Wrong password!");
                     } 
                     else if (response == 'correct') {
-                        alert('gay');
+                        login();
                     } 
                 }
             })
