@@ -43,10 +43,10 @@ $all_burger = $db->query($sql);
             <div class="burger1">
                 <h1><?php echo $row["burger_name"]; ?></h1>
                 <div class="contain_pic">
-                    <?php echo '<img src="data:image;base64,'.base64_encode($row['ddd']).'">';?>
+                    <?php echo '<img src="data:image;base64,'.base64_encode($row['burger_pict']).'">';?>
                 </div>
                 
-                <h2><?php echo $row["burger_price"]; ?></h2>
+                <h2>$<?php echo $row["burger_price"]; ?></h2>
                 <div class="order">
                     <p>order</p>
                 </div>
