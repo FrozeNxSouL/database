@@ -8,7 +8,6 @@ $all_burger = $db->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="css/OurFood.css">
@@ -35,43 +34,28 @@ $all_burger = $db->query($sql);
         </div>
         <h1>MENU</h1>
     </div>
-    <main>
-        <h1>Upload / Insert an Image into database using php mysql</h1>
-        <form action="" method="POST" enctype="multipart/form-data">
-            <label> Choose an Picture</label>
-            <input type="file" name="image" id="image" /><br>
-
-            <label> Enter Burger Name</label>
-            <input type="text" name="burger_name" placeholder="Enter Burger Name"/><br>
-
-            <label> Enter Burger Price</label>
-            <input type="file" name="burger_price" placeholder="Enter Burger Price" /><br>
-
-            <input type="submit" name="upload" value = "Upload Image/Data" /><br>
-
-
-        </form>
+    <div class="menu">
+        <div class="contain_menu">
         <?php
         while ($row = mysqli_fetch_assoc($all_burger)) {
 
         ?>
-            <div class="card">
-                <div class="image">
+            <div class="burger1">
+                <h1><?php echo $row["burger_name"]; ?></h1>
+                <div class="contain_pic">
                     <?php echo '<img src="data:image;base64,'.base64_encode($row['ddd']).'">';?>
                 </div>
                 
-                <div class="caption">
-                    <p class="burger_name"><?php echo $row["burger_name"]; ?></p>
-                    <p class="price"><b><?php echo $row["burger_price"]; ?></b></p>
+                <h2><?php echo $row["burger_price"]; ?></h2>
+                <div class="order">
+                    <p>order</p>
                 </div>
-                <button class="add">order</button>
-
             </div>
-        <?php
-
-        }
-        ?>
-    </main>
+            <?php
+                }
+            ?>
+        </div>
+    </div>
 </body>
-
 </html>
+<!--  -->
