@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('process.php');
 ?>
 <!DOCTYPE html>
 
@@ -27,7 +28,7 @@ session_start();
 
         <!-- start Sign in/ Sign up form -->
         <div class="sign-form" id="sign-form">
-            <form class="row g-3 sign-up" id="sign-up-form" action="acc.php" method="POST">
+            <form class="row g-3 sign-up" id="sign-up-form"  method="POST">
                 <h1>SIGN UP</h1>
                 <div class="mb-3">
                     <label for="inputName" class="form-label">ชื่อ</label>
@@ -59,40 +60,56 @@ session_start();
                     <input type="text" class="form-control" id="inputprovice" name="provice">
                   </div> 
                 </div>  
-                <div id="errorinput">
-                </div>
-                <button type="submit" name="submit" class="btn btn-danger btn-form" id="summitsignin">Sign up</button> 
+                <p id="errorinput"></p>
+                <button type="button" name="submit" class="btn btn-danger btn-form" id="submitsignin">Sign up</button> 
             </form>
-            <?php
-              if (isset($_POST["submit"])) {
-                if ($_POST["error"]== "phoneletterinput") {
-                  echo '<script>alert("Welcome to Geeks for Geeks")</script>';
-                }
-              }
-            ?>
-            <form class="sign-in" id="sign-in-form" action="test.php" method="POST">
-                <h1>Login</h1>
-                <div class="mb-3">
-                  <input type="email" class="form-control" id="exampleInputEmail1" name="acc" placeholder="EMAIL ACCOUNT">
-                </div>
-                <div class="mb-3">
-                  <input type="password" class="form-control" id="exampleInputPassword1" name="acc_password" placeholder="PASSWORD">
-                </div>
-                <div id="errorinput">
 
+            <form class="sign-in" id="sign-in-form" method="POST">
+                <h1>Login</h1>
+                <div>
+                  <div class="mb-3">
+                    <input type="email" class="form-control" id="exampleInputEmail1" name="acc" placeholder="EMAIL ACCOUNT">
+                  </div>
+                  <div class="mb-3">
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="acc_password" placeholder="PASSWORD">
+                  </div>
                 </div>
-                <button type="submit" class="btn btn-danger btn-form" id="summitlogin" onclick="checking()">login</button>
+                <a href="#" id="errorinput1" class="e3"></a>
+                <button type="button" name="submit" class="btn btn-danger btn-form" id="submitlogin">login</button>
                 <p>No Account? <a href="#" style="color: #ffc600" onclick="signup()">SIGN UP</a></p>
             </form>
 
-        </div>
-        <!-- <div id="warning">
-          <h4>โปรดใส่ข้อมูลที่ถูกต้อง</h4>
-        </div> -->
-        <div class="sign-bg" id="sign-opt-bg"></div>
-        <!-- end Sign in/ Sign up form -->
+            <form class="profile" id="profile">
+              <h1>Profile</h1>
+              <div class="nameblock">
+                <span class="tt">NAME :</span>
+                <label id="cus_name" class="cus_name">ggggg</label><br>
+                <span class="tt">LASTNAME :</span>
+                <label id="cus_surname" class="cus_surname">ssss</label>
+              </div>
+              <div class="emailblock">
+                <span class="tt">EMAIL :</span>
+                <label id="cus_email" class="cus_email"></label>
+              </div>
+              <div class="addressblock">
+                <span class="tt">ADDRESS</span><br>
+                <label id="cus_ad" class="cus_ad"></label><br>
+                <label id="cus_subdis" class="cus_subdis"></label>
+                <label id="cus_dis" class="cus_dis"></label>
+                <label id="cus_provice" class="cus_provice"></label>
+              </div>
+              <div class="otherblock">
 
-        <!-- start slide -->
+              </div>
+              <div class="buttonblock">
+                <button id="del-button" class="del-button">DELETE ACCOUNT</button>
+                <button id="logout-button" class="logout-button">LOGOUT</button>
+              </div>
+            </form>
+
+        </div>
+
+        <div class="sign-bg" id="sign-opt-bg"></div>
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
@@ -142,11 +159,14 @@ session_start();
         <!-- end main section -->
     </main>
     <footer id="footer"></footer>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
+    <script src="js/logincheckfunc.js" ></script>
+    <script src="js/checkfunc.js" ></script>
     <script src="js/footer.js"></script>
     <script src="js/account.js"></script>
 </body>
 
 </html>
 <?php
-session_destroy()
+session_destroy();
 ?>
