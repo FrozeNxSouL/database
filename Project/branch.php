@@ -35,7 +35,7 @@
 
         <!-- start Sign in/ Sign up form -->
         <div class="sign-form" id="sign-form">
-            <form class="row g-3 sign-up" id="sign-up-form" action="acc.php" method="POST">
+            <form class="row g-3 sign-up" id="sign-up-form" action="php/acc.php" method="POST">
                 <h1>SIGN UP</h1>
                 <div class="mb-3">
                     <label for="inputName" class="form-label">ชื่อ</label>
