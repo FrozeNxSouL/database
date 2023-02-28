@@ -25,6 +25,9 @@ $all_burger = $db->query($sql);
 </head>
 
 <body>
+    <div class="content-header">
+
+    </div>
     <div class="contain">
         <header id="header"></header>
         <script src="js/header.js"></script>
@@ -35,22 +38,18 @@ $all_burger = $db->query($sql);
         <h1>MENU</h1>
     </div>
     <div class="menu">
-        <div class="contain_menu">
+        <div class="contain-menu">
         <?php
         while ($row = mysqli_fetch_assoc($all_burger)) {
-
         ?>
-            <div class="burger1">
-                <h1><?php echo $row["burger_name"]; ?></h1>
-                <div class="contain_pic">
-                    <?php echo '<img src="data:image;base64,'.base64_encode($row['burger_pict']).'">';?>
-                </div>
-                
+
+            <div class="ourfood-card">
+                <?php echo '<img class="ourfood-img" src="data:image;base64,'.base64_encode($row['burger_pict']).'">';?>
+                <h5 class="food-name"><?php echo $row["burger_name"]; ?></h5>
                 <h2>$<?php echo $row["burger_price"]; ?></h2>
-                <div class="order">
-                    <p>order</p>
-                </div>
+                <a class="btn btn-danger"><span class="material-symbols-outlined">shopping_basket</span></a>
             </div>
+
             <?php
                 }
             ?>
