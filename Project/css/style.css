@@ -135,7 +135,7 @@ footer {
     column-gap: 5rem;
     background-color: rgb(185, 0, 23);
     max-width: 100%;
-    min-height: 30vh;
+    min-height: 10vh;
 }
 .content-main {
     margin: 0 auto;
@@ -178,6 +178,11 @@ footer {
     height: 5vh;
     width: 100%;
 }
+<<<<<<< HEAD
+.material-symbols-outlined {
+    line-height: 5rem;
+    margin: 0;
+=======
 
 
 .cus_name {
@@ -249,4 +254,5 @@ footer {
     margin-left: 5%;
     border: none;
     border-radius: 0.3vh;
+>>>>>>> antie3
 }

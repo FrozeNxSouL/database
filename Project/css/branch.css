@@ -1,0 +1,16 @@
+.branch-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: auto;
+    padding: 1rem;
+    min-width: 40vh;
+    height: 25vh;
+    background-color: rgb(251, 251, 251);
+}
+.branch-list {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 1rem;
+    justify-content: space-between;
+}
