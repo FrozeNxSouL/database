@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;400;500;700&display=swap');
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+    font-family: 'Kanit', sans-serif;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+header {
+    position: fixed;
+    z-index: 10;
+    left: 50%;
+    top: 0;
+    min-width: 100vh;
+    transform: translateX(-50%);
+}
+.navbar {
+    box-shadow: 0 0 20px rgba(37, 37, 37, 20%);
+    border-radius: 0 0 .3rem .3rem;
+}
+.nav-link {
+    font-weight: 500 !important;
+}
+main {
+    min-height: 100vh;
+}
+
+.material-symbols-outlined {
+    color: black;
+    background-color: #f8f9fa;
+}
+.sign-bg {
+    display: none;
+    position: fixed;
+    z-index: 98;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 80%);
+}
+.sign-in {
+    display: none;
+    z-index: 99;
+    padding: 7vh 6vh 7vh 6vh;
+    background-color: rgb(255, 255, 255);
+    border-radius: .3rem;
+}
+
+.sign-up p {
+    margin-top: 2vh;
+}
+
+.sign-in p {
+    margin-top: 2vh;
+}
+
+.sign-in h1 {
+    margin-bottom: 2rem;
+}
+
+.sign-up {
+    display: none;
+    z-index: 99;
+    padding: 1rem;
+    background-color: rgb(255, 255, 255);
+    border-radius: .3rem;
+}
+.sign-form {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 50vh;
+    z-index: 99;
+    background: transparent;
+}
+.outer {
+    justify-content: center;
+    align-content: center;
+    align-self: center;
+    justify-self: center;
+    width: 95%;
+    display: flex
+}
+.col {
+    justify-content: center;
+    align-content: center;
+    justify-self: center;
+    margin: 0 0.5vh 0 0.5vh;
+}
+.btn-form {
+    margin-top: 2rem;
+    width: 100%;
+    text-transform: uppercase;
+}
+footer {
+    max-width: 100%;
+    min-height: 20vh;
+    background-color: rgb(44, 44, 44);
+    padding: 5vh 30vh 3vh 30vh;
+}
+
+.block1 {
+    display: flex;
+    flex-direction: column;
+}
+
+.block1 h6 {
+    color: #f8f9fa;
+}
+
+
+.content-header {
+    margin: 3% 0 3% 0;
+    display: flex;
+    justify-content: center;
+    column-gap: 5rem;
+    background-color: rgb(185, 0, 23);
+    max-width: 100%;
+    min-height: 30vh;
+}
+.content-main {
+    margin: 0 auto;
+    padding: 2rem;
+    max-width: 130vh;
+    min-height: 80vh;
+    background-color: #ffffff;
+}
+@media only screen and (max-width: 990px) {
+    header {
+        width: 100%;
+    }
+}
+
+#errorinput {
+    height: 1rem;
+    padding: 0 0 0 1.5vh;
+    margin: 0.7vh;
+    color: rgb(185, 0, 23);
+}
+
+.e3 {
+    text-decoration: none;
+    position: absolute;
+    height: 1rem;
+    padding: 0 0 2vh 1.5vh;
+    margin: 0 0.7vh;
+    color: rgb(185, 0, 23);
+}
+
+.profile {
+    display: none;
+    z-index: 109;
+    padding: 2rem;
+    background-color: rgb(255, 255, 255);
+    border-radius: .3rem;
+}
+
+.nameblock {
+    height: 5vh;
+    width: 100%;
+}
+
+
+.cus_name {
+    width: 50%;
+}
+
+.cus_surname {
+    width: 50%;
+}
+
+.emailblock {
+    height: 5vh;
+    width: 100%;
+    margin-top: 1vh;
+}
+
+.cus_email {
+    width: 50%;
+}
+
+.addressblock {
+    display: flex; 
+    justify-content: center; 
+    width: 100%;
+    flex-direction: column;
+}
+
+.addressblock span {
+    width: 100%;
+}
+
+.addressblock .cus_subdis .cus_dis .cus_provice {
+    width: 50%;
+}
+
+.otherblock {
+    display: flex;
+    height: 5vh;  
+    width: 100%;
+}
+
+.buttonblock {
+    display: flex; 
+    height: 5vh;
+    justify-content: right; 
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.del-button {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    height: 4vh;
+    font-size: 1rem;
+    text-align: center;
+    background-color: rgb(185, 0, 23);
+    color: #ffffff;
+    margin-left: 5%;
+    width: 15%;
+    border: none;
+    border-radius: 0.3vh;
+}
+
+.adjust-button {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    justify-self: left ;
+    font-style: normal;
+    height: 4vh;
+    font-size: 1rem;
+    text-align: center;
+    background-color: rgb(185, 0, 23);
+    color: #ffffff;
+    margin-left: 5%;
+    width: 15%;
+    border: none;
+    border-radius: 0.3vh;
+}
+
+.logout-button {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    height: 4vh;
+    font-size: 1rem;
+    text-align: center;
+    background-color: rgb(185, 0, 23);
+    color: #ffffff;
+    width: 15%;
+    margin-left: 5%;
+    border: none;
+    border-radius: 0.3vh;
+}
