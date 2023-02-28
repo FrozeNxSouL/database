@@ -63,6 +63,13 @@ main {
 .material-symbols-outlined {
     color: black;
     background-color: #f8f9fa;
+    display: block;
+}
+
+.material-symbols-outlined1 {
+    color : '#f8f9fa';
+    background-color :'rgb(185, 0, 23)'; 
+    display: none;
 }
 .sign-bg {
     display: none;

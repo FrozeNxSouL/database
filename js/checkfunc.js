@@ -97,7 +97,7 @@ $('document').ready(function() {
                         $("#errorinput").text("Try again");
                     } 
                     else if (response == 'Saved') {
-                        alert('SAVED');
+                        alert('SAVED');                 
                         login();
                     } 
                 }

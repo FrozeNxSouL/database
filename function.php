@@ -66,7 +66,7 @@ function insertDB($db,$email,$hashpass,$name, $phonenum,$address,$subdis,$dis,$p
 }
 
 function fetchuser($db,$email) {
-    $sql = "SELECT * FROM customer WHERE email =?";
+    $sql = "SELECT * FROM customer WHERE email = $email";
     $result = mysqli_query($db,$sql);
     $row = mysqli_fetch_assoc($result);
     return $row;

@@ -25,6 +25,7 @@ document.getElementById("header").innerHTML =
     "<a class='navbar-brand' href='#'>" +
     "<div class='circleblock'>" +
     "<span class='material-symbols-outlined' style='line-height: 2rem;' id='material-symbols-outlined' onclick={signin()}>person</span>" +
+    "<span class='material-symbols-outlined1' style='line-height: 2rem;' id='material-symbols-outlined1' onclick={login()}>person</span>" +
     "</div>"
     "</a>" +
     "</div>" +

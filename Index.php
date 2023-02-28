@@ -80,8 +80,11 @@ include('process.php');
             </form>
 
             <?php 
-              require_once("acc.php");
-              $row = fetchuser($db,'acc'); 
+              $data = json_decode(file_get_contents("php://input"), true);
+              $email = $_POST['email'];
+              $sql = "SELECT * FROM customer WHERE email = $email";
+              $result = mysqli_query($db,$sql);
+              while ($row = mysqli_fetch_assoc($result));
             ?>
             <div class="profile" id="profile">
               <h1>Profile</h1>

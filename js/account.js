@@ -6,6 +6,7 @@ const profile = document.querySelector('#profile');
 // const summitlogin = document.querySelector('#summitlogin');
 // const summitsignin = document.querySelector('#summitsignin');
 const userpic = document.querySelector('#material-symbols-outlined');
+const userpic1 = document.querySelector('#material-symbols-outlined1');
 // const check = document.getElementById("summit");
 // const phone = document.querySelector('#inputphonenum');
 // const warning = document.querySelector('#warning');
@@ -16,8 +17,8 @@ bgSignForm.addEventListener('click', ()=> {
     signUpForm.style.display = 'none';
     bgSignForm.style.display = 'none';
     profile.style.display = 'none';
-    userpic.style.color =  'black';
-    userpic.style.backgroundColor = '#f8f9fa';
+    // userpic.style.display =  'block';
+    // userpic1.style.display = 'none';
     // userpic.style.display = 'inline-block';
     // warning.style.display = 'none';
 })
@@ -40,7 +41,6 @@ function login() {
     signInForm.style.display = 'none';
     signUpForm.style.display = 'none';
     profile.style.display = 'block'; 
-    userpic.style.color =  '#f8f9fa';
-    userpic.style.backgroundColor = 'rgb(185, 0, 23)'; 
-    userpic.onclick = function() {login()};
+    userpic1.style.display =  'block';
+    userpic.style.display = 'none';
 }
