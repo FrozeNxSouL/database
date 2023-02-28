@@ -33,9 +33,9 @@
       </div>
       <?php
         if (!empty($address)) {
-          require('php/connect.php');
+          require('connect.php');
           $query = "SELECT * FROM branches WHERE  branch_name LIKE '%$address%' OR  district LIKE '%$address%' OR sub_district LIKE '%$address%' OR province LIKE'%$address%'";
-          $result = mysqli_query($conn, $query);
+          $result = mysqli_query($db, $query);
           
           if (mysqli_num_rows($result) > 0) {?>
       <div class ="branchbg">
