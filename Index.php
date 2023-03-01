@@ -82,7 +82,11 @@ include('php/process.php');
             <?php 
 
               // require_once('connect.php');
-              // $data = $_POST['acc'];
+                $data = $_SESSION["email"];
+                $sql = "SELECT * FROM customer WHERE email = $data";
+                $result = mysqli_query($db,$sql);
+                $row = mysqli_fetch_array($result);
+              
               // $sql = "SELECT * FROM customer WHERE email = $data";
               // if(isset($_POST)){
               //   $data = file_get_contents("php://input");
@@ -98,7 +102,7 @@ include('php/process.php');
               <h1>Profile</h1>
               <div class="nameblock">
                 <span class="tt">NAME :</span>
-                <label id="cus_name" class="cus_name"><?php echo $row["name"]; ?></label><br>
+                <label id="cus_name" class="cus_name"><?php echo $_SESSION["email"]; ?></label><br>
               </div>
               <div class="emailblock">
                 <span class="tt">EMAIL :</span>

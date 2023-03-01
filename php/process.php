@@ -68,10 +68,13 @@ if (isset($_POST['search'])) {
     $acc = $_POST['acc'];
     $acc_password = $_POST['acc_password'];
     $acc_hashpassword = md5($acc_password) ;
+    $_SESSION['email'] = '';
     $sql = "SELECT * FROM customer WHERE email = '$acc' AND password = '$acc_hashpassword' ";
     $results = mysqli_query($db, $sql);
     if (mysqli_num_rows($results) > 0) {
         echo 'correct';
+        // header('Location: index.php?email=$acc_email');
+        $_SESSION['email'] = $acc;
     } 
     else {
         $sql1 = "SELECT * FROM customer WHERE email = '$acc'";

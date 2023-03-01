@@ -26,16 +26,17 @@ $('document').ready(function() {
                     else if (response == 'correct') {
                         alert('CONNECTED'); 
                         // var femail = $("#exampleInputEmail1").val();
-                        // let http = new XMLHttpRequest()
-                        // http.open('POST',  'Index.php',true);
-
-                        // http.send(femail);
+                        // // let http = new XMLHttpRequest()
+                        // // http.open('POST', 'Index.php',true);
+                        // // // console.log(femail);
+                        // // http.send(femail);
                         // var xhr = new XMLHttpRequest();
-                        // var sendings = JSON.parse('{email: $("#exampleInputEmail1").val(), password:  $("#exampleInputPassword1").val()}'); 
+                        // var sendings = JSON.parse(femail); 
+                        // console.log(sendings);
                         // xhr.open("get", "Index.php");
                         // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                         // xhr.send();
-                        // login();
+                        login();
                     } 
                 }
             })
