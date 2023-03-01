@@ -74,9 +74,19 @@ main {
     background-color: rgb(255, 255, 255);
     border-radius: .3rem;
 }
+
+.sign-up p {
+    margin-top: 2vh;
+}
+
 .sign-in p {
     margin-top: 2vh;
 }
+
+.sign-in h1 {
+    margin-bottom: 2rem;
+}
+
 .sign-up {
     display: none;
     z-index: 99;
@@ -109,6 +119,7 @@ main {
     margin: 0 0.5vh 0 0.5vh;
 }
 .btn-form {
+    margin-top: 2rem;
     width: 100%;
     text-transform: uppercase;
 }
@@ -124,7 +135,7 @@ footer {
     column-gap: 5rem;
     background-color: rgb(185, 0, 23);
     max-width: 100%;
-    min-height: 30vh;
+    min-height: 10vh;
 }
 .content-main {
     margin: 0 auto;
@@ -139,20 +150,109 @@ footer {
     }
 }
 
-/* #warning {
-    display: none;
-    z-index: 105;
-    position: absolute;
-    left: 40%;
-    width: 40vh;
-    height: 12vh;
-    background-color: #ffffff;
-    text-align: center;
-    padding: 4vh 0 0 0;
-    border-radius: .3rem;
-} */
-
 #errorinput {
     height: 1rem;
+    padding: 0 0 0 1.5vh;
+    margin: 0.7vh;
+    color: rgb(185, 0, 23);
+}
+
+.e3 {
+    text-decoration: none;
+    position: absolute;
+    height: 1rem;
+    padding: 0 0 2vh 1.5vh;
+    margin: 0 0.7vh;
+    color: rgb(185, 0, 23);
+}
+
+.profile {
+    display: none;
+    z-index: 109;
+    padding: 1rem;
+    background-color: rgb(255, 255, 255);
+    border-radius: .3rem;
+}
+
+.nameblock {
+    height: 5vh;
     width: 100%;
+}
+<<<<<<< HEAD
+.material-symbols-outlined {
+    line-height: 5rem;
+    margin: 0;
+=======
+
+
+.cus_name {
+    width: 50%;
+}
+
+.cus_surname {
+    width: 50%;
+}
+
+.emailblock {
+    height: 5vh;
+    width: 100%;
+    margin-top: 1vh;
+}
+
+.cus_email {
+    width: 50%;
+}
+
+.addressblock {
+    display: flex; 
+    justify-content: center; 
+    height: 5vh;
+    width: 100%;
+}
+
+.cus_ad {
+    width: 90%;
+}
+
+.addressblock .cus_subdis .cus_dis .cus_provice {
+    width: 30%;
+}
+
+.otherblock {
+    display: flex;
+    height: 5vh;  
+    width: 100%;
+}
+
+.buttonblock {
+    display: flex; 
+    height: 5vh;
+    justify-content: right; 
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.del-button {
+    height: 4vh;
+    font-size: 0.7rem;
+    text-align: center;
+    background-color: rgb(185, 0, 23);
+    color: #ffffff;
+    width: 25%;
+    border: none;
+    border-radius: 0.3vh;
+}
+
+.logout-button {
+    height: 4vh;
+    font-size: 0.7rem;
+    text-align: center;
+    background-color: rgb(185, 0, 23);
+    color: #ffffff;
+    width: 25%;
+    margin-left: 5%;
+    border: none;
+    border-radius: 0.3vh;
+>>>>>>> antie3
 }
