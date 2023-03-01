@@ -37,45 +37,51 @@ $all_burger = $db->query($sql);
             <li class="nav-subitem"><a class="nav-sublink" href="#">Delivery</a></li>
         </ul>
     </div>
-    <form class="form-edit" method="POST" enctype="multipart/form-data">
-        <div class="mb-3">
-            <label for="burger_name">Enter a burger name</label>
-            <input class="form-control" type="text" name="burger_name" placeholder="Enter a burger name" />
-        </div>
-        <div class="mb-3">
-            <div class="input-group">
-                <div class="input-group-text">฿</div>
-                <input type="text" class="form-control" name="burger_price" placeholder="Enter a burger price">
-            </div>
-        </div>
-        <div class="mb-3">
-            <label for="formFile" class="form-label">Choose burger image</label>
-            <input class="form-control" type="file" id="image" name="burger_pict">
-        </div>
-
-        <button class="btn btn-primary" type="submit" name="upload">Add menu</button><br>
-        
-    </form>
-    <div class="menu">
-        <div class="contain_menu">
-        <?php
-        while ($row = mysqli_fetch_assoc($all_burger)) {
-
-        ?>
-            <div class="burger1">
-                <h1><?php echo $row["burger_name"]; ?></h1>
-                <div class="contain_pic">
-                    <?php echo '<img src="data:image;base64,'.base64_encode($row["burger_pict"]).'">';?>
+    <div class="content-main">
+        <div class="list-edit" id="menu-section">
+            <form class="form-edit" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <input class="form-control" type="text" name="burger_name" placeholder="Enter a burger name" required>
                 </div>
+                <div class="mb-3">
+                    <div class="input-group">
+                        <div class="input-group-text">฿</div>
+                        <input type="text" class="form-control" name="burger_price" placeholder="Enter a burger price" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" type="file" id="image" name="burger_pict" required>
+                </div>
+
+                <button class="btn btn-primary" type="submit" name="upload">Add new menu</button>
+                <button class="btn btn-danger" type="reset" name="upload">Clear</button>
                 
-                <h2>$<?php echo $row["burger_price"]; ?></h2>
-                <div class="order">
-                    <p>order</p>
-                </div>
-            </div>
+            </form>
+            
+            <?php
+                while ($row = mysqli_fetch_assoc($all_burger)) {
+            ?>
+
+                    <div class="list-edit-item">
+                        <div class="list-img">
+                            <?php echo '<img src="data:image;base64,'.base64_encode($row["burger_pict"]).'">';?>
+                        </div>
+                        
+                        <div class="list-info">
+                            <h4><?php echo $row["burger_name"]; ?></h4>
+                            <span>$<?php echo $row["burger_price"]; ?></span>
+                            <div class="col">
+                                <button class="btn btn-danger">Delete</button>
+                                <button class="btn btn-warning">Edit</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+
             <?php
                 }
             ?>
+
         </div>
     </div>
 </body>
