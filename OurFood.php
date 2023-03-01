@@ -10,6 +10,8 @@ $all_burger = $db->query($sql);
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="css/OurFood.css">
+    <link rel="stylesheet" href="css/backdoor.css">
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,20 +57,6 @@ $all_burger = $db->query($sql);
             ?>
         </div>
     </div>
-    <form action="" method="POST" enctype="multipart/form-data">
-
-        <label> Choose an picture: </label>
-        <input type="file" name="burger_pict" id="image" /><br>
-
-        <label> Enter a burger name: </label>
-        <input type="text" name="burger_name" placeholder="Enter a burger name" /><br>
-
-        <label> Enter a burger price: </label>
-        <input type="text" name="burger_price" placeholder="Enter a burger price" /><br>
-
-        <input type="submit" name="upload" value="Upload Image/Data" /><br>
-        
-    </form>
 </body>
 </html>
 

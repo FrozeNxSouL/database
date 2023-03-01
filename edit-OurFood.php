@@ -10,12 +10,11 @@ $all_burger = $db->query($sql);
 <html lang="en">
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="css/OurFood.css">
+    <link rel="stylesheet" href="css/backdoor.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/home.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -29,11 +28,34 @@ $all_burger = $db->query($sql);
         <header id="header"></header>
         <script src="js/header.js"></script>
     </div>
-    <div class="head">
-        <div class="line">
-        </div>
-        <h1>MENU</h1>
+
+    <div class="content-header">
+        <ul class="nav-sub">
+            <li class="nav-subitem"><a class="nav-sublink" href="#">Slide show</a></li>
+            <li class="nav-subitem"><a class="nav-sublink" href="#">User</a></li>
+            <li class="nav-subitem"><a class="nav-sublink" href="#">Menu</a></li>
+            <li class="nav-subitem"><a class="nav-sublink" href="#">Delivery</a></li>
+        </ul>
     </div>
+    <form class="form-edit" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="burger_name">Enter a burger name</label>
+            <input class="form-control" type="text" name="burger_name" placeholder="Enter a burger name" />
+        </div>
+        <div class="mb-3">
+            <div class="input-group">
+                <div class="input-group-text">฿</div>
+                <input type="text" class="form-control" name="burger_price" placeholder="Enter a burger price">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Choose burger image</label>
+            <input class="form-control" type="file" id="image" name="burger_pict">
+        </div>
+
+        <button class="btn btn-primary" type="submit" name="upload">Add menu</button><br>
+        
+    </form>
     <div class="menu">
         <div class="contain_menu">
         <?php
@@ -56,20 +78,6 @@ $all_burger = $db->query($sql);
             ?>
         </div>
     </div>
-    <form action="" method="POST" enctype="multipart/form-data">
-
-        <label> Choose an picture: </label>
-        <input type="file" name="burger_pict" id="image" /><br>
-
-        <label> Enter a burger name: </label>
-        <input type="text" name="burger_name" placeholder="Enter a burger name" /><br>
-
-        <label> Enter a burger price: </label>
-        <input type="text" name="burger_price" placeholder="Enter a burger price" /><br>
-
-        <input type="submit" name="upload" value="Upload Image/Data" /><br>
-        
-    </form>
 </body>
 </html>
 

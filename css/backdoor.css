@@ -24,3 +24,7 @@
     display: flex;
     justify-content: center;
 }
+.form-edit {
+    background-color: aqua;
+    padding: 1rem;
+}
