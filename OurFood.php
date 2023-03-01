@@ -10,7 +10,6 @@ $all_burger = $db->query($sql);
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="css/OurFood.css">
-    <link rel="stylesheet" href="css/backdoor.css">
     
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,47 +29,36 @@ $all_burger = $db->query($sql);
         <header id="header"></header>
         <script src="js/header.js"></script>
     </div>
-    <div class="head">
-        <div class="line">
-        </div>
-        <h1>MENU</h1>
+    <div class="content-header">
+        <ul class="nav-sub">
+            <li><a class="nav-sublink" href="#">Burger</a></li>
+            <li><a class="nav-sublink" href="#">Set menu</a></li>
+            <li><a class="nav-sublink" href="#">Other menu</a></li>
+        </ul>
     </div>
-    <div class="menu">
-        <div class="contain_menu">
-        <?php
-        while ($row = mysqli_fetch_assoc($all_burger)) {
 
-        ?>
-            <div class="burger1">
-                <h1><?php echo $row["burger_name"]; ?></h1>
-                <div class="contain_pic">
-                    <?php echo '<img src="data:image;base64,'.base64_encode($row["burger_pict"]).'">';?>
+    <div class="content-main">
+        <div class="menu">
+
+            <?php
+            while ($row = mysqli_fetch_assoc($all_burger)) {
+
+            ?>
+                <div class="ourfood-card">
+                    <?php echo '<img class="ourfood-img" src="data:image;base64,'.base64_encode($row["burger_pict"]).'">';?>
+                    <h3 class="food-name"><?php echo $row["burger_name"]; ?></h1>
+                    <h5>$<?php echo $row["burger_price"]; ?></h2>
+                    <button class="btn btn-danger">Order</button>
                 </div>
-                
-                <h2>$<?php echo $row["burger_price"]; ?></h2>
-                <div class="order">
-                    <p>order</p>
-                </div>
-            </div>
             <?php
                 }
             ?>
+
         </div>
     </div>
 </body>
 </html>
 
 <?php
-
-if(isset($_POST['upload']))
-{
-    $file = addslashes(file_get_contents($_FILES["burger_pict"]["tmp_name"]));
-    $burger_name = $_POST['burger_name'];
-    $burger_price = $_POST['burger_price'];
-
-    $query = "INSERT INTO `burger`(`burger_pict`,`burger_name`,`burger_price`) VALUES ('$file','$burger_name','$burger_price')";
-    $query_run = mysqli_query($db,$query);
-
     mysqli_close($db);
-}
 ?>

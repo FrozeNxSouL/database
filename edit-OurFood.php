@@ -31,10 +31,10 @@ $all_burger = $db->query($sql);
 
     <div class="content-header">
         <ul class="nav-sub">
-            <li class="nav-subitem"><a class="nav-sublink" href="#">Slide show</a></li>
-            <li class="nav-subitem"><a class="nav-sublink" href="#">User</a></li>
-            <li class="nav-subitem"><a class="nav-sublink" href="#">Menu</a></li>
-            <li class="nav-subitem"><a class="nav-sublink" href="#">Delivery</a></li>
+            <li><a class="nav-sublink" href="#">Slide show</a></li>
+            <li><a class="nav-sublink" href="#">User</a></li>
+            <li><a class="nav-sublink" href="#">Menu</a></li>
+            <li><a class="nav-sublink" href="#">Delivery</a></li>
         </ul>
     </div>
     <div class="content-main">
@@ -66,7 +66,6 @@ $all_burger = $db->query($sql);
                         <div class="list-img">
                             <?php echo '<img src="data:image;base64,'.base64_encode($row["burger_pict"]).'">';?>
                         </div>
-                        
                         <div class="list-info">
                             <h4><?php echo $row["burger_name"]; ?></h4>
                             <span>$<?php echo $row["burger_price"]; ?></span>

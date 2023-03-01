@@ -1,17 +1,3 @@
-.nav-sub {
-    display: flex;
-    justify-content: space-around;
-    align-self: flex-end;
-}
-.nav-sublink{
-    padding: 1.5rem;
-    color: #ffffff;
-}
-.nav-sublink:hover {
-    color: rgb(255, 198, 0);
-    border-bottom: 2px solid rgb(255, 198, 0);
-}
-
 .nav-sublink::before {
     font-family: "Material Icons";
     font-size: 1.5rem;
