@@ -180,7 +180,7 @@ footer {
 
 
 .content-header {
-    margin: 0 0 3% 0;
+    margin: 3% 0 3% 0;
     display: flex;
     justify-content: center;
     column-gap: 5rem;
