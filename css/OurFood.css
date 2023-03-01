@@ -1,72 +1,18 @@
-.selectbar {
-    font-family: 'Material Symbols Outlined';
-    text-align: center;
-    text-decoration: none ;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 1.7rem;
-    line-height: 1;
-    letter-spacing: normal;
-    text-transform: none;
-    display: inline-block;
-    white-space: nowrap;
-    word-wrap: normal;
-    direction: ltr;
-    -webkit-font-smoothing: antialiased;
-    color: rgb(185, 0, 23);
-    background-color: rgb(255, 255, 255);
-    border-radius: 4px;
-    border: 0.2em solid rgb(185, 0, 23);
+.ourfood-card {
+  min-width: 30vh;
+  max-width: 30vh;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
 }
-
-.selectbar:hover {
-    background-color: rgb(255, 255, 255);
-    border-color: rgb(155, 0, 18);
-    color: rgb(154, 0, 18);
+.ourfood-img {
+  margin: 0 auto;
+  width: 100%;
 }
-
-.contain-menu {
-    display: flex;
-  }
-  .head{
-      margin-left: 10rem;
-      padding-top: 5rem;
-      box-sizing: border-box;
-      display: flex;
-  }
-  .head h1{
-    font-size: 50px;
-  }
-  .head .line{
-    content: '';
-    background-color: #FFC600;
-    width: 10px;
-    height: 60px;
-    border-radius: 6px;
-    margin-right: 10px;
-  }
-  
-  .menu{
-    display: flex;
-    justify-content: center;
-    height: 500px;
-    width: 100%;
-    padding-top: 20px;
-    
-  }
-  .ourfood-card {
-    width: 30vh;
-    max-height: 50vh;
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-  }
-  .ourfood-card .ourfood-img {
-    margin: 0 auto;
-    width: 10rem;
-    height: 10rem;
-  }
-
-  .food-name {
-    border-bottom: 1px dashed rgb(74, 74, 74);
-  }
+.food-name {
+  border-bottom: 1px dashed rgb(74, 74, 74);
+}
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+}

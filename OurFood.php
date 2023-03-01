@@ -1,18 +1,16 @@
 <?php
+require('php/connect.php');
 
-require_once 'php/connect.php';
-
-$sql = "SELECT * FROM burger";
+$sql = 'SELECT * FROM burger;';
 $all_burger = $db->query($sql);
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>MC</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="css/OurFood.css">
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,36 +25,40 @@ $all_burger = $db->query($sql);
 </head>
 
 <body>
-    <div class="content-header">
-
-    </div>
     <div class="contain">
         <header id="header"></header>
         <script src="js/header.js"></script>
     </div>
-    <div class="head">
-        <div class="line">
-        </div>
-        <h1>MENU</h1>
+    <div class="content-header">
+        <ul class="nav-sub">
+            <li><a class="nav-sublink" href="#">Burger</a></li>
+            <li><a class="nav-sublink" href="#">Set menu</a></li>
+            <li><a class="nav-sublink" href="#">Other menu</a></li>
+        </ul>
     </div>
-    <div class="menu">
-        <div class="contain-menu">
-        <?php
-        while ($row = mysqli_fetch_assoc($all_burger)) {
-        ?>
 
-            <div class="ourfood-card">
-                <?php echo '<img class="ourfood-img" src="data:image;base64,'.base64_encode($row['burger_pict']).'">';?>
-                <h5 class="food-name"><?php echo $row["burger_name"]; ?></h5>
-                <h3>$<?php echo $row["burger_price"] ; ?></h3>
-                <a href="#" class="selectbar">shopping_basket</a>
-            </div>
+    <div class="content-main">
+        <div class="menu">
 
+            <?php
+            while ($row = mysqli_fetch_assoc($all_burger)) {
+
+            ?>
+                <div class="ourfood-card">
+                    <?php echo '<img class="ourfood-img" src="data:image;base64,'.base64_encode($row["burger_pict"]).'">';?>
+                    <h3 class="food-name"><?php echo $row["burger_name"]; ?></h1>
+                    <h5>$<?php echo $row["burger_price"]; ?></h2>
+                    <button class="btn btn-danger">Order</button>
+                </div>
             <?php
                 }
             ?>
+
         </div>
     </div>
 </body>
 </html>
-<!--  -->
+
+<?php
+    mysqli_close($db);
+?>

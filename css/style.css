@@ -57,10 +57,23 @@ header {
 .nav-link {
     font-weight: 500 !important;
 }
+
+.nav-sub {
+    display: flex;
+    justify-content: space-around;
+    align-self: flex-end;
+}
+.nav-sublink{
+    padding: 1rem;
+    color: #ffffff;
+}
+.nav-sublink:hover {
+    color: rgb(255, 198, 0);
+    border-bottom: 2px solid rgb(255, 198, 0);
+}
 main {
     min-height: 100vh;
 }
-
 .material-symbols-outlined {
     color: black;
     background-color: #f8f9fa;
