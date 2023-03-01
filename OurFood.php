@@ -38,8 +38,10 @@ $all_burger = $db->query($sql);
     </div>
 
     <div class="content-main">
+        <div class="menu-title">
+            <h2 style="font-weight: 700">Menu</h2>
+        </div>
         <div class="menu">
-
             <?php
             while ($row = mysqli_fetch_assoc($all_burger)) {
 
@@ -47,7 +49,7 @@ $all_burger = $db->query($sql);
                 <div class="ourfood-card">
                     <?php echo '<img class="ourfood-img" src="data:image;base64,'.base64_encode($row["burger_pict"]).'">';?>
                     <h3 class="food-name"><?php echo $row["burger_name"]; ?></h1>
-                    <h5>$<?php echo $row["burger_price"]; ?></h2>
+                    <h5>฿<?php echo $row["burger_price"]; ?></h2>
                     <button class="btn btn-danger">Order</button>
                 </div>
             <?php
