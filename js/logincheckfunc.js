@@ -3,8 +3,6 @@ $('document').ready(function() {
     $('#submitlogin').on("click", function(e) {
         var loginemail = $("#exampleInputEmail1").val();
         var loginpassword = $("#exampleInputPassword1").val();
-        var xhr = new XMLHttpRequest();
-        var sendings = {email: loginemail, password: loginpassword}
         if (loginemail == ' ' || loginpassword == ' ' ) {
             e.preventDefault();
             $("#errorinput1").text("Check your form again!");
@@ -26,10 +24,17 @@ $('document').ready(function() {
                         $("#errorinput1").text("Wrong password!");
                     } 
                     else if (response == 'correct') {
-                        alert('LOGIN');  
-                        xhr.open("POST", "index.php", true);
-                        xhr.setRequestHeader("Content-Type", "application/json");
-                        xhr.send(JSON.stringify(sendings));
+                        alert('CONNECTED'); 
+                        // var femail = $("#exampleInputEmail1").val();
+                        // let http = new XMLHttpRequest()
+                        // http.open('POST',  'Index.php',true);
+
+                        // http.send(femail);
+                        // var xhr = new XMLHttpRequest();
+                        // var sendings = JSON.parse('{email: $("#exampleInputEmail1").val(), password:  $("#exampleInputPassword1").val()}'); 
+                        // xhr.open("get", "Index.php");
+                        // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                        // xhr.send();
                         login();
                     } 
                 }

@@ -27,7 +27,7 @@ include('process.php');
         <!-- start main section -->
 
         <!-- start Sign in/ Sign up form -->
-        <div class="sign-form" id="sign-form">
+        <!-- <div class="sign-form" id="sign-form">
             <form class="row g-3 sign-up" id="sign-up-form"  method="POST">
                 <h1>SIGN UP</h1>
                 <div class="mb-3">
@@ -77,22 +77,19 @@ include('process.php');
                 <a href="#" id="errorinput1" class="e3"></a>
                 <button type="button" name="submit" class="btn btn-danger btn-form" id="submitlogin">login</button>
                 <p>No Account? <a href="#" style="color: #ffc600" onclick="signup()">SIGN UP</a></p>
-            </form>
+            </form> -->
 
             <?php 
-
-              // require_once('connect.php');
-              // $data = $_POST['acc'];
-              // $sql = "SELECT * FROM customer WHERE email = $data";
-              // if(isset($_POST)){
-              //   $data = file_get_contents("php://input");
-              //   $user = json_decode($data, true);
-              // // $stmt->bind_param("s", $data->email);
-              // // $stmt->execute();
-              // // // $result = $stmt->get_result();
-              // // // $outp = $result->fetch_all(MYSQLI_ASSOC);
-              // $result = mysqli_query($db,$sql);
-              // $row = mysqli_fetch_array($result);
+            //   header("Content-Type: application/json; charset=UTF-8");
+            //   $data = json_decode($_POST["x"], false);
+            //   $sql = "SELECT * FROM customer WHERE email = ?";
+            //   $stmt->bind_param("s", $data->email);
+            //   $stmt->execute();
+            //   $result = $stmt->get_result();
+            //   $outp = $result->fetch_all(MYSQLI_ASSOC);
+            //   $result = mysqli_query($db,$sql);
+            //   $i = 1;
+            //   while ($row = mysqli_fetch_array($result)) {
             ?>
             <div class="profile" id="profile">
               <h1>Profile</h1>
@@ -112,7 +109,7 @@ include('process.php');
                 <label id="cus_provice" class="cus_provice"><?php echo $row['provice']; ?></label>
               </div>
               <div class="otherblock">
-
+                
               </div>
               <div class="buttonblock">
                 <button id="adjust-button" class="adjust-button">manage_accounts</button>
@@ -121,11 +118,11 @@ include('process.php');
               </div>
             </div>
             <?php
-              // }
+            //   }
             ?>
-        </div>
+        <!-- </div> -->
 
-        <div class="sign-bg" id="sign-opt-bg"></div>
+        <!-- <div class="sign-bg" id="sign-opt-bg"></div>
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
@@ -143,11 +140,11 @@ include('process.php');
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
             </button>
-          </div>
+          </div> -->
         <!-- end slide -->
 
         <!-- start content -->
-          <div class="content-header">
+          <!-- <div class="content-header">
             <div class="promo-item">
               <img src="https://d1vs91ctevllei.cloudfront.net/images/product/1673445513WOS_600x400-nambang-chic.png" alt="">
               <div class="promo-text">
@@ -169,7 +166,7 @@ include('process.php');
                 <p class="price">59</p>
               </div>
             </div>
-          </div>
+          </div> -->
         <!-- end content -->
 
         <!-- end main section -->

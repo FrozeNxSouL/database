@@ -18,6 +18,7 @@ time, mark, audio, video {
 	font-size: 100%;
     font-family: 'Kanit', sans-serif;
 	vertical-align: baseline;
+    text-decoration: none !important;
 }
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
@@ -64,12 +65,25 @@ main {
     color: black;
     background-color: #f8f9fa;
     display: block;
+    width: 100%;
+    height: 100%;
+
 }
 
 .material-symbols-outlined1 {
-    color : '#f8f9fa';
-    background-color :'rgb(185, 0, 23)'; 
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    letter-spacing: normal;
+    text-transform: none;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    color : #f8f9fa;
+    background-color :rgb(185, 0, 23); 
     display: none;
+    font-family: 'Material Symbols Outlined';
 }
 .sign-bg {
     display: none;
