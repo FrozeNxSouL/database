@@ -5,6 +5,7 @@ $sql = 'SELECT * FROM burger;';
 $all_burger = $db->query($sql);
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
