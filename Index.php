@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('process.php');
+include('php/process.php');
 ?>
 <!DOCTYPE html>
 

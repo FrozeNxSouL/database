@@ -167,13 +167,13 @@ footer {
 
 
 .content-header {
-    margin: 3% 0 3% 0;
+    margin: 0 0 3% 0;
     display: flex;
     justify-content: center;
     column-gap: 5rem;
     background-color: rgb(185, 0, 23);
     max-width: 100%;
-    min-height: 30vh;
+    min-height: 20vh;
 }
 .content-main {
     margin: 0 auto;

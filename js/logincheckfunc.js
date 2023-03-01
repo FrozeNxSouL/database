@@ -35,7 +35,7 @@ $('document').ready(function() {
                         // xhr.open("get", "Index.php");
                         // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                         // xhr.send();
-                        login();
+                        // login();
                     } 
                 }
             })

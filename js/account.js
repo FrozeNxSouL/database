@@ -27,20 +27,20 @@ function signup() {
     signInForm.style.display = 'none';
     bgSignForm.style.display = 'block';
     signUpForm.style.display = 'block';
-    profile.style.display = 'none';
+    // profile.style.display = 'none';
 }
 function signin() {
     signForm.style.display = 'block';
     signInForm.style.display = 'block';
     bgSignForm.style.display = 'block';
     signUpForm.style.display = 'none';
-    profile.style.display = 'none';
+    // profile.style.display = 'none';
 }
 
 function login() {
     signInForm.style.display = 'none';
     signUpForm.style.display = 'none';
-    profile.style.display = 'block'; 
+    // profile.style.display = 'block'; 
     userpic1.style.display =  'block';
     userpic.style.display = 'none';
 }
