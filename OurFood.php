@@ -1,16 +1,14 @@
 <?php
 
-require_once 'php/connect.php';
+require_once 'connect.php';
 
 $sql = "SELECT * FROM burger";
-$all_burger = $db->query($sql);
+$all_burger = $conn->query($sql);
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>MC</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="css/OurFood.css">
     <meta charset="UTF-8">
@@ -27,9 +25,6 @@ $all_burger = $db->query($sql);
 </head>
 
 <body>
-    <div class="content-header">
-
-    </div>
     <div class="contain">
         <header id="header"></header>
         <script src="js/header.js"></script>
@@ -40,23 +35,59 @@ $all_burger = $db->query($sql);
         <h1>MENU</h1>
     </div>
     <div class="menu">
-        <div class="contain-menu">
+        <div class="contain_menu">
         <?php
         while ($row = mysqli_fetch_assoc($all_burger)) {
+
         ?>
-
-            <div class="ourfood-card">
-                <?php echo '<img class="ourfood-img" src="data:image;base64,'.base64_encode($row['burger_pict']).'">';?>
-                <h5 class="food-name"><?php echo $row["burger_name"]; ?></h5>
-                <h3>$<?php echo $row["burger_price"] ; ?></h3>
-                <a href="#" class="selectbar">shopping_basket</a>
+            <div class="burger1">
+                <h1><?php echo $row["burger_name"]; ?></h1>
+                <div class="contain_pic">
+                    <?php echo '<img src="data:image;base64,'.base64_encode($row["burger_pict"]).'">';?>
+                </div>
+                
+                <h2>$<?php echo $row["burger_price"]; ?></h2>
+                <div class="order">
+                    <p>order</p>
+                </div>
             </div>
-
             <?php
                 }
             ?>
         </div>
     </div>
 </body>
+<h1> Upload / Insert an IMAGE into DataBase using PHP Mysql</h1>
+    <form action="" method="POST" enctype="multipart/form-data">
+
+        <label> Choose an picture: </label>
+        <input type="file" name="burger_pict" id="image" /><br>
+
+        <label> Enter a burger name: </label>
+        <input type="text" name="burger_name" placeholder="Enter a burger name" /><br>
+
+        <label> Enter a burger price: </label>
+        <input type="text" name="burger_price" placeholder="Enter a burger price" /><br>
+
+        <input type="submit" name="upload" value="Upload Image/Data" /><br>
+        
+    </form>
 </html>
-<!--  -->
+
+<?php
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+$db = mysqli_select_db($conn,'mc');
+if(isset($_POST['upload']))
+{
+    $file = addslashes(file_get_contents($_FILES["burger_pict"]["tmp_name"]));
+    $burger_name = $_POST['burger_name'];
+    $burger_price = $_POST['burger_price'];
+
+    $query = "INSERT INTO `burger`(`burger_pict`,`burger_name`,`burger_price`) VALUES ('$file','$burger_name','$burger_price')";
+    $query_run = mysqli_query($conn,$query);
+
+
+
+}
+?>
