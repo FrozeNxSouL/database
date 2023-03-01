@@ -81,9 +81,9 @@ include('php/process.php');
 
             <?php 
 
-              // require_once('connect.php');
+                require_once('php/connect.php');
                 $data = $_SESSION["email"];
-                $sql = "SELECT * FROM customer WHERE email = $data";
+                $sql = "SELECT * FROM customer WHERE email = '$data'";
                 $result = mysqli_query($db,$sql);
                 $row = mysqli_fetch_array($result);
               
@@ -102,7 +102,7 @@ include('php/process.php');
               <h1>Profile</h1>
               <div class="nameblock">
                 <span class="tt">NAME :</span>
-                <label id="cus_name" class="cus_name"><?php echo $_SESSION["email"]; ?></label><br>
+                <label id="cus_name" class="cus_name"><?php echo $row["name"]; ?></label><br>
               </div>
               <div class="emailblock">
                 <span class="tt">EMAIL :</span>

@@ -15,8 +15,8 @@ bgSignForm.addEventListener('click', ()=> {
     signForm.style.display = 'none';
     signInForm.style.display = 'none';
     signUpForm.style.display = 'none';
-    // bgSignForm.style.display = 'none';
-    // profile.style.display = 'none';
+    bgSignForm.style.display = 'none';
+    profile.style.display = 'none';
     // userpic.style.display =  'block';
     // userpic1.style.display = 'none';
     // userpic.style.display = 'inline-block';
@@ -44,3 +44,7 @@ function login() {
     userpic1.style.display =  'block';
     userpic.style.display = 'none';
 }
+
+// function profile() {
+//     profile.style.display = 'block'; 
+// }

@@ -98,7 +98,7 @@ $('document').ready(function() {
                     } 
                     else if (response == 'Saved') {
                         alert('SAVED');                 
-                        // login();
+                        login();
                     } 
                 }
             })
