@@ -1,9 +1,8 @@
 <?php
+require('php/connect.php');
 
-require_once 'connect.php';
-
-$sql = "SELECT * FROM burger";
-$all_burger = $conn->query($sql);
+$sql = 'SELECT * FROM burger;';
+$all_burger = $db->query($sql);
 
 ?>
 <!DOCTYPE html>
@@ -56,8 +55,6 @@ $all_burger = $conn->query($sql);
             ?>
         </div>
     </div>
-</body>
-<h1> Upload / Insert an IMAGE into DataBase using PHP Mysql</h1>
     <form action="" method="POST" enctype="multipart/form-data">
 
         <label> Choose an picture: </label>
@@ -72,12 +69,11 @@ $all_burger = $conn->query($sql);
         <input type="submit" name="upload" value="Upload Image/Data" /><br>
         
     </form>
+</body>
 </html>
 
 <?php
 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-$db = mysqli_select_db($conn,'mc');
 if(isset($_POST['upload']))
 {
     $file = addslashes(file_get_contents($_FILES["burger_pict"]["tmp_name"]));
@@ -85,9 +81,8 @@ if(isset($_POST['upload']))
     $burger_price = $_POST['burger_price'];
 
     $query = "INSERT INTO `burger`(`burger_pict`,`burger_name`,`burger_price`) VALUES ('$file','$burger_name','$burger_price')";
-    $query_run = mysqli_query($conn,$query);
+    $query_run = mysqli_query($db,$query);
 
-
-
+    mysqli_close($db);
 }
 ?>
