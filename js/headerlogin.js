@@ -27,8 +27,8 @@ document.getElementById("header").innerHTML =
     "</ul>" +
     // "<a class='navbar-brand' href='#'>" +
     "<div class='circleblock'>" +
-    "<span class='material-symbols-outlined' style='line-height: 2rem;display: block;' id='material-symbols-outlined' onclick='signin()'>person</span>" +
-    "<span class='material-symbols-outlined1' style='line-height: 2rem;display: none;' id='material-symbols-outlined1' onclick='login()' >person</span>" +
+    "<span class='material-symbols-outlined' style='line-height: 2rem;display: none;' id='material-symbols-outlined' onclick='signin()'>person</span>" +
+    "<span class='material-symbols-outlined1' style='line-height: 2rem;display: block;' id='material-symbols-outlined1' onclick='login()' >person</span>" +
     "</div>"
     "</a>" +
     "</div>" +

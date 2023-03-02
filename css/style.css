@@ -77,7 +77,6 @@ main {
 .material-symbols-outlined {
     color: black;
     background-color: #f8f9fa;
-    display: block;
     width: 100%;
     height: 100%;
 
@@ -95,7 +94,6 @@ main {
     -webkit-font-smoothing: antialiased;
     color : #f8f9fa;
     background-color :rgb(185, 0, 23); 
-    display: none;
     font-family: 'Material Symbols Outlined';
 }
 .sign-bg {
@@ -323,4 +321,16 @@ footer {
     margin-left: 5%;
     border: none;
     border-radius: 0.3vh;
+}
+
+.addressfield {
+    display: flex;
+    justify-content: space-between;
+}
+
+.addressfield .subadfield {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 32%;
 }

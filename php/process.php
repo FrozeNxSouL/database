@@ -2,6 +2,7 @@
 
 require_once('connect.php');
 
+
 if (isset($_POST['email_check'])) {
     $email = $_POST['email'];
     $sql = "SELECT * FROM customer WHERE email = '$email' ";
@@ -60,6 +61,7 @@ if (isset($_POST['save'])) {
             mysqli_stmt_close($stmt);
             echo 'Saved';
             $_SESSION['email'] = $email;
+            $_SESSION['login'] = 1;
             exit();
         }
     }
@@ -76,6 +78,7 @@ if (isset($_POST['search'])) {
         echo 'correct';
         // header('Location: index.php?email=$acc_email');
         $_SESSION['email'] = $acc;
+        $_SESSION['login'] = 1;
     } 
     else {
         $sql1 = "SELECT * FROM customer WHERE email = '$acc'";

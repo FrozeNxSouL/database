@@ -21,8 +21,23 @@ include('php/process.php');
     <title>MC</title>
 </head>
 <body>
-    <header id="header"></header>
-    <script src="js/header.js"></script>
+    <!-- <?php
+      if (isset($_SESSION['login'])) {
+    ?>
+        <header id="header"></header>
+        <script src="js/headerlogin.js"></script>
+    <?php
+      }
+      else {
+    ?>
+        <header id="header"></header>
+        <script src="js/header.js"></script>
+
+      <?php  
+      } 
+      ?> -->
+        <header id="header"></header>
+        <script src="js/header.js"></script>
     <main>
         <!-- start main section -->
 
@@ -110,10 +125,21 @@ include('php/process.php');
               </div>
               <div class="addressblock">
                 <span class="tt">ADDRESS</span>
-                <label id="cus_ad" class="cus_ad"><?php echo $row['address']; ?></label><br>
-                <label id="cus_subdis" class="cus_subdis"><?php echo $row['subdis']; ?></label>
-                <label id="cus_dis" class="cus_dis"><?php echo $row['dis']; ?></label>
-                <label id="cus_provice" class="cus_provice"><?php echo $row['provice']; ?></label>
+                <label id="cus_ad" class="cus_ad"><?php echo $row['address']; ?></label>
+                <div class="addressfield">
+                  <div class="subadfield">
+                    <label for="sign-up-subdistrict" class="adhead">Subdistrict</label>
+                    <label id="cus_subdis" class="cus_subdis"><?php echo $row['subdistrict']; ?></label>
+                  </div>
+                  <div class="subadfield">
+                    <label for="sign-up-subdistrict" class="adhead">District</label>
+                    <label id="cus_dis" class="cus_dis"><?php echo $row['district']; ?></label>
+                  </div>
+                  <div class="subadfield">
+                    <label for="sign-up-subdistrict" class="adhead">Province</label>
+                    <label id="cus_provice" class="cus_provice"><?php echo $row['provice']; ?></label>
+                  </div>
+                </div>
               </div>
               <div class="otherblock">
 
