@@ -1,6 +1,16 @@
 .nav-sub::before {
   content: "\e56c";
 }
+.bg-head {
+  margin: 3% 0 3% 0;
+  display: flex;
+  justify-content: center;
+  column-gap: 5rem;
+  background-color: rgb(185, 0, 23);
+  max-width: 100%;
+  min-height: 20vh;
+}
+
 .ourfood-card {
   min-width: 30vh;
   max-width: 30vh;

@@ -268,8 +268,18 @@ footer {
     width: 100%;
 }
 
-.addressblock .cus_subdis .cus_dis .cus_provice {
-    width: 50%;
+.addressfield {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.subadfield {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 32%;
+    height: 15vh;
 }
 
 .otherblock {
@@ -333,14 +343,24 @@ footer {
     border-radius: 0.3vh;
 }
 
-.addressfield {
-    display: flex;
-    justify-content: space-between;
+.warningbar {
+    width: 35vh;
+    background-color: #f8f9fa;
+    height: 20vh;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    display: none;
 }
 
-.addressfield .subadfield {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 32%;
+.warningtext {
+    font-size: 3em;
+}
+
+.profileconfigure {
+    display: none;
+    z-index: 109;
+    padding: 2rem;
+    background-color: rgb(255, 255, 255);
+    border-radius: .3rem;
 }

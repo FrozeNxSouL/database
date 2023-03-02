@@ -9,8 +9,9 @@ $all_burger = $db->query($sql);
 <html lang="en">
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="css/OurFood.css">
-    
+    <link rel="stylesheet" href="css/OurFood.css"> 
+    <title>MC</title>  
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +30,7 @@ $all_burger = $db->query($sql);
         <header id="header"></header>
         <script src="js/header.js"></script>
     </div>
-    <div class="content-header">
+    <div class="bg-head">
         <ul class="nav-sub">
             <li><a class="nav-sublink" href="#">Burger</a></li>
             <li><a class="nav-sublink" href="#">Set menu</a></li>

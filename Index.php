@@ -22,22 +22,22 @@ include('php/process.php');
 </head>
 <body>
     <!-- <?php
-      if (isset($_SESSION['login'])) {
+      // if (isset($_SESSION['login'])) {
     ?>
         <header id="header"></header>
         <script src="js/headerlogin.js"></script>
     <?php
-      }
-      else {
+      // }
+      // else {
     ?>
         <header id="header"></header>
         <script src="js/header.js"></script>
 
       <?php  
-      } 
+      // } 
       ?> -->
-        <header id="header"></header>
-        <script src="js/header.js"></script>
+      <header id="header"></header>
+      <script src="js/header.js"></script>
     <main>
         <!-- start main section -->
 
@@ -96,22 +96,12 @@ include('php/process.php');
 
             <?php 
 
-                require_once('php/connect.php');
-                $data = $_SESSION["email"];
-                $sql = "SELECT * FROM customer WHERE email = '$data'";
-                $result = mysqli_query($db,$sql);
-                $row = mysqli_fetch_array($result);
+              require_once('php/connect.php');
+              $data = $_SESSION["email"];
+              $sql = "SELECT * FROM customer WHERE email = '$data'";
+              $result = mysqli_query($db,$sql);
+              $row = mysqli_fetch_array($result);
               
-              // $sql = "SELECT * FROM customer WHERE email = $data";
-              // if(isset($_POST)){
-              //   $data = file_get_contents("php://input");
-              //   $user = json_decode($data, true);
-              // // $stmt->bind_param("s", $data->email);
-              // // $stmt->execute();
-              // // // $result = $stmt->get_result();
-              // // // $outp = $result->fetch_all(MYSQLI_ASSOC);
-              // $result = mysqli_query($db,$sql);
-              // $row = mysqli_fetch_array($result);
             ?>
             <div class="profile" id="profile">
               <h1>Profile</h1>
@@ -146,9 +136,51 @@ include('php/process.php');
               </div>
               <div class="buttonblock">
                 <button id="adjust-button" class="adjust-button">manage_accounts</button>
-                <button id="del-button" class="del-button">DELETE</button>
+                <button id="del-button" class="del-button" onclick="config()">DELETE</button>
                 <button id="logout-button" class="logout-button">Logout</button>
               </div>
+            </div>
+
+            <div class="profileconfigure" id="profileconfigure">
+              <h1>Profile / configure</h1>
+              <div class="nameblock">
+                <span class="tt">NAME :</span>
+                <label id="cus_name" class="cus_name"><?php echo $row["name"]; ?></label><br>
+              </div>
+              <div class="emailblock">
+                <span class="tt">EMAIL :</span>
+                <label id="cus_email" class="cus_email"><?php echo $row['email']; ?></label>
+              </div>
+              <div class="addressblock">
+                <span class="tt">ADDRESS</span>
+                <label id="cus_ad" class="cus_ad"><?php echo $row['address']; ?></label>
+                <div class="addressfield">
+                  <div class="subadfield">
+                    <span for="sign-up-subdistrict" class="adhead">Subdistrict</span>
+                    <label id="cus_subdis" class="cus_subdis"><?php echo $row['subdistrict']; ?></label>
+                  </div>
+                  <div class="subadfield">
+                    <span for="sign-up-subdistrict" class="adhead">District</span>
+                    <label id="cus_dis" class="cus_dis"><?php echo $row['district']; ?></label>
+                  </div>
+                  <div class="subadfield">
+                    <span for="sign-up-subdistrict" class="adhead">Province</span>
+                    <label id="cus_provice" class="cus_provice"><?php echo $row['provice']; ?></label>
+                  </div>
+                </div>
+              </div>
+              <div class="otherblock">
+
+              </div>
+              <div class="buttonblock">
+                <button id="adjust-button" class="adjust-button">manage_accounts</button>
+                <button id="del-button" class="del-button" onclick="config()">DELETE</button>
+                <button id="logout-button" class="logout-button">Logout</button>
+              </div>
+            </div>
+
+            <div class="warningbar" id="warningbar">
+              <h6 id="warningtext"></h6>
             </div>
             <?php
               // }
