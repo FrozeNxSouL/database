@@ -99,7 +99,7 @@ include('php/process.php');
               require_once('php/connect.php');
               $data = $_SESSION["email"];
               $sql = "SELECT * FROM customer WHERE email = '$data'";
-              $result = mysqli_query($db,$sql);
+              $result = mysqli_query($conn,$sql);
               $row = mysqli_fetch_array($result);
               
             ?>
@@ -118,15 +118,15 @@ include('php/process.php');
                 <label id="cus_ad" class="cus_ad"><?php echo $row['address']; ?></label>
                 <div class="addressfield">
                   <div class="subadfield">
-                    <label for="sign-up-subdistrict" class="adhead">Subdistrict</label>
+                    <h5 class="adhead">Subdistrict</h5>
                     <label id="cus_subdis" class="cus_subdis"><?php echo $row['subdistrict']; ?></label>
                   </div>
                   <div class="subadfield">
-                    <label for="sign-up-subdistrict" class="adhead">District</label>
+                    <h5 class="adhead">District</h5>
                     <label id="cus_dis" class="cus_dis"><?php echo $row['district']; ?></label>
                   </div>
                   <div class="subadfield">
-                    <label for="sign-up-subdistrict" class="adhead">Province</label>
+                    <h5 class="adhead">Province</h5>
                     <label id="cus_provice" class="cus_provice"><?php echo $row['provice']; ?></label>
                   </div>
                 </div>
@@ -156,15 +156,15 @@ include('php/process.php');
                 <label id="cus_ad" class="cus_ad"><?php echo $row['address']; ?></label>
                 <div class="addressfield">
                   <div class="subadfield">
-                    <span for="sign-up-subdistrict" class="adhead">Subdistrict</span>
+                    <span class="adhead">Subdistrict</span>
                     <label id="cus_subdis" class="cus_subdis"><?php echo $row['subdistrict']; ?></label>
                   </div>
                   <div class="subadfield">
-                    <span for="sign-up-subdistrict" class="adhead">District</span>
+                    <span class="adhead">District</span>
                     <label id="cus_dis" class="cus_dis"><?php echo $row['district']; ?></label>
                   </div>
                   <div class="subadfield">
-                    <span for="sign-up-subdistrict" class="adhead">Province</span>
+                    <span class="adhead">Province</span>
                     <label id="cus_provice" class="cus_provice"><?php echo $row['provice']; ?></label>
                   </div>
                 </div>

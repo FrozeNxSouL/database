@@ -28,3 +28,8 @@
   border-radius: 0 1rem 1rem 0;
   background-color: rgb(255, 198, 0);
 }
+
+.pic-container {
+  width: auto;
+  height: auto;
+}

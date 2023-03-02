@@ -47,7 +47,9 @@ $all_burger = $conn->query($sql);
 
             ?>
                 <div class="ourfood-card">
-                    <?php echo '<img class="ourfood-img" src="data:image;base64,'.base64_encode($row["burger_pict"]).'">';?>
+                    <div class="pic-container" >
+                        <?php echo '<img class="ourfood-img" src="data:image;base64,'.base64_encode($row["burger_pict"]).'">';?>
+                    </div>
                     <h3 class="food-name"><?php echo $row["burger_name"]; ?></h1>
                     <h5>฿<?php echo $row["burger_price"]; ?></h2>
                     <button class="btn btn-danger">Order</button>

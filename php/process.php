@@ -1,12 +1,12 @@
 <?php 
 
-require_once('connect.php');
+require_once('php/connect.php');
 
 
 if (isset($_POST['email_check'])) {
     $email = $_POST['email'];
     $sql = "SELECT * FROM customer WHERE email = '$email' ";
-    $results = mysqli_query($db, $sql);
+    $results = mysqli_query($conn, $sql);
     if (mysqli_num_rows($results) > 0) {
         echo 'taken';
     } else {
@@ -50,7 +50,7 @@ if (isset($_POST['save'])) {
     }
     else {
         $sql = "INSERT INTO customer(email,password,name,phone_num,address,subdistrict,district,provice) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
-        $stmt = mysqli_stmt_init($db);
+        $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt,$sql)) {
             echo 'Error';
             exit();
@@ -73,7 +73,7 @@ if (isset($_POST['search'])) {
     $acc_hashpassword = md5($acc_password) ;
     $_SESSION['email'] = '';
     $sql = "SELECT * FROM customer WHERE email = '$acc' AND password = '$acc_hashpassword' ";
-    $results = mysqli_query($db, $sql);
+    $results = mysqli_query($conn, $sql);
     if (mysqli_num_rows($results) > 0) {
         echo 'correct';
         // header('Location: index.php?email=$acc_email');
@@ -82,7 +82,7 @@ if (isset($_POST['search'])) {
     } 
     else {
         $sql1 = "SELECT * FROM customer WHERE email = '$acc'";
-        $accresults = mysqli_query($db, $sql1);
+        $accresults = mysqli_query($conn, $sql1);
         if (mysqli_num_rows($accresults) > 0) {
             echo 'wrongpw';
         } 
