@@ -6,7 +6,7 @@ require_once('connect.php');
 if (isset($_POST['email_check'])) {
     $email = $_POST['email'];
     $sql = "SELECT * FROM customer WHERE email = '$email' ";
-    $results = mysqli_query($db, $sql);
+    $results = mysqli_query($conn, $sql);
     if (mysqli_num_rows($results) > 0) {
         echo 'taken';
     } else {

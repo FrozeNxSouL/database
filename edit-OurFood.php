@@ -50,7 +50,7 @@ $all_burger = $conn->query($sql);
     </div>
     <div class="content-main">
         <div class="list-edit" id="menu-section">
-            <form class="form-edit" method="POST" enctype="multipart/form-data">
+            <form class="form-edit" method="POST" enctype="multipart/form-data" onsubmit="return success()">
                 <div class="mb-3">
                     <input class="form-control" type="text" name="burger_name" placeholder="Enter a burger name" required>
                 </div>
@@ -82,7 +82,7 @@ $all_burger = $conn->query($sql);
                             <span>$<?php echo $row["burger_price"]; ?></span>
                             <div class="col">
                                 <a class="btn btn-danger" href="?burger_id=<?php echo $row["burger_id"]; ?>">Delete</a>
-                                <a class="btn btn-warning" onclick="deleteFood()">Edit</a>
+                                <a class="btn btn-warning" onclick="">Edit</a>
                             </div>
                             
                         </div>
@@ -94,6 +94,7 @@ $all_burger = $conn->query($sql);
 
         </div>
     </div>
+    <script src="js/backdoor.js"></script>
 </body>
 </html>
 
