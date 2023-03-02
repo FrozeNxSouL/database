@@ -200,6 +200,7 @@ footer {
 .content-main {
     margin: 0 auto;
     padding: 2rem;
+    margin-top: 2rem;
     max-width: 130vh;
     min-height: 80vh;
     background-color: #ffffff;
