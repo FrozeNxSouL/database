@@ -263,6 +263,10 @@ footer {
     justify-content: space-between;
 }
 
+.subadfield .adhead {
+    display: block;
+    font-size: 4rem;
+}
 
 .subadfield {
     display: flex;
