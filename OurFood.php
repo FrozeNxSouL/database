@@ -29,7 +29,7 @@ $all_burger = $db->query($sql);
         <header id="header"></header>
         <script src="js/header.js"></script>
     </div>
-    <div class="content-header">
+    <div class="bg-head">
         <ul class="nav-sub">
             <li><a class="nav-sublink" href="#">Burger</a></li>
             <li><a class="nav-sublink" href="#">Set menu</a></li>
