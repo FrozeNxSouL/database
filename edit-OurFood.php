@@ -1,14 +1,25 @@
 <?php
+
 require('php/connect.php');
 
+$delete_ID  = $_REQUEST['burger_id'];
+
+$delsql = '
+    DELETE FROM burger
+    WHERE burger_id = ' . $delete_ID . ';
+    ';
+
+$objQuery = mysqli_query($conn, $delsql);
+
 $sql = 'SELECT * FROM burger;';
-$all_burger = $db->query($sql);
+$all_burger = $conn->query($sql);
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="css/backdoor.css">
     <meta charset="UTF-8">
@@ -31,10 +42,10 @@ $all_burger = $db->query($sql);
 
     <div class="content-header">
         <ul class="nav-sub">
-            <li><a class="nav-sublink" href="#">Slide show</a></li>
-            <li><a class="nav-sublink" href="#">User</a></li>
-            <li><a class="nav-sublink" href="#">Menu</a></li>
-            <li><a class="nav-sublink" href="#">Delivery</a></li>
+            <li class="nav-tab"><a class="nav-sublink" href="#">Banner</a></li>
+            <li class="nav-tab"><a class="nav-sublink" href="#">User</a></li>
+            <li class="nav-tab"><a class="nav-sublink" href="#">Menu</a></li>
+            <li class="nav-tab"><a class="nav-sublink" href="#">Delivery</a></li>
         </ul>
     </div>
     <div class="content-main">
@@ -70,8 +81,8 @@ $all_burger = $db->query($sql);
                             <h4><?php echo $row["burger_name"]; ?></h4>
                             <span>$<?php echo $row["burger_price"]; ?></span>
                             <div class="col">
-                                <button class="btn btn-danger">Delete</button>
-                                <button class="btn btn-warning">Edit</button>
+                                <a class="btn btn-danger" href="?burger_id=<?php echo $row["burger_id"]; ?>">Delete</a>
+                                <a class="btn btn-warning" onclick="deleteFood()">Edit</a>
                             </div>
                             
                         </div>
@@ -95,8 +106,8 @@ if(isset($_POST['upload']))
     $burger_price = $_POST['burger_price'];
 
     $query = "INSERT INTO `burger`(`burger_pict`,`burger_name`,`burger_price`) VALUES ('$file','$burger_name','$burger_price')";
-    $query_run = mysqli_query($db,$query);
+    $query_run = mysqli_query($conn,$query);
 
-    mysqli_close($db);
+    mysqli_close($conn);
 }
 ?>

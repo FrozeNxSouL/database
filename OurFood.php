@@ -2,7 +2,7 @@
 require('php/connect.php');
 
 $sql = 'SELECT * FROM burger;';
-$all_burger = $db->query($sql);
+$all_burger = $conn->query($sql);
 
 ?>
 <!DOCTYPE html>
@@ -63,5 +63,5 @@ $all_burger = $db->query($sql);
 </html>
 
 <?php
-    mysqli_close($db);
+    mysqli_close($conn);
 ?>

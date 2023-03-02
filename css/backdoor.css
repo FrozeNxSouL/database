@@ -1,14 +1,5 @@
-.nav-sublink::before {
-    font-family: "Material Icons";
-    font-size: 1.5rem;
+.nav-sub::before {
     content: "\e745";
-    vertical-align:middle;
-    margin-right: .5rem;
-}
-
-.content-header {
-    display: flex;
-    justify-content: center;
 }
 .form-edit, .list-edit-item {
     box-shadow: 0 0 5px rgba(74, 74, 74, 30%);

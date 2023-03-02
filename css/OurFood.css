@@ -1,3 +1,6 @@
+.nav-sub::before {
+  content: "\e56c";
+}
 .bg-head {
   margin: 3% 0 3% 0;
   display: flex;

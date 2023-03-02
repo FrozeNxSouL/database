@@ -58,10 +58,20 @@ header {
     font-weight: 500 !important;
 }
 
+/* sub navbar */
 .nav-sub {
     display: flex;
-    justify-content: space-around;
     align-self: flex-end;
+    list-style-type: none;
+    padding: 1rem;
+    margin: 0;
+}
+.nav-sub::before {
+    font-family: 'Material Icons';
+    font-size: 1.5rem;
+    line-height: normal;
+    color: rgb(255, 198, 0);
+    vertical-align: middle;
 }
 .nav-sublink{
     padding: 1rem;
@@ -71,6 +81,7 @@ header {
     color: rgb(255, 198, 0);
     border-bottom: 2px solid rgb(255, 198, 0);
 }
+/* sub navbar */
 main {
     min-height: 100vh;
 }
@@ -178,7 +189,6 @@ footer {
 
 
 .content-header {
-    margin: 3% 0 3% 0;
     display: flex;
     justify-content: center;
     column-gap: 5rem;
