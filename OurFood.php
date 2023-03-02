@@ -4,6 +4,12 @@ require('php/connect.php');
 $sql = 'SELECT * FROM burger;';
 $all_burger = $conn->query($sql);
 
+$sql1 = 'SELECT * FROM submenu;';
+$submenu = $conn->query($sql1);
+
+$sql2 = 'SELECT * FROM menuset;';
+$menuset = $conn->query($sql2);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,13 +37,13 @@ $all_burger = $conn->query($sql);
     </div>
     <div class="content-header">
         <ul class="nav-sub">
-            <li><a class="nav-sublink" href="#">Burger</a></li>
-            <li><a class="nav-sublink" href="#">Set menu</a></li>
-            <li><a class="nav-sublink" href="#">Other menu</a></li>
+            <li><a class="nav-sublink" href="#"  onclick="cburger()">Burger</a></li>
+            <li><a class="nav-sublink" href="#"  onclick="cset()">Set menu</a></li>
+            <li><a class="nav-sublink" href="#"  onclick="csub()">Other menu</a></li>
         </ul>
     </div>
 
-    <div class="content-main">
+    <div class="burgercontent" id="burger">
         <div class="menu-title">
             <h2 style="font-weight: 700">Menu</h2>
         </div>
@@ -50,7 +56,10 @@ $all_burger = $conn->query($sql);
                     <div class="pic-container" >
                         <?php echo '<img class="ourfood-img" src=" '.($row["burger_pict"]).'">';?>
                     </div>
-                    <h3 class="food-name"><?php echo $row["burger_name"]; ?></h3>
+                    <div class="text-container">
+                        <h4 class="food-name"><?php echo $row["burger_name"]; ?></h4>
+                    </div>
+                    <p class="pricehead" >Price</p>
                     <h5>฿<?php echo $row["burger_price"]; ?></h5>
                     <button class="btn btn-danger">Order</button>
                 </div>
@@ -60,6 +69,62 @@ $all_burger = $conn->query($sql);
 
         </div>
     </div>
+
+    <div class="setcontent" id="set">
+        <div class="menu-title">
+            <h2 style="font-weight: 700">Set Menu</h2>
+        </div>
+        <div class="menu">
+            <?php
+            while ($row = mysqli_fetch_assoc($menuset)) {
+
+            ?>
+                <div class="ourfood-card">
+                    <div class="pic-container" >
+                        <?php echo '<img class="ourfood-img" src=" '.($row["menuset_pict"]).'">';?>
+                    </div>
+                    <div class="text-container">
+                        <h4 class="food-name"><?php echo $row["menuset_name"]; ?></h4>
+                    </div>
+                    <p class="pricehead" >Price</p>
+                    <h5>฿<?php echo $row["menuset_price"]; ?></h5>
+                    <button class="btn btn-danger">Order</button>
+                </div>
+            <?php
+                }
+            ?>
+
+        </div>
+    </div>
+
+    <div class="submenucontent" id="other">
+        <div class="menu-title">
+            <h2 style="font-weight: 700">Other Menu</h2>
+        </div>
+        <div class="menu">
+            <?php
+            while ($row = mysqli_fetch_assoc($submenu)) {
+
+            ?>
+                <div class="ourfood-card">
+                    <div class="pic-container" >
+                        <?php echo '<img class="ourfood-img" src=" '.($row["submenu_pict"]).'">';?>
+                    </div>
+                    <div class="text-container">
+                        <h4 class="food-name"><?php echo $row["submenu_name"]; ?></h4>
+                    </div>
+                    <p class="pricehead" >Price</p>
+                    <h5>฿<?php echo $row["submenu_price"]; ?></h5>
+                    <button class="btn btn-danger">Order</button>
+                </div>
+            <?php
+                }
+            ?>
+
+        </div>
+    </div>
+
+    <script src="js/foodselector.js"></script>
 </body>
 </html>
 
