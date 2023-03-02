@@ -17,6 +17,7 @@ if (isset($_POST['email_check'])) {
 
 if (isset($_POST['phone_check'])) {
     $phonenum = $_POST['phonenum'];
+    
     if (strlen($phonenum)===10) {
         if (!preg_match("/^[0-9]*$/", $phonenum)) {
             echo 'errorletter';

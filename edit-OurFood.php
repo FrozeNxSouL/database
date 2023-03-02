@@ -2,6 +2,7 @@
 
 require('php/connect.php');
 
+// delete function 
 $delete_ID  = $_REQUEST['burger_id'];
 
 $delsql = '
@@ -11,8 +12,25 @@ $delsql = '
 
 $objQuery = mysqli_query($conn, $delsql);
 
+// query function
 $sql = 'SELECT * FROM burger;';
 $all_burger = $conn->query($sql);
+
+// edit function
+$updatesql = "
+	UPDATE burger
+	SET 
+    burger_name = '" . $burger_name . "',  
+	burger_price = '" . $burger_price . "', 
+	burger_pic = '" . $burger_pic . "', 
+    WHERE burger_id = " . $burger_id . " ; ";
+
+$burger_id    = $_REQUEST['burger_id'];
+$burger_name = $_REQUEST['burger_name'];
+$burger_price = $_REQUEST['burger_price'];
+$burger_pic = $_REQUEST['burger_pic'];
+
+$objQuery = mysqli_query($conn, $updatesql);
 
 ?>
 
@@ -50,7 +68,7 @@ $all_burger = $conn->query($sql);
     </div>
     <div class="content-main">
         <div class="list-edit" id="menu-section">
-            <form class="form-edit" method="POST" enctype="multipart/form-data" onsubmit="return success()">
+            <form class="form-edit" method="POST">
                 <div class="mb-3">
                     <input class="form-control" type="text" name="burger_name" placeholder="Enter a burger name" required>
                 </div>
@@ -61,12 +79,12 @@ $all_burger = $conn->query($sql);
                     </div>
                 </div>
                 <div class="mb-3">
-                    <input class="form-control" type="file" id="image" name="burger_pict" required>
+                        <input type="url" class="form-control" name="burger_pict" placeholder="Enter a burger image" required>
                 </div>
 
                 <button class="btn btn-primary" type="submit" name="upload">Add new menu</button>
                 <button class="btn btn-danger" type="reset" name="upload">Clear</button>
-                
+
             </form>
             
             <?php
@@ -75,14 +93,14 @@ $all_burger = $conn->query($sql);
 
                     <div class="list-edit-item">
                         <div class="list-img">
-                            <?php echo '<img src="data:image;base64,'.base64_encode($row["burger_pict"]).'">';?>
+                        <img src="<?php echo $row['burger_pict']; ?>">
                         </div>
                         <div class="list-info">
                             <h4><?php echo $row["burger_name"]; ?></h4>
                             <span>$<?php echo $row["burger_price"]; ?></span>
                             <div class="col">
                                 <a class="btn btn-danger" href="?burger_id=<?php echo $row["burger_id"]; ?>">Delete</a>
-                                <a class="btn btn-warning" onclick="">Edit</a>
+                                <a class="btn btn-warning">Edit</a>
                             </div>
                             
                         </div>
@@ -102,11 +120,11 @@ $all_burger = $conn->query($sql);
 
 if(isset($_POST['upload']))
 {
-    $file = addslashes(file_get_contents($_FILES["burger_pict"]["tmp_name"]));
+    $burger_pict = $_POST['burger_pict'];
     $burger_name = $_POST['burger_name'];
     $burger_price = $_POST['burger_price'];
 
-    $query = "INSERT INTO `burger`(`burger_pict`,`burger_name`,`burger_price`) VALUES ('$file','$burger_name','$burger_price')";
+    $query = "INSERT INTO `burger`(`burger_pict`,`burger_name`,`burger_price`) VALUES ('$burger_pict','$burger_name','$burger_price')";
     $query_run = mysqli_query($conn,$query);
 
     mysqli_close($conn);
