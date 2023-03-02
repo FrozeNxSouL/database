@@ -48,10 +48,10 @@ $all_burger = $conn->query($sql);
             ?>
                 <div class="ourfood-card">
                     <div class="pic-container" >
-                        <?php echo '<img class="ourfood-img" src="data:image;base64,'.base64_encode($row["burger_pict"]).'">';?>
+                        <?php echo '<img class="ourfood-img" src=" '.($row["burger_pict"]).'">';?>
                     </div>
-                    <h3 class="food-name"><?php echo $row["burger_name"]; ?></h1>
-                    <h5>฿<?php echo $row["burger_price"]; ?></h2>
+                    <h3 class="food-name"><?php echo $row["burger_name"]; ?></h3>
+                    <h5>฿<?php echo $row["burger_price"]; ?></h5>
                     <button class="btn btn-danger">Order</button>
                 </div>
             <?php
