@@ -1,3 +1,7 @@
+<?php 
+    require('php/connect.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +37,77 @@
         <header id="header"></header>
         <script src="js/header.js"></script>
     </div>
+    
+    <div class="content-container">
+        <div class="button-set">
+            <a href="#" class="topbutton" id="edit" onclick="cdedit()" >Update</a>
+            <a href="#" class="topbutton" id="delete" onclick="cddelete()">Delete</a>
+            <a href="#" class="topbutton" id="insert" onclick="cdinsert()">Insert</a>
+            <a href="#" class="topbutton" id="print" onclick="cdprint()">Print</a>
+        </div>
+    </div>    
+    <div class="print-container">
+        <div class="print-area" id="print-area">
+            <div class="print-cell" id="print-cell">
+                <p class="tablehead"  >Name</p>
+            </div>
+            <div class="print-cell" id="print-cell">
+                <p class="tablehead"  >Phone Number</p>
+            </div>
+            <div class="print-cell" id="print-cell">
+                <p class="tablehead"  >Email</p>
+            </div>
+            <div class="print-cell" id="print-cell">
+                <p class="tablehead"  >Address</p>
+            </div>
+            <div class="print-cell" id="print-cell">
+                <p class="tablehead"  >Subdistrict</p>
+            </div>
+            <div class="print-cell" id="print-cell">
+                <p class="tablehead"  >District</p>
+            </div>
+            <div class="print-cell" id="print-cell">
+                <p class="tablehead"  >Province</p>
+            </div>
+            <div class="print-cell" id="print-cell">
+                <p class="tablehead"  >Role</p>
+            </div>
+        </div>
+        <?php
+              $sql = "SELECT * FROM customer";
+              $result = mysqli_query($conn,$sql);
+              while  ($row = mysqli_fetch_assoc($result)) {
+        ?>
 
-    <div class="content-container"></div>
+        <div class="print-row" id="print-row">
+            <div class="print-cell" id="print-cell">
+                <p class="print-value" id="print-value"><?php echo $row["name"]; ?></p>
+            </div>
+            <div class="print-cell" id="print-cell">
+                <p class="print-value" id="print-value"><?php echo $row["phone_num"]; ?></p>
+            </div>
+            <div class="print-cell" id="print-cell">
+                <p class="print-value" id="print-value"><?php echo $row["cus_email"]; ?></p>
+            </div>
+            <div class="print-cell" id="print-cell">
+                <p class="print-value" id="print-value"><?php echo $row["address"]; ?></p>
+            </div>
+            <div class="print-cell" id="print-cell">
+                <p class="print-value" id="print-value"><?php echo $row["subdistrict"]; ?></p>
+            </div>
+            <div class="print-cell" id="print-cell">
+                <p class="print-value" id="print-value"><?php echo $row["district"]; ?></p>
+            </div>
+            <div class="print-cell" id="print-cell">
+                <p class="print-value" id="print-value"><?php echo $row["provice"]; ?></p>
+            </div>
+            <div class="print-cell" id="print-cell">
+                <p class="print-value" id="print-value"><?php echo $row["user_role"]; ?></p>
+            </div>
+        </div>
+        <?php
+            }
+        ?>
+    </div>
 </body>
 </html>
