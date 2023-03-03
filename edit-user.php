@@ -34,5 +34,6 @@
         <script src="js/header.js"></script>
     </div>
 
+    <div class="content-container"></div>
 </body>
 </html>
