@@ -22,7 +22,7 @@
     
     <div class="content-header">
         <ul class="nav-sub">
-            <li class="nav-subitem"><a class="nav-sublink" href="#">Slide show</a></li>
+            <li class="nav-subitem"><a class="nav-sublink" href="#">Banner</a></li>
             <li class="nav-subitem"><a class="nav-sublink" href="#">User</a></li>
             <li class="nav-subitem"><a class="nav-sublink" href="edit-OurFood.php">Menu</a></li>
             <li class="nav-subitem"><a class="nav-sublink" href="#">Delivery</a></li>

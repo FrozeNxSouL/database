@@ -41,6 +41,8 @@ $objQuery = mysqli_query($conn, $updatesql);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="css/backdoor.css">
     <meta charset="UTF-8">
+    <title>MC</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
@@ -65,6 +67,18 @@ $objQuery = mysqli_query($conn, $updatesql);
             <li class="nav-tab"><a class="nav-sublink" href="#">Menu</a></li>
             <li class="nav-tab"><a class="nav-sublink" href="#">Delivery</a></li>
         </ul>
+    </div>
+
+    <div class="typeselector">
+        <div class="menubut" id="menubut" onclick="emenu()">
+            <p>Burger</p>
+        </div>
+        <div class="menubut" id="setbut" onclick="eset()">
+            <p>Set</p>
+        </div>
+        <div class="menubut" id="submenubut" onclick="esub()">
+            <p>Other</p>
+        </div>
     </div>
     <div class="content-main">
         <div class="list-edit" id="menu-section">
@@ -97,7 +111,7 @@ $objQuery = mysqli_query($conn, $updatesql);
                         </div>
                         <div class="list-info">
                             <h4><?php echo $row["burger_name"]; ?></h4>
-                            <span>$<?php echo $row["burger_price"]; ?></span>
+                            <span>฿<?php echo $row["burger_price"]; ?></span>
                             <div class="col">
                                 <a class="btn btn-danger" href="?burger_id=<?php echo $row["burger_id"]; ?>">Delete</a>
                                 <a class="btn btn-warning">Edit</a>
@@ -113,6 +127,7 @@ $objQuery = mysqli_query($conn, $updatesql);
         </div>
     </div>
     <script src="js/backdoor.js"></script>
+    <script src="js/editmenuselector.js"></script>
 </body>
 </html>
 

@@ -77,7 +77,6 @@ if (isset($_POST['search'])) {
     $results = mysqli_query($conn, $sql);
     if (mysqli_num_rows($results) > 0) {
         echo 'correct';
-        // header('Location: index.php?email=$acc_email');
         $_SESSION['email'] = $acc;
         $_SESSION['login'] = 1;
     } 
