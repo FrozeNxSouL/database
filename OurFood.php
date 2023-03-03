@@ -1,11 +1,12 @@
 <?php
 require('php/connect.php');
 
-$sql = 'SELECT * FROM food_menu;';
-$all_burger = $conn->query($sql);
+$sql = 'SELECT * FROM food_menu WHERE food_category = 1;';
+$burgermenu = $conn->query($sql);
 
-$sql1 = 'SELECT * FROM submenu;';
-$submenu = $conn->query($sql1);
+$sql1 = 'SELECT * FROM food_menu WHERE food_category = 2;';
+$othermenu = $conn->query($sql1);
+
 
 $sql2 = 'SELECT * FROM menuset;';
 $menuset = $conn->query($sql2);
@@ -49,18 +50,19 @@ $menuset = $conn->query($sql2);
         </div>
         <div class="menu">
             <?php
-            while ($row = mysqli_fetch_assoc($all_burger)) {
+            while ($row = mysqli_fetch_assoc($burgermenu)) {
 
+                
             ?>
                 <div class="ourfood-card">
                     <div class="pic-container" >
-                        <?php echo '<img class="ourfood-img" src=" '.($row["burger_pict"]).'">';?>
+                        <?php echo '<img class="ourfood-img" src=" '.($row["food_pict"]).'">';?>
                     </div>
                     <div class="text-container">
-                        <h4 class="food-name"><?php echo $row["burger_name"]; ?></h4>
+                        <h4 class="food-name"><?php echo $row["food_name"]; ?></h4>
                     </div>
                     <p class="pricehead" >Price</p>
-                    <h5>฿<?php echo $row["burger_price"]; ?></h5>
+                    <h5>฿<?php echo $row["food_price"]; ?></h5>
                     <button class="btn btn-danger">Order</button>
                 </div>
             <?php
@@ -103,18 +105,18 @@ $menuset = $conn->query($sql2);
         </div>
         <div class="menu">
             <?php
-            while ($row = mysqli_fetch_assoc($submenu)) {
+            while ($row = mysqli_fetch_assoc($othermenu)) {
 
             ?>
                 <div class="ourfood-card">
                     <div class="pic-container" >
-                        <?php echo '<img class="ourfood-img" src=" '.($row["submenu_pict"]).'">';?>
+                        <?php echo '<img class="ourfood-img" src=" '.($row["food_pict"]).'">';?>
                     </div>
                     <div class="text-container">
-                        <h4 class="food-name"><?php echo $row["submenu_name"]; ?></h4>
+                        <h4 class="food-name"><?php echo $row["food_name"]; ?></h4>
                     </div>
                     <p class="pricehead" >Price</p>
-                    <h5>฿<?php echo $row["submenu_price"]; ?></h5>
+                    <h5>฿<?php echo $row["food_price"]; ?></h5>
                     <button class="btn btn-danger">Order</button>
                 </div>
             <?php
