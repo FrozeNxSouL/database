@@ -88,66 +88,32 @@ $all_cate = $conn->query($catesql);
                     </div>
                 </div>
             </form>
-            
-            <?php
-                while ($row = mysqli_fetch_assoc($all_food)) {
-            ?>
-
-                    <div class="list-edit-item">
-                        <div class="list-img">
-                            <img src="<?php echo $row['food_pict']; ?>">
-                        </div>
-                        <form class="list-info">
-                            <div class="input-group">
-                                <div class="input-group-text">ID</div>
-                                <input class="form-control"  name="edit_food_id" placeholder="<?php echo $row['food_id']; ?>" disabled>
-                                <div class="input-group-text">Name</div>
-                                <input class="form-control" name="edit_food_name" placeholder="<?php echo $row["food_name"]; ?>" disabled>
-                            </div>
-                            <div class="input-group">
-                                <select class="form-select" name="edit_food_category" disabled>
-
-                                    <?php
-                                        $all_cate = $conn->query($catesql);
-                                        while ($cate = mysqli_fetch_assoc($all_cate)) {
-                                    ?>
-                                        <option value="<?php echo $cate["category_id"]; ?>"><?php echo $cate["category_name"]; ?></option>
-
-                                    <?php } ?>
-
-                                </select>
-                                <div class="input-group-text">฿</div>
-                                <input class="form-control" name="edit_food_price" placeholder="<?php echo $row["food_price"]; ?>" disabled>
-                            </div>
-                            <div class="col">
-                                <a class="btn btn-danger" href="?food_id=<?php echo $row["food_id"]; ?>">Delete</a>
-                                <a class="btn btn-secondary" id="edit-btn">Edit</a>
-                            </div>
-                            
-                        </form>
-                    </div>
-
-            <?php
-                }
-            ?>
-
-                    <div class="list-edit-item">
-                        <form class="list-info" method="POST">
+            <div class="list-edit">
+                        <form class="form-edit" method="POST">
                             <div class="row g-3">
                                 <div class="col-12">
                                     <div class="input-group">
                                         <div class="input-group-text">ID</div>
-                                        <input class="form-control" name="edit_food_id">
+                                        <select id="edit_food_id" class="form-select" name="edit_food_id">
+
+                                            <?php
+                                                $all_food = $conn->query($sql);
+                                                while ($row = mysqli_fetch_assoc($all_food)) {
+                                            ?>
+                                                <option value="<?php echo $row["food_id"]; ?>"><?php echo $row["food_id"]; ?></option>
+
+                                            <?php } ?>
+
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                        <input type="url" class="form-control" name="edit_food_pict" placeholder="pic" required>
+                                        <input id="edit_food_pict" type="url" class="form-control" name="edit_food_pict" placeholder="pic" required>
                                 </div>
-
                                 <div class="col-12">
                                     <div class="input-group">
-                                        <input class="form-control" type="text" name="edit_food_name" placeholder="name" required>
-                                        <select class="form-select" name="edit_food_category">
+                                        <input id="edit_food_name" class="form-control" type="text" name="edit_food_name" placeholder="name" required>
+                                        <select id="edit_food_category" class="form-select" name="edit_food_category">
 
                                             <?php
                                                 $all_cate = $conn->query($catesql);
@@ -159,7 +125,7 @@ $all_cate = $conn->query($catesql);
 
                                         </select>
                                         <div class="input-group-text">฿</div>
-                                        <input type="text" class="form-control" name="edit_food_price" placeholder="Price" required>
+                                        <input id="edit_food_price" type="text" class="form-control" name="edit_food_price" placeholder="Price" required>
                                     </div>
                                 </div>
 
@@ -170,6 +136,33 @@ $all_cate = $conn->query($catesql);
                             </div>
 
                         </form>
+            
+            <?php
+                $all_food = $conn->query($sql);
+                while ($row = mysqli_fetch_assoc($all_food)) {
+            ?>
+
+                    <div class="list-edit-item">
+                        <div class="list-img">
+                            <img src="<?php echo $row['food_pict']; ?>">
+                        </div>
+                        <div class="list-info">
+                                <h5><span class="badge bg-warning">ID</span> <?php echo $row['food_id']; ?></h5>
+                                <h6><span class="badge bg-secondary">ชื่อ</span> <?php echo $row['food_name']; ?></h6>
+                                <h6><span class="badge bg-secondary">ประเภท</span> <?php echo $row['food_category']; ?></h6>
+                                <h6><span class="badge bg-secondary">ราคา</span> <?php echo $row['food_price']; ?>฿</h6>
+                            <div class="col">
+                                <a class="btn btn-danger" href="?food_id=<?php echo $row["food_id"]; ?>">Delete</a>
+                                <a class="btn btn-secondary" id="edit-btn">Edit</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+            <?php
+                }
+            ?>
+
                     </div>
 
         </div>
