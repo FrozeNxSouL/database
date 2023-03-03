@@ -21,22 +21,6 @@ $all_food = $conn->query($sql);
 $catesql = 'SELECT * FROM category;';
 $all_cate = $conn->query($catesql);
 
-// edit function
-$updatesql = "
-	UPDATE food_menu
-	SET 
-    food_name = '" . $food_name . "',  
-	food_price = '" . $food_price . "', 
-	food_pic = '" . $food_pic . "', 
-    WHERE food_id = " . $food_id . " ; ";
-
-$food_id    = $_REQUEST['food_id'];
-$food_name = $_REQUEST['food_name'];
-$food_price = $_REQUEST['food_price'];
-$food_pic = $_REQUEST['food_pic'];
-
-$objQuery = mysqli_query($conn, $updatesql);
-
 ?>
 
 <!DOCTYPE html>
@@ -99,26 +83,77 @@ $objQuery = mysqli_query($conn, $updatesql);
                     </div>
 
                     <div class="col-12">
-                        <button class="btn btn-primary" type="submit" name="upload">Add new menu</button>
-                        <button class="btn btn-danger" type="reset" name="upload">Clear</button>
+                        <button class="btn btn-primary" type="submit" name="add_menu">Add new menu</button>
+                        <button class="btn btn-danger" type="reset">Clear</button>
                     </div>
                 </div>
             </form>
+            <div class="list-edit">
+                        <form class="form-edit" method="POST">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <div class="input-group">
+                                        <div class="input-group-text">ID</div>
+                                        <select id="edit_food_id" class="form-select" name="edit_food_id">
+
+                                            <?php
+                                                $all_food = $conn->query($sql);
+                                                while ($row = mysqli_fetch_assoc($all_food)) {
+                                            ?>
+                                                <option value="<?php echo $row["food_id"]; ?>"><?php echo $row["food_id"]; ?></option>
+
+                                            <?php } ?>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                        <input id="edit_food_pict" type="url" class="form-control" name="edit_food_pict" placeholder="pic" required>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-group">
+                                        <input id="edit_food_name" class="form-control" type="text" name="edit_food_name" placeholder="name" required>
+                                        <select id="edit_food_category" class="form-select" name="edit_food_category">
+
+                                            <?php
+                                                $all_cate = $conn->query($catesql);
+                                                while ($cate = mysqli_fetch_assoc($all_cate)) {
+                                            ?>
+                                                <option value="<?php echo $cate["category_id"]; ?>"><?php echo $cate["category_name"]; ?></option>
+
+                                            <?php } ?>
+
+                                        </select>
+                                        <div class="input-group-text">฿</div>
+                                        <input id="edit_food_price" type="text" class="form-control" name="edit_food_price" placeholder="Price" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button class="btn btn-primary" type="submit" name="save_edit">Save</button>
+                                    <button class="btn btn-danger">Cancel</button>
+                                </div>
+                            </div>
+
+                        </form>
             
             <?php
+                $all_food = $conn->query($sql);
                 while ($row = mysqli_fetch_assoc($all_food)) {
             ?>
 
                     <div class="list-edit-item">
                         <div class="list-img">
-                        <img src="<?php echo $row['food_pict']; ?>">
+                            <img src="<?php echo $row['food_pict']; ?>">
                         </div>
                         <div class="list-info">
-                            <h4><?php echo $row["food_name"]; ?></h4>
-                            <span>฿<?php echo $row["food_price"]; ?></span>
+                                <h5><span class="badge bg-warning">ID</span> <?php echo $row['food_id']; ?></h5>
+                                <h6><span class="badge bg-secondary">ชื่อ</span> <?php echo $row['food_name']; ?></h6>
+                                <h6><span class="badge bg-secondary">ประเภท</span> <?php echo $row['food_category']; ?></h6>
+                                <h6><span class="badge bg-secondary">ราคา</span> <?php echo $row['food_price']; ?>฿</h6>
                             <div class="col">
                                 <a class="btn btn-danger" href="?food_id=<?php echo $row["food_id"]; ?>">Delete</a>
-                                <a class="btn btn-secondary">Edit</a>
+                                <a class="btn btn-secondary" id="edit-btn">Edit</a>
                             </div>
                             
                         </div>
@@ -128,6 +163,8 @@ $objQuery = mysqli_query($conn, $updatesql);
                 }
             ?>
 
+                    </div>
+
         </div>
     </div>
     <script src="js/backdoor.js"></script>
@@ -136,7 +173,7 @@ $objQuery = mysqli_query($conn, $updatesql);
 
 <?php
 
-if(isset($_POST['upload']))
+if(isset($_POST['add_menu']))
 {
     $food_pict = $_POST['food_pict'];
     $food_name = $_POST['food_name'];
@@ -145,7 +182,24 @@ if(isset($_POST['upload']))
 
     $query = "INSERT INTO `food_menu`(`food_pict`,`food_name`,`food_price`,`food_category`) VALUES ('$food_pict','$food_name','$food_price', '$food_category')";
     $query_run = mysqli_query($conn,$query);
-
-    mysqli_close($conn);
+    
 }
+if(isset($_POST['save_edit'])) {
+    $edit_food_id = $_POST['edit_food_id']; 
+    $edit_food_name = $_POST['edit_food_name'];
+    $edit_food_category = $_POST['edit_food_category'];
+    $edit_food_pict = $_POST['edit_food_pict'];
+    $edit_food_price = $_POST['edit_food_price'];
+    
+    $sqledit = "
+        UPDATE food_menu
+        SET food_name = '$edit_food_name',  
+        food_price = '$edit_food_price', 
+        food_pict = '$edit_food_pict', 
+        food_category = '$edit_food_category'
+        WHERE food_id = '$edit_food_id' ; ";
+    
+    $queryedit = mysqli_query($conn, $sqledit);
+}
+    mysqli_close($conn);
 ?>
