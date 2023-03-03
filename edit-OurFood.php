@@ -3,32 +3,37 @@
 require('php/connect.php');
 
 // delete function 
-$delete_ID  = $_REQUEST['burger_id'];
+$delete_ID  = $_REQUEST['food_id'];
 
 $delsql = '
-    DELETE FROM burger
-    WHERE burger_id = ' . $delete_ID . ';
+    DELETE FROM food_menu
+    WHERE food_id = ' . $delete_ID . ';
     ';
 
 $objQuery = mysqli_query($conn, $delsql);
 
 // query function
-$sql = 'SELECT * FROM burger;';
-$all_burger = $conn->query($sql);
+$sql = 'SELECT * FROM food_menu;';
+$all_food = $conn->query($sql);
+
+// query food cate
+
+$catesql = 'SELECT * FROM category;';
+$all_cate = $conn->query($catesql);
 
 // edit function
 $updatesql = "
-	UPDATE burger
+	UPDATE food_menu
 	SET 
-    burger_name = '" . $burger_name . "',  
-	burger_price = '" . $burger_price . "', 
-	burger_pic = '" . $burger_pic . "', 
-    WHERE burger_id = " . $burger_id . " ; ";
+    food_name = '" . $food_name . "',  
+	food_price = '" . $food_price . "', 
+	food_pic = '" . $food_pic . "', 
+    WHERE food_id = " . $food_id . " ; ";
 
-$burger_id    = $_REQUEST['burger_id'];
-$burger_name = $_REQUEST['burger_name'];
-$burger_price = $_REQUEST['burger_price'];
-$burger_pic = $_REQUEST['burger_pic'];
+$food_id    = $_REQUEST['food_id'];
+$food_name = $_REQUEST['food_name'];
+$food_price = $_REQUEST['food_price'];
+$food_pic = $_REQUEST['food_pic'];
 
 $objQuery = mysqli_query($conn, $updatesql);
 
@@ -68,53 +73,52 @@ $objQuery = mysqli_query($conn, $updatesql);
             <li class="nav-tab"><a class="nav-sublink" href="#">Delivery</a></li>
         </ul>
     </div>
-
-    <div class="typeselector">
-        <div class="menubut" id="menubut" onclick="emenu()">
-            <p>Burger</p>
-        </div>
-        <div class="menubut" id="setbut" onclick="eset()">
-            <p>Set</p>
-        </div>
-        <div class="menubut" id="submenubut" onclick="esub()">
-            <p>Other</p>
-        </div>
-    </div>
     <div class="content-main">
         <div class="list-edit" id="menu-section">
             <form class="form-edit" method="POST">
-                <div class="mb-3">
-                    <input class="form-control" type="text" name="burger_name" placeholder="Enter a burger name" required>
-                </div>
-                <div class="mb-3">
-                    <div class="input-group">
-                        <div class="input-group-text">฿</div>
-                        <input type="text" class="form-control" name="burger_price" placeholder="Enter a burger price" required>
+                <div class="row g-3">
+                    <div class="col-12">
+                            <input type="url" class="form-control" name="food_pict" placeholder="Enter a food image" required>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="input-group">
+                            <input class="form-control" type="text" name="food_name" placeholder="Food name" required>
+                            <select class="form-select" name="food_category">
+
+                                <?php
+                                    while ($cate = mysqli_fetch_assoc($all_cate)) {
+                                ?>
+                                <option value="<?php echo $cate["category_id"]; ?>"><?php echo $cate["category_name"]; ?></option>
+
+                                <?php } ?>
+                            </select>
+                            <div class="input-group-text">฿</div>
+                            <input type="text" class="form-control" name="food_price" placeholder="Price" required>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <button class="btn btn-primary" type="submit" name="upload">Add new menu</button>
+                        <button class="btn btn-danger" type="reset" name="upload">Clear</button>
                     </div>
                 </div>
-                <div class="mb-3">
-                        <input type="url" class="form-control" name="burger_pict" placeholder="Enter a burger image" required>
-                </div>
-
-                <button class="btn btn-primary" type="submit" name="upload">Add new menu</button>
-                <button class="btn btn-danger" type="reset" name="upload">Clear</button>
-
             </form>
             
             <?php
-                while ($row = mysqli_fetch_assoc($all_burger)) {
+                while ($row = mysqli_fetch_assoc($all_food)) {
             ?>
 
                     <div class="list-edit-item">
                         <div class="list-img">
-                        <img src="<?php echo $row['burger_pict']; ?>">
+                        <img src="<?php echo $row['food_pict']; ?>">
                         </div>
                         <div class="list-info">
-                            <h4><?php echo $row["burger_name"]; ?></h4>
-                            <span>฿<?php echo $row["burger_price"]; ?></span>
+                            <h4><?php echo $row["food_name"]; ?></h4>
+                            <span>฿<?php echo $row["food_price"]; ?></span>
                             <div class="col">
-                                <a class="btn btn-danger" href="?burger_id=<?php echo $row["burger_id"]; ?>">Delete</a>
-                                <a class="btn btn-warning">Edit</a>
+                                <a class="btn btn-danger" href="?food_id=<?php echo $row["food_id"]; ?>">Delete</a>
+                                <a class="btn btn-secondary">Edit</a>
                             </div>
                             
                         </div>
@@ -127,7 +131,6 @@ $objQuery = mysqli_query($conn, $updatesql);
         </div>
     </div>
     <script src="js/backdoor.js"></script>
-    <script src="js/editmenuselector.js"></script>
 </body>
 </html>
 
@@ -135,11 +138,12 @@ $objQuery = mysqli_query($conn, $updatesql);
 
 if(isset($_POST['upload']))
 {
-    $burger_pict = $_POST['burger_pict'];
-    $burger_name = $_POST['burger_name'];
-    $burger_price = $_POST['burger_price'];
+    $food_pict = $_POST['food_pict'];
+    $food_name = $_POST['food_name'];
+    $food_price = $_POST['food_price'];
+    $food_category = $_POST['food_category'];
 
-    $query = "INSERT INTO `burger`(`burger_pict`,`burger_name`,`burger_price`) VALUES ('$burger_pict','$burger_name','$burger_price')";
+    $query = "INSERT INTO `food_menu`(`food_pict`,`food_name`,`food_price`,`food_category`) VALUES ('$food_pict','$food_name','$food_price', '$food_category')";
     $query_run = mysqli_query($conn,$query);
 
     mysqli_close($conn);
