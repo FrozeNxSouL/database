@@ -2,18 +2,31 @@ const btn = document.querySelectorAll('#edit-btn');
 
 const food_id_input = document.querySelector('#edit_food_id');
 const food_name_input = document.querySelector('#edit_food_name');
+const food_category_input = document.querySelector('#edit_food_category');
 const food_picture_input = document.querySelector('#edit_food_pict');
 const food_price_input = document.querySelector('#edit_food_price');
 
 btn.forEach(element => {
     element.addEventListener('click', ()=> {
         let id = element.closest('.list-info').querySelector('h5').textContent.replace("ID ", "");
-        food_id_input.setAttribute('value', '7')
-
-        const option = food_id_input.querySelector(`option[value="${id}"]`);
-        if (option) {
-          option.selected = true;
-        }
+        let name = element.closest('.list-info').querySelector('h6').textContent.replace("ชื่อ ", "");
+        let category = element.closest('.list-info').querySelector('h6').nextElementSibling.textContent.replace("ประเภท ", "");
+        let price = element.closest('.list-info').querySelector('h6').nextElementSibling.nextElementSibling.textContent.replace("ราคา ", "").replace("฿", "");
+        let picture = element.closest('.list-edit-item').querySelector('.list-img img').getAttribute('src');
         
+        food_id_input.setAttribute('value', id)
+        food_name_input.setAttribute('value', name)
+        food_category_input.setAttribute('value', category)
+        food_price_input.setAttribute('value', price)
+        food_picture_input.setAttribute('value', picture)
+
+        const id_option = food_id_input.querySelector(`option[value="${id}"]`);
+        if (id_option) {
+          id_option.selected = true;
+        }
+        const cate_option = food_category_input.querySelector(`option[value="${category}"]`);
+        if (cate_option) {
+          cate_option.selected = true;
+        }
     })
 });

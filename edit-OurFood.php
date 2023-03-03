@@ -94,7 +94,7 @@ $all_cate = $conn->query($catesql);
                                 <div class="col-12">
                                     <div class="input-group">
                                         <div class="input-group-text">ID</div>
-                                        <select id="edit_food_id" class="form-select" name="edit_food_id">
+                                        <select id="edit_food_id" class="form-select" name="edit_food_id" disabled>
 
                                             <?php
                                                 $all_food = $conn->query($sql);
@@ -144,7 +144,7 @@ $all_cate = $conn->query($catesql);
 
                     <div class="list-edit-item">
                         <div class="list-img">
-                            <img src="<?php echo $row['food_pict']; ?>">
+                            <img id="foodpic" src="<?php echo $row['food_pict']; ?>">
                         </div>
                         <div class="list-info">
                                 <h5><span class="badge bg-warning">ID</span> <?php echo $row['food_id']; ?></h5>
@@ -153,7 +153,7 @@ $all_cate = $conn->query($catesql);
                                 <h6><span class="badge bg-secondary">ราคา</span> <?php echo $row['food_price']; ?>฿</h6>
                             <div class="col">
                                 <a class="btn btn-danger" href="?food_id=<?php echo $row["food_id"]; ?>">Delete</a>
-                                <a class="btn btn-secondary" id="edit-btn">Edit</a>
+                                <a class="btn btn-secondary" id="edit-btn" href="#">Edit</a>
                             </div>
                             
                         </div>
