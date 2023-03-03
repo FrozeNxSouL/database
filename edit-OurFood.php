@@ -45,18 +45,12 @@ $all_cate = $conn->query($catesql);
 
 <body>
     <div class="contain">
-        <header id="header"></header>
-        <script src="js/header.js"></script>
+        <header id="header">
+            <?php include 'php/module/navbar.html'?>
+        </header>
     </div>
 
-    <div class="content-header">
-        <ul class="nav-sub">
-            <li class="nav-tab"><a class="nav-sublink" href="#">Banner</a></li>
-            <li class="nav-tab"><a class="nav-sublink" href="edit-user.php">User</a></li>
-            <li class="nav-tab"><a class="nav-sublink" href="edit-OurFood.php">Menu</a></li>
-            <li class="nav-tab"><a class="nav-sublink" href="#">Delivery</a></li>
-        </ul>
-    </div>
+    <?php include 'php/module/subnav-backdoor.html' ?>
     <div class="content-main">
         <div class="list-edit" id="menu-section">
             <form class="form-edit" method="POST">
@@ -167,6 +161,7 @@ $all_cate = $conn->query($catesql);
 
         </div>
     </div>
+    <?php include 'php/module/footer.html'?>
     <script src="js/backdoor.js"></script>
 </body>
 </html>

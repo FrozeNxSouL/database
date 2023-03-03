@@ -236,20 +236,7 @@ include('php/process.php');
 
         <!-- end main section -->
     </main>
-    <footer id="footer">
-      <div class="contain" >
-        <div class="block1" >
-          <h6>ABOUT US</h6>
-          <span></span>
-        </div>
-        <div class="block1" >
-          
-        </div>
-        <div class="block1" >
-
-        </div>
-      </div>
-    </footer>
+    <?php include 'php/module/footer.html'?>
     <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
     <script src="js/logincheckfunc.js" ></script>
     <script src="js/checkfunc.js" ></script>
