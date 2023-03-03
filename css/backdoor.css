@@ -47,3 +47,56 @@
     border-radius:.5rem;
     opacity: 0.6;
 }
+.content-container {
+    margin: 2vh 0 2vh 0;
+    height: 5vh;
+}
+.button-set {
+    line-height: 5vh;
+    text-align: center;
+    margin: auto;
+}
+.button-set a {
+    display: inline-block;
+    height: 5vh;
+    font-size: 1.3rem;
+    padding: 0 5vh 0 5vh;
+    color: #D0021B;
+}
+.button-set a:hover {
+    background-color: #D0021B;
+    color: white;
+    border-radius: 1rem;
+}
+.print-container {
+    margin:auto;
+    width: 87%;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.print-area p {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+}
+.print-row {
+    border-top: 2px solid #D0021B;
+}
+.print-cell {
+    display: inline-block;
+    text-align: center;
+    width: 20vh;
+    height: 7vh;
+    line-height: 7vh;
+}
+.print-cell .tablehead {
+    width: 100%;
+    height: 100%;
+    color: black;
+}
+.print-value {
+    display: flex;
+    justify-content: space-evenly;
+}

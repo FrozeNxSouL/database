@@ -52,8 +52,8 @@ $all_cate = $conn->query($catesql);
     <div class="content-header">
         <ul class="nav-sub">
             <li class="nav-tab"><a class="nav-sublink" href="#">Banner</a></li>
-            <li class="nav-tab"><a class="nav-sublink" href="#">User</a></li>
-            <li class="nav-tab"><a class="nav-sublink" href="#">Menu</a></li>
+            <li class="nav-tab"><a class="nav-sublink" href="edit-user.php">User</a></li>
+            <li class="nav-tab"><a class="nav-sublink" href="edit-OurFood.php">Menu</a></li>
             <li class="nav-tab"><a class="nav-sublink" href="#">Delivery</a></li>
         </ul>
     </div>
