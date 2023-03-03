@@ -1,7 +1,7 @@
 <?php
 require('php/connect.php');
 
-$sql = 'SELECT * FROM burger;';
+$sql = 'SELECT * FROM food_menu;';
 $all_burger = $conn->query($sql);
 
 $sql1 = 'SELECT * FROM submenu;';

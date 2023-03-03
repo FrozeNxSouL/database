@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 02, 2023 at 11:49 PM
+-- Generation Time: Mar 03, 2023 at 10:07 AM
 -- Server version: 8.0.17
 -- PHP Version: 7.3.10
 
@@ -32,29 +32,40 @@ CREATE TABLE `branch` (
   `branchID` int(11) NOT NULL,
   `branchName` varchar(30) NOT NULL,
   `branchAddress` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `branch`
+--
+
+INSERT INTO `branch` (`branchID`, `branchName`, `branchAddress`) VALUES
+(2, 'Bangkok', '5/2/3 asd, asdwdqdasdc, 11115\r\n'),
+(3, 'Nonthaburi', '5/2/3 asd, asdwdqdasdc, 11115'),
+(4, 'Bangkok', '1/2/3 ฟหกฟหก, ๆไฟหก, 11112\r\n'),
+(5, 'Nonthaburi', '1/321 aassd, asdaแฟหแsdc, 11113\r\n'),
+(6, 'Bangkok', '5/2/3 asd, asdwdqdasdc, 11115\r\n'),
+(7, 'Nonthaburi', '10/31 asdw, ajhsdkla, 23233\r\n'),
+(8, 'Bangkok', '1/2/3 asd, asdasdc, 11114\r\n'),
+(9, 'Nonthaburi', '22/31 asdw, aascajhsdkla, 23234\r\n');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `burger`
+-- Table structure for table `category`
 --
 
-CREATE TABLE `burger` (
-  `burger_id` int(10) UNSIGNED NOT NULL,
-  `burger_price` float NOT NULL,
-  `burger_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `burger_pict` varchar(400) NOT NULL
+CREATE TABLE `category` (
+  `category_id` int(11) NOT NULL,
+  `category_name` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `burger`
+-- Dumping data for table `category`
 --
 
-INSERT INTO `burger` (`burger_id`, `burger_price`, `burger_name`, `burger_pict`) VALUES
-(29, 123, 'test2', 'https://d1vs91ctevllei.cloudfront.net/images/product/1673445513WOS_600x400-nambang-chic.png'),
-(30, 11, '123123', 'https://d1vs91ctevllei.cloudfront.net/images/product/1673445513WOS_600x400-nambang-chic.png'),
-(31, 165, 'Samurai Burger หมา', 'https://d1vs91ctevllei.cloudfront.net/images/product/16331456371593425785sm.jpg');
+INSERT INTO `category` (`category_id`, `category_name`) VALUES
+(1, 'Burger'),
+(2, 'Other');
 
 -- --------------------------------------------------------
 
@@ -78,47 +89,35 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`email`, `password`, `name`, `phone_num`, `address`, `subdistrict`, `district`, `provice`) VALUES
-('jyt@gmail.com', '521a9df35ff6a2a43b183a055b74f2f0', 'ad', '0123456788', 'ds', 'ds', 'ds', 'ds'),
-('lolot@gmail.com', '$2y$10$3/zAqn66fgiNiktIlKdpee6hxErFc2TEgwJf9Vzthxd33kgfWxWfu', 'fdfs', '0123456789', 'ffg', 'cx', 'xc', 'xc'),
-('Ratan11@gmail.com', '521a9df35ff6a2a43b183a055b74f2f0', 'Radawd', '0812944988', 'dddsadwdd', 'dfd', 'gdg', 'dgdg'),
-('Ratan111@gmail.com', '521a9df35ff6a2a43b183a055b74f2f0', 'Radawd', '0812944988', 'dddsadwdd', 'ddd', 'ddd', 'ddd'),
-('Ratanon1@gmail.com', '25f9e794323b453885f5181f1b624d0b', 'ad', '0123456789', 'ds', 'ad', 'sd', 'ds'),
-('sdesa@gmail.com', '521a9df35ff6a2a43b183a055b74f2f0', 'ad', '0123456789', 'ds', 'd', 'd', 'd');
+('asd@asd.asd', '8b353d5cc07e13577608711f4602fcb7', 'test', '1231231231', '1', '1', '1', '1'),
+('thitip2@gmail.com', '8b353d5cc07e13577608711f4602fcb7', 'test2', '1234567890', 'asd', 'asd', 'asd', 'asd'),
+('thth@asdasd.com', '8b353d5cc07e13577608711f4602fcb7', 'asdasd', '1234567890', '123', '123', '123', '123'),
+('ththt@asdasd.com', '25f9e794323b453885f5181f1b624d0b', 'test1', '1234567890', '111', '11', '11', '11');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menuset`
+-- Table structure for table `food_menu`
 --
 
-CREATE TABLE `menuset` (
-  `menuset_id` int(10) UNSIGNED NOT NULL,
-  `menuset_price` float NOT NULL,
-  `menuset_name` varchar(100) NOT NULL,
-  `menuset_pict` varchar(400) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `submenu`
---
-
-CREATE TABLE `submenu` (
-  `submenu_id` int(10) UNSIGNED NOT NULL,
-  `submenu_price` float NOT NULL,
-  `submenu_name` varchar(100) NOT NULL,
-  `submenu_pict` varchar(400) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `food_menu` (
+  `food_id` int(11) NOT NULL,
+  `food_name` varchar(100) NOT NULL,
+  `food_price` float NOT NULL,
+  `food_pict` varchar(400) NOT NULL,
+  `food_category` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `submenu`
+-- Dumping data for table `food_menu`
 --
 
-INSERT INTO `submenu` (`submenu_id`, `submenu_price`, `submenu_name`, `submenu_pict`) VALUES
-(1, 59, 'McFurry Oreo', 'https://d1vs91ctevllei.cloudfront.net/images/product/1666941480McFlurry.png'),
-(2, 39, 'Strawberry Sundae', 'https://d1vs91ctevllei.cloudfront.net/images/product/15701802141540289146CSO_4550_DC_CHOSUN.png'),
-(3, 35, 'Pineapple Pie', 'https://d1vs91ctevllei.cloudfront.net/images/product/1540288254pp.png');
+INSERT INTO `food_menu` (`food_id`, `food_name`, `food_price`, `food_pict`, `food_category`) VALUES
+(1, 'test1', 11, 'https://d1vs91ctevllei.cloudfront.net/images/product/1673445991WOS_600x400-nambang-pork.png', 1),
+(4, 'ss', 22, 'https://d1vs91ctevllei.cloudfront.net/images/product/1673445991WOS_600x400-nambang-pork.png', 1),
+(5, 'Bacon Burger หมา', 165, 'https://d1vs91ctevllei.cloudfront.net/images/product/1657623807WOS-600x400-alc-qpcb.png', 1),
+(6, 'Bacon Burger หมา', 165, 'https://d1vs91ctevllei.cloudfront.net/images/product/1657623807WOS-600x400-alc-qpcb.png', 1),
+(7, 'Bacon Burger หมา', 165, 'https://d1vs91ctevllei.cloudfront.net/images/product/1657623807WOS-600x400-alc-qpcb.png', 1);
 
 --
 -- Indexes for dumped tables
@@ -131,10 +130,10 @@ ALTER TABLE `branch`
   ADD PRIMARY KEY (`branchID`);
 
 --
--- Indexes for table `burger`
+-- Indexes for table `category`
 --
-ALTER TABLE `burger`
-  ADD PRIMARY KEY (`burger_id`);
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`category_id`);
 
 --
 -- Indexes for table `customer`
@@ -143,16 +142,11 @@ ALTER TABLE `customer`
   ADD PRIMARY KEY (`email`);
 
 --
--- Indexes for table `menuset`
+-- Indexes for table `food_menu`
 --
-ALTER TABLE `menuset`
-  ADD PRIMARY KEY (`menuset_id`);
-
---
--- Indexes for table `submenu`
---
-ALTER TABLE `submenu`
-  ADD PRIMARY KEY (`submenu_id`);
+ALTER TABLE `food_menu`
+  ADD PRIMARY KEY (`food_id`),
+  ADD KEY `food_category` (`food_category`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -162,25 +156,29 @@ ALTER TABLE `submenu`
 -- AUTO_INCREMENT for table `branch`
 --
 ALTER TABLE `branch`
-  MODIFY `branchID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `branchID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `burger`
+-- AUTO_INCREMENT for table `category`
 --
-ALTER TABLE `burger`
-  MODIFY `burger_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+ALTER TABLE `category`
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `menuset`
+-- AUTO_INCREMENT for table `food_menu`
 --
-ALTER TABLE `menuset`
-  MODIFY `menuset_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `food_menu`
+  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `submenu`
+-- Constraints for dumped tables
 --
-ALTER TABLE `submenu`
-  MODIFY `submenu_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Constraints for table `food_menu`
+--
+ALTER TABLE `food_menu`
+  ADD CONSTRAINT `food_menu_ibfk_1` FOREIGN KEY (`food_category`) REFERENCES `category` (`category_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
