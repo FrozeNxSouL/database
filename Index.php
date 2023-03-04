@@ -37,7 +37,7 @@ include('php/process.php');
       // } 
       ?> -->
       <header id="header"></header>
-      <script src="js/header.js"></script>
+      <script src="js/headerlogin.js"></script>
     <main>
         <!-- start main section -->
 
