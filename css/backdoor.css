@@ -104,3 +104,27 @@
     display: flex;
     justify-content: space-evenly;
 }
+.insert-container {
+    margin:auto;
+    width: 30%;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.insert-inside input {
+    margin: 2vh;
+}
+.btn-insertform {
+    margin: 2vh;
+    display: flex;
+    justify-content: left;
+}
+.btn-insertform button  {
+    height: 5vh;
+    width: 30%;
+    margin: 0 1vh 0 1vh;
+}
+.form-select {
+    margin: 2vh;
+}

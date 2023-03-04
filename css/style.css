@@ -159,7 +159,7 @@ main {
     align-content: center;
     align-self: center;
     justify-self: center;
-    width: 95%;
+    width: 100%;
     display: flex
 }
 .col {
