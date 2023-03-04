@@ -87,7 +87,7 @@
                 <p class="print-value" id="print-value"><?php echo $row["phone_num"]; ?></p>
             </div>
             <div class="print-cell" id="print-cell">
-                <p class="print-value" id="print-value"><?php echo $row["cus_email"]; ?></p>
+                <p class="print-value" id="print-value"><?php echo $row["email"]; ?></p>
             </div>
             <div class="print-cell" id="print-cell">
                 <p class="print-value" id="print-value"><?php echo $row["address"]; ?></p>
@@ -106,6 +106,70 @@
             </div>
         </div>
         <?php
+            }
+        ?>
+    </div>
+    <div class="insert-container">
+        <div class="insert-form">
+            <form class="insert-inside" method="POST">
+                <h2>INSERT USER</h2>
+                <input type="text" class="form-control" id="inputName" name="name" placeholder="Name" >
+                <input type="text" class="form-control" id="inputphonenum" name="phonenum" placeholder="Phone Number" >
+                <input type="text" class="form-control" id="inputName" name="email" placeholder="Email" >
+                <input type="text" class="form-control" id="inputphonenum" name="password" placeholder="Password" >
+                <input type="text" class="form-control" id="inputaddress" name="address" placeholder="Address" >           
+                <div class="outer">
+                <div class="col">
+                    <input type="text" class="form-control" id="inputsubdis" name="subdis" placeholder="Subdistrict">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" id="inputdis" name="dis" placeholder="District">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" id="inputprovice" name="province" placeholder="Province">
+                </div> 
+                </div>  
+                <select id="adjust_role" class="form-select" name="user_role">
+                <?php
+                    $sql1 = "SELECT * FROM user_role";
+                    $qr = $conn->query($sql1);
+                    while ($role = mysqli_fetch_assoc($qr)) {
+                ?>
+                    <option value="<?php echo $role["role_id"]; ?>"><?php echo $role["role_name"]; ?></option>
+
+                <?php } ?>
+                </select>
+                <div class="btn-insertform" >
+                    <button type="submit" name="inserted" class="btn btn-primary">Add User</button> 
+                    <button type="reset" class="btn btn-danger">Clear</button>
+                </div>
+            </form>
+        </div>
+
+        <?php
+            if (isset($_POST['inserted'])) {
+                $name= $_POST['name'];
+                $password = $_POST['password'];
+                $hashpass = md5($password) ;
+                $email = $_POST['email'];
+                $phonenum = $_POST['phonenum'];
+                $address = $_POST['address'];
+                $subdis = $_POST['subdis'];
+                $dis = $_POST['dis'];
+                $provice = $_POST['province']; 
+                $role = $_POST['role'];
+
+                $sqlinsert = "INSERT INTO customer(email,password,name,phone_num,address,subdistrict,district,provice,user_role) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?,?)";
+                $stmt = mysqli_stmt_init($conn);
+                if (!mysqli_stmt_prepare($stmt,$sqlinsert)) {
+                    echo "<script type='text/javascript'>alert('error');</script>";
+                } 
+                else {
+                    mysqli_stmt_bind_param($stmt,"ssssssssi",$email,$hashpass,$name, $phonenum,$address,$subdis,$dis,$provice,$role);
+                    mysqli_stmt_execute($stmt);
+                    mysqli_stmt_close($stmt);
+                    echo "<script type='text/javascript'>alert('INSERTED');</script>";
+                }
             }
         ?>
     </div>
