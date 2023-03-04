@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 03, 2023 at 12:06 PM
+-- Generation Time: Mar 04, 2023 at 10:51 AM
 -- Server version: 8.0.17
 -- PHP Version: 7.3.10
 
@@ -206,6 +206,25 @@ CREATE TABLE `topping` (
   `topping_pict` varchar(400) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_role`
+--
+
+CREATE TABLE `user_role` (
+  `role_id` int(11) NOT NULL DEFAULT '0',
+  `role_name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user_role`
+--
+
+INSERT INTO `user_role` (`role_id`, `role_name`) VALUES
+(0, 'Normal'),
+(1, 'Aodmon');
+
 --
 -- Indexes for dumped tables
 --
@@ -226,7 +245,8 @@ ALTER TABLE `category`
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
-  ADD PRIMARY KEY (`cus_email`);
+  ADD PRIMARY KEY (`cus_email`),
+  ADD KEY `user_role` (`user_role`);
 
 --
 -- Indexes for table `foodmenu_sales`
@@ -284,6 +304,12 @@ ALTER TABLE `topping`
   ADD PRIMARY KEY (`topping_id`);
 
 --
+-- Indexes for table `user_role`
+--
+ALTER TABLE `user_role`
+  ADD PRIMARY KEY (`role_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -326,6 +352,12 @@ ALTER TABLE `topping`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `customer`
+--
+ALTER TABLE `customer`
+  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`user_role`) REFERENCES `user_role` (`role_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Constraints for table `foodmenu_sales`
