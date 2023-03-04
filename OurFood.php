@@ -33,8 +33,9 @@ $menuset = $conn->query($sql2);
 
 <body>
     <div class="contain">
-        <header id="header"></header>
-        <script src="js/header.js"></script>
+        <header id="header">
+            <?php require 'php/module/navbar.html'?>
+        </header>
     </div>
     <div class="content-header">
         <ul class="nav-sub">
@@ -127,6 +128,7 @@ $menuset = $conn->query($sql2);
     </div>
 
     <script src="js/foodselector.js"></script>
+    <?php require 'php/module/footer.html'?>
 </body>
 </html>
 

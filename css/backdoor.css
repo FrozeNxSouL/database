@@ -6,6 +6,9 @@
     border-radius: .3rem;
     padding: 1rem;
 }
+.hide {
+    display: none;
+}
 .list-edit {
     margin: 0 auto;
     display: flex;
@@ -21,6 +24,7 @@
     display: flex;
     flex-direction: column;
     row-gap: .3rem;
+    padding: 1rem;
 }
 .list-img img {
     min-width: 100%;

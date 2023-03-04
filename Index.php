@@ -36,8 +36,11 @@ include('php/process.php');
       <?php  
       // } 
       ?> -->
-      <header id="header"></header>
-      <script src="js/header.js"></script>
+      <div class="contain">
+          <header id="header">
+              <?php require 'php/module/navbar.html'?>
+          </header>
+      </div>
     <main>
         <!-- start main section -->
 

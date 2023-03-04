@@ -24,20 +24,14 @@
 
 <body>
     
-    <div class="content-header">
-        <ul class="nav-sub">
-            <li class="nav-subitem"><a class="nav-sublink" href="#">Banner</a></li>
-            <li class="nav-subitem"><a class="nav-sublink" href="edit-user.php">User</a></li>
-            <li class="nav-subitem"><a class="nav-sublink" href="edit-OurFood.php">Menu</a></li>
-            <li class="nav-subitem"><a class="nav-sublink" href="#">Delivery</a></li>
-        </ul>
+    <div class="contain">
+        <header id="header">
+            <?php include 'php/module/navbar.html'?>
+        </header>
     </div>
 
-    <div class="contain">
-        <header id="header"></header>
-        <script src="js/header.js"></script>
-    </div>
-    
+    <?php include 'php/module/subnav-backdoor.html' ?>
+
     <div class="content-container">
         <div class="button-set">
             <a href="#" class="topbutton" id="edit" onclick="cdedit()" >Update</a>
@@ -45,69 +39,43 @@
             <a href="#" class="topbutton" id="insert" onclick="cdinsert()">Insert</a>
             <a href="#" class="topbutton" id="print" onclick="cdprint()">Print</a>
         </div>
-    </div>    
-    <div class="print-container">
-        <div class="print-area" id="print-area">
-            <div class="print-cell" id="print-cell">
-                <p class="tablehead"  >Name</p>
-            </div>
-            <div class="print-cell" id="print-cell">
-                <p class="tablehead"  >Phone Number</p>
-            </div>
-            <div class="print-cell" id="print-cell">
-                <p class="tablehead"  >Email</p>
-            </div>
-            <div class="print-cell" id="print-cell">
-                <p class="tablehead"  >Address</p>
-            </div>
-            <div class="print-cell" id="print-cell">
-                <p class="tablehead"  >Subdistrict</p>
-            </div>
-            <div class="print-cell" id="print-cell">
-                <p class="tablehead"  >District</p>
-            </div>
-            <div class="print-cell" id="print-cell">
-                <p class="tablehead"  >Province</p>
-            </div>
-            <div class="print-cell" id="print-cell">
-                <p class="tablehead"  >Role</p>
-            </div>
-        </div>
+    </div>
+    <div class="content-main">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Email</th>
+                <th scope="col">Name</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Address</th>
+                <th scope="col">Role</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
         <?php
               $sql = "SELECT * FROM customer";
               $result = mysqli_query($conn,$sql);
               while  ($row = mysqli_fetch_assoc($result)) {
         ?>
+            <tr>
+                <td><?php echo $row["cus_email"]; ?></td>
+                <td><?php echo $row["name"]; ?></td>
+                <td><?php echo $row["phone_num"]; ?></td>
+                <td><?php echo $row["address"]; ?><br><?php echo $row["subdistrict"]; ?> <?php echo $row["district"]; ?> <?php echo $row["provice"]; ?></td>
+                <td><?php echo $row["user_role"]; ?></td>
+                <td><button class="btn btn-secondary">Edit</button></td>
+                <td><button class="btn btn-danger">Delete</button></td>
+            </tr>
 
-        <div class="print-row" id="print-row">
-            <div class="print-cell" id="print-cell">
-                <p class="print-value" id="print-value"><?php echo $row["name"]; ?></p>
-            </div>
-            <div class="print-cell" id="print-cell">
-                <p class="print-value" id="print-value"><?php echo $row["phone_num"]; ?></p>
-            </div>
-            <div class="print-cell" id="print-cell">
-                <p class="print-value" id="print-value"><?php echo $row["cus_email"]; ?></p>
-            </div>
-            <div class="print-cell" id="print-cell">
-                <p class="print-value" id="print-value"><?php echo $row["address"]; ?></p>
-            </div>
-            <div class="print-cell" id="print-cell">
-                <p class="print-value" id="print-value"><?php echo $row["subdistrict"]; ?></p>
-            </div>
-            <div class="print-cell" id="print-cell">
-                <p class="print-value" id="print-value"><?php echo $row["district"]; ?></p>
-            </div>
-            <div class="print-cell" id="print-cell">
-                <p class="print-value" id="print-value"><?php echo $row["provice"]; ?></p>
-            </div>
-            <div class="print-cell" id="print-cell">
-                <p class="print-value" id="print-value"><?php echo $row["user_role"]; ?></p>
-            </div>
-        </div>
         <?php
             }
         ?>
+        </tbody>
+        </table>
     </div>
 </body>
 </html>

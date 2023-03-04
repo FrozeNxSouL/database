@@ -1,3 +1,6 @@
 .content-header {
     min-height: 10vh;
 }
+.nav-sub::before {
+    content: "\e7fd";
+}

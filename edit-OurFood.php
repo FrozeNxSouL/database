@@ -46,22 +46,22 @@ $all_cate = $conn->query($catesql);
 <body>
     <div class="contain">
         <header id="header">
-            <?php include 'php/module/navbar.html'?>
+            <?php require 'php/module/navbar.html'?>
         </header>
     </div>
 
     <?php include 'php/module/subnav-backdoor.html' ?>
     <div class="content-main">
-        <div class="list-edit" id="menu-section">
+        <div class="list-edit">
             <form class="form-edit" method="POST">
                 <div class="row g-3">
                     <div class="col-12">
-                            <input type="url" class="form-control" name="food_pict" placeholder="Enter a food image" required>
+                            <input type="url" class="form-control" name="food_pict" placeholder="Image URL" required>
                     </div>
 
                     <div class="col-12">
                         <div class="input-group">
-                            <input class="form-control" type="text" name="food_name" placeholder="Food name" required>
+                            <input class="form-control" type="text" name="food_name" placeholder="Name" required>
                             <select class="form-select" name="food_category">
 
                                 <?php
@@ -83,53 +83,44 @@ $all_cate = $conn->query($catesql);
                 </div>
             </form>
             <div class="list-edit">
-                        <form class="form-edit" method="POST">
-                            <div class="row g-3">
-                                <div class="col-12">
-                                    <div class="input-group">
-                                        <div class="input-group-text">ID</div>
-                                        <select id="edit_food_id" class="form-select" name="edit_food_id" disabled>
-
-                                            <?php
-                                                $all_food = $conn->query($sql);
-                                                while ($row = mysqli_fetch_assoc($all_food)) {
-                                            ?>
-                                                <option value="<?php echo $row["food_id"]; ?>"><?php echo $row["food_id"]; ?></option>
-
-                                            <?php } ?>
-
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                        <input id="edit_food_pict" type="url" class="form-control" name="edit_food_pict" placeholder="pic" required>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-group">
-                                        <input id="edit_food_name" class="form-control" type="text" name="edit_food_name" placeholder="name" required>
-                                        <select id="edit_food_category" class="form-select" name="edit_food_category">
-
-                                            <?php
-                                                $all_cate = $conn->query($catesql);
-                                                while ($cate = mysqli_fetch_assoc($all_cate)) {
-                                            ?>
-                                                <option value="<?php echo $cate["category_id"]; ?>"><?php echo $cate["category_name"]; ?></option>
-
-                                            <?php } ?>
-
-                                        </select>
-                                        <div class="input-group-text">฿</div>
-                                        <input id="edit_food_price" type="text" class="form-control" name="edit_food_price" placeholder="Price" required>
-                                    </div>
-                                </div>
-
-                                <div class="col-12">
-                                    <button class="btn btn-primary" type="submit" name="save_edit">Save</button>
-                                    <button class="btn btn-danger">Cancel</button>
-                                </div>
+                <form id="edit-item-module" class="form-edit hide" method="POST">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="input-group">
+                                <div class="input-group-text">ID</div>
+                                <input id="edit_food_id" class="form-control" name="edit_food_id" style="pointer-events:none">
                             </div>
+                        </div>
+                        <div class="col-12">
+                                <input id="edit_food_pict" type="url" class="form-control" name="edit_food_pict" placeholder="pic" required>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-group">
+                                <input id="edit_food_name" class="form-control" type="text" name="edit_food_name" placeholder="name" required>
+                                <select id="edit_food_category" class="form-select" name="edit_food_category">
 
-                        </form>
+                                    <?php
+                                        $all_cate = $conn->query($catesql);
+                                        while ($cate = mysqli_fetch_assoc($all_cate)) {
+                                    ?>
+                                        <option value="<?php echo $cate["category_id"]; ?>"><?php echo $cate["category_name"]; ?></option>
+
+                                    <?php } ?>
+
+                                </select>
+                                <div class="input-group-text">฿</div>
+                                <input id="edit_food_price" type="text" class="form-control" name="edit_food_price" placeholder="Price" required>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <button id="save-edit" class="btn btn-primary" type="submit" name="save_edit">Save</button>
+                            <button id="cancel-edit" class="btn btn-danger">Cancel</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
             
             <?php
                 $all_food = $conn->query($sql);

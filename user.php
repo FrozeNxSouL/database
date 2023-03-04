@@ -1,10 +1,14 @@
+<?php 
+    require('php/connect.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>MC</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="css/backdoor.css">
+    <link rel="stylesheet" href="css/user.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,13 +24,28 @@
 
 <body>
     
-    <?php include 'php/module/subnav-backdoor.html'?>
-
     <div class="contain">
         <header id="header">
-            <?php include 'php/module/navbar.html' ?>
+            <?php include 'php/module/navbar.html'?>
         </header>
     </div>
-
+    <div class="content-header">
+        <ul class="nav-sub">
+            <li><a class="nav-sublink" href="#" onclick="user(info)">Personal info</a></li>
+            <li><a class="nav-sublink" href="#" onclick="user(transaction)">Transaction</a></li>
+            <li><a class="nav-sublink" href="#" onclick="user(receipt)">Receipt</a></li>
+        </ul>
+    </div>
+    <div id="info" class="content-main">
+        info
+    </div>
+    <div id="transaction" class="content-main">
+        transaction
+    </div>
+    <div id="receipt" class="content-main">
+        receipt
+    </div>
+    <script src="js/user.js"></script>
+    <?php include 'php/module/footer.html' ?>
 </body>
 </html>

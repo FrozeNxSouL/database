@@ -1,3 +1,5 @@
+const food_edit_form = document.querySelector('#edit-item-module');
+
 const btn = document.querySelectorAll('#edit-btn');
 
 const food_id_input = document.querySelector('#edit_food_id');
@@ -28,5 +30,13 @@ btn.forEach(element => {
         if (cate_option) {
           cate_option.selected = true;
         }
+        food_edit_form.classList.remove("hide");
     })
 });
+
+const cancel_edit = document.getElementById('cancel-edit');
+const save_edit = document.getElementById('save-edit');
+
+cancel_edit.addEventListener('click', ()=> {
+  food_edit_form.classList.add("hide");
+})
