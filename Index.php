@@ -194,11 +194,14 @@ include('php/process.php');
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="https://www.truemoney.com/wp-content/uploads/2021/08/truemoneywallet-mcdonalds-delivery-promotion-banner-20220215-1100X550-a.jpg" class="d-block w-100" alt="...">
+                <img src="https://d1vs91ctevllei.cloudfront.net/images/banner/th1673513523230103_MCD_mc-a-wish_Tourist-01_Web-Banner_2000x695px_Final_CO_CS6.jpg" class="d-block w-100 ads-contain" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="https://www.truemoney.com/wp-content/uploads/2021/05/truemoneywallet_mcdonalds-delivery-retail-pro-051_banner_19072021.jpeg" class="d-block w-100" alt="...">
+                <img src="https://d1vs91ctevllei.cloudfront.net/images/banner/th1673513739230103_MCD_mc-a-wish_Tourist-02_Web-Banner_2000x695px_Final_CO_CS6.jpg" class="d-block w-100 ads-contain" alt="...">
               </div>
+              <div class="carousel-item">
+                <img src="https://d1vs91ctevllei.cloudfront.net/images/banner/th_responsive166196625206_Banner_web_re_motherday-set_2000x695px.jpg" class="d-block w-100 ads-contain" alt="...">
+              </div>        
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -213,27 +216,21 @@ include('php/process.php');
 
         <!-- start content -->
           <div class="content-header">
+          <?php
+            $recsql = "SELECT * FROM food_menu WHERE rec_status = 1 LIMIT 3";
+            $recresult = $conn->query($recsql);
+            while ($rec = mysqli_fetch_array($recresult)) {
+          ?>
             <div class="promo-item">
-              <img src="https://d1vs91ctevllei.cloudfront.net/images/product/1673445513WOS_600x400-nambang-chic.png" alt="">
+              <img src=<?php echo $rec['food_pict']; ?> alt="">
               <div class="promo-text">
-                <p class="title">เบอร์เกอร์นัมบังไก่</p>
-                <p class="price">109</p>
+                <h5 class="title"><?php echo $rec['food_name']; ?></h5>
+                <h5 class="price"><?php echo $rec['food_price']; ?></h5>
               </div>
             </div>
-            <div class="promo-item">
-              <img src="https://d1vs91ctevllei.cloudfront.net/images/product/1657623608WOS-600x400-alc-qpc.png" alt="">
-              <div class="promo-text">
-                <p class="title">ควอเตอร์ พาวน์เดอร์ วิท ชีส</p>
-                <p class="price">155</p>
-              </div>
-            </div>
-            <div class="promo-item">
-              <img src="https://d1vs91ctevllei.cloudfront.net/images/product/167344732306_WOS_McFlurryKiss_600x400px.png" alt="">
-              <div class="promo-text">
-                <p class="title">แมคเฟลอร์รี่ คิส</p>
-                <p class="price">59</p>
-              </div>
-            </div>
+          <?php
+            }
+          ?>
           </div>
         <!-- end content -->
 

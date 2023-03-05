@@ -1,0 +1,130 @@
+.content-header {
+    align-items: flex-end;
+}
+.outerbox {
+    display: flex;
+    flex-direction: column;
+    padding: 5vh 25vh 5vh 25vh;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.itc {
+    width: 100%;
+    height: 100%;
+}
+.input-container {
+    display: flex;
+    justify-content: space-between;
+}
+.select-province {
+    height: 5vh;
+    width: 100%;
+    margin: 0 10vh 0 0; 
+    border-radius: .375rem;
+    background-color: #A30014;
+    padding: 0 2vh 0 2vh;
+    border: none;
+    color: white;
+}
+.select-province option { 
+    background-color: #A30014;
+}
+.searchbar {
+    border: none;
+    background-color: #A30014;
+    color: white;
+    border-radius: .375rem;
+    width: 100%;
+    padding: 0 2vh 0 2vh;   
+}
+.searchbar::placeholder {
+    color: white;
+    opacity: 1;
+}
+.searchbar::-ms-input-placeholder {
+    color: white;
+}
+.searchbtn {
+    height: 5vh;
+    width: 100%;
+    margin: 0 0 0 10vh; 
+    background-color: #D0021B;
+    color: white;
+    border: none;
+    border-radius: .375rem;
+}
+.locatetype {
+    display: flex;
+    justify-content: flex-end;
+    padding: 3vh 23vh 0 23vh;
+}
+.locatetype a {
+    margin: 0 5vh 0 0;
+    padding-bottom: 2vh;
+}
+.listview {
+    font-size: 1.25rem;
+    color: black;
+    font-weight: 500;
+    border-bottom: 3px solid rgb(255, 198, 0);
+}
+.listview::before {
+    font-family: 'Material Icons';
+    font-size: 2rem;
+    line-height: normal;
+    color: black;
+    vertical-align: text-top;
+    content: "\e241";
+    margin-right: 0.5rem;
+}
+.listview:hover {
+    border-bottom: 3px solid rgb(255, 198, 0);
+}
+.mapview {
+    font-size: 1.25rem;
+    color: black;
+    font-weight: 500;
+}
+.mapview::before {
+    font-family: 'Material Icons';
+    font-size: 2rem;
+    line-height: normal;
+    color: black;
+    vertical-align: text-top;
+    content: "\f00f";
+    margin-right: 0.5rem;
+}
+.mapview:hover {
+    border-bottom: 3px solid rgb(255, 198, 0);
+}
+.listcontent {
+    margin-left: 10%;
+    width: 80%;
+    height: auto;
+    border-top: 1.5px solid rgba(146, 146, 146, 0.238);
+    display: grid;
+    grid-template-columns: 31% 31% 31%;
+    justify-content: space-evenly;
+    align-content: center;
+}
+.itemcard {
+    background-color: #F9F9F9;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    padding: 4vh 2vh 4vh 2vh;
+    margin: 2.33% 0 2.33% 0;
+}
+.mapcontent {
+    margin-left: 10%;
+    width: 80%;
+    padding: 2vh;
+    height: auto;
+    border-top: 1.5px solid rgba(146, 146, 146, 0.238);
+    overflow: hidden;
+}
+.mapcontent iframe {
+    object-position: center;
+}

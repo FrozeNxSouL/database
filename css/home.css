@@ -9,7 +9,7 @@
     width: 100%;
 }
 .promo-text {
-    margin-top: 1rem;
+    margin: 1rem 0.5rem 0 0.5rem;
     display: flex;
     justify-content: space-between;
 }
@@ -39,4 +39,16 @@
 
 .content-header {
     margin: 0 0 3% 0;
+}
+.ads-contain {
+    margin: 0;
+    height: 85vh;
+    object-fit: cover;
+    background-repeat: no-repeat;
+}
+.title  {
+    font-weight:400;
+}
+.price {
+    font-weight:400;
 }

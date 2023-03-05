@@ -1,20 +1,14 @@
-const form = document.getElementById('sign-up-form');
-const name = document.getElementById('inputName');
-const phone = document.getElementById('inputphonenum');
-const email = document.getElementById('sign-up-email');
-const password = document.getElementById('sign-up-pw');
-const address = document.getElementById('inputaddress');
-const subdis = document.getElementById('inputsubdis');
-const dis = document.getElementById('inputdis');
-const provice = document.getElementById('inputprovice');
-const error = document.getElementById('showerror');
-
-// form.addEventListener('submit',function(e){
-//     e.preventDefault();
-//     if (name.value=== '') {
-//         error.innerHTML =
-//     }
-//     else {
-//         form.
-//     }
-// })
+//map
+function initMap() {13.819392695241373, 100.51440769448739
+    const kmutnb = { lat: 13.819392695241373, lng: 100.51440769448739 };
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 14,
+      center: kmutnb,
+    });
+    const marker = new google.maps.Marker({
+      position: kmutnb,
+      map: map,
+    });
+  }
+  
+  window.initMap = initMap;
