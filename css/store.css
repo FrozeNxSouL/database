@@ -79,9 +79,7 @@
     content: "\e241";
     margin-right: 0.5rem;
 }
-.listview:hover {
-    border-bottom: 3px solid rgb(255, 198, 0);
-}
+
 .mapview {
     font-size: 1.25rem;
     color: black;
@@ -96,9 +94,7 @@
     content: "\f00f";
     margin-right: 0.5rem;
 }
-.mapview:hover {
-    border-bottom: 3px solid rgb(255, 198, 0);
-}
+
 .listcontent {
     margin-left: 10%;
     width: 80%;
@@ -118,6 +114,7 @@
     margin: 2.33% 0 2.33% 0;
 }
 .mapcontent {
+    display: none;
     margin-left: 10%;
     width: 80%;
     padding: 2vh;
