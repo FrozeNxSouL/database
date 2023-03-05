@@ -1,5 +1,6 @@
 <?php
 require('php/connect.php');
+require('action.php');
 
 
 $sql = 'SELECT * FROM food_menu WHERE food_category = 1;';
@@ -67,13 +68,13 @@ $menuset = $conn->query($sql2);
                     </div>
                     <p class="pricehead" >Price</p>
                     <h5>฿<?php echo number_format($row["food_price"]) ?></h5>
-                    <form action="" class="form-submit">
-                        <input type="hidden" class="fid" value="<?php $row["food_id"] ?>">
-                        <input type="hidden" class="fname" value="<?php $row["food_name"] ?>">
-                        <input type="hidden" class="fprice" value="<?php $row["food_price"] ?>">
-                        <input type="hidden" class="fpict" value="<?php $row["food_pict"] ?>">
-                        <input type="hidden" class="fcategory" value="<?php $row["food_category"] ?>">
-                        <button class="btn btn-danger addItemBtn">Order</button>
+                    <form style="display:flex;width:100%;" id="form-submit" class="form-submit" method="post">
+                        <input type="hidden" id="fid" name="fid"  value="<?php $row["food_id"] ?>">
+                        <input type="hidden" id="fname" name="fname" value="<?php $row["food_name"] ?>">
+                        <input type="hidden" id="fprice" name="fprice" value="<?php $row["food_price"] ?>">
+                        <input type="hidden" id="fpict" name="fpict" value="<?php $row["food_pict"] ?>">
+                        <input type="hidden" id="fcategory" name="fcategory" value="<?php $row["food_category"] ?>">
+                        <button class="btn btn-danger" id="order_button" name="enter">Order</button>
                     </form>
                 </div>
             <?php
@@ -136,31 +137,33 @@ $menuset = $conn->query($sql2);
 
         </div>
     </div>
-
     <script src="js/foodselector.js"></script>
     <?php require 'php/module/footer.html'?>
-    <script type="text/javascript">
+    <script src="js/cart.js"></script>
+    <!-- <script type="text/javascript">
         $(document).ready(function(){
-            $(".btn btn-danger addItemBtn").click(function(e){
+            $("#orderbutton").on("click",function(e){
                 e.preventDefault();
-                var $form = $(this).closest(".form-submit");
-                var fid = $form.find(".fid").val();
-                var fname = $form.find(".fname").val();
-                var fprice = $form.find(".fprice").val();
-                var fpict = $form.find(".fpict").val();
-                var fcategory = $form.find(".fcategory").val();
+                var $form = $(this).closest("#form-submit");
+                var fid = $form.find("#fid").val();
+                var fname = $form.find("#fname").val();
+                var fprice = $form.find("#fprice").val();
+                var fpict = $form.find("#fpict").val();
+                var fcategory = $form.find("#fcategory").val();
 
                 $.ajax({
-                    url: "action.php",
+                    url: "OurFood.php",
                     method: "post",
-                    data: {fid:fid,fname:fname,fprice:fprice,fpict:fpict,fcategory:fcategory},
+                    data: {'send':1,'fid':fid,'fname':fname,'fprice':fprice,'fpict':fpict,'fcategory':fcategory},
                     success:function(response){
-                        $("message").html(response);
+                        if (response == "yee") {
+                            alert(gay);
+                        }
                     }
                 });
             });
         });
-    </script>
+    </script> -->
 </body>
 </html>
 
