@@ -1,0 +1,122 @@
+.search{
+    font-size: larger;
+    
+}
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+.inputlocation{
+    font-size: 3vh;
+    font-weight: bold;
+    margin: 7vh 5vh 7vh 5vh;  
+    display: flex;  
+    justify-content: space-between;
+    width: 100%;
+    justify-content: center;
+   
+}
+.inputlocation::before {
+    transform: translateX(-1.5rem);
+    content: "";
+    width: .4rem;
+    height: 3rem;
+    border-radius: 0 1rem 1rem 0;
+    background-color: rgb(255, 198, 0);
+  } 
+.butlo{
+    background-color: #B90017;
+    border-width:0;
+    border-radius: 0.3rem;
+    padding: .8rem;
+    color :white;
+    font-weight: bold;
+    font-size: 0.9rem;
+    width: 35vh;
+    vertical-align: middle;   
+}
+.searchlo{
+    margin: 0 20vh 0 20vh;
+    box-shadow: 0 0 10px rgba(37, 37, 37, 20%);
+    border-width: 0;
+    vertical-align: middle;
+    font-size: 1rem;
+    padding: .8rem;
+    width:45vh;
+}
+.content-header {
+    min-height: 10vh;
+}
+.branchbg{
+    margin: 3% 0 3% 0;
+    background-color: #B90017;
+    width: 100%;
+    height:auto;
+    padding: 20px;
+    
+}
+.branchcon{
+    width:1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    
+}
+.textavailable{
+    color:white;
+    font-weight: 900;
+    font-size: 35px;
+    margin-left: -30px;
+}
+.branchdiv{
+    background-color: rgb(255, 255, 255);
+    height:380px;
+    margin: 30px;
+    border-radius: 10px;
+    display: inline-block;  
+}
+
+.branchinfo{
+    color:black;
+    margin:60px;
+}
+.bname{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.iconinfo{
+    height:25px;
+    margin-right:25px;
+}
+.info{
+    display:flex;
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+.branchnotfound{
+    margin: 5vh;
+    background-color: black;
+    color: rgb(255, 201, 24);
+    font-size: 3vh;
+    padding :2rem;
+    width:1200px;
+    font-weight: bold;
+    text-align: center;
+    margin-left: 300px;
+    
+}
+.delivery-icon{
+    height:80px;
+    margin-right: 10px;
+}
+.content-area{
+    margin:0;
+    padding:0;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}

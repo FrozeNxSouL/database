@@ -175,8 +175,8 @@ main {
 }
 footer {
     max-width: 100%;
-    min-height: 20vh;
-    background-color: rgb(44, 44, 44);
+    min-height: 30vh;
+    background-color: #2c2c2c;
     padding: 5vh 30vh 3vh 30vh;
 }
 

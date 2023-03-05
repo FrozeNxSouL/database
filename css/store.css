@@ -97,6 +97,7 @@
 
 .listcontent {
     margin-left: 10%;
+    margin-bottom: 3%;
     width: 80%;
     height: auto;
     border-top: 1.5px solid rgba(146, 146, 146, 0.238);
@@ -117,10 +118,11 @@
     display: none;
     margin-left: 10%;
     width: 80%;
-    padding: 2vh;
+    padding-top: 2vh;
     height: auto;
     border-top: 1.5px solid rgba(146, 146, 146, 0.238);
     overflow: hidden;
+    margin-bottom: 3%;
 }
 .mapcontent iframe {
     object-position: center;
