@@ -32,26 +32,31 @@
     <?php
         $address = isset($_POST['address']) ? $_POST['address'] : '';
     ?>
-    <div class = "content-area">
+
+    <div class = "content-main">
       <div class = "inputlocation">
           <form action = "delivery.php" method="post">
-            <label for="address" class = "search"> Search Location</label>
-            <input class = "searchlo"type="text"  name="address" placeholder="Search Location">
-            <input class = "butlo" type="submit" value="CONFIRM DELIVERY LOCATION" >
+            <h2>Search Location</h2>
+            <div class="input-group">
+              <input class="searchlo" type="text" name="address" placeholder="Search Location">
+              <input class="butlo" type="submit" value="CONFIRM DELIVERY LOCATION">
+            </div>
           </form>
       </div>
       <?php
         $addressinput = $_POST['address'];
         if (!empty($address)) {
           require('php/connect.php');
-          $query = "SELECT * FROM branch WHERE branch_province = '$addressinput' OR branchName = '$addressinput' OR branch_subdistrict = '$addressinput' OR branch_district = '$addressinput' ";
+          $query = "SELECT * FROM branch WHERE branch_province LIKE '%$addressinput%' OR branchName LIKE '%$addressinput%' OR branch_subdistrict LIKE '%$addressinput%' OR branch_district LIKE '%$addressinput%' ";
           $result = mysqli_query($conn, $query);
           if (mysqli_num_rows($result) > 0) {?>
       <div class ="branchbg">
       <div class="branchcon">
+
           <div class="textavailable">
             Available branches for delivery <img src ="assets/delivery-icon.png" class ="delivery-icon">
-          </div>    
+          </div>
+
           <?php while ($row = mysqli_fetch_array($result)) { ?>   
       
           <div class = "col-xs-12 col-sm-6 col-md-4  branchdiv">  
