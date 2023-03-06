@@ -86,17 +86,15 @@ session_start();
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                             <label class="form-check-label" for="flexRadioDefault1">
-                                Cash On Delivery
+                                Cash
                             </label>
                         </div>
-                        <br>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                โดน brutally hard sex by poonthenew
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Seggs
                             </label>
                         </div>
-                        <br>
                         <button class ="btn btn-danger">Make Purchase</button>
                     </form>
                 </div>
