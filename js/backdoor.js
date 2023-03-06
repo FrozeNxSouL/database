@@ -22,10 +22,6 @@ btn.forEach(element => {
         food_price_input.setAttribute('value', price)
         food_picture_input.setAttribute('value', picture)
 
-        const id_option = food_id_input.querySelector(`option[value="${id}"]`);
-        if (id_option) {
-          id_option.selected = true;
-        }
         const cate_option = food_category_input.querySelector(`option[value="${category}"]`);
         if (cate_option) {
           cate_option.selected = true;
