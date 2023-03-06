@@ -72,7 +72,7 @@ $menuset = $conn->query($sql2);
                         <h5>฿<?php echo number_format($row["food_price"]) ?></h5>
                         <button type="submit" name="Add_To_Cart" class="btn btn-danger">Order</button>
                         <input type="hidden" name ="food_id" value = "<?php echo $row['food_id']; ?>" >
-                        <input type="hidden" name ="food_name" value = "<?php echo number_format($row['food_name']); ?>" >
+                        <input type="hidden" name ="food_name" value = "<?php echo ($row['food_name']); ?>" >
                         <input type="hidden" name ="food_price" value = "<?php echo $row['food_price']; ?>" >
                         <input type="hidden" name ="food_pict" value = "<?php echo $row['food_pict']; ?>" >
                     </div>
