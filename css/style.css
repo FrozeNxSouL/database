@@ -180,15 +180,34 @@ footer {
     padding: 5vh 30vh 3vh 30vh;
 }
 
+/* work nitid foot fetish */
+.contain{
+    display: flex;
+    justify-content: center;
+    
+}
+.logofoot{
+    display: flex;
+    width: 20vh;
+    height: 20vh;
+    margin-right: 10vh;
+}
+.logofoot img{
+    object-fit: contain;
+}
 .block1 {
     display: flex;
     flex-direction: column;
+    margin-right: 5%;
 }
 
 .block1 h6 {
     color: #ffffff;
 }
 
+.block1 p {
+    color: gray;
+}
 
 .content-header {
     display: flex;
