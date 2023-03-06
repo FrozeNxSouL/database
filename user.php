@@ -1,5 +1,6 @@
 <?php 
     require('php/connect.php');
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -35,9 +36,99 @@
             <li><a class="nav-sublink" href="#" onclick="user(transaction)">Transaction</a></li>
             <li><a class="nav-sublink" href="#" onclick="user(receipt)">Receipt</a></li>
         </ul>
+        <p><?php $_SESSION['login']; ?></p>
     </div>
     <div id="info" class="content-main">
-        info
+    <?php 
+        // $data = $_SESSION["email"];
+        // $sql = "SELECT * FROM customer WHERE email = '$data'";
+        // $result = mysqli_query($conn,$sql);
+        // $row = mysqli_fetch_array($result);
+
+    ?>
+        <div class="profile" id="profile">
+            <h1>Profile</h1>
+            <div class="nameblock">
+                <span class="tt">NAME :</span>
+                <label id="cus_name" class="cus_name"><?php echo $row["name"]; ?></label><br>
+            </div>
+            <div class="emailblock">
+                <span class="tt">EMAIL :</span>
+                <label id="cus_email" class="cus_email"><?php echo $row['email']; ?></label>
+            </div>
+            <div class="addressblock">
+                <span class="tt">ADDRESS</span>
+                <label id="cus_ad" class="cus_ad"><?php echo $row['address']; ?></label>
+                <div class="addressfield">
+                    <div class="subadfield">
+                        <h5 class="adhead">Subdistrict</h5>
+                        <label id="cus_subdis" class="cus_subdis"><?php echo $row['subdistrict']; ?></label>
+                    </div>
+                    <div class="subadfield">
+                        <h5 class="adhead">District</h5>
+                        <label id="cus_dis" class="cus_dis"><?php echo $row['district']; ?></label>
+                    </div>
+                    <div class="subadfield">
+                        <h5 class="adhead">Province</h5>
+                        <label id="cus_provice" class="cus_provice"><?php echo $row['provice']; ?></label>
+                    </div>
+                </div>
+            </div>
+            <div class="otherblock">
+
+            </div>
+            <div class="buttonblock">
+                <button id="adjust-button" class="adjust-button">manage_accounts</button>
+                <button id="del-button" class="del-button" onclick="config()">DELETE</button>
+                <button id="logout-button" class="logout-button">Logout</button>
+            </div>
+        </div>
+
+        <div class="profileconfigure" id="profileconfigure">
+        <h1>Profile / configure</h1>
+        <div class="nameblock">
+        <span class="tt">NAME :</span>
+        <label id="cus_name" class="cus_name"><?php echo $row["name"]; ?></label><br>
+        </div>
+        <div class="emailblock">
+        <span class="tt">EMAIL :</span>
+        <label id="cus_email" class="cus_email"><?php echo $row['email']; ?></label>
+        </div>
+        <div class="addressblock">
+        <span class="tt">ADDRESS</span>
+        <label id="cus_ad" class="cus_ad"><?php echo $row['address']; ?></label>
+        <div class="addressfield">
+            <div class="subadfield">
+            <span class="adhead">Subdistrict</span>
+            <label id="cus_subdis" class="cus_subdis"><?php echo $row['subdistrict']; ?></label>
+            </div>
+            <div class="subadfield">
+            <span class="adhead">District</span>
+            <label id="cus_dis" class="cus_dis"><?php echo $row['district']; ?></label>
+            </div>
+            <div class="subadfield">
+            <span class="adhead">Province</span>
+            <label id="cus_provice" class="cus_provice"><?php echo $row['provice']; ?></label>
+            </div>
+        </div>
+        </div>
+        <div class="otherblock">
+
+        </div>
+        <div class="buttonblock">
+        <button id="adjust-button" class="adjust-button">manage_accounts</button>
+        <button id="del-button" class="del-button" onclick="config()">DELETE</button>
+        <button id="logout-button" class="logout-button">Logout</button>
+        </div>
+        </div>
+
+        <div class="warningbar" id="warningbar">
+        <h6 id="warningtext"></h6>
+        </div>
+        <?php
+        // }
+        ?>
+        </div>
     </div>
     <div id="transaction" class="content-main">
         transaction

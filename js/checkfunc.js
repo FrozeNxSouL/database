@@ -27,6 +27,7 @@ $('document').ready(function() {
                 }
                 else if (response == "pass") {
                     phone_state = true;
+                    $("#errorinput").text('');
                 }
             }
         })
@@ -54,6 +55,7 @@ $('document').ready(function() {
                 } 
                 else if (response == "not_taken") {
                     email_state = true;
+                    $("#errorinput").text('');
                     // $('#email').parent().removeClass();
                     // $('#email').parent().addClass('form_success');
                     // $("#errorinput").text("Email available");

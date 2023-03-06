@@ -1,6 +1,9 @@
 <?php
-session_start();
-include('php/process.php');
+
+require_once('php/connect.php');
+require_once('php/process.php'); 
+
+
 ?>
 <!DOCTYPE html>
 
@@ -45,6 +48,7 @@ include('php/process.php');
         <!-- start main section -->
 
         <!-- start Sign in/ Sign up form -->
+        <?php require_once('php/process.php'); ?>
         <div class="sign-form" id="sign-form">
             <form class="row g-3 sign-up" id="sign-up-form"  method="POST">
                 <h1>SIGN UP</h1>
@@ -86,107 +90,22 @@ include('php/process.php');
                 <h1>Login</h1>
                 <div>
                   <div class="mb-3">
-                    <input type="email" class="form-control" id="exampleInputEmail1" name="acc" placeholder="EMAIL ACCOUNT">
+                    <input type="email" class="form-control" id="exampleInputEmail1" name="acc" placeholder="EMAIL ACCOUNT" >
                   </div>
                   <div class="mb-3">
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="acc_password" placeholder="PASSWORD">
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="acc_password" placeholder="PASSWORD" >
                   </div>
                 </div>
                 <a href="#" id="errorinput1" class="e3"></a>
                 <button type="button" name="submit" class="btn btn-danger btn-form" id="submitlogin">login</button>
                 <p>No Account? <a href="#" style="color: #ffc600" onclick="signup()">SIGN UP</a></p>
             </form>
-
-            <?php 
-
-              require_once('php/connect.php');
-              $data = $_SESSION["email"];
-              $sql = "SELECT * FROM customer WHERE email = '$data'";
-              $result = mysqli_query($conn,$sql);
-              $row = mysqli_fetch_array($result);
-              
-            ?>
-            <div class="profile" id="profile">
-              <h1>Profile</h1>
-              <div class="nameblock">
-                <span class="tt">NAME :</span>
-                <label id="cus_name" class="cus_name"><?php echo $row["name"]; ?></label><br>
-              </div>
-              <div class="emailblock">
-                <span class="tt">EMAIL :</span>
-                <label id="cus_email" class="cus_email"><?php echo $row['email']; ?></label>
-              </div>
-              <div class="addressblock">
-                <span class="tt">ADDRESS</span>
-                <label id="cus_ad" class="cus_ad"><?php echo $row['address']; ?></label>
-                <div class="addressfield">
-                  <div class="subadfield">
-                    <h5 class="adhead">Subdistrict</h5>
-                    <label id="cus_subdis" class="cus_subdis"><?php echo $row['subdistrict']; ?></label>
-                  </div>
-                  <div class="subadfield">
-                    <h5 class="adhead">District</h5>
-                    <label id="cus_dis" class="cus_dis"><?php echo $row['district']; ?></label>
-                  </div>
-                  <div class="subadfield">
-                    <h5 class="adhead">Province</h5>
-                    <label id="cus_provice" class="cus_provice"><?php echo $row['provice']; ?></label>
-                  </div>
-                </div>
-              </div>
-              <div class="otherblock">
-
-              </div>
-              <div class="buttonblock">
-                <button id="adjust-button" class="adjust-button">manage_accounts</button>
-                <button id="del-button" class="del-button" onclick="config()">DELETE</button>
-                <button id="logout-button" class="logout-button">Logout</button>
-              </div>
-            </div>
-
-            <div class="profileconfigure" id="profileconfigure">
-              <h1>Profile / configure</h1>
-              <div class="nameblock">
-                <span class="tt">NAME :</span>
-                <label id="cus_name" class="cus_name"><?php echo $row["name"]; ?></label><br>
-              </div>
-              <div class="emailblock">
-                <span class="tt">EMAIL :</span>
-                <label id="cus_email" class="cus_email"><?php echo $row['email']; ?></label>
-              </div>
-              <div class="addressblock">
-                <span class="tt">ADDRESS</span>
-                <label id="cus_ad" class="cus_ad"><?php echo $row['address']; ?></label>
-                <div class="addressfield">
-                  <div class="subadfield">
-                    <span class="adhead">Subdistrict</span>
-                    <label id="cus_subdis" class="cus_subdis"><?php echo $row['subdistrict']; ?></label>
-                  </div>
-                  <div class="subadfield">
-                    <span class="adhead">District</span>
-                    <label id="cus_dis" class="cus_dis"><?php echo $row['district']; ?></label>
-                  </div>
-                  <div class="subadfield">
-                    <span class="adhead">Province</span>
-                    <label id="cus_provice" class="cus_provice"><?php echo $row['provice']; ?></label>
-                  </div>
-                </div>
-              </div>
-              <div class="otherblock">
-
-              </div>
-              <div class="buttonblock">
-                <button id="adjust-button" class="adjust-button">manage_accounts</button>
-                <button id="del-button" class="del-button" onclick="config()">DELETE</button>
-                <button id="logout-button" class="logout-button">Logout</button>
-              </div>
-            </div>
-
-            <div class="warningbar" id="warningbar">
-              <h6 id="warningtext"></h6>
-            </div>
             <?php
-              // }
+//                 session_start();
+//                 if (isset($_SESSION['email'])) { 
+//                   $message = "wrong answer";
+// echo "<script type='text/javascript'>alert('$message');</script>";
+                // }
             ?>
         </div>
 
@@ -245,6 +164,3 @@ include('php/process.php');
 </body>
 
 </html>
-<?php
-session_destroy();
-?>
