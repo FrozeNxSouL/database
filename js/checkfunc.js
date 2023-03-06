@@ -100,7 +100,7 @@ $('document').ready(function() {
                     } 
                     else if (response == 'Saved') {
                         alert('SAVED');                 
-                        login();
+                        window.location.href='user.php';
                     } 
                 }
             })

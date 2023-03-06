@@ -1,11 +1,11 @@
 $('document').ready(function() {
-    document.querySelector('#submitlogin').disabled = true;
+
     $("#exampleInputEmail1").on('blur', function(e) {
         var email = $("#exampleInputEmail1").val();
         if (email == '') {
             e.preventDefault();
             $("#errorinput1").text('maybe you got the wrong door');
-            document.querySelector('#submitlogin').disabled = true;
+
             return;
         }
         $.ajax({
@@ -31,12 +31,12 @@ $('document').ready(function() {
         })
     });
 
-    $('#exampleInputPassword1').on('blur', function(e) {
+    $('#submitlogin').on('click', function(e) {
         var loginemail = $("#exampleInputEmail1").val();
         var loginpassword = $("#exampleInputPassword1").val();
         if (loginemail == ' ' || loginpassword == ' ' ) {
             e.preventDefault();
-            document.querySelector('#submitlogin').disabled = true;
+
             $("#errorinput1").text("Check your form again!");
         } 
         else {
@@ -57,7 +57,10 @@ $('document').ready(function() {
                     } 
                     else if (response == 'correct') {
                         $("#errorinput1").text('');
-                        document.querySelector('#submitlogin').disabled = false;
+                        alert('Connected');
+                        window.location.href='user.php';
+
+
                         // var femail = $("#exampleInputEmail1").val();
                         // // let http = new XMLHttpRequest()
                         // // http.open('POST', 'Index.php',true);

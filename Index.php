@@ -1,7 +1,8 @@
 <?php
-
+session_start();
 require_once('php/connect.php');
 require_once('php/process.php'); 
+
 
 
 ?>
@@ -48,7 +49,6 @@ require_once('php/process.php');
         <!-- start main section -->
 
         <!-- start Sign in/ Sign up form -->
-        <?php require_once('php/process.php'); ?>
         <div class="sign-form" id="sign-form">
             <form class="row g-3 sign-up" id="sign-up-form"  method="POST">
                 <h1>SIGN UP</h1>
@@ -86,7 +86,7 @@ require_once('php/process.php');
                 <button type="button" name="submit" class="btn btn-danger btn-form" id="submitsignin">Sign up</button> 
             </form>
 
-            <form class="sign-in" id="sign-in-form" method="POST">
+            <form class="sign-in" id="sign-in-form" method="POST" >
                 <h1>Login</h1>
                 <div>
                   <div class="mb-3">
@@ -100,13 +100,6 @@ require_once('php/process.php');
                 <button type="button" name="submit" class="btn btn-danger btn-form" id="submitlogin">login</button>
                 <p>No Account? <a href="#" style="color: #ffc600" onclick="signup()">SIGN UP</a></p>
             </form>
-            <?php
-//                 session_start();
-//                 if (isset($_SESSION['email'])) { 
-//                   $message = "wrong answer";
-// echo "<script type='text/javascript'>alert('$message');</script>";
-                // }
-            ?>
         </div>
 
         <div class="sign-bg" id="sign-opt-bg"></div>
@@ -161,6 +154,9 @@ require_once('php/process.php');
     <script src="js/checkfunc.js" ></script>
     <script src="js/footer.js"></script>
     <script src="js/account.js"></script>
+            
+
 </body>
 
 </html>
+<?php mysqli_close($conn); ?>

@@ -1,5 +1,6 @@
 <?php 
 
+session_start();
 require_once('php/connect.php');
 
 if (isset($_POST['email_check'])) {
@@ -90,5 +91,30 @@ if (isset($_POST['search'])) {
     exit();
 }
 
+if (isset($_POST['update'])) {
+    $name= $_POST['name'];
+    // $password = $_POST['password'];
+    // $hashpass = md5($password) ;
+    $email = $_POST['email'];
+    $phonenum = $_POST['phonenum'];
+    $address = $_POST['address'];
+    $subdis = $_POST['subdis'];
+    $dis = $_POST['dis'];
+    $provice = $_POST['provice'];
+    $role = 0;
+    if (empty($name) || empty($phonenum) || empty($address) || empty($subdis) || empty($dis) || empty($provice)) {
+        echo 'Empty';      
+        exit();
+    }
+    else {
+        $sql2 = "UPDATE customer
+        SET name = '$name', phone_num = '$phonenum', address = '$address',subdistrict = '$subdis',district = '$dis',provice = '$provice'
+        WHERE cus_email = '$email';";
+        $query = mysqli_query($conn,$sql2);
+        echo 'Saved';
+        exit();
+        
+    }
+}
 
 ?>

@@ -1,6 +1,7 @@
 <?php 
-    require('php/connect.php');
     session_start();
+    require_once('php/connect.php');
+    require_once('php/process.php'); 
 ?>
 
 <!DOCTYPE html>
@@ -36,41 +37,43 @@
             <li><a class="nav-sublink" href="#" onclick="user(transaction)">Transaction</a></li>
             <li><a class="nav-sublink" href="#" onclick="user(receipt)">Receipt</a></li>
         </ul>
-        <p><?php $_SESSION['login']; ?></p>
     </div>
     <div id="info" class="content-main">
     <?php 
-        // $data = $_SESSION["email"];
-        // $sql = "SELECT * FROM customer WHERE email = '$data'";
-        // $result = mysqli_query($conn,$sql);
-        // $row = mysqli_fetch_array($result);
-
+        $data = $_SESSION['email'];
+        $sql = "SELECT * FROM customer WHERE cus_email = '$data'";
+        $result = mysqli_query($conn,$sql);
+        $row = mysqli_fetch_array($result);
     ?>
         <div class="profile" id="profile">
             <h1>Profile</h1>
             <div class="nameblock">
-                <span class="tt">NAME :</span>
-                <label id="cus_name" class="cus_name"><?php echo $row["name"]; ?></label><br>
+                <h5 class="tt">NAME</h5>
+                <p id="cus_name" class="ll"><?php echo $row['name']; ?></p>
             </div>
             <div class="emailblock">
-                <span class="tt">EMAIL :</span>
-                <label id="cus_email" class="cus_email"><?php echo $row['email']; ?></label>
+                <h5 class="tt">EMAIL</h5>
+                <p id="cus_email" class="ll"><?php echo $row['cus_email']; ?></p>
+            </div>
+            <div class="phonenumblock">
+                <h5 class="tt">Phone Number</h5>
+                <p id="cus_phonenum" class="ll"><?php echo $row['phone_num']; ?></p>
             </div>
             <div class="addressblock">
-                <span class="tt">ADDRESS</span>
-                <label id="cus_ad" class="cus_ad"><?php echo $row['address']; ?></label>
+                <h5 class="tt">ADDRESS</h5>
+                <p id="cus_ad" class="cus_ad"><?php echo $row['address']; ?></p>
                 <div class="addressfield">
-                    <div class="subadfield">
-                        <h5 class="adhead">Subdistrict</h5>
-                        <label id="cus_subdis" class="cus_subdis"><?php echo $row['subdistrict']; ?></label>
+                    <div class="col">
+                        <h5>Subdistrict</h5>
+                        <p id="cus_subdis" class="cus_subdis"><?php echo $row['subdistrict']; ?></p>
                     </div>
-                    <div class="subadfield">
-                        <h5 class="adhead">District</h5>
-                        <label id="cus_dis" class="cus_dis"><?php echo $row['district']; ?></label>
+                    <div class="col">
+                        <h5>District</h5>
+                        <p id="cus_dis" class="cus_dis"><?php echo $row['district']; ?></p>
                     </div>
-                    <div class="subadfield">
-                        <h5 class="adhead">Province</h5>
-                        <label id="cus_provice" class="cus_provice"><?php echo $row['provice']; ?></label>
+                    <div class="col">
+                        <h5>Province</h5>
+                        <p id="cus_provice" class="cus_provice"><?php echo $row['provice']; ?></p>
                     </div>
                 </div>
             </div>
@@ -84,50 +87,50 @@
             </div>
         </div>
 
-        <div class="profileconfigure" id="profileconfigure">
-        <h1>Profile / configure</h1>
-        <div class="nameblock">
-        <span class="tt">NAME :</span>
-        <label id="cus_name" class="cus_name"><?php echo $row["name"]; ?></label><br>
-        </div>
-        <div class="emailblock">
-        <span class="tt">EMAIL :</span>
-        <label id="cus_email" class="cus_email"><?php echo $row['email']; ?></label>
-        </div>
-        <div class="addressblock">
-        <span class="tt">ADDRESS</span>
-        <label id="cus_ad" class="cus_ad"><?php echo $row['address']; ?></label>
-        <div class="addressfield">
-            <div class="subadfield">
-            <span class="adhead">Subdistrict</span>
-            <label id="cus_subdis" class="cus_subdis"><?php echo $row['subdistrict']; ?></label>
+     
+        <form class="profileconfigure" id="profileconfigure" method="post" >
+            <h1>Profile / configure</h1>
+            <div class="nameblock">
+                <h5 class="tt">NAME</h5>
+                <input type="text" id="inputName" class="form-control" value="<?php echo $row['name']; ?>">
             </div>
-            <div class="subadfield">
-            <span class="adhead">District</span>
-            <label id="cus_dis" class="cus_dis"><?php echo $row['district']; ?></label>
+            <div class="emailblock">
+                <h5 class="tt">EMAIL</h5>
+                <input type="email" id="sign-up-email" class="form-control" value="<?php echo $row['cus_email']; ?>" disabled>
             </div>
-            <div class="subadfield">
-            <span class="adhead">Province</span>
-            <label id="cus_provice" class="cus_provice"><?php echo $row['provice']; ?></label>
+            <div class="phonenumblock">
+                <h5 class="tt">Phone Number</h5>
+                <input type="text" id="inputphonenum" class="form-control" value="<?php echo $row['phone_num']; ?>">
             </div>
-        </div>
-        </div>
-        <div class="otherblock">
+            <div class="addressblock">
+                <h5 class="tt">ADDRESS</h5>
+                <input type="text" id="inputaddress" class="form-control" value="<?php echo $row['address']; ?>" >
+                <div class="addressfield">
+                    <div class="col">
+                        <h5>Subdistrict</h5>
+                        <input type="text" id="inputsubdis" class="form-control" value="<?php echo $row['subdistrict']; ?>" >
+                    </div>
+                    <div class="col">
+                        <h5>District</h5>
+                        <input type="text" id="inputdis" class="form-control" value="<?php echo $row['district']; ?>" >
+                    </div>
+                    <div class="col">
+                        <h5>Province</h5>
+                        <input type="text" id="inputprovice" class="form-control" value="<?php echo $row['provice']; ?>" >
+                    </div>
+                </div>
+            </div>
+            <div class="otherblock">
 
-        </div>
-        <div class="buttonblock">
-        <button id="adjust-button" class="adjust-button">manage_accounts</button>
-        <button id="del-button" class="del-button" onclick="config()">DELETE</button>
-        <button id="logout-button" class="logout-button">Logout</button>
-        </div>
-        </div>
-
+            </div>
+            <p id="errorinput"></p>       
+            <div class="buttonblock1">
+                <button id="save" class="btn btn-primary" type="button" name="submit" >Confirm</button>
+                <button id="clear" class="btn btn-danger" onclick="cancel()">Cancel</button>
+            </div>
+        </form>
         <div class="warningbar" id="warningbar">
-        <h6 id="warningtext"></h6>
-        </div>
-        <?php
-        // }
-        ?>
+            <h4 class="warningtext" id="warningtext"></h4>
         </div>
     </div>
     <div id="transaction" class="content-main">
@@ -137,6 +140,8 @@
         receipt
     </div>
     <script src="js/user.js"></script>
+    <script src="js/edituserselector.js"></script>
     <?php include 'php/module/footer.html' ?>
 </body>
 </html>
+<?php mysqli_close($conn); ?>
