@@ -1,7 +1,6 @@
 <?php
 require('php/connect.php');
-require('action.php');
-
+session_start();
 
 $sql = 'SELECT * FROM food_menu WHERE food_category = 1;';
 $burgermenu = $conn->query($sql);
@@ -16,10 +15,11 @@ $menuset = $conn->query($sql2);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="css/OurFood.css"> 
-    <title>MC</title>  
+    <link rel="stylesheet" href="css/OurFood.css">
+    <title>MC</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,16 +36,17 @@ $menuset = $conn->query($sql2);
 </head>
 
 <body>
+
     <div class="contain">
         <header id="header">
-            <?php require 'php/module/navbar.html'?>
+            <?php require 'php/module/navbar.html' ?>
         </header>
     </div>
     <div class="content-header">
         <ul class="nav-sub">
-            <li><a class="nav-sublink" href="#"  onclick="cburger()">Burger</a></li>
-            <li><a class="nav-sublink" href="#"  onclick="cset()">Set menu</a></li>
-            <li><a class="nav-sublink" href="#"  onclick="csub()">Other menu</a></li>
+            <li><a class="nav-sublink" href="#" onclick="cburger()">Burger</a></li>
+            <li><a class="nav-sublink" href="#" onclick="cset()">Set menu</a></li>
+            <li><a class="nav-sublink" href="#" onclick="csub()">Other menu</a></li>
         </ul>
     </div>
     <div id="message"></div>
@@ -57,28 +58,27 @@ $menuset = $conn->query($sql2);
             <?php
             while ($row = mysqli_fetch_assoc($burgermenu)) {
 
-                
+
             ?>
-                <div class="ourfood-card">
-                    <div class="pic-container" >
-                        <?php echo '<img class="ourfood-img" src=" '.($row["food_pict"]).'">';?>
+                <form action="manage_cart.php" method="POST">
+                    <div class="ourfood-card">
+                        <div class="pic-container">
+                            <?php echo '<img class="ourfood-img" src=" ' . ($row["food_pict"]) . '">'; ?>
+                        </div>
+                        <div class="text-container">
+                            <h4 class="food-name"><?php echo $row["food_name"]; ?></h4>
+                        </div>
+                        <p class="pricehead">Price</p>
+                        <h5>฿<?php echo number_format($row["food_price"]) ?></h5>
+                        <button type="submit" name="Add_To_Cart" class="btn btn-danger">Order</button>
+                        <input type="hidden" name ="food_id" value = "<?php echo $row['food_id']; ?>" >
+                        <input type="hidden" name ="food_name" value = "<?php echo number_format($row['food_name']); ?>" >
+                        <input type="hidden" name ="food_price" value = "<?php echo $row['food_price']; ?>" >
+                        <input type="hidden" name ="food_pict" value = "<?php echo $row['food_pict']; ?>" >
                     </div>
-                    <div class="text-container">
-                        <h4 class="food-name"><?php echo $row["food_name"]; ?></h4>
-                    </div>
-                    <p class="pricehead" >Price</p>
-                    <h5>฿<?php echo number_format($row["food_price"]) ?></h5>
-                    <form style="display:flex;width:100%;" id="form-submit" class="form-submit" method="post">
-                        <input type="hidden" id="fid" name="fid"  value="<?php $row["food_id"] ?>">
-                        <input type="hidden" id="fname" name="fname" value="<?php $row["food_name"] ?>">
-                        <input type="hidden" id="fprice" name="fprice" value="<?php $row["food_price"] ?>">
-                        <input type="hidden" id="fpict" name="fpict" value="<?php $row["food_pict"] ?>">
-                        <input type="hidden" id="fcategory" name="fcategory" value="<?php $row["food_category"] ?>">
-                        <button class="btn btn-danger" id="order_button" name="enter">Order</button>
-                    </form>
-                </div>
+                </form>
             <?php
-                }
+            }
             ?>
 
         </div>
@@ -94,18 +94,18 @@ $menuset = $conn->query($sql2);
 
             ?>
                 <div class="ourfood-card">
-                    <div class="pic-container" >
-                        <?php echo '<img class="ourfood-img" src=" '.($row["menuset_pict"]).'">';?>
+                    <div class="pic-container">
+                        <?php echo '<img class="ourfood-img" src=" ' . ($row["menuset_pict"]) . '">'; ?>
                     </div>
                     <div class="text-container">
                         <h4 class="food-name"><?php echo $row["menuset_name"]; ?></h4>
                     </div>
-                    <p class="pricehead" >Price</p>
+                    <p class="pricehead">Price</p>
                     <h5>฿<?php echo number_format($row["menuset_price"]) ?></h5>
                     <button class="btn btn-danger">Order</button>
                 </div>
             <?php
-                }
+            }
             ?>
 
         </div>
@@ -121,52 +121,28 @@ $menuset = $conn->query($sql2);
 
             ?>
                 <div class="ourfood-card">
-                    <div class="pic-container" >
-                        <?php echo '<img class="ourfood-img" src=" '.($row["food_pict"]).'">';?>
+                    <div class="pic-container">
+                        <?php echo '<img class="ourfood-img" src=" ' . ($row["food_pict"]) . '">'; ?>
                     </div>
                     <div class="text-container">
                         <h4 class="food-name"><?php echo $row["food_name"]; ?></h4>
                     </div>
-                    <p class="pricehead" >Price</p>
+                    <p class="pricehead">Price</p>
                     <h5>฿<?php echo number_format($row["food_price"]) ?></h5>
                     <button class="btn btn-danger">Order</button>
                 </div>
             <?php
-                }
+            }
             ?>
 
         </div>
     </div>
     <script src="js/foodselector.js"></script>
-    <?php require 'php/module/footer.html'?>
-    <script src="js/cart.js"></script>
-    <!-- <script type="text/javascript">
-        $(document).ready(function(){
-            $("#orderbutton").on("click",function(e){
-                e.preventDefault();
-                var $form = $(this).closest("#form-submit");
-                var fid = $form.find("#fid").val();
-                var fname = $form.find("#fname").val();
-                var fprice = $form.find("#fprice").val();
-                var fpict = $form.find("#fpict").val();
-                var fcategory = $form.find("#fcategory").val();
-
-                $.ajax({
-                    url: "OurFood.php",
-                    method: "post",
-                    data: {'send':1,'fid':fid,'fname':fname,'fprice':fprice,'fpict':fpict,'fcategory':fcategory},
-                    success:function(response){
-                        if (response == "yee") {
-                            alert(gay);
-                        }
-                    }
-                });
-            });
-        });
-    </script> -->
+    <?php require 'php/module/footer.html' ?>
 </body>
+
 </html>
 
 <?php
-    mysqli_close($conn);
+mysqli_close($conn);
 ?>
