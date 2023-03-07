@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 05, 2023 at 12:15 AM
+-- Generation Time: Mar 07, 2023 at 02:38 PM
 -- Server version: 8.0.17
 -- PHP Version: 7.3.10
 
@@ -1073,22 +1073,39 @@ CREATE TABLE `branch` (
   `branch_address` varchar(100) NOT NULL,
   `branch_subdistrict` varchar(100) NOT NULL,
   `branch_district` varchar(100) NOT NULL,
-  `branch_province` varchar(100) NOT NULL
+  `branch_province` varchar(100) NOT NULL,
+  `branch_phone` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `branch`
 --
 
-INSERT INTO `branch` (`branchID`, `branchName`, `branch_address`, `branch_subdistrict`, `branch_district`, `branch_province`) VALUES
-(2, 'Deep Dark Fantasy', '66/78', 'กระทุ่มราย', 'เขตหนองจอก', 'กรุงเทพมหานคร'),
-(3, 'Ohio', '44/2', 'หนองจอก', 'เขตหนองจอก', 'กรุงเทพมหานคร'),
-(4, 'คนรักโดนรังแก', '145/99', 'คู้ฝั่งเหนือ', 'เขตหนองจอก', 'กรุงเทพมหานคร'),
-(5, 'เจ็บใจ', '28/27', 'เสาชิงช้า', 'เขตพระนคร', 'กรุงเทพมหานคร'),
-(6, 'ปวดหัวละ', '124/5', 'ตลาดยอด', 'เขตดุสิต', 'กรุงเทพมหานคร'),
-(7, 'นิทิศ', '56/65', 'บางขุนพรหม', 'เขตดุสิต', 'กรุงเทพมหานคร'),
-(8, 'มหาราชานรก', '2/12', 'ศาลเจ้าพ่อเสือ', 'เขตพระนคร', 'กรุงเทพมหานคร'),
-(9, 'พาไปดูลิง', '70/5', 'ดุสิต', 'เขตดุสิต', 'กรุงเทพมหานคร');
+INSERT INTO `branch` (`branchID`, `branchName`, `branch_address`, `branch_subdistrict`, `branch_district`, `branch_province`, `branch_phone`) VALUES
+(2, 'Deep Dark Fantasy', '66/78', 'กระทุ่มราย', 'เขตหนองจอก', 'กรุงเทพมหานคร', '0805775849'),
+(3, 'Ohio', '44/2', 'หนองจอก', 'เขตหนองจอก', 'กรุงเทพมหานคร', '0805855848'),
+(4, 'คนรักโดนรังแก', '145/99', 'คู้ฝั่งเหนือ', 'เขตหนองจอก', 'กรุงเทพมหานคร', '0955855849'),
+(5, 'เจ็บใจ', '28/27', 'เสาชิงช้า', 'เขตพระนคร', 'กรุงเทพมหานคร', '0805875549'),
+(6, 'ปวดหัวละ', '124/5', 'ตลาดยอด', 'เขตดุสิต', 'กรุงเทพมหานคร', '0658648959'),
+(7, 'นิทิศ', '56/65', 'บางขุนพรหม', 'เขตดุสิต', 'กรุงเทพมหานคร', '0805855849'),
+(8, 'มหาราชานรก', '2/12', 'ศาลเจ้าพ่อเสือ', 'เขตพระนคร', 'กรุงเทพมหานคร', '0805855849');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `cart_id` int(11) NOT NULL,
+  `product_name` varchar(100) NOT NULL,
+  `product_price` float NOT NULL,
+  `product_image` varchar(255) NOT NULL,
+  `qty` int(10) NOT NULL,
+  `total_price` float NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `product_category` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -1124,6 +1141,7 @@ CREATE TABLE `customer` (
   `subdistrict` varchar(20) NOT NULL,
   `district` varchar(20) NOT NULL,
   `provice` varchar(20) NOT NULL,
+  `postal_num` varchar(10) NOT NULL,
   `user_role` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -1131,11 +1149,12 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`cus_email`, `password`, `name`, `phone_num`, `address`, `subdistrict`, `district`, `provice`, `user_role`) VALUES
-('asd@asd.asd', '8b353d5cc07e13577608711f4602fcb7', 'test', '1231231231', '1', '1', '1', '1', 0),
-('thitip2@gmail.com', '8b353d5cc07e13577608711f4602fcb7', 'test2', '1234567890', 'asd', 'asd', 'asd', 'asd', 0),
-('thth@asdasd.com', '8b353d5cc07e13577608711f4602fcb7', 'asdasd', '1234567890', '123', '123', '123', '123', 0),
-('ththt@asdasd.com', '25f9e794323b453885f5181f1b624d0b', 'test1', '1234567890', '111', '11', '11', '11', 0);
+INSERT INTO `customer` (`cus_email`, `password`, `name`, `phone_num`, `address`, `subdistrict`, `district`, `provice`, `postal_num`, `user_role`) VALUES
+('app@gmail.com', '202cb962ac59075b964b07152d234b70', 'de', '0515484586', 'dff', 'dd', 'er', 'yw', '12122', 1),
+('Ode@gmail.com', '202cb962ac59075b964b07152d234b70', 'demi', '0956756318', '55/14', 'ff', 'ww', 'dd', '11501', 0),
+('thitip2@gmail.com', '8b353d5cc07e13577608711f4602fcb7', 'test2', '1234567890', 'asd', 'asd', 'asd', 'asd', '15245', 0),
+('thth@asdasd.com', '8b353d5cc07e13577608711f4602fcb7', 'asdasd', '1234567890', '123', '123', '123', '123', '20155', 0),
+('user@gmail.com', '202cb962ac59075b964b07152d234b70', 'yeeee', '0957578485', 'ราชา', 'ff', 'ww', 'dd', '11358', 0);
 
 -- --------------------------------------------------------
 
@@ -10049,8 +10068,7 @@ INSERT INTO `food_menu` (`food_id`, `food_name`, `food_price`, `food_pict`, `foo
 (1, 'test1', 11, 'https://d1vs91ctevllei.cloudfront.net/images/product/1673445991WOS_600x400-nambang-pork.png', 1, 1),
 (4, 'ss', 22, 'https://d1vs91ctevllei.cloudfront.net/images/product/1673445991WOS_600x400-nambang-pork.png', 1, 1),
 (5, 'Bacon Burger หมา', 165, 'https://d1vs91ctevllei.cloudfront.net/images/product/1657623807WOS-600x400-alc-qpcb.png', 1, 1),
-(6, 'Bacon Burger หมา', 165, 'https://d1vs91ctevllei.cloudfront.net/images/product/1657623807WOS-600x400-alc-qpcb.png', 1, 0),
-(7, 'Bacon Burger หมา', 165, 'https://d1vs91ctevllei.cloudfront.net/images/product/1657623807WOS-600x400-alc-qpcb.png', 1, 0);
+(6, 'Bacon Burger หมา', 165, 'https://d1vs91ctevllei.cloudfront.net/images/product/1657623807WOS-600x400-alc-qpcb.png', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -10263,7 +10281,7 @@ CREATE TABLE `user_role` (
 
 INSERT INTO `user_role` (`role_id`, `role_name`) VALUES
 (0, 'Normal'),
-(1, 'Aodmon');
+(1, 'Admin');
 
 --
 -- Indexes for dumped tables
@@ -10286,6 +10304,12 @@ ALTER TABLE `banner`
 --
 ALTER TABLE `branch`
   ADD PRIMARY KEY (`branchID`);
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`cart_id`);
 
 --
 -- Indexes for table `category`
@@ -10400,6 +10424,12 @@ ALTER TABLE `banner`
 --
 ALTER TABLE `branch`
   MODIFY `branchID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `category`
