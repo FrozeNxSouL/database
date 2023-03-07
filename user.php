@@ -95,9 +95,6 @@
                 <h5>Postal Number</h5>
                 <p id="cus_postal" class="cus_postal"><?php echo $row['postal_num']; ?></p>
             </div>
-            <div class="otherblock">
-
-            </div>
             <div class="buttonblock">
                 <button id="adjust-button" class="adjust-button" onclick="config()">manage_accounts</button>
                 <button id="del-button" class="del-button" onclick="delacc()">DELETE</button>
@@ -139,9 +136,6 @@
                 </div>
                 <h5>Postal Number</h5>
                 <input type="text" id="inputpostal" class="form-control" value="<?php echo $row['postal_num']; ?>" >
-            </div>
-            <div class="otherblock">
-
             </div>
             <p id="errorinput"></p>       
             <div class="buttonblock1">
