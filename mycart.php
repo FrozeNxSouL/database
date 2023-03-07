@@ -29,7 +29,7 @@ session_start();
 <body>
     <div class="contain">
         <header id="header">
-            <?php require 'php/module/navbar.html' ?>
+            <?php require 'php/module/navbar.php' ?>
         </header>
     </div>
     <div class="container">

@@ -62,9 +62,7 @@ $('document').ready(function() {
                     if (response == 'Empty') {
                         $("#errorinput").text("Empty input");
                     } 
-                    else if (response == 'Error') {
-                        $("#errorinput").text("Try again");
-                    } 
+                
                     else if (response == 'Saved') {
                         alert('SAVED');                 
                         window.location.href='user.php';

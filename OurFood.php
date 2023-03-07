@@ -39,7 +39,7 @@ $menuset = $conn->query($sql2);
 
     <div class="contain">
         <header id="header">
-            <?php require 'php/module/navbar.html' ?>
+            <?php require 'php/module/navbar.php' ?>
         </header>
     </div>
     <div class="content-header">

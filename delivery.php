@@ -23,7 +23,7 @@
   <body>
     <div class="contain">
         <header id="header">
-            <?php require 'php/module/navbar.html'?>
+            <?php require 'php/module/navbar.php'?>
         </header>
     </div>
     <div class="content-header">
@@ -74,7 +74,7 @@
                 <div class = "info">
                       <img src = "assets/icon_location_phone.png"class = "iconinfo">
                       <div style = "color :#337ab7">
-                        <?php echo "olo";?>
+                        <?php echo $row['branch_phone'];?>
                       </div>  
                 </div> 
               </div>  

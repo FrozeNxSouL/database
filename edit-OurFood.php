@@ -46,7 +46,7 @@ $all_cate = $conn->query($catesql);
 <body>
     <div class="contain">
         <header id="header">
-            <?php require 'php/module/navbar.html'?>
+            <?php require 'php/module/navbar.php'?>
         </header>
     </div>
 

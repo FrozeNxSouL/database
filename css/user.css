@@ -108,13 +108,15 @@
 }
 
 .warningbar {
-    width: 35vh;
-    background-color: #ffffff;
-    height: 20vh;
-    position: absolute;
-    justify-content: center;
-    align-items: center;
-    display: none;
+    z-index: 200;
+    width: 30%;
+    background-color: wheat;
+    height: 20%;
+    position: relative;
+    transform: translate(50%,50%);
+    margin: auto;
+    display: flex;
+
 }
 
 .warningtext {

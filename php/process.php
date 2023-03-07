@@ -61,8 +61,12 @@ if (isset($_POST['save'])) {
             mysqli_stmt_bind_param($stmt,"ssssssssi",$email,$hashpass,$name, $phonenum,$address,$subdis,$dis,$provice,$role);
             mysqli_stmt_execute($stmt);
             mysqli_stmt_close($stmt);
+            $sql = "SELECT * FROM customer WHERE cus_email = '$email' AND password = '$hashpass' ";
+    $results = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($results);
             echo 'Saved';
             $_SESSION['email'] = $email;
+            $_SESSION['role'] = $row['user_role'];
             exit();
         }
     }
@@ -76,7 +80,9 @@ if (isset($_POST['search'])) {
     $results = mysqli_query($conn, $sql);
     if (mysqli_num_rows($results) > 0) {
         echo 'correct';
+        $row = mysqli_fetch_assoc($results);
         $_SESSION['email'] = $acc;
+        $_SESSION['role'] = $row['user_role'];
     } 
     else {
         $sql1 = "SELECT * FROM customer WHERE cus_email = '$acc'";

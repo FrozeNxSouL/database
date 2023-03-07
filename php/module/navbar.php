@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if (isset($_SESSION['email']) && ($_SESSION['role']==1)) {
+    echo '<script>console.log("wowza");</script>';}
+?>
+
+
 <nav class='navbar navbar-expand-lg bg-body-tertiary'>
     <div class='container-fluid'>
 
@@ -42,4 +49,4 @@
         </div>
     </div>
 </nav>
-    
+   

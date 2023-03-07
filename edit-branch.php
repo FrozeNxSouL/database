@@ -35,7 +35,7 @@
     
     <div class="contain">
         <header id="header">
-            <?php include 'php/module/navbar.html'?>
+            <?php include 'php/module/navbar.php'?>
         </header>
     </div>
 

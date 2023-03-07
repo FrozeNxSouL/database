@@ -2,6 +2,15 @@
     session_start();
     require_once('php/connect.php');
     require_once('php/process.php'); 
+
+    $delete_ID  = $_REQUEST['cus_email'];
+
+    $delsql = '
+    DELETE FROM customer
+    WHERE cus_email = ' . $delete_ID . ';
+    ';
+
+$objQuery = mysqli_query($conn, $delsql);
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +37,7 @@
     
     <div class="contain">
         <header id="header">
-            <?php include 'php/module/navbar.html'?>
+            <?php include 'php/module/navbar.php'?>
         </header>
     </div>
     <div class="content-header">
@@ -81,8 +90,8 @@
 
             </div>
             <div class="buttonblock">
-                <button id="adjust-button" class="adjust-button">manage_accounts</button>
-                <button id="del-button" class="del-button" onclick="config()">DELETE</button>
+                <button id="adjust-button" class="adjust-button" onclick="config()">manage_accounts</button>
+                <button id="del-button" class="del-button" onclick="delacc()">DELETE</button>
                 <button id="logout-button" class="logout-button">Logout</button>
             </div>
         </div>
@@ -125,12 +134,12 @@
             </div>
             <p id="errorinput"></p>       
             <div class="buttonblock1">
-                <button id="save" class="btn btn-primary" type="button" name="submit" >Confirm</button>
-                <button id="clear" class="btn btn-danger" onclick="cancel()">Cancel</button>
+                <a id="save" class="btn btn-primary" type="button" name="submit" >Confirm</a>
+                <a id="clear" class="btn btn-danger" onclick="cancel()">Cancel</a>
             </div>
         </form>
         <div class="warningbar" id="warningbar">
-            <h4 class="warningtext" id="warningtext"></h4>
+            <a class="warningtext" id="warningtext" href="?cus_email=<?php echo $row["cus_email"]; ?>">gay</a>
         </div>
     </div>
     <div id="transaction" class="content-main">
@@ -140,8 +149,10 @@
         receipt
     </div>
     <script src="js/user.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
     <script src="js/edituserselector.js"></script>
     <?php include 'php/module/footer.html' ?>
+    <?php  ?>
 </body>
 </html>
 <?php mysqli_close($conn); ?>
