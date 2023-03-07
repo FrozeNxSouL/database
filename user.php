@@ -174,14 +174,11 @@
                 <h5>Postal Number</h5>
                 <input type="text" id="inputpostal" class="form-control" value="<?php echo $row['postal_num']; ?>" >
             </div>
-            <div class="otherblock">
-
-            </div>
             <p id="errorinput"></p>       
                 <a id="save" class="btn btn-primary" type="button" name="submit" >Confirm</a>
                 <a id="clear" class="btn btn-danger" onclick="cancel()">Cancel</a>
         </form>
-    </div>
+</div>
     <div class="warningbar" id="warningbar">
         <a href="#" class="closebtn" onclick="exit()">close</a>
         <p class="warningtext" id="warningtext" >Are you fuckin' gay?</p>

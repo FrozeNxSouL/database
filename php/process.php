@@ -20,9 +20,9 @@ if (isset($_POST['subdis_check'])) {
     $sql = "SELECT * FROM districts WHERE name_th = '$subdis' ";
     $results = mysqli_query($conn, $sql);
     if (mysqli_num_rows($results) > 0) {
-        echo 'unfound';
-    } else {
         echo 'not_unfound';
+    } else {
+        echo 'unfound';
     }
     exit();
 }
@@ -32,9 +32,9 @@ if (isset($_POST['dis_check'])) {
     $sql = "SELECT * FROM amphures WHERE name_th = '$dis' ";
     $results = mysqli_query($conn, $sql);
     if (mysqli_num_rows($results) > 0) {
-        echo 'unfound';
-    } else {
         echo 'not_unfound';
+    } else {
+        echo 'unfound';
     }
     exit();
 }
@@ -44,9 +44,9 @@ if (isset($_POST['provice_check'])) {
     $sql = "SELECT * FROM provinces WHERE name_th = '$provice' ";
     $results = mysqli_query($conn, $sql);
     if (mysqli_num_rows($results) > 0) {
-        echo 'unfound';
-    } else {
         echo 'not_unfound';
+    } else {
+        echo 'unfound';
     }
     exit();
 }
@@ -62,10 +62,10 @@ if (isset($_POST['postal_check'])) {
             $sql = "SELECT * FROM districts WHERE zip_code = '$postal' ";
             $results = mysqli_query($conn, $sql);
             if (mysqli_num_rows($results) > 0) {
-                echo 'unfound';
+                echo 'not_unfound';
             } 
             else {
-                echo 'not_unfound';
+                echo 'unfound';
             }
             exit();
         }
