@@ -1,6 +1,6 @@
 <?php 
    require('php/connect.php');
-
+   
     // delete function 
     $delete_mail  = $_REQUEST['cus_email'];
 
@@ -62,12 +62,12 @@
                   <td><?php echo $row["phone_num"]; ?></td>
                   <td><?php echo $row["address"]; ?><br><?php echo $row["subdistrict"]; ?> <?php echo $row["district"]; ?> <?php echo $row["provice"]; ?></td>
                   <td><?php echo $row["user_role"]; ?></td>
-                  <td><a class="btn btn-secondary">Edit</a></td>
-                  <td><a class="btn btn-danger" href="?cus_email=<?php echo $row["cus_email"]; ?>">Delete</a></td>
+                  <td><a class="btn btn-secondary" id="edit-btn" href="edit-user-info.php?cus_email=<?php echo $row["cus_email"]; ?>">Edit</a></td>
+                  <td><a class="btn btn-danger" href="?cus_email=<?php echo $row["cus_email"]; ?>" onclick="return confirm('Are you sure ?')">Delete</a></td>
                </tr>
                <?php
                   }
-                  ?>
+               ?>
             </tbody>
          </table>
       </div>
@@ -76,6 +76,24 @@
       <?php include 'php/module/footer.html' ?>
    </body>
 </html>
-<?php 
+<?php
+   if(isset($_POST['save_edit'])) {
+      $edit_food_id = $_POST['edit_food_id']; 
+      $edit_food_name = $_POST['edit_food_name'];
+      $edit_food_category = $_POST['edit_food_category'];
+      $edit_food_pict = $_POST['edit_food_pict'];
+      $edit_food_price = $_POST['edit_food_price'];
+      
+      $sqledit = "
+         UPDATE food_menu
+         SET food_name = '$edit_food_name',  
+         food_price = '$edit_food_price', 
+         food_pict = '$edit_food_pict', 
+         food_category = '$edit_food_category'
+         WHERE food_id = '$edit_food_id' ; ";
+      
+      $queryedit = mysqli_query($conn, $sqledit);
+   }
+
     mysqli_close($conn);
 ?>
