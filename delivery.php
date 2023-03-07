@@ -36,7 +36,7 @@
     <div class = "content-main">
       <div class = "inputlocation">
           <form action = "delivery.php" method="post">
-            <h2>Search Location</h2>
+            <h2 style="font-weight: 500">Search Location</h2>
             <div class="input-group">
               <input class="searchlo" type="text" name="address" placeholder="Search Location">
               <input class="butlo" type="submit" value="CONFIRM DELIVERY LOCATION">
@@ -67,7 +67,7 @@
                       <div>  
                         <?php echo $row['branch_subdistrict'];?> 
                         <?php echo $row['branch_district'];?>  
-                        <?php echo "yee";?>  
+
                         <?php echo $row['branch_province'];?>
                       </div>
                 </div>
@@ -93,8 +93,9 @@
         }
       ?>
       </div>  
-      </div>  
+      </div> 
     </div>
+    
     <?php include 'php/module/footer.html' ?>
   </body>
 </html>

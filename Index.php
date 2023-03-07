@@ -141,8 +141,8 @@ require_once('php/process.php');
             <div class="promo-item">
               <img src=<?php echo $rec['food_pict']; ?> alt="">
               <div class="promo-text">
-                <h5 class="title"><?php echo $rec['food_name']; ?></h5>
-                <h5 class="price"><?php echo $rec['food_price']; ?></h5>
+                <p class="title"><?php echo $rec['food_name']; ?></p>
+                <p class="price"><?php echo $rec['food_price']; ?></p>
               </div>
             </div>
           <?php

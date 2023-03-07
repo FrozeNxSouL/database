@@ -1,3 +1,15 @@
+.head {
+    margin: 0 0 2rem 0;
+}
+.head::before {
+    position: absolute;
+    transform: translateX(-1.5rem);
+    content: "";
+    width: .4rem;
+    height: 3rem;
+    border-radius: 0 1rem 1rem 0;
+    background-color: rgb(255, 198, 0);
+} 
 .content-header {
     min-height: 10vh;
 }
@@ -106,13 +118,21 @@
     border: none;
     border-radius: 0.3vh;
 }
-
+.btn-primary {
+    width: 20%;
+}
+.btn-danger {
+    width: 15%;
+}
+.btn-secondary {
+    width: 15%;
+}
 .warningbar {
     z-index: 200;
-    width: 30%;
-    background-color: wheat;
-    padding: 0 0.5rem 0.5rem 0.5rem;
-    height: 50%;
+    width: 25%;
+    background-color: white;
+    padding: 0 0.5rem 3rem 0.5rem;
+    height: 45%;
     position: fixed;
     top: -30%;
     left: 50%;
@@ -123,6 +143,7 @@
     border-radius: 1rem;
     transition: top .5s ease-in-out;
     visibility: hidden;
+    box-shadow: 10px 10px 20px 5px #0000004e;
 }
 .warningbar-slide {
     visibility: visible;
@@ -140,10 +161,10 @@
 
 .logoutbar {
     z-index: 200;
-    width: 30%;
-    background-color: wheat;
-    padding: 0 0.5rem 0.5rem 0.5rem;
-    height: 50%;
+    width: 25%;
+    background-color: white;
+    padding: 0 0.5rem 3rem 0.5rem;
+    height: 45%;
     position: fixed;
     top: -30%;
     left: 50%;
@@ -154,19 +175,21 @@
     border-radius: 1rem;
     transition: top .5s ease-in-out;
     visibility: hidden;
+    box-shadow: 10px 10px 20px 5px #0000004e;
 }
 .logoutbar-slide {
     visibility: visible;
     top: 50%;
 }
 .warningtext {
-    font-size: 2.5em;
+    font-size: 2em;
     text-align: center;
 }
 .closebtn {
     font-family: 'Material Icons';
     text-align: right;
-    font-size: 3rem;
+    font-size: 2rem;
+    color: #B90017;
 }
 
 .profileconfigure {
@@ -183,4 +206,27 @@
     box-sizing: border-box;
     justify-content: space-between;
     width: 100%;
+}
+.delconfirm {
+    width: 90%;
+    margin: 0 auto;
+    background-color: #B90017;
+    border-radius: .5rem;
+    color: #ffffff;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logoutconfirm {
+    width: 90%;
+    margin: 0 auto;
+    background-color: #B90017;
+    border-radius: .5rem;
+    color: #ffffff;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
 }

@@ -39,19 +39,20 @@ session_start();
                     }
                 ?>
             </ul>
-            <?php 
-                    if (isset($_SESSION['email'])) {
-                        echo '
-                        <a class="navbar-brand" href="user.php">
-                            <span class="material-symbols-outlined" style="line-height: 2rem" id="material-symbols-outlined">person</span>
-                        </a>';
-                    } else {
-                        echo '
-                        <a class="navbar-brand" href="#" onclick="signin()">
-                            <span class="material-symbols-outlined" style="line-height: 2rem" id="material-symbols-outlined">person</span>
-                        </a>';
-                    }
-            ?>
+
+                <?php 
+                        if (isset($_SESSION['email'])) {
+                            echo '
+                            <a class="navbar-brand" href="user.php">
+                                <span class="material-symbols-outlined" style="line-height: 2rem" id="material-symbols-outlined">person</span>
+                            </a>';
+                        } else {
+                            echo '
+                            <a class="navbar-brand" href="#" onclick="signin()">
+                                <span class="material-symbols-outlined" style="line-height: 2rem" id="material-symbols-outlined">person</span>
+                            </a>';
+                        }
+                ?>
 
         </div>
     </div>

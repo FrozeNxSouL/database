@@ -57,7 +57,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-lg-12">
-                <table class="table text-center table-dark table-striped">
+                <table class="table text-center table-striped">
                     <thead>
                         <tr>
                         <th scope="col">Order ID</th>

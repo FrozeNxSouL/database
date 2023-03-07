@@ -61,6 +61,9 @@
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_array($result);
     ?>
+    <div class="head">
+        <h1 style="font-weight: 500">Profile</h1>
+    </div>
     <form method="post" id="profileconfigure">
         <div class="row g-3">
             <div class="col-12">
@@ -189,13 +192,13 @@
     <div class="warningbar" id="warningbar">
         <a href="#" class="closebtn" onclick="exit()">close</a>
         <p class="warningtext" id="warningtext" >Are you fuckin' gay?</p>
-        <a href="?cus_email=<?php echo $row["cus_email"]; ?>" class="btn btn-danger" onclick="delconfirm()">ACCEPT</a>   
+        <a href="?cus_email=<?php echo $row["cus_email"]; ?>" class="delconfirm" onclick="delconfirm()">ACCEPT</a>   
     </div>
 
     <form class="logoutbar" id="logoutbar" method="post">
         <a href="#" class="closebtn" onclick="logoutexit()">close</a>
         <p class="warningtext" id="warningtext" >Logout? Or Gay?</p>
-        <button type="submit" name="logout" class="btn btn-danger">LOG OUT</button>   
+        <button type="submit" name="logout" class="logoutconfirm">LOG OUT</button>   
     </form>
 
     <script src="js/user.js"></script>
