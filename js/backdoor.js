@@ -31,7 +31,6 @@ btn.forEach(element => {
 });
 
 const cancel_edit = document.getElementById('cancel-edit');
-const save_edit = document.getElementById('save-edit');
 
 cancel_edit.addEventListener('click', ()=> {
   food_edit_form.classList.add("hide");
