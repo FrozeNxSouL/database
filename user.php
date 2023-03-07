@@ -143,7 +143,8 @@
                 <a id="clear" class="btn btn-danger" onclick="cancel()">Cancel</a>
             </div>
         </form>
-    </div>
+        
+</div>
     <div class="warningbar" id="warningbar">
         <a href="#" class="closebtn" onclick="exit()">close</a>
         <p class="warningtext" id="warningtext" >Are you fuckin' gay?</p>
