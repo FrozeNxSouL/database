@@ -49,9 +49,9 @@
     </div>
     <div class="content-header">
         <ul class="nav-sub">
-            <li><a class="nav-sublink" href="#" onclick="user(info)">Personal info</a></li>
-            <li><a class="nav-sublink" href="#" onclick="user(transaction)">Transaction</a></li>
-            <li><a class="nav-sublink" href="#" onclick="user(receipt)">Receipt</a></li>
+            <li><a class="nav-sublink" href="#">Personal info</a></li>
+            <li><a class="nav-sublink" href="#">Transaction</a></li>
+            <li><a class="nav-sublink" href="#">Receipt</a></li>
         </ul>
     </div>
     <div id="info" class="content-main">
@@ -61,50 +61,84 @@
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_array($result);
     ?>
-        <div class="profile" id="profile">
-            <h1>Profile</h1>
-            <div class="nameblock">
-                <h5 class="tt">NAME</h5>
-                <p id="cus_name" class="ll"><?php echo $row['name']; ?></p>
+    <form method="post" id="profileconfigure">
+        <div class="row g-3">
+            <div class="col-12">
+                <div class="input-group">
+                    <span class="input-group-text">Email</span>
+                    <input type="email" id="sign-up-email" type="text" class="form-control" value="<?php echo $row['cus_email']; ?>">
+                </div>
             </div>
-            <div class="emailblock">
-                <h5 class="tt">EMAIL</h5>
-                <p id="cus_email" class="ll"><?php echo $row['cus_email']; ?></p>
+            <div class="col-12">
+                <div class="input-group">
+                    <span class="input-group-text">Name</span>
+                    <input id="inputName" type="text" class="form-control" value="<?php echo $row['name']; ?>">
+                </div>
             </div>
-            <div class="phonenumblock">
-                <h5 class="tt">Phone Number</h5>
-                <p id="cus_phonenum" class="ll"><?php echo $row['phone_num']; ?></p>
+            <div class="col-12">
+                <div class="input-group">
+                    <span class="input-group-text">Phone</span>
+                    <input id="inputphonenum" type="text" class="form-control" value="<?php echo $row['phone_num']; ?>">
+                </div>
             </div>
-            <div class="addressblock">
-                <h5 class="tt">ADDRESS</h5>
-                <p id="cus_ad" class="cus_ad"><?php echo $row['address']; ?></p>
-                <div class="addressfield">
-                    <div class="col">
-                        <h5>Subdistrict</h5>
-                        <p id="cus_subdis" class="cus_subdis"><?php echo $row['subdistrict']; ?></p>
-                    </div>
-                    <div class="col">
-                        <h5>District</h5>
-                        <p id="cus_dis" class="cus_dis"><?php echo $row['district']; ?></p>
-                    </div>
-                    <div class="col">
-                        <h5>Province</h5>
-                        <p id="cus_provice" class="cus_provice"><?php echo $row['provice']; ?></p>
+            <div class="col-12">
+                <div class="input-group">
+                    <span class="input-group-text">Address</span>
+                    <input id="inputaddress" type="text" class="form-control" value="<?php echo $row['address']; ?>">
+                </div>
+            </div>
+                <div class="col-4">
+                    <div class="input-group">
+                        <span class="input-group-text">Subdistrict</span>
+                        <select id="inputsubdis" class="form-control">
+                            <?php
+                                $subdistrictsql = "SELECT name_th FROM districts";
+                                $subdistrict = $conn->query($subdistrictsql);
+                                while ($poption = mysqli_fetch_assoc($subdistrict))  {
+                            ?>
+                                <option value="<?php echo $poption['name_th']; ?>"><?php echo $poption['name_th']; ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                 </div>
-                <h5>Postal Number</h5>
-                <p id="cus_postal" class="cus_postal"><?php echo $row['postal_num']; ?></p>
-            </div>
-            <div class="otherblock">
 
-            </div>
-            <div class="buttonblock">
-                <button id="adjust-button" class="adjust-button" onclick="config()">manage_accounts</button>
-                <button id="del-button" class="del-button" onclick="delacc()">DELETE</button>
-                <button id="logout-button" class="logout-button" onclick="logout()">Logout</button>
-            </div>
+                <div class="col-4">
+                    <div class="input-group">
+                        <span class="input-group-text">District</span>
+                        <select id="inputdis" class="form-control">
+                            <?php
+                                $districtsql = "SELECT name_th FROM amphures";
+                                $district = $conn->query($districtsql);
+                                while ($poption = mysqli_fetch_assoc($district))  {
+                            ?>
+                                <option value="<?php echo $poption['name_th']; ?>"><?php echo $poption['name_th']; ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="col-4">
+                    <div class="input-group">
+                        <span class="input-group-text">Province</span>
+                        <select id="inputprovice" class="form-control">
+                            <?php
+                                $provincesql = "SELECT name_th FROM provinces";
+                                $province = $conn->query($provincesql);
+                                while ($poption = mysqli_fetch_assoc($province))  {
+                            ?>
+                                <option value="<?php echo $poption['name_th']; ?>"><?php echo $poption['name_th']; ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12" style="text-align: center;">
+                    <button id="save" class="btn btn-primary" type="submit" name="submit">Save</button>
+                </div>
         </div>
-
+    
+    </form>
+    <button id="del-button" class="btn btn-danger" onclick="delacc()">DELETE</button>
+    <button id="logout-button" class="btn btn-secondary" onclick="logout()">Logout</button>
      
         <form class="profileconfigure" id="profileconfigure" method="post" >
             <h1>Profile / configure</h1>
@@ -144,10 +178,8 @@
 
             </div>
             <p id="errorinput"></p>       
-            <div class="buttonblock1">
                 <a id="save" class="btn btn-primary" type="button" name="submit" >Confirm</a>
                 <a id="clear" class="btn btn-danger" onclick="cancel()">Cancel</a>
-            </div>
         </form>
     </div>
     <div class="warningbar" id="warningbar">
@@ -155,22 +187,17 @@
         <p class="warningtext" id="warningtext" >Are you fuckin' gay?</p>
         <a href="?cus_email=<?php echo $row["cus_email"]; ?>" class="btn btn-danger" onclick="delconfirm()">ACCEPT</a>   
     </div>
+
     <form class="logoutbar" id="logoutbar" method="post">
         <a href="#" class="closebtn" onclick="logoutexit()">close</a>
         <p class="warningtext" id="warningtext" >Logout? Or Gay?</p>
         <button type="submit" name="logout" class="btn btn-danger">LOG OUT</button>   
     </form>
-    <div id="transaction" class="content-main">
-        transaction
-    </div>
-    <div id="receipt" class="content-main">
-        receipt
-    </div>
+
     <script src="js/user.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
     <script src="js/edituserselector.js"></script>
     <?php include 'php/module/footer.html' ?>
-    <?php  ?>
 </body>
 </html>
 <?php mysqli_close($conn); ?>
