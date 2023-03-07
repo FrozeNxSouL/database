@@ -50,7 +50,7 @@
     <div class="content-header">
         <ul class="nav-sub">
             <li><a class="nav-sublink" href="#">Personal info</a></li>
-            <li><a class="nav-sublink" href="#">Transaction</a></li>
+            <li><a class="nav-sublink" href="transaction.php">Transaction</a></li>
             <li><a class="nav-sublink" href="#">Receipt</a></li>
         </ul>
     </div>
