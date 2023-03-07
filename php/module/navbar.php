@@ -1,7 +1,6 @@
+
 <?php 
 session_start();
-if (isset($_SESSION['email']) && ($_SESSION['role']==1)) {
-    echo '<script>console.log("wowza");</script>';}
 ?>
 
 
@@ -28,23 +27,31 @@ if (isset($_SESSION['email']) && ($_SESSION['role']==1)) {
                 <li class='nav-item'>
                     <a class='nav-link' href='delivery.php'>Delivery</a>
                 </li>
-                <li class='nav-item'>
-                    <a class='nav-link' href='user.php'>User</a>
-                </li>
-                <li class='nav-item'>
-                    <a class='nav-link' href='backdoor.php'>Aodmon</a>
-                </li>
+                <?php 
+                    if (isset($_SESSION['email']) && ($_SESSION['role'] == 1)) {
+                        echo '
+                        <li id="backdoor-page" class="nav-item">
+                        <a class="nav-link" href="backdoor.php">Admin</a>
+                        </li>';
+                    }
+                ?>
                 <li class='nav-item'>
                     <a class='nav-link' href='mycart.php'>Cart</a>
                 </li>
             </ul>
-
-            <a class='navbar-brand' href='#'>
-                <div class='circleblock'>
-                    <span class='material-symbols-outlined' style='line-height: 2rem;display: block;' id='material-symbols-outlined' onclick='signin()'>person</span>
-                    <span class='material-symbols-outlined1' style='line-height: 2rem;display: none;' id='material-symbols-outlined1' onclick='login()' >person</span>
-                </div>
-            </a>
+            <?php 
+                    if (isset($_SESSION['email'])) {
+                        echo '
+                        <a class="navbar-brand" href="user.php">
+                            <span class="material-symbols-outlined" style="line-height: 2rem" id="material-symbols-outlined">person</span>
+                        </a>';
+                    } else {
+                        echo '
+                        <a class="navbar-brand" href="#" onclick="signin()">
+                            <span class="material-symbols-outlined" style="line-height: 2rem" id="material-symbols-outlined">person</span>
+                        </a>';
+                    }
+            ?>
 
         </div>
     </div>

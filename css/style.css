@@ -59,6 +59,9 @@ header {
 .nav-link {
     font-weight: 500 !important;
 }
+.nav-admin {
+    display: none !important;
+}
 
 /* sub navbar */
 .nav-sub {

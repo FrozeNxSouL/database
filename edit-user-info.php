@@ -4,7 +4,7 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
 
 <?php
     require('php/connect.php');
-
+    require('php/process.php');
     $get_cus_email = $_REQUEST['cus_email'];
 
     // get edit user info
@@ -74,7 +74,7 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
                     <div class="input-group">
                         <input name="subdistrict" id="edit_cus_subdistrict" type="text" class="form-control" placeholder="Subdistrict" required>
                         <input name="district" id="edit_cus_district" type="text" class="form-control" placeholder="District" required>
-                        <input name="province" id="edit_cus_province" type="text" class="form-control" placeholder="Province" required>
+                        <input name="provice" id="edit_cus_provice" type="text" class="form-control" placeholder="Provice" required>
                         <input id="edit_cus_zip" type="text" class="form-control" placeholder="Zip code" required>
                     </div>
                         
@@ -95,7 +95,7 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
         var input_address = document.getElementById('edit_cus_address');
         var input_subdistrict = document.getElementById('edit_cus_subdistrict');
         var input_district = document.getElementById('edit_cus_district');
-        var input_province = document.getElementById('edit_cus_province');
+        var input_provice = document.getElementById('edit_cus_provice');
         var input_zipcode = document.getElementById('edit_cus_zipcode');
 
         function changeVal() {
@@ -106,7 +106,7 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
             input_address.value = '<?php echo $row['address']; ?>';
             input_subdistrict.value = '<?php echo $row['subdistrict']; ?>';
             input_district.value = '<?php echo $row['district']; ?>';
-            input_province.value = '<?php echo $row['province']; ?>';
+            input_provice.value = '<?php echo $row['provice']; ?>';
         }
         
         input_email.addEventListener('input', ()=> {
@@ -123,23 +123,23 @@ if(isset($_POST['save_edit'])) {
 
     $cus_email    = $_REQUEST['cus_email'];
     $name		  = $_REQUEST['name'];
-    $phone_num 		  = $_REQUEST['phone_num '];
+    $phone_num 		  = $_REQUEST['phone_num'];
     $address		  = $_REQUEST['address'];
     $subdistrict	  = $_REQUEST['subdistrict'];
     $district	  = $_REQUEST['district'];
-    $province	  = $_REQUEST['province'];
+    $provice	  = $_REQUEST['provice'];
     $user_role = $_REQUEST['user_role'];
 
     $sql = "
         UPDATE customer
-        SET name = '" . $name . "',  
-        phone_num = '" . $phone_num . "', 
-        address = '" . $address . "', 
-        subdistrict = '" . $subdistrict . "', 
-        district = '" . $district . "', 
-        province = '" . $province . "' ,
-        user_role = '" . $user_role . "'
-        WHERE cus_email = " . $cus_email . " ; ";
+        SET name = '$name',  
+        phone_num = '$phone_num', 
+        address = '$address', 
+        subdistrict = '$subdistrict', 
+        district = '$district', 
+        provice = '$provice' ,
+        user_role = '$user_role'
+        WHERE cus_email = '$cus_email'  ; ";
     
     $objQuery = mysqli_query($conn, $sql);
 
