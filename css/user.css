@@ -109,26 +109,64 @@
 
 .warningbar {
     z-index: 200;
-    width: 35%;
+    width: 30%;
     background-color: wheat;
+    padding: 0 0.5rem 0.5rem 0.5rem;
     height: 50%;
-    position: absolute;
-    top: -20%;
+    position: fixed;
+    top: -30%;
     left: 50%;
     transform: translate(-50%,-50%);
-    vertical-align: middle;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     border-radius: 1rem;
-    transition: top .35s ease-in-out;
-    display: none;
+    transition: top .5s ease-in-out;
+    visibility: hidden;
 }
 .warningbar-slide {
-    display: block;
+    visibility: visible;
     top: 50%;
-    transform: translate(-50%,-50%);
 }
 .warningtext {
-    font-size: 3em;
+    font-size: 2.5em;
+    text-align: center;
+}
+.closebtn {
+    font-family: 'Material Icons';
+    text-align: right;
+    font-size: 3rem;
+}
+
+.logoutbar {
+    z-index: 200;
+    width: 30%;
+    background-color: wheat;
+    padding: 0 0.5rem 0.5rem 0.5rem;
+    height: 50%;
+    position: fixed;
+    top: -30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 1rem;
+    transition: top .5s ease-in-out;
+    visibility: hidden;
+}
+.logoutbar-slide {
+    visibility: visible;
+    top: 50%;
+}
+.warningtext {
+    font-size: 2.5em;
+    text-align: center;
+}
+.closebtn {
+    font-family: 'Material Icons';
+    text-align: right;
+    font-size: 3rem;
 }
 
 .profileconfigure {

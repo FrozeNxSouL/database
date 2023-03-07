@@ -82,6 +82,11 @@ require_once('php/process.php');
                     <input type="text" class="form-control" id="inputprovice" name="provice">
                   </div> 
                 </div>  
+                  <div class="mb-3">
+                    <label for="sign-up-district" class="form-label">รหัสไปรษณีย์</label>
+                    <input type="text" class="form-control" id="inputpostal" name="postal">
+                  </div> 
+                
                 <p id="errorinput"></p>
                 <button type="button" name="submit" class="btn btn-danger btn-form" id="submitsignin">Sign up</button> 
             </form>

@@ -49,17 +49,111 @@ $('document').ready(function() {
             success: function(response) {
                 if (response == 'taken') {
                     email_state = false;
-                    // $('#email').parent().removeClass();
-                    // $('#email').parent().addClass('form_error');
                     $("#errorinput").text("Sorry... Email already taken");
                 } 
                 else if (response == "not_taken") {
                     email_state = true;
                     $("#errorinput").text('');
-                    // $('#email').parent().removeClass();
-                    // $('#email').parent().addClass('form_success');
-                    // $("#errorinput").text("Email available");
                 }
+            }
+        })
+    });
+
+    $("#inputsubdis").on('blur', function() {
+        var subdis = $("#inputsubdis").val();
+        if (subdis == '') {
+            return;
+        }
+        $.ajax({
+            url: 'index.php',
+            type: 'post',
+            data: {
+                'subdis_check': 1,
+                'subdis': subdis
+            },
+            success: function(response) {
+                if (response == 'unfound') {
+                    $("#errorinput").text("มาจากบ้านไหนนิ");
+                } 
+                else if (response == "not_unfound") {
+                    $("#errorinput").text('');
+                }
+            }
+        })
+    });
+
+    $("#inputdis").on('blur', function() {
+        var dis = $("#inputdis").val();
+        if (dis == '') {
+            return;
+        }
+        $.ajax({
+            url: 'index.php',
+            type: 'post',
+            data: {
+                'dis_check': 1,
+                'dis': dis
+            },
+            success: function(response) {
+                if (response == 'unfound') {
+                    $("#errorinput").text("ข้นไส");
+                } 
+                else if (response == "not_unfound") {
+                    $("#errorinput").text('');
+                }
+            }
+        })
+    });
+
+    $("#inputprovice").on('blur', function() {
+        var provice = $("#inputprovice").val();
+        if (provice == '') {
+            return;
+        }
+        $.ajax({
+            url: 'index.php',
+            type: 'post',
+            data: {
+                'provice_check': 1,
+                'provice': provice
+            },
+            success: function(response) {
+                if (response == 'unfound') {
+                    $("#errorinput").text("มีที่อยู่มั้ยนิ");
+                } 
+                else if (response == "not_unfound") {
+                    $("#errorinput").text('');
+                }
+            }
+        })
+    });
+
+    $("#inputpostal").on('blur', function() {
+        var postal = $("#inputpostal").val();
+        if (postal == '') {
+            return;
+        }
+        $.ajax({
+            url: 'index.php',
+            type: 'post',
+            data: {
+                'postal_check': 1,
+                'postal': postal
+            },
+            success: function(response) {
+                if (response == 'error') {
+                    $("#errorinput").text("ต้องมีเลข 5 ตัวครับ");
+                } 
+                else if (response == "errorletter") {
+                    $("#errorinput").text('รหัสเป็นเลขครับพรี่');
+                }
+                else if (response == "unfound") {
+                    $("#errorinput").text('อยู่ในป่าหรือไงครับ');
+                }
+                else if (response == "not_unfound") {
+                    $("#errorinput").text('');
+                }
+                
             }
         })
     });
@@ -73,6 +167,7 @@ $('document').ready(function() {
         var subdis = $("#inputsubdis").val();
         var dis = $("#inputdis").val();
         var provice = $("#inputprovice").val();
+        var postal = $("#inputpostal").val();
         if (phone_state == false || email_state == false) {
             e.preventDefault();
             $("#errorinput").text("Check your form again!");
@@ -89,7 +184,8 @@ $('document').ready(function() {
                     'address' : address,
                     'subdis' : subdis,
                     'dis' : dis,
-                    'provice' : provice
+                    'provice' : provice,
+                    'postal' : postal
                 },
                 success: function(response) {
                     if (response == 'Empty') {
