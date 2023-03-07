@@ -66,7 +66,7 @@
             <div class="col-12">
                 <div class="input-group">
                     <span class="input-group-text">Email</span>
-                    <input type="email" id="sign-up-email" type="text" class="form-control" value="<?php echo $row['cus_email']; ?>">
+                    <input type="email" id="sign-up-email" type="text" class="form-control" value="<?php echo $row['cus_email']; ?>" disabled>
                 </div>
             </div>
             <div class="col-12">
@@ -131,6 +131,13 @@
                         </select>
                     </div>
                 </div>
+                <div class="col-12">
+                <div class="input-group">
+                    <span class="input-group-text">Postal Number</span>
+                    <input id="inputpostal" type="text" class="form-control" value="<?php echo $row['postal_num']; ?>">
+                </div>
+            </div>
+                <p id="errorinput"></p>    
                 <div class="col-12" style="text-align: center;">
                     <button id="save" class="btn btn-primary" type="submit" name="submit">Save</button>
                 </div>
@@ -140,7 +147,7 @@
     <button id="del-button" class="btn btn-danger" onclick="delacc()">DELETE</button>
     <button id="logout-button" class="btn btn-secondary" onclick="logout()">Logout</button>
      
-        <form class="profileconfigure" id="profileconfigure" method="post" >
+        <!-- <form class="profileconfigure" id="profileconfigure" method="post" >
             <h1>Profile / configure</h1>
             <div class="nameblock">
                 <h5 class="tt">NAME</h5>
@@ -177,7 +184,7 @@
             <p id="errorinput"></p>       
                 <a id="save" class="btn btn-primary" type="button" name="submit" >Confirm</a>
                 <a id="clear" class="btn btn-danger" onclick="cancel()">Cancel</a>
-        </form>
+        </form> -->
 </div>
     <div class="warningbar" id="warningbar">
         <a href="#" class="closebtn" onclick="exit()">close</a>

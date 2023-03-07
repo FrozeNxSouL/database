@@ -1,11 +1,9 @@
 $('document').ready(function() {
 
-    var phone_state = false;
 
     $('#inputphonenum').on('blur', function() {
         var phone = $('#inputphonenum').val();
-        if (phone == '') {
-            phone_state = false;
+        if (phone === '') {
             return;
         }
         $.ajax({
@@ -16,16 +14,13 @@ $('document').ready(function() {
                 'phonenum': phone
             },
             success: function(response) {
-                if (response == 'errorletter') {
-                    phone_state = false;
+                if (response == 'errorletter') {  
                     $("#errorinput").text("เบอร์เป็นเลขครับพรี่");
                 } 
                 else if (response == "error") {
-                    phone_state = false;
                     $("#errorinput").text("10 letter for phone number");
                 }
                 else if (response == "pass") {
-                    phone_state = true;
                     $("#errorinput").text('');
                 }
             }
@@ -129,7 +124,8 @@ $('document').ready(function() {
 
     $("#inputpostal").on('blur', function() {
         var postal = $("#inputpostal").val();
-        if (postal == '') {
+        if (postal === '') {
+
             return;
         }
         $.ajax({
@@ -166,7 +162,7 @@ $('document').ready(function() {
         var dis = $("#inputdis").val();
         var provice = $("#inputprovice").val();
         var postal = $("#inputpostal").val();
-        if (phone_state == false) {
+        if ((name === '') || (address === '') || (phone === '') || (postal === '')) {
             e.preventDefault();
             $("#errorinput").text("Check your form again!");
         } else {
