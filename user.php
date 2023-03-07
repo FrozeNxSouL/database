@@ -3,14 +3,16 @@
     require_once('php/connect.php');
     require_once('php/process.php'); 
 
-    $delete_ID  = $_REQUEST['cus_email'];
-
-    $delsql = '
-    DELETE FROM customer
-    WHERE cus_email = ' . $delete_ID . ';
-    ';
-
-    $objQuery = mysqli_query($conn, $delsql);
+    if (isset($_REQUEST['cus_email'])) {
+        $delete_ID  = $_REQUEST['cus_email'];
+        $delsql = "
+        DELETE FROM customer
+        WHERE cus_email = '$delete_ID';
+        ";
+        $objQuery = mysqli_query($conn, $delsql);
+        session_destroy();
+        header('location: index.php');
+    }
 
     if (isset($_POST['logout'])) {
         session_destroy();
@@ -90,6 +92,8 @@
                         <p id="cus_provice" class="cus_provice"><?php echo $row['provice']; ?></p>
                     </div>
                 </div>
+                <h5>Postal Number</h5>
+                <p id="cus_postal" class="cus_postal"><?php echo $row['postal_num']; ?></p>
             </div>
             <div class="otherblock">
 
@@ -133,6 +137,8 @@
                         <input type="text" id="inputprovice" class="form-control" value="<?php echo $row['provice']; ?>" >
                     </div>
                 </div>
+                <h5>Postal Number</h5>
+                <input type="text" id="inputpostal" class="form-control" value="<?php echo $row['postal_num']; ?>" >
             </div>
             <div class="otherblock">
 
