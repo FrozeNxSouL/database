@@ -52,6 +52,19 @@ include('php/connect.php');
                 }
             }
         }
+        if(isset($_POST['Mod_Quantity']))
+        {
+            foreach($_SESSION['cart'] as $key => $value)
+            {
+                if($value['food_name']==$_POST['food_name'])
+                {
+                    $_SESSION['cart'][$key]['food_quantity']=$_POST['Mod_Quantity'];
+                    echo"<script>
+                        window.location.href='mycart.php';
+                    </script>";
+                }
+            }
+        }
     }
 
 ?>

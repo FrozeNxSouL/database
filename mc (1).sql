@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 07, 2023 at 02:38 PM
+-- Generation Time: Mar 07, 2023 at 06:55 PM
 -- Server version: 8.0.17
 -- PHP Version: 7.3.10
 
@@ -1093,23 +1093,6 @@ INSERT INTO `branch` (`branchID`, `branchName`, `branch_address`, `branch_subdis
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart`
---
-
-CREATE TABLE `cart` (
-  `cart_id` int(11) NOT NULL,
-  `product_name` varchar(100) NOT NULL,
-  `product_price` float NOT NULL,
-  `product_image` varchar(255) NOT NULL,
-  `qty` int(10) NOT NULL,
-  `total_price` float NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `product_category` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `category`
 --
 
@@ -1152,6 +1135,7 @@ CREATE TABLE `customer` (
 INSERT INTO `customer` (`cus_email`, `password`, `name`, `phone_num`, `address`, `subdistrict`, `district`, `provice`, `postal_num`, `user_role`) VALUES
 ('app@gmail.com', '202cb962ac59075b964b07152d234b70', 'de', '0515484586', 'dff', 'dd', 'er', 'yw', '12122', 1),
 ('Ode@gmail.com', '202cb962ac59075b964b07152d234b70', 'demi', '0956756318', '55/14', 'ff', 'ww', 'dd', '11501', 0),
+('root@gmail.com', 'f1368d0dd84c154634ff43c36fc177d2', 'dddd', '0123456789', '123', '1', '2', '3', '11111', 0),
 ('thitip2@gmail.com', '8b353d5cc07e13577608711f4602fcb7', 'test2', '1234567890', 'asd', 'asd', 'asd', 'asd', '15245', 0),
 ('thth@asdasd.com', '8b353d5cc07e13577608711f4602fcb7', 'asdasd', '1234567890', '123', '123', '123', '123', '20155', 0),
 ('user@gmail.com', '202cb962ac59075b964b07152d234b70', 'yeeee', '0957578485', 'ราชา', 'ff', 'ww', 'dd', '11358', 0);
@@ -10107,6 +10091,26 @@ CREATE TABLE `list_set` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `order_manager`
+--
+
+CREATE TABLE `order_manager` (
+  `Order_Id` int(11) NOT NULL,
+  `cus_email` varchar(100) NOT NULL,
+  `Pay_Mode` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `order_manager`
+--
+
+INSERT INTO `order_manager` (`Order_Id`, `cus_email`, `Pay_Mode`) VALUES
+(16, 'root@gmail.com', 'Seggs'),
+(17, 'root@gmail.com', 'COD');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `provinces`
 --
 
@@ -10267,6 +10271,36 @@ CREATE TABLE `topping` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `user_orders`
+--
+
+CREATE TABLE `user_orders` (
+  `Order_Id` int(11) NOT NULL,
+  `food_name` varchar(100) NOT NULL,
+  `food_price` float NOT NULL,
+  `food_quantity` int(100) NOT NULL,
+  `food_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user_orders`
+--
+
+INSERT INTO `user_orders` (`Order_Id`, `food_name`, `food_price`, `food_quantity`, `food_id`) VALUES
+(14, 'Bacon Burger หมา', 165, 1, 5),
+(15, 'test1', 11, 1, 1),
+(15, 'ss', 22, 1, 4),
+(15, 'Bacon Burger หมา', 165, 1, 5),
+(16, 'test1', 11, 1, 1),
+(16, 'ss', 22, 1, 4),
+(16, 'Bacon Burger หมา', 165, 1, 5),
+(17, 'test1', 11, 1, 1),
+(17, 'ss', 22, 1, 4),
+(17, 'Bacon Burger หมา', 165, 1, 5);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user_role`
 --
 
@@ -10304,12 +10338,6 @@ ALTER TABLE `banner`
 --
 ALTER TABLE `branch`
   ADD PRIMARY KEY (`branchID`);
-
---
--- Indexes for table `cart`
---
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`cart_id`);
 
 --
 -- Indexes for table `category`
@@ -10358,6 +10386,12 @@ ALTER TABLE `list_set`
   ADD KEY `food_id` (`food_id`);
 
 --
+-- Indexes for table `order_manager`
+--
+ALTER TABLE `order_manager`
+  ADD PRIMARY KEY (`Order_Id`);
+
+--
 -- Indexes for table `provinces`
 --
 ALTER TABLE `provinces`
@@ -10398,6 +10432,13 @@ ALTER TABLE `topping`
   ADD PRIMARY KEY (`topping_id`);
 
 --
+-- Indexes for table `user_orders`
+--
+ALTER TABLE `user_orders`
+  ADD KEY `food_orderlist` (`food_id`,`food_name`),
+  ADD KEY `order_list_id` (`Order_Id`);
+
+--
 -- Indexes for table `user_role`
 --
 ALTER TABLE `user_role`
@@ -10426,12 +10467,6 @@ ALTER TABLE `branch`
   MODIFY `branchID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `cart`
---
-ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
@@ -10448,6 +10483,12 @@ ALTER TABLE `food_menu`
 --
 ALTER TABLE `geographies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `order_manager`
+--
+ALTER TABLE `order_manager`
+  MODIFY `Order_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `provinces`

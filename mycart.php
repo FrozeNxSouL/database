@@ -61,7 +61,12 @@ session_start();
                                             <td>$value[food_id]</td>
                                             <td>$value[food_name]</td>
                                             <td>$value[food_price]<input type='hidden' class='iprice' value = '$value[food_price]'></td>
-                                            <td><input class='text-center iquantity' onchange='subTotal()' type='number' value = '$value[food_quantity]' min = '1' max='9999'</td>
+                                            <td>
+                                                <form action='manage_cart.php' method='POST'>
+                                                    <input class='text-center iquantity' name = 'Mod_Quantity' onchange='this.form.submit();' type='number' value = '$value[food_quantity]' min = '1' max='9999'>
+                                                    <input type='hidden' name ='food_name' value='$value[food_name]'>
+                                                </form>
+                                            </td>
                                             <td class = 'itotal'></td>
                                             <td>
                                                 <form action='manage_cart.php' method='POST'>
@@ -82,21 +87,66 @@ session_start();
                     <h4>Grand Total:</h4>
                     <h5 class = "text-center" id="gtotal"></h5>
                     <br>
-                    <form>
+                    <?php 
+                        if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0)
+                        {
+                    ?>
+                    <form action ="purchase.php" method="POST">
+                        <?php 
+                            $data = $_SESSION['email'];
+                            $sql = "SELECT * FROM customer WHERE cus_email = '$data'";
+                            $result = mysqli_query($conn,$sql);
+                            $row = mysqli_fetch_array($result);
+                        ?>
+                        <div class="mb-3">
+                            <label>Fullname</label>
+                            <input type="text" value="<?php echo $row['name']; ?>" class="form-control" name="fullname" readonly="readonly">
+                        </div>
+                        <div class="mb-3">
+                            <label>Email</label>
+                            <input type="text" value="<?php echo $row['cus_email']; ?>" class="form-control" name="cus_email" readonly="readonly">
+                        </div>
+                        <div class="mb-3">
+                            <label>Phone Number</label>
+                            <input type="number" value="<?php echo $row['phone_num']; ?>" class="form-control" name="phone_no" readonly="readonly">
+                        </div>
+                        <div class="mb-3">
+                            <label>Address</label>
+                            <input type="text" value="<?php echo $row['address']; ?>" class="form-control" name="address" readonly="readonly">
+                        </div>
+                        <div class="mb-3">
+                            <label>subdistrict</label>
+                            <input type="text" value="<?php echo $row['subdistrict']; ?>" class="form-control" name="subdistrict" readonly="readonly">
+                        </div>
+                        <div class="mb-3">
+                            <label>district</label>
+                            <input type="text" value="<?php echo $row['district']; ?>" class="form-control" name="district" readonly="readonly">
+                        </div>
+                        <div class="mb-3">
+                            <label>province</label>
+                            <input type="text" value="<?php echo $row['provice']; ?>" class="form-control" name="province" readonly="readonly">
+                        </div>
+                        <div class="mb-3">
+                            <label>postal_code</label>
+                            <input type="text" value="<?php echo $row['postal_num']; ?>" class="form-control" name="postal_no" readonly="readonly">
+                        </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <input class="form-check-input" type="radio" name="pay_mode" value = "COD" id="flexRadioDefault1">
                             <label class="form-check-label" for="flexRadioDefault1">
-                                Cash
+                                Cash On Delivery
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                            <input class="form-check-input" type="radio" name="pay_mode" id="flexRadioDefault2" value="Seggs" checked>
                             <label class="form-check-label" for="flexRadioDefault2">
                                 Seggs
                             </label>
                         </div>
-                        <button class ="btn btn-danger">Make Purchase</button>
+                        <button class ="btn btn-danger" name="purchase">Make Purchase</button>
                     </form>
+                    <?php 
+                        }
+                    ?>
                 </div>
             </div>
         </div>
