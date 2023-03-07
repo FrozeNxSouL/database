@@ -92,7 +92,7 @@ $objQuery = mysqli_query($conn, $delsql);
             <div class="buttonblock">
                 <button id="adjust-button" class="adjust-button" onclick="config()">manage_accounts</button>
                 <button id="del-button" class="del-button" onclick="delacc()">DELETE</button>
-                <button id="logout-button" class="logout-button">Logout</button>
+                <button id="logout-button" class="logout-button" onclick="logout()">Logout</button>
             </div>
         </div>
 
@@ -138,10 +138,17 @@ $objQuery = mysqli_query($conn, $delsql);
                 <a id="clear" class="btn btn-danger" onclick="cancel()">Cancel</a>
             </div>
         </form>
-        <div class="warningbar" id="warningbar">
-            <a class="warningtext" id="warningtext" href="?cus_email=<?php echo $row["cus_email"]; ?>">gay</a>
-        </div>
     </div>
+    <div class="warningbar" id="warningbar">
+        <a href="#" class="closebtn" onclick="exit()">close</a>
+        <p class="warningtext" id="warningtext" >Are you fuckin' gay?</p>
+        <a href="?cus_email=<?php echo $row["cus_email"]; ?>" class="btn btn-danger" onclick="delconfirm()">ACCEPT</a>   
+    </div>
+    <form class="logoutbar" id="logoutbar" method="post">
+        <a href="#" class="closebtn" onclick="logoutexit()">close</a>
+        <p class="warningtext" id="warningtext" >Logout? Or Gay?</p>
+        <button type="submit" name="logout" class="btn btn-danger">LOG OUT</button>   
+    </form>
     <div id="transaction" class="content-main">
         transaction
     </div>
