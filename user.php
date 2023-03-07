@@ -10,7 +10,12 @@
     WHERE cus_email = ' . $delete_ID . ';
     ';
 
-$objQuery = mysqli_query($conn, $delsql);
+    $objQuery = mysqli_query($conn, $delsql);
+
+    if (isset($_POST['logout'])) {
+        session_destroy();
+        header('location: index.php');
+    }
 ?>
 
 <!DOCTYPE html>

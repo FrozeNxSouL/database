@@ -15,6 +15,67 @@ if (isset($_POST['email_check'])) {
     exit();
 }
 
+if (isset($_POST['subdis_check'])) {
+    $subdis = $_POST['subdis'];
+    $sql = "SELECT * FROM districts WHERE name_th = '$subdis' ";
+    $results = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($results) > 0) {
+        echo 'unfound';
+    } else {
+        echo 'not_unfound';
+    }
+    exit();
+}
+
+if (isset($_POST['dis_check'])) {
+    $dis = $_POST['dis'];
+    $sql = "SELECT * FROM amphures WHERE name_th = '$dis' ";
+    $results = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($results) > 0) {
+        echo 'unfound';
+    } else {
+        echo 'not_unfound';
+    }
+    exit();
+}
+
+if (isset($_POST['provice_check'])) {
+    $provice = $_POST['provice'];
+    $sql = "SELECT * FROM provinces WHERE name_th = '$provice' ";
+    $results = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($results) > 0) {
+        echo 'unfound';
+    } else {
+        echo 'not_unfound';
+    }
+    exit();
+}
+
+if (isset($_POST['postal_check'])) {
+    $postal = $_POST['postal'];
+    if (strlen($postal)===5) {
+        if (!preg_match("/^[0-9]*$/", $postal)) {
+            echo 'errorletter';
+            exit();
+        }
+        else {
+            $sql = "SELECT * FROM districts WHERE zip_code = '$postal' ";
+            $results = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($results) > 0) {
+                echo 'unfound';
+            } 
+            else {
+                echo 'not_unfound';
+            }
+            exit();
+        }
+    }
+    else {
+        echo 'error';
+        exit();
+    }
+}
+
 if (isset($_POST['phone_check'])) {
     $phonenum = $_POST['phonenum'];
     
@@ -45,24 +106,25 @@ if (isset($_POST['save'])) {
     $subdis = $_POST['subdis'];
     $dis = $_POST['dis'];
     $provice = $_POST['provice'];
+    $postal = $_POST['postal'];
     $role = 0;
-    if (empty($email) || empty($password) || empty($name) || empty($phonenum) || empty($address) || empty($subdis) || empty($dis) || empty($provice)) {
+    if (empty($email) || empty($password) || empty($name) || empty($phonenum) || empty($address) || empty($subdis) || empty($dis) || empty($provice)  || empty($postal) ) {
         echo 'Empty';      
         exit();
     }
     else {
-        $sql = "INSERT INTO customer(cus_email,password,name,phone_num,address,subdistrict,district,provice,user_role) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?,?)";
+        $sql = "INSERT INTO customer(cus_email,password,name,phone_num,address,subdistrict,district,provice,postal_num,user_role) VALUES ( ?,?, ?, ?, ?, ?, ?, ?, ?,?)";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt,$sql)) {
             echo 'Error';
             exit();
         } 
         else {
-            mysqli_stmt_bind_param($stmt,"ssssssssi",$email,$hashpass,$name, $phonenum,$address,$subdis,$dis,$provice,$role);
+            mysqli_stmt_bind_param($stmt,"sssssssssi",$email,$hashpass,$name, $phonenum,$address,$subdis,$dis,$provice,$postal,$role);
             mysqli_stmt_execute($stmt);
             mysqli_stmt_close($stmt);
             $sql = "SELECT * FROM customer WHERE cus_email = '$email' AND password = '$hashpass' ";
-    $results = mysqli_query($conn, $sql);
+            $results = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($results);
             echo 'Saved';
             $_SESSION['email'] = $email;
@@ -107,14 +169,15 @@ if (isset($_POST['update'])) {
     $subdis = $_POST['subdis'];
     $dis = $_POST['dis'];
     $provice = $_POST['provice'];
+    $postal = $_POST['postal'];
     $role = 0;
-    if (empty($name) || empty($phonenum) || empty($address) || empty($subdis) || empty($dis) || empty($provice)) {
+    if (empty($name) || empty($phonenum) || empty($address) || empty($subdis) || empty($dis) || empty($provice) || empty($postal)) {
         echo 'Empty';      
         exit();
     }
     else {
         $sql2 = "UPDATE customer
-        SET name = '$name', phone_num = '$phonenum', address = '$address',subdistrict = '$subdis',district = '$dis',provice = '$provice'
+        SET name = '$name', phone_num = '$phonenum', address = '$address',subdistrict = '$subdis',district = '$dis',provice = '$provice',postal_num = '$postal'
         WHERE cus_email = '$email';";
         $query = mysqli_query($conn,$sql2);
         echo 'Saved';
