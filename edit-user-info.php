@@ -4,7 +4,6 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
 
 <?php
     require('php/connect.php');
-    require('php/process.php');
     $get_cus_email = $_REQUEST['cus_email'];
 
     // get edit user info

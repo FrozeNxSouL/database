@@ -1,13 +1,15 @@
 <?php 
-    require('php/connect.php');
-    $dissql = "SELECT name_th FROM amphures";
-    $disqr = $conn->query($dissql);
+   require('php/connect.php');
+   
+    $delete_id  = $_REQUEST['branchID'];
 
-    $subdissql = "SELECT name_th FROM districts";
-    $subdisqr = $conn->query($subdissql);
+    $delsql = "
+        DELETE FROM branch
+        WHERE branchID = '$delete_id';
+        ";
 
-    $prosql = "SELECT name_th FROM provinces";
-    $proqr = $conn->query($prosql);
+    $delbranchquery = mysqli_query($conn, $delsql);
+
     
 ?>
 
@@ -42,6 +44,51 @@
     <?php include 'php/module/subnav-backdoor.html' ?>
 
     <div class="content-main">
+        <form class="form-edit" method="POST">
+            <div class="row g-3">
+                <div class="col-12">
+                        <input type="text" class="form-control" placeholder="Name" required>
+                </div>
+
+                <div class="col-12">
+                    <div class="input-group">
+                    <select class="form-control" name="branch_subdistrict">
+                            <?php
+                                $subdistrictsql = "SELECT name_th FROM districts";
+                                $subdistrict = $conn->query($subdistrictsql);
+                                while ($poption = mysqli_fetch_assoc($subdistrict))  {
+                            ?>
+                                <option value="<?php echo $poption['name_th']; ?>"><?php echo $poption['name_th']; ?></option>
+                            <?php } ?>
+                        </select>
+
+                        <select class="form-control" name="branch_district">
+                            <?php
+                                $districtsql = "SELECT name_th FROM amphures";
+                                $district = $conn->query($districtsql);
+                                while ($poption = mysqli_fetch_assoc($district))  {
+                            ?>
+                                <option value="<?php echo $poption['name_th']; ?>"><?php echo $poption['name_th']; ?></option>
+                            <?php } ?>
+                        </select>
+                        <select class="form-control" name="branch_province">
+                            <?php
+                                $provincesql = "SELECT name_th FROM provinces";
+                                $province = $conn->query($provincesql);
+                                while ($poption = mysqli_fetch_assoc($province))  {
+                            ?>
+                                <option value="<?php echo $poption['name_th']; ?>"><?php echo $poption['name_th']; ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit" name="add_menu">Add new branch</button>
+                    <button class="btn btn-danger" type="reset">Clear</button>
+                </div>
+            </div>
+        </form>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -62,8 +109,8 @@
             <tr>
                 <td><?php echo $row["branchName"]; ?></td>
                 <td><?php echo $row["branch_address"]; ?><br><?php echo $row["branch_subdistrict"]; ?> <?php echo $row["branch_district"]; ?> <?php echo $row["branch_province"]; ?></td>
-                <td><button class="btn btn-secondary">Edit</button></td>
-                <td><button class="btn btn-danger">Delete</button></td>
+                <td><a class="btn btn-secondary" href="edit-branch-info.php?branchID=<?php echo $row["branchID"]; ?>">Edit</a></td>
+                <td><a class="btn btn-danger" href="?branchID=<?php echo $row["branchID"]; ?>" onclick="return confirm('Are you sure ?')">Delete</a></td>
             </tr>
 
         <?php
@@ -71,78 +118,6 @@
         ?>
         </tbody>
         </table>
-    </div>
-    <div class="insert-container">
-        <div class="insert-form">
-            <form class="insert-inside" method="POST">
-                <h2>INSERT BRANCH</h2>
-                <input type="text" class="form-control" id="inputName" name="name" placeholder="Name" >
-                <input type="text" class="form-control" id="inputaddress" name="address" placeholder="Address" >           
-                <div class="outer">
-                <div class="col">
-                    <input type="text" class="form-control" id="inputsubdis" name="subdis" placeholder="Subdistrict">
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" id="inputdis" name="dis" placeholder="District">
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" id="inputprovice" name="province" placeholder="Province">
-                </div> 
-                </div>  
-                <div class="btn-insertform" >
-                    <button type="submit" name="inserted" class="btn btn-primary">Add Branch</button> 
-                    <button type="reset" class="btn btn-danger">Clear</button>
-                </div>
-            </form>
-        </div>
-
-        <?php
-            if (isset($_POST['inserted'])) {
-                $id = '';
-                $name= $_POST['name'];
-                $address = $_POST['address'];
-                $subdis = $_POST['subdis'];
-                $dis = $_POST['dis'];
-                $province = $_POST['province']; 
-
-                while ($row = mysqli_fetch_assoc($proqr)) {
-                    if ($row['name_th'] != $provice) {
-                        echo "<script type='text/javascript'>alert('wrongp');</script>";
-                        break;
-                    }
-                    else {
-                        while ($row1 = mysqli_fetch_assoc($disqr)) {
-                            if ($row1['name_th'] != $dis) {
-                                echo "<script type='text/javascript'>alert('wrongd');</script>";
-                                break;
-                            }
-                            else {
-                                while ($row2 = mysqli_fetch_assoc($subdisqr)) {
-                                    if ($row2['name_th'] != $subdis) {
-                                        echo "<script type='text/javascript'>alert('wrongs');</script>";
-                                        break;
-                                    }
-                                    else {
-                                        $sqlinsert = "INSERT INTO branch(branchID,branchName,branch_address,branch_subdistrict,branch_district,branch_province) VALUES ( ?, ?, ?, ?, ?, ?)";
-                                        $stmt = mysqli_stmt_init($conn);
-                                        if (!mysqli_stmt_prepare($stmt,$sqlinsert)) {
-                                            echo "<script type='text/javascript'>alert('error');</script>";
-                                        } 
-                                        else {
-                                            mysqli_stmt_bind_param($stmt,"isssss",$id,$name,$address,$subdis,$dis,$province);
-                                            mysqli_stmt_execute($stmt);
-                                            mysqli_stmt_close($stmt);
-                                            echo "<script type='text/javascript'>alert('INSERTED');</script>";
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                }
-            }
-        ?>
     </div>
 </body>
 </html>
