@@ -10,7 +10,27 @@
 
     $delbranchquery = mysqli_query($conn, $delsql);
 
-    
+    if (isset($_POST['add_menu'])) {
+        $branchid = '';
+        $branch_name = $_POST['branch_name'];
+        $branch_address = $_POST['branch_address'];
+        $branch_phone = $_POST['branch_phone'];
+        $branch_subdis = $_POST['branch_subdistrict'];
+        $branch_dis = $_POST['branch_district'];
+        $branch_province = $_POST['branch_province'];
+
+        $insertbsql = "INSERT INTO branch(branchID,branchName,branch_address,branch_subdistrict,branch_district,branch_province,branch_phone) VALUES (?,?, ?, ?, ?, ?, ?)";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt,$insertbsql)) {
+            echo    "<script>alert('Error');</script>";
+            exit();
+        } 
+        else {
+            mysqli_stmt_bind_param($stmt,"issssss",$branchid,$branch_name,$branch_address,$branch_subdis,$branch_dis,$branch_province,$branch_phone);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+        }
+    } 
 ?>
 
 <!DOCTYPE html>
@@ -44,12 +64,17 @@
     <?php include 'php/module/subnav-backdoor.html' ?>
 
     <div class="content-main">
-        <form class="form-edit" method="POST">
+        <form class="form-edit" method="POST" action="edit-branch.php">
             <div class="row g-3">
                 <div class="col-12">
-                        <input type="text" class="form-control" placeholder="Name" required>
+                        <input type="text" class="form-control" name="branch_name" placeholder="Name" required>
                 </div>
-
+                <div class="col-12">
+                        <input type="text" class="form-control" name="branch_address" placeholder="Address" required>
+                </div>
+                <div class="col-12">
+                        <input type="text" class="form-control" name="branch_phone" placeholder="Phone Number" required>
+                </div>
                 <div class="col-12">
                     <div class="input-group">
                     <select class="form-control" name="branch_subdistrict">

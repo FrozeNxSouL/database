@@ -31,7 +31,7 @@ $('document').ready(function() {
             }
         })
     });
-
+    
     $("#sign-up-email").on('blur', function() {
         var email = $("#sign-up-email").val();
         if (email == '') {
