@@ -19,7 +19,7 @@ function delconfirm() {
     window.location.href='index.php';
 }
 function logout() {
-    logoutbar.classList.add('logoutbar');
+    logoutbar.classList.add('logoutbar-slide');
 }
 function logoutexit() {
     logoutbar.classList.remove('logoutbar-slide');
