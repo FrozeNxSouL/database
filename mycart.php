@@ -32,7 +32,10 @@ session_start();
             <?php require 'php/module/navbar.php' ?>
         </header>
     </div>
-    <div class="container">
+    <div class="content-header">
+        
+    </div>
+    <div class="content-main">
         <div class="row">
             <div class="col-lg-12 text-center border rounded bg-light my-5">
                 <br></br>
@@ -174,5 +177,7 @@ session_start();
     subTotal();
 
 </script>
+<?php include 'php/module/footer.html' ?>
+
 </body>
 </html>

@@ -27,6 +27,9 @@ session_start();
                 <li class='nav-item'>
                     <a class='nav-link' href='delivery.php'>Delivery</a>
                 </li>
+                <li class='nav-item'>
+                    <a class='nav-link' href='mycart.php'>Cart</a>
+                </li>
                 <?php 
                     if (isset($_SESSION['email']) && ($_SESSION['role'] == 1)) {
                         echo '
@@ -35,9 +38,6 @@ session_start();
                         </li>';
                     }
                 ?>
-                <li class='nav-item'>
-                    <a class='nav-link' href='mycart.php'>Cart</a>
-                </li>
             </ul>
             <?php 
                     if (isset($_SESSION['email'])) {
