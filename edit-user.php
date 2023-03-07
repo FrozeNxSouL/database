@@ -4,10 +4,10 @@
     // delete function 
     $delete_mail  = $_REQUEST['cus_email'];
 
-    $delmailsql = '
+    $delmailsql = "
         DELETE FROM customer
-        WHERE cus_email = ' . $delete_mail . ';
-        ';
+        WHERE cus_email = '$delete_mail';
+        ";
 
     $delmailquery = mysqli_query($conn, $delmailsql);
 
