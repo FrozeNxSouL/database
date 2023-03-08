@@ -34,7 +34,7 @@ session_start();
                     if (isset($_SESSION['email']) && ($_SESSION['role'] == 1)) {
                         echo '
                         <li id="backdoor-page" class="nav-item">
-                        <a class="nav-link" href="backdoor.php">Admin</a>
+                        <a class="nav-link" href="edit-user.php">Admin</a>
                         </li>';
                     }
                 ?>

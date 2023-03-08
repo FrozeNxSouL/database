@@ -52,8 +52,13 @@
             </thead>
             <tbody>
                <?php
-                  $sql = "SELECT * FROM customer";
-                  $result = mysqli_query($conn,$sql);
+                  // $sql = "SELECT * FROM customer";
+                  // $result = mysqli_query($conn,$sql);
+                  $sql="SELECT *
+                  FROM customer
+                  JOIN user_role
+                  ON customer.user_role = user_role.role_id";
+                  $result=mysqli_query($conn,$sql);
                   while  ($row = mysqli_fetch_assoc($result)) {
                   ?>
                <tr>
@@ -61,7 +66,7 @@
                   <td><?php echo $row["name"]; ?></td>
                   <td><?php echo $row["phone_num"]; ?></td>
                   <td><?php echo $row["address"]; ?><br><?php echo $row["subdistrict"]; ?> <?php echo $row["district"]; ?> <?php echo $row["provice"]; ?></td>
-                  <td><?php echo $row["user_role"]; ?></td>
+                  <td><?php echo $row["role_name"]; ?></td>
                   <td><a class="btn btn-secondary" id="edit-btn" href="edit-user-info.php?cus_email=<?php echo $row["cus_email"]; ?>">Edit</a></td>
                   <td><a class="btn btn-danger" href="?cus_email=<?php echo $row["cus_email"]; ?>" onclick="return confirm('Are you sure ?')">Delete</a></td>
                </tr>

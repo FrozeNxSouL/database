@@ -21,6 +21,37 @@ $all_food = $conn->query($sql);
 $catesql = 'SELECT * FROM category;';
 $all_cate = $conn->query($catesql);
 
+if(isset($_POST['add_menu']))
+{
+    $food_pict = $_POST['food_pict'];
+    $food_name = $_POST['food_name'];
+    $food_price = $_POST['food_price'];
+    $food_category = $_POST['food_category'];
+
+    $query = "INSERT INTO `food_menu`(`food_pict`,`food_name`,`food_price`,`food_category`) VALUES ('$food_pict','$food_name','$food_price', '$food_category')";
+    $query_run = mysqli_query($conn,$query);
+    header('location: edit-OurFood.php');
+    
+}
+if(isset($_POST['save_edit'])) {
+    $edit_food_id = $_POST['edit_food_id']; 
+    $edit_food_name = $_POST['edit_food_name'];
+    $edit_food_category = $_POST['edit_food_category'];
+    $edit_food_pict = $_POST['edit_food_pict'];
+    $edit_food_price = $_POST['edit_food_price'];
+    
+    $sqledit = "
+        UPDATE food_menu
+        SET food_name = '$edit_food_name',  
+        food_price = '$edit_food_price', 
+        food_pict = '$edit_food_pict', 
+        food_category = '$edit_food_category'
+        WHERE food_id = '$edit_food_id' ; ";
+    
+    $queryedit = mysqli_query($conn, $sqledit);
+    header('location: edit-OurFood.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -159,33 +190,6 @@ $all_cate = $conn->query($catesql);
 
 <?php
 
-if(isset($_POST['add_menu']))
-{
-    $food_pict = $_POST['food_pict'];
-    $food_name = $_POST['food_name'];
-    $food_price = $_POST['food_price'];
-    $food_category = $_POST['food_category'];
 
-    $query = "INSERT INTO `food_menu`(`food_pict`,`food_name`,`food_price`,`food_category`) VALUES ('$food_pict','$food_name','$food_price', '$food_category')";
-    $query_run = mysqli_query($conn,$query);
-    
-}
-if(isset($_POST['save_edit'])) {
-    $edit_food_id = $_POST['edit_food_id']; 
-    $edit_food_name = $_POST['edit_food_name'];
-    $edit_food_category = $_POST['edit_food_category'];
-    $edit_food_pict = $_POST['edit_food_pict'];
-    $edit_food_price = $_POST['edit_food_price'];
-    
-    $sqledit = "
-        UPDATE food_menu
-        SET food_name = '$edit_food_name',  
-        food_price = '$edit_food_price', 
-        food_pict = '$edit_food_pict', 
-        food_category = '$edit_food_category'
-        WHERE food_id = '$edit_food_id' ; ";
-    
-    $queryedit = mysqli_query($conn, $sqledit);
-}
     mysqli_close($conn);
 ?>

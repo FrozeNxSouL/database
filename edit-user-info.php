@@ -1,6 +1,3 @@
-<?php /* *** No Copyright for Education (Free to Use and Edit) *** * /
-PHP 7.1.1 | MySQL 5.7.17 | phpMyAdmin 4.6.6 | by appserv-win32-8.6.0.exe
-Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
 
 <?php
     require('php/connect.php');
@@ -10,7 +7,33 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
     $usersql = "SELECT * FROM customer WHERE cus_email = '$get_cus_email' ;";
 
     $objQuery = mysqli_query($conn, $usersql) or die("Error Query [" . $sql . "]");
-    $row = mysqli_fetch_array($objQuery)
+    $row = mysqli_fetch_assoc($objQuery);
+
+    if(isset($_POST['save_edit'])) {
+
+        $cus_email    = $_POST['cus_email'];
+        $name		  = $_POST['name'];
+        $phone_num 		  = $_POST['phone_num'];
+        $address		  = $_POST['address'];
+        $subdistrict	  = $_POST['subdistrict'];
+        $district	  = $_POST['district'];
+        $provice	  = $_POST['provice'];
+        $user_role = $_POST['user_role'];
+    
+        $sql2 = "
+            UPDATE customer
+            SET name = '$name',  
+            phone_num = '$phone_num', 
+            address = '$address', 
+            subdistrict = '$subdistrict', 
+            district = '$district', 
+            provice = '$provice' ,
+            user_role = '$user_role'
+            WHERE cus_email = '$cus_email' ";
+        
+        $objQuery = mysqli_query($conn, $sql2);
+        header('location: edit-user.php');
+    }
 
 ?>
 <!DOCTYPE html>
@@ -48,7 +71,7 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
                     </div>
                 </div>
                 <div class="col-2">
-                    <select id="edit_cus_role" class="form-control">
+                    <select id="edit_cus_role" class="form-control" name="user_role">
                         <option value="0">User</option>
                         <option value="1">Admin</option>
                     </select>
@@ -73,8 +96,8 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
                     <div class="input-group">
                         <input name="subdistrict" id="edit_cus_subdistrict" type="text" class="form-control" placeholder="Subdistrict" required>
                         <input name="district" id="edit_cus_district" type="text" class="form-control" placeholder="District" required>
-                        <input name="provice" id="edit_cus_provice" type="text" class="form-control" placeholder="Provice" required>
-                        <input id="edit_cus_zip" type="text" class="form-control" placeholder="Zip code" required>
+                        <input name="provice" id="edit_cus_provice" type="text" class="form-control" placeholder="Province" required>
+                        <input id="edit_cus_zip" type="text" class="form-control" placeholder="Postal Code" required>
                     </div>
                         
                 </div>
@@ -95,7 +118,7 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
         var input_subdistrict = document.getElementById('edit_cus_subdistrict');
         var input_district = document.getElementById('edit_cus_district');
         var input_provice = document.getElementById('edit_cus_provice');
-        var input_zipcode = document.getElementById('edit_cus_zipcode');
+        var input_zipcode = document.getElementById('edit_cus_zip');
 
         function changeVal() {
 
@@ -118,30 +141,5 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
 </html>
 <?php
 
-if(isset($_POST['save_edit'])) {
-
-    $cus_email    = $_REQUEST['cus_email'];
-    $name		  = $_REQUEST['name'];
-    $phone_num 		  = $_REQUEST['phone_num'];
-    $address		  = $_REQUEST['address'];
-    $subdistrict	  = $_REQUEST['subdistrict'];
-    $district	  = $_REQUEST['district'];
-    $provice	  = $_REQUEST['provice'];
-    $user_role = $_REQUEST['user_role'];
-
-    $sql = "
-        UPDATE customer
-        SET name = '$name',  
-        phone_num = '$phone_num', 
-        address = '$address', 
-        subdistrict = '$subdistrict', 
-        district = '$district', 
-        provice = '$provice' ,
-        user_role = '$user_role'
-        WHERE cus_email = '$cus_email'  ; ";
-    
-    $objQuery = mysqli_query($conn, $sql);
-
-}
     mysqli_close($conn);
 ?>
