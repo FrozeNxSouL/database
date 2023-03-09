@@ -69,7 +69,7 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
                     <div class="input-group">
                         <select class="form-control" name="branch_subdistrict" id="edit_branch_subdistrict">
                             <?php
-                                $subdistrictsql = "SELECT name_th FROM districts";
+                                $subdistrictsql = "SELECT name_th FROM districts WHERE name_th NOT LIKE '%*%'";
                                 $subdistrict = $conn->query($subdistrictsql);
                                 while ($poption = mysqli_fetch_assoc($subdistrict))  {
                             ?>
@@ -79,7 +79,7 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
 
                         <select class="form-control" name="branch_district" id="edit_branch_district">
                             <?php
-                                $districtsql = "SELECT name_th FROM amphures";
+                                $districtsql = "SELECT name_th FROM amphures WHERE name_th NOT LIKE '%*%'";
                                 $district = $conn->query($districtsql);
                                 while ($poption = mysqli_fetch_assoc($district))  {
                             ?>

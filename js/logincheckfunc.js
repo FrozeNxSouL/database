@@ -4,7 +4,7 @@ $('document').ready(function() {
         var email = $("#exampleInputEmail1").val();
         if (email == '') {
             e.preventDefault();
-            $("#errorinput1").text('maybe you got the wrong door');
+            $("#errorinput1").text('Input your email');
 
             return;
         }
@@ -22,7 +22,7 @@ $('document').ready(function() {
                     $("#errorinput1").text('');
                 } 
                 else if (response == "not_taken") {
-                    $("#errorinput1").text('maybe you got the wrong door');
+                    $("#errorinput1").text('Email Not Found');
                     // $('#email').parent().removeClass();
                     // $('#email').parent().addClass('form_success');
                     // $("#errorinput").text("Email available");
@@ -50,7 +50,7 @@ $('document').ready(function() {
                 },
                 success: function(response) {
                     if (response == 'noacc') {
-                        $("#errorinput1").text("check your email!");
+                        $("#errorinput1").text("Check your email!");
                     } 
                     else if (response == 'wrongpw') {
                         $("#errorinput1").text("Wrong password!");

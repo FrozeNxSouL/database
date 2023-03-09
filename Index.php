@@ -25,21 +25,7 @@ require_once('php/process.php');
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 </head>
 <body>
-    <!-- <?php
-      // if (isset($_SESSION['login'])) {
-    ?>
-        <header id="header"></header>
-        <script src="js/headerlogin.js"></script>
-    <?php
-      // }
-      // else {
-    ?>
-        <header id="header"></header>
-        <script src="js/header.js"></script>
 
-      <?php  
-      // } 
-      ?> -->
       <div class="contain">
           <header id="header">
               <?php require 'php/module/navbar.php'?>
@@ -71,22 +57,57 @@ require_once('php/process.php');
                 <div class="outer">
                   <div class="col">
                     <label for="sign-up-subdistrict" class="form-label">ตำบล</label>
-                    <input type="text" class="form-control" id="inputsubdis" name="subdis">
+                    <input list="listsubdis" class="form-control" id="inputsubdis" >
+                    <datalist id="listsubdis">
+                          <?php
+                              $subdistrictsql = "SELECT name_th FROM districts WHERE name_th NOT LIKE '%*%'";
+                              $subdistrict = $conn->query($subdistrictsql);
+                              while ($poption = mysqli_fetch_assoc($subdistrict))  {
+                          ?>
+                              <option value="<?php echo $poption['name_th']; ?>"><?php echo $poption['name_th']; ?></option>
+                          <?php } ?>
+                    </datalist>
                   </div>
                   <div class="col">
                     <label for="sign-up-district" class="form-label">อำเภอ</label>
-                    <input type="text" class="form-control" id="inputdis" name="dis">
+                    <input list="listdis" class="form-control" id="inputdis" >
+                    <datalist  id="listdis">
+                          <?php
+                              $districtsql = "SELECT name_th FROM amphures WHERE name_th NOT LIKE '%*%'";
+                              $district = $conn->query($districtsql);
+                              while ($poption = mysqli_fetch_assoc($district))  {
+                          ?>
+                              <option value="<?php echo $poption['name_th']; ?>"><?php echo $poption['name_th']; ?></option>
+                          <?php } ?>
+                    </datalist>
                   </div>
                   <div class="col">
                     <label for="sign-up-district" class="form-label">จังหวัด</label>
-                    <input type="text" class="form-control" id="inputprovice" name="provice">
+                    <input list="listprovice" class="form-control" id="inputprovice" >
+                      <datalist id="listprovice">
+                              <?php
+                                  $provincesql = "SELECT name_th FROM provinces";
+                                  $province = $conn->query($provincesql);
+                                  while ($poption = mysqli_fetch_assoc($province))  {
+                              ?>
+                                  <option value="<?php echo $poption['name_th']; ?>"><?php echo $poption['name_th']; ?></option>
+                              <?php } ?>
+                      </datalist>
                   </div> 
                 </div>  
                   <div class="mb-3">
                     <label for="sign-up-district" class="form-label">รหัสไปรษณีย์</label>
-                    <input type="text" class="form-control" id="inputpostal" name="postal">
-                  </div> 
-                
+                    <input list="listpostal" class="form-control" id="inputpostal">
+                    <datalist id="listpostal">
+                              <?php
+                                  $postsql = "SELECT zip_code FROM districts WHERE zip_code != 0";
+                                  $postqr = $conn->query($postsql);
+                                  while ($poption = mysqli_fetch_assoc($postqr))  {
+                              ?>
+                                  <option value="<?php echo $poption['zip_code']; ?>"><?php echo $poption['zip_code']; ?></option>
+                              <?php } ?>
+                      </datalist>
+                  </div>  
                 <p id="errorinput"></p>
                 <button type="button" name="submit" class="btn btn-danger btn-form" id="submitsignin">Sign up</button> 
             </form>
@@ -139,7 +160,9 @@ require_once('php/process.php');
             while ($rec = mysqli_fetch_array($recresult)) {
           ?>
             <div class="promo-item">
-              <img src=<?php echo $rec['food_pict']; ?> alt="">
+              <div class="promo-pict">
+                <img src=<?php echo $rec['food_pict']; ?> alt="">
+              </div>
               <div class="promo-text">
                 <p class="title"><?php echo $rec['food_name']; ?></p>
                 <p class="price"><?php echo $rec['food_price']; ?></p>

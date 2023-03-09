@@ -93,45 +93,48 @@
                 <div class="col-4">
                     <div class="input-group">
                         <span class="input-group-text">Subdistrict</span>
-                        <select id="inputsubdis" class="form-control">
+                        <input list="listsubdis" class="form-control" id="inputsubdis" value="<?php echo $row['subdistrict']; ?>">
+                        <datalist id="listsubdis">
                             <?php
-                                $subdistrictsql = "SELECT name_th FROM districts";
+                                $subdistrictsql = "SELECT name_th FROM districts WHERE name_th NOT LIKE '%*%'";
                                 $subdistrict = $conn->query($subdistrictsql);
                                 while ($poption = mysqli_fetch_assoc($subdistrict))  {
                             ?>
                                 <option value="<?php echo $poption['name_th']; ?>"><?php echo $poption['name_th']; ?></option>
                             <?php } ?>
-                        </select>
+                        </datalist>
                     </div>
                 </div>
 
                 <div class="col-4">
                     <div class="input-group">
                         <span class="input-group-text">District</span>
-                        <select id="inputdis" class="form-control">
-                            <?php
-                                $districtsql = "SELECT name_th FROM amphures";
-                                $district = $conn->query($districtsql);
-                                while ($poption = mysqli_fetch_assoc($district))  {
-                            ?>
-                                <option value="<?php echo $poption['name_th']; ?>"><?php echo $poption['name_th']; ?></option>
-                            <?php } ?>
-                        </select>
+                        <input list="listdis" class="form-control" id="inputdis" value="<?php echo $row['district']; ?>">
+                        <datalist  id="listdis">
+                                <?php
+                                    $districtsql = "SELECT name_th FROM amphures WHERE name_th NOT LIKE '%*%'";
+                                    $district = $conn->query($districtsql);
+                                    while ($poption = mysqli_fetch_assoc($district))  {
+                                ?>
+                                    <option value="<?php echo $poption['name_th']; ?>"><?php echo $poption['name_th']; ?></option>
+                                <?php } ?>
+                        </datalist>
                     </div>
                 </div>
                 
                 <div class="col-4">
                     <div class="input-group">
                         <span class="input-group-text">Province</span>
-                        <select id="inputprovice" class="form-control">
-                            <?php
-                                $provincesql = "SELECT name_th FROM provinces";
-                                $province = $conn->query($provincesql);
-                                while ($poption = mysqli_fetch_assoc($province))  {
-                            ?>
-                                <option value="<?php echo $poption['name_th']; ?>"><?php echo $poption['name_th']; ?></option>
-                            <?php } ?>
-                        </select>
+                        <input list="listprovice" class="form-control" id="inputprovice" value="<?php echo $row['provice']; ?>">
+                        <datalist id="listprovice">
+                              <?php
+                                  $provincesql = "SELECT name_th FROM provinces";
+                                  $province = $conn->query($provincesql);
+                                  while ($poption = mysqli_fetch_assoc($province))  {
+                              ?>
+                                  <option value="<?php echo $poption['name_th']; ?>"><?php echo $poption['name_th']; ?></option>
+                              <?php } ?>
+                        </datalist>
                     </div>
                 </div>
                 <div class="col-12">
