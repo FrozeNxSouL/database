@@ -51,7 +51,7 @@
         <ul class="nav-sub">
             <li><a class="nav-sublink" href="user.php">Personal info</a></li>
             <li><a class="nav-sublink" href="transaction.php">Transaction</a></li>
-            <li><a class="nav-sublink" href="#">Receipt</a></li>
+            <!-- <li><a class="nav-sublink" href="#">Receipt</a></li> -->
         </ul>
     </div>
     <div class="container mt-5">

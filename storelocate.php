@@ -58,10 +58,10 @@
                     $slpro = $_POST['select-province'];
                     $search = $_POST['search'];
                     if ($search == '') {
-                        $storesql = "SELECT * FROM branch WHERE branch_province = '$slpro'";
+                        $storesql = "SELECT * FROM branch WHERE branch_province LIKE '%$slpro%'";
                     }
                     else {
-                        $storesql = "SELECT * FROM branch WHERE branch_province = '$slpro' AND (branchName = '$search' OR branch_subdistrict = '$search' OR branch_district = '$search') ";
+                        $storesql = "SELECT * FROM branch WHERE branch_province LIKE '%$slpro%' AND (branchName LIKE '%$search%' OR branch_subdistrict LIKE '%$search%' OR branch_district LIKE '%$search%') ";
                     }    
                 }
                 $qr = $conn->query($storesql);

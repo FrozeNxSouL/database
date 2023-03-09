@@ -15,7 +15,7 @@ $('document').ready(function() {
             },
             success: function(response) {
                 if (response == 'errorletter') {  
-                    $("#errorinput").text("เบอร์เป็นเลขครับพรี่");
+                    $("#errorinput").text("Phone number is Number");
                 } 
                 else if (response == "error") {
                     $("#errorinput").text("10 letter for phone number");
@@ -67,7 +67,7 @@ $('document').ready(function() {
             },
             success: function(response) {
                 if (response == 'unfound') {
-                    $("#errorinput").text("มาจากบ้านไหนนิ");
+                    $("#errorinput").text("Not found");
                 } 
                 else if (response == "not_unfound") {
                     $("#errorinput").text('');
@@ -90,7 +90,7 @@ $('document').ready(function() {
             },
             success: function(response) {
                 if (response == 'unfound') {
-                    $("#errorinput").text("ข้นไส");
+                    $("#errorinput").text("Not found");
                 } 
                 else if (response == "not_unfound") {
                     $("#errorinput").text('');
@@ -113,7 +113,7 @@ $('document').ready(function() {
             },
             success: function(response) {
                 if (response == 'unfound') {
-                    $("#errorinput").text("มีที่อยู่มั้ยนิ");
+                    $("#errorinput").text("Not found");
                 } 
                 else if (response == "not_unfound") {
                     $("#errorinput").text('');
@@ -137,13 +137,13 @@ $('document').ready(function() {
             },
             success: function(response) {
                 if (response == 'error') {
-                    $("#errorinput").text("ต้องมีเลข 5 ตัวครับ");
+                    $("#errorinput").text("5 Number for Postal Number");
                 } 
                 else if (response == "errorletter") {
-                    $("#errorinput").text('รหัสเป็นเลขครับพรี่');
+                    $("#errorinput").text('Postal Number is Number');
                 }
                 else if (response == "unfound") {
-                    $("#errorinput").text('อยู่ในป่าหรือไงครับ');
+                    $("#errorinput").text('Not found');
                 }
                 else if (response == "not_unfound") {
                     $("#errorinput").text('');

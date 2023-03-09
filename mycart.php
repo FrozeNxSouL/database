@@ -139,9 +139,9 @@ session_start();
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="pay_mode" id="flexRadioDefault2" value="Seggs" checked>
+                            <input class="form-check-input" type="radio" name="pay_mode" id="flexRadioDefault2" value="OPM" checked>
                             <label class="form-check-label" for="flexRadioDefault2">
-                                Seggs
+                                Online Payment
                             </label>
                         </div>
                         <button class ="btn btn-danger" name="purchase">Make Purchase</button>

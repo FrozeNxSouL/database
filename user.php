@@ -51,7 +51,7 @@
         <ul class="nav-sub">
             <li><a class="nav-sublink" href="#">Personal info</a></li>
             <li><a class="nav-sublink" href="transaction.php">Transaction</a></li>
-            <li><a class="nav-sublink" href="#">Receipt</a></li>
+            <!-- <li><a class="nav-sublink" href="#">Receipt</a></li> -->
         </ul>
     </div>
     <div id="info" class="content-main">
@@ -191,13 +191,13 @@
 </div>
     <div class="warningbar" id="warningbar">
         <a href="#" class="closebtn" onclick="exit()">close</a>
-        <p class="warningtext" id="warningtext" >Are you fuckin' gay?</p>
+        <p class="warningtext" id="warningtext" >Delete Account?</p>
         <a href="?cus_email=<?php echo $row["cus_email"]; ?>" class="delconfirm" onclick="delconfirm()">ACCEPT</a>   
     </div>
 
     <form class="logoutbar" id="logoutbar" method="post">
         <a href="#" class="closebtn" onclick="logoutexit()">close</a>
-        <p class="warningtext" id="warningtext" >Logout? Or Gay?</p>
+        <p class="warningtext" id="warningtext" >Logout?</p>
         <button type="submit" name="logout" class="logoutconfirm">LOG OUT</button>   
     </form>
 
