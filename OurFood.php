@@ -1,6 +1,7 @@
 <?php
-require('php/connect.php');
 session_start();
+require_once('php/connect.php');
+require_once('php/process.php'); 
 
 $sql = 'SELECT * FROM food_menu WHERE food_category = 1;';
 $burgermenu = $conn->query($sql);
@@ -102,6 +103,7 @@ $menuset = $conn->query($sql2);
     }
 
 ?>
+    <?php require('login-signin.php'); ?>
 
     <div class="contain">
         <header id="header">
@@ -204,6 +206,10 @@ $menuset = $conn->query($sql2);
         </div>
     </div>
     <script src="js/foodselector.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
+    <script src="js/logincheckfunc.js" ></script>
+    <script src="js/checkfunc.js" ></script>
+    <script src="js/account.js"></script>
     <?php require 'php/module/footer.html' ?>
 </body>
 

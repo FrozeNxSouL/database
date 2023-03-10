@@ -67,17 +67,19 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
                 </div>
                 <div class="col-12">
                     <div class="input-group">
-                        <select class="form-control" name="branch_subdistrict" id="edit_branch_subdistrict">
-                            <?php
-                                $subdistrictsql = "SELECT name_th FROM districts WHERE name_th NOT LIKE '%*%'";
-                                $subdistrict = $conn->query($subdistrictsql);
-                                while ($poption = mysqli_fetch_assoc($subdistrict))  {
-                            ?>
-                                <option value="<?php echo $poption['name_th']; ?>"><?php echo $poption['name_th']; ?></option>
-                            <?php } ?>
-                        </select>
+                        <input list="listsubdis" name="branch_subdistrict" id="edit_branch_subdistrict" type="text" class="form-control" placeholder="Subdistrict" required>
+                        <datalist id="listsubdis">
+                                <?php
+                                    $subdistrictsql = "SELECT name_th FROM districts WHERE name_th NOT LIKE '%*%'";
+                                    $subdistrict = $conn->query($subdistrictsql);
+                                    while ($poption = mysqli_fetch_assoc($subdistrict))  {
+                                ?>
+                                    <option value="<?php echo $poption['name_th']; ?>"><?php echo $poption['name_th']; ?></option>
+                                <?php } ?>
+                        </datalist>
 
-                        <select class="form-control" name="branch_district" id="edit_branch_district">
+                        <input list="listdis" name="branch_district" id="edit_branch_district" type="text" class="form-control" placeholder="District" required>
+                        <datalist  id="listdis">
                             <?php
                                 $districtsql = "SELECT name_th FROM amphures WHERE name_th NOT LIKE '%*%'";
                                 $district = $conn->query($districtsql);
@@ -85,16 +87,18 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
                             ?>
                                 <option value="<?php echo $poption['name_th']; ?>"><?php echo $poption['name_th']; ?></option>
                             <?php } ?>
-                        </select>
-                        <select class="form-control" name="branch_province" id="edit_branch_province">
-                            <?php
-                                $provincesql = "SELECT name_th FROM provinces";
-                                $province = $conn->query($provincesql);
-                                while ($poption = mysqli_fetch_assoc($province))  {
-                            ?>
-                                <option value="<?php echo $poption['name_th']; ?>"><?php echo $poption['name_th']; ?></option>
-                            <?php } ?>
-                        </select>
+                        </datalist>
+                        
+                        <input list="listprovice" name="branch_province" id="edit_branch_province" type="text" class="form-control" placeholder="Province" required>
+                        <datalist id="listprovice">
+                                <?php
+                                    $provincesql = "SELECT name_th FROM provinces";
+                                    $province = $conn->query($provincesql);
+                                    while ($poption = mysqli_fetch_assoc($province))  {
+                                ?>
+                                    <option value="<?php echo $poption['name_th']; ?>"><?php echo $poption['name_th']; ?></option>
+                                <?php } ?>
+                        </datalist>
                     </div>
                         
                 </div>

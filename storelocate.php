@@ -1,5 +1,7 @@
 <?php
+    session_start();
     require_once('php/connect.php');
+    require_once('php/process.php'); 
     $storesql = "SELECT * FROM branch";
 ?>
 <!DOCTYPE html>
@@ -23,11 +25,14 @@
 </head>
 
 <body>
+
+    <?php require('login-signin.php'); ?>
     <div class="contain">
         <header id="header">
             <?php include 'php/module/navbar.php' ?>
         </header>
     </div>
+    
     <div class="content-header">
         <div class="head-input">
             <form class="input-container" method="POST">
@@ -78,6 +83,10 @@
         </div>
     </div>
     <script src="js/storelocate.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
+    <script src="js/logincheckfunc.js" ></script>
+    <script src="js/checkfunc.js" ></script>
+    <script src="js/account.js"></script>
     <?php include 'php/module/footer.html' ?>
 </body>
 </html>

@@ -1,5 +1,7 @@
 <?php
+    session_start();
     require_once('php/connect.php');
+    require_once('php/process.php'); 
     $storesql = "SELECT * FROM branch";
 ?>
 <!DOCTYPE html>
@@ -21,6 +23,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
   </head>
   <body>
+    <?php require('login-signin.php'); ?>
     <div class="contain">
         <header id="header">
             <?php require 'php/module/navbar.php'?>
@@ -32,7 +35,7 @@
     <?php
         $address = isset($_POST['address']) ? $_POST['address'] : '';
     ?>
-
+  
     <div class = "content-main">
       <div class = "inputlocation">
           <form action = "delivery.php" method="post">
@@ -74,7 +77,9 @@
                 <div class = "info">
                       <img src = "assets/icon_location_phone.png"class = "iconinfo">
                       <div style = "color :#337ab7">
-                        <?php echo $row['branch_phone'];?>
+                        <?php $format_phone = substr($row['branch_phone'], -10, -7) . "-" .substr($row['branch_phone'], -7, -4) . "-" .substr($row['branch_phone'], -4);
+                            echo  $format_phone;
+                        ?>
                       </div>  
                 </div> 
               </div>  
@@ -97,5 +102,9 @@
     </div>
     
     <?php include 'php/module/footer.html' ?>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
+    <script src="js/logincheckfunc.js" ></script>
+    <script src="js/checkfunc.js" ></script>
+    <script src="js/account.js"></script>
   </body>
 </html>

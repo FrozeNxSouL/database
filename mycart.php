@@ -1,6 +1,7 @@
 <?php
-require('php/connect.php');
 session_start();
+require_once('php/connect.php');
+require_once('php/process.php'); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +27,7 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 </head>
 <body>
+    <?php require('login-signin.php'); ?>
     <div class="contain">
         <header id="header">
             <?php require 'php/module/navbar.php' ?>
@@ -37,8 +39,9 @@ session_start();
     <div class="content-main">
         <div class="row">
             <div class="col-lg-12 text-center border rounded bg-light my-5">
-                <br></br>
-                <h1>MY CART</h1>
+                <br>
+                <h1>SHOPPING CART</h1>
+                </br>
             </div>
             <div class="col-lg-9">
                 <table class="table">
@@ -177,6 +180,9 @@ session_start();
 
 </script>
 <?php include 'php/module/footer.html' ?>
-
+<script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
+<script src="js/logincheckfunc.js" ></script>
+<script src="js/checkfunc.js" ></script>
+<script src="js/account.js"></script>
 </body>
 </html>

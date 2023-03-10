@@ -94,10 +94,49 @@
                 </div>
                 <div class="col-12">
                     <div class="input-group">
-                        <input name="subdistrict" id="edit_cus_subdistrict" type="text" class="form-control" placeholder="Subdistrict" required>
-                        <input name="district" id="edit_cus_district" type="text" class="form-control" placeholder="District" required>
-                        <input name="provice" id="edit_cus_provice" type="text" class="form-control" placeholder="Province" required>
-                        <input id="edit_cus_zip" type="text" class="form-control" placeholder="Postal Code" required>
+                        <input list="listsubdis" name="subdistrict" id="edit_cus_subdistrict" type="text" class="form-control" placeholder="Subdistrict" required>
+                        <datalist id="listsubdis">
+                                <?php
+                                    $subdistrictsql = "SELECT name_th FROM districts WHERE name_th NOT LIKE '%*%'";
+                                    $subdistrict = $conn->query($subdistrictsql);
+                                    while ($poption = mysqli_fetch_assoc($subdistrict))  {
+                                ?>
+                                    <option value="<?php echo $poption['name_th']; ?>"><?php echo $poption['name_th']; ?></option>
+                                <?php } ?>
+                        </datalist>
+
+                        <input list="listdis" name="district" id="edit_cus_district" type="text" class="form-control" placeholder="District" required>
+                        <datalist  id="listdis">
+                            <?php
+                                $districtsql = "SELECT name_th FROM amphures WHERE name_th NOT LIKE '%*%'";
+                                $district = $conn->query($districtsql);
+                                while ($poption = mysqli_fetch_assoc($district))  {
+                            ?>
+                                <option value="<?php echo $poption['name_th']; ?>"><?php echo $poption['name_th']; ?></option>
+                            <?php } ?>
+                        </datalist>
+
+                        <input list="listprovice" name="provice" id="edit_cus_provice" type="text" class="form-control" placeholder="Province" required>
+                        <datalist id="listprovice">
+                                <?php
+                                    $provincesql = "SELECT name_th FROM provinces";
+                                    $province = $conn->query($provincesql);
+                                    while ($poption = mysqli_fetch_assoc($province))  {
+                                ?>
+                                    <option value="<?php echo $poption['name_th']; ?>"><?php echo $poption['name_th']; ?></option>
+                                <?php } ?>
+                        </datalist>
+                        
+                        <input list="listpostal" id="edit_cus_zip" type="text" class="form-control" placeholder="Postal Code" required>
+                        <datalist id="listpostal">
+                                <?php
+                                    $postsql = "SELECT zip_code FROM districts WHERE zip_code != 0";
+                                    $postqr = $conn->query($postsql);
+                                    while ($poption = mysqli_fetch_assoc($postqr))  {
+                                ?>
+                                    <option value="<?php echo $poption['zip_code']; ?>"><?php echo $poption['zip_code']; ?></option>
+                                <?php } ?>
+                        </datalist>
                     </div>
                         
                 </div>
