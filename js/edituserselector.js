@@ -10,7 +10,7 @@ $('document').ready(function() {
             return;
         }
         $.ajax({
-            url: 'index.php',
+            url: 'user.php',
             type: 'post',
             data: {
                 'phone_check': 1,
@@ -40,7 +40,7 @@ $('document').ready(function() {
     //         return;
     //     }
     //     $.ajax({
-    //         url: 'index.php',
+    //         url: 'user.php',
     //         type: 'post',
     //         data: {
     //             'email_check': 1,
@@ -65,7 +65,7 @@ $('document').ready(function() {
     //         return;
     //     }
     //     $.ajax({
-    //         url: 'index.php',
+    //         url: 'user.php',
     //         type: 'post',
     //         data: {
     //             'subdis_check': 1,
@@ -88,7 +88,7 @@ $('document').ready(function() {
     //         return;
     //     }
     //     $.ajax({
-    //         url: 'index.php',
+    //         url: 'user.php',
     //         type: 'post',
     //         data: {
     //             'dis_check': 1,
@@ -111,7 +111,7 @@ $('document').ready(function() {
     //         return;
     //     }
     //     $.ajax({
-    //         url: 'index.php',
+    //         url: 'user.php',
     //         type: 'post',
     //         data: {
     //             'provice_check': 1,
@@ -138,7 +138,7 @@ $('document').ready(function() {
             return;
         }
         $.ajax({
-            url: 'index.php',
+            url: 'user.php',
             type: 'post',
             data: {
                 'postal_check': 1,
@@ -202,6 +202,7 @@ $('document').ready(function() {
                     } 
                 
                     else if (response == 'Saved') {
+                        $("#errorinput").text('');
                         alert('SAVED');                 
                         window.location.href='user.php';
                     } 
