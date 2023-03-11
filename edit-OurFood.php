@@ -178,7 +178,6 @@ if(isset($_POST['save_edit'])) {
             <?php
                 }
             ?>
-
                     </div>
 
         </div>
