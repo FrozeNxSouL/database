@@ -116,7 +116,7 @@ $all_cate = $conn->query($catesql);
                         </div>
 
                         <div class="col-12">
-                            <button id="save_edit" class="btn btn-primary" type="submit" name="save_edit">Save</button>
+                            <button class="btn btn-primary" name="save_edit">Save</button>
                             <a id="cancel-edit" class="btn btn-danger">Cancel</a>
                         </div>
                     </div>
@@ -140,7 +140,7 @@ $all_cate = $conn->query($catesql);
                                 <h6><span class="badge bg-secondary">ราคา</span> <?php echo $row['food_price']; ?>฿</h6>
                             <div class="col">
                                 <a data-id="<?php echo $row["food_id"]; ?>" href="?delete=<?php echo $row["food_id"]; ?>" class="btn btn-danger delete-btn">Delete</a>
-                                <a class="btn btn-secondary" id="edit-btn" href="#">Edit</a>
+                                <a class="btn btn-secondary" id="edit-btn">Edit</a>
                             </div>
                             
                         </div>
@@ -204,6 +204,7 @@ $all_cate = $conn->query($catesql);
             echo "
             <script>
                 success_alert();
+                console.log('test');
             </script>
             ";
         }
