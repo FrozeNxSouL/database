@@ -2,7 +2,10 @@
 session_start();
 require_once('php/connect.php');
 require_once('php/process.php'); 
-
+if (isset($_POST['logout'])) {
+  session_destroy();
+  header('location: index.php');
+}
 
 
 ?>

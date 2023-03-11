@@ -47,7 +47,9 @@
                             }
                             echo '
                                     <li id="backdoor-page" class="nav-item">
-                                        <a type="submit" name="logout" class="nav-link" href="#">Logout</a>
+                                        <form action="index.php" method="post">
+                                            <button type="submit" name="logout" style="border:none;background-color: transparent;" class="nav-link">Logout</button>
+                                        </form>
                                     </li>
                                 </ul>
                             </div>';
