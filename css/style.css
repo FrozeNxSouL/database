@@ -171,7 +171,6 @@ main {
     justify-self: center;
     width: 100%;
     display: flex;
-    flex-direction: row-reverse;
 }
 .col {
     justify-content: center;
