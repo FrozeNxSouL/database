@@ -1,6 +1,7 @@
 
 <?php
     require('php/connect.php');
+    require('php/process.php');
     $get_cus_email = $_REQUEST['cus_email'];
 
     // get edit user info
@@ -9,31 +10,6 @@
     $objQuery = mysqli_query($conn, $usersql) or die("Error Query [" . $sql . "]");
     $row = mysqli_fetch_assoc($objQuery);
 
-    if(isset($_POST['save_edit'])) {
-
-        $cus_email    = $_POST['cus_email'];
-        $name		  = $_POST['name'];
-        $phone_num 		  = $_POST['phone_num'];
-        $address		  = $_POST['address'];
-        $subdistrict	  = $_POST['subdistrict'];
-        $district	  = $_POST['district'];
-        $provice	  = $_POST['provice'];
-        $user_role = $_POST['user_role'];
-    
-        $sql2 = "
-            UPDATE customer
-            SET name = '$name',  
-            phone_num = '$phone_num', 
-            address = '$address', 
-            subdistrict = '$subdistrict', 
-            district = '$district', 
-            provice = '$provice' ,
-            user_role = '$user_role'
-            WHERE cus_email = '$cus_email' ";
-        
-        $objQuery = mysqli_query($conn, $sql2);
-        header('location: edit-user.php');
-    }
 
 ?>
 <!DOCTYPE html>
@@ -67,7 +43,7 @@
                 <div class="col-10">
                     <div class="input-group">
                         <div class="input-group-text">Email</div>
-                        <input id="edit_cus_email" class="form-control" name="cus_email">
+                        <input id="edit_cus_email" class="form-control" name="cus_email" value="<?php echo $get_cus_email ?>" >
                     </div>
                 </div>
                 <div class="col-2">
@@ -79,22 +55,22 @@
                 <div class="col-6">
                     <div class="input-group">
                     <div class="input-group-text">Name</div>
-                    <input name="name" id="edit_cus_name" type="text" class="form-control" placeholder="Enter your full name" required>
+                    <input name="name" id="edit_cus_name" type="text" class="form-control" placeholder="Enter your full name" value="<?php echo $row['name']; ?>" required>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="input-group">
                     <div class="input-group-text">Phone</div>
-                    <input name="phone_num" id="edit_cus_phone" type="text" class="form-control" placeholder="Enter your phone number" required>
+                    <input  id="edit_cus_phone" type="text" class="form-control" placeholder="Enter your phone number" value="<?php echo $row['phone_num']; ?>" required>
                     </div> 
                 </div>
                 
                 <div class="col-12">
-                    <input name="address" id="edit_cus_address" class="form-control" type="text" placeholder="Address" required>
+                    <input name="address" id="edit_cus_address" class="form-control" type="text" placeholder="Address" value="<?php echo $row['address']; ?>" required>
                 </div>
                 <div class="col-12">
                     <div class="input-group">
-                        <input list="listsubdis" name="subdistrict" id="edit_cus_subdistrict" type="text" class="form-control" placeholder="Subdistrict" required>
+                        <input list="listsubdis" name="subdistrict" id="edit_cus_subdistrict" type="text" class="form-control" placeholder="Subdistrict" value="<?php echo $row['subdistrict']; ?>" required>
                         <datalist id="listsubdis">
                                 <?php
                                     $subdistrictsql = "SELECT name_th FROM districts WHERE name_th NOT LIKE '%*%'";
@@ -105,7 +81,7 @@
                                 <?php } ?>
                         </datalist>
 
-                        <input list="listdis" name="district" id="edit_cus_district" type="text" class="form-control" placeholder="District" required>
+                        <input list="listdis" name="district" id="edit_cus_district" type="text" class="form-control" placeholder="District" value="<?php echo $row['district']; ?>" required>
                         <datalist  id="listdis">
                             <?php
                                 $districtsql = "SELECT name_th FROM amphures WHERE name_th NOT LIKE '%*%'";
@@ -116,7 +92,7 @@
                             <?php } ?>
                         </datalist>
 
-                        <input list="listprovice" name="provice" id="edit_cus_provice" type="text" class="form-control" placeholder="Province" required>
+                        <input list="listprovice" name="provice" id="edit_cus_provice" type="text" class="form-control" placeholder="Province" value="<?php echo $row['provice']; ?>" required>
                         <datalist id="listprovice">
                                 <?php
                                     $provincesql = "SELECT name_th FROM provinces";
@@ -127,7 +103,7 @@
                                 <?php } ?>
                         </datalist>
                         
-                        <input list="listpostal" id="edit_cus_zip" type="text" class="form-control" placeholder="Postal Code" required>
+                        <input list="listpostal" id="edit_cus_zip" type="text" class="form-control" placeholder="Postal Code" value="<?php echo $row['postal_num']; ?>" required>
                         <datalist id="listpostal">
                                 <?php
                                     $postsql = "SELECT zip_code FROM districts WHERE zip_code != 0";
@@ -140,42 +116,18 @@
                     </div>
                         
                 </div>
-
+                <p id="errorinput"></p>
                 <div class="col-12">
-                    <button id="save-edit" class="btn btn-primary" type="submit" name="save_edit">Save</button>
+                    <button id="save-edit" class="btn btn-primary">Save</button>
                     <a id="cancel-edit" class="btn btn-danger" href="edit-user.php">Cancel</a>
                 </div>
             </div>
         </form>
     </div>
-    <script>
-        var input_email = document.getElementById('edit_cus_email');
-        var input_role = document.getElementById('edit_cus_role');
-        var input_name = document.getElementById('edit_cus_name');
-        var input_phone = document.getElementById('edit_cus_phone');
-        var input_address = document.getElementById('edit_cus_address');
-        var input_subdistrict = document.getElementById('edit_cus_subdistrict');
-        var input_district = document.getElementById('edit_cus_district');
-        var input_provice = document.getElementById('edit_cus_provice');
-        var input_zipcode = document.getElementById('edit_cus_zip');
 
-        function changeVal() {
-
-            input_email.value = '<?php echo $get_cus_email ?>';
-            input_name.value = '<?php echo $row['name']; ?>';
-            input_phone.value = '<?php echo $row['phone_num']; ?>';
-            input_address.value = '<?php echo $row['address']; ?>';
-            input_subdistrict.value = '<?php echo $row['subdistrict']; ?>';
-            input_district.value = '<?php echo $row['district']; ?>';
-            input_provice.value = '<?php echo $row['provice']; ?>';
-        }
-        
-        input_email.addEventListener('input', ()=> {
-            changeVal();
-        })
-        changeVal();
-    </script>
     <?php include 'php/module/footer.html'?>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
+    <script src="js/user_validation.js"></script>
 </body>
 </html>
 <?php

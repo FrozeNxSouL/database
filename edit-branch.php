@@ -1,5 +1,6 @@
 <?php 
    require('php/connect.php');
+   require('php/process.php');
    
     $delete_id  = $_REQUEST['branchID'];
 
@@ -10,27 +11,6 @@
 
     $delbranchquery = mysqli_query($conn, $delsql);
 
-    if (isset($_POST['add_menu'])) {
-        $branchid = '';
-        $branch_name = $_POST['branch_name'];
-        $branch_address = $_POST['branch_address'];
-        $branch_phone = $_POST['branch_phone'];
-        $branch_subdis = $_POST['branch_subdistrict'];
-        $branch_dis = $_POST['branch_district'];
-        $branch_province = $_POST['branch_province'];
-
-        $insertbsql = "INSERT INTO branch(branchID,branchName,branch_address,branch_subdistrict,branch_district,branch_province,branch_phone) VALUES (?,?, ?, ?, ?, ?, ?)";
-        $stmt = mysqli_stmt_init($conn);
-        if (!mysqli_stmt_prepare($stmt,$insertbsql)) {
-            echo    "<script>alert('Error');</script>";
-            exit();
-        } 
-        else {
-            mysqli_stmt_bind_param($stmt,"issssss",$branchid,$branch_name,$branch_address,$branch_subdis,$branch_dis,$branch_province,$branch_phone);
-            mysqli_stmt_execute($stmt);
-            mysqli_stmt_close($stmt);
-        }
-    } 
 ?>
 
 <!DOCTYPE html>
@@ -64,20 +44,20 @@
     <?php include 'php/module/subnav-backdoor.html' ?>
 
     <div class="content-main">
-        <form class="form-edit" method="POST" action="edit-branch.php">
+        <form class="form-edit" method="POST">
             <div class="row g-3">
                 <div class="col-12">
-                        <input type="text" class="form-control" name="branch_name" placeholder="Name" required>
+                        <input type="text" class="form-control" id="edit_branch_name"  placeholder="Name" required>
                 </div>
                 <div class="col-12">
-                        <input type="text" class="form-control" name="branch_address" placeholder="Address" required>
+                        <input type="text" class="form-control" id="edit_branch_address"  placeholder="Address" required>
                 </div>
                 <div class="col-12">
-                        <input type="text" class="form-control" name="branch_phone" placeholder="Phone Number" required>
+                        <input type="text" class="form-control" id="edit_branch_phone"  placeholder="Phone Number" required>
                 </div>
                 <div class="col-12">
                     <div class="input-group">
-                    <input list="listsubdis" name="branch_subdistrict" id="edit_branch_subdistrict" type="text" class="form-control" placeholder="Subdistrict" required>
+                    <input list="listsubdis"  id="edit_branch_subdistrict" type="text" class="form-control" placeholder="Subdistrict" required>
                         <datalist id="listsubdis">
                                 <?php
                                     $subdistrictsql = "SELECT name_th FROM districts WHERE name_th NOT LIKE '%*%'";
@@ -88,7 +68,7 @@
                                 <?php } ?>
                         </datalist>
 
-                        <input list="listdis" name="branch_district" id="edit_branch_district" type="text" class="form-control" placeholder="District" required>
+                        <input list="listdis"  id="edit_branch_district" type="text" class="form-control" placeholder="District" required>
                         <datalist  id="listdis">
                             <?php
                                 $districtsql = "SELECT name_th FROM amphures WHERE name_th NOT LIKE '%*%'";
@@ -99,7 +79,7 @@
                             <?php } ?>
                         </datalist>
 
-                         <input list="listprovice" name="branch_province" id="edit_branch_province" type="text" class="form-control" placeholder="Province" required>
+                         <input list="listprovice" id="edit_branch_province" type="text" class="form-control" placeholder="Province" required>
                         <datalist id="listprovice">
                                 <?php
                                     $provincesql = "SELECT name_th FROM provinces";
@@ -111,9 +91,12 @@
                         </datalist>
                     </div>
                 </div>
-
                 <div class="col-12">
-                    <button class="btn btn-primary" type="submit" name="add_menu">Add new branch</button>
+                    <input type="text" class="form-control" id="edit_branch_postal"  placeholder="Postal Code" required>
+                </div>
+                <p id="errorinput" ></p>
+                <div class="col-12">
+                    <button class="btn btn-primary" id="add_new">Add new branch</button>
                     <button class="btn btn-danger" type="reset">Clear</button>
                 </div>
             </div>
@@ -123,6 +106,7 @@
             <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Address</th>
+                <th scope="col">Phone Number</th>
                 <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
             </tr>
@@ -131,13 +115,18 @@
         <tbody>
 
         <?php
+            
               $sql = "SELECT * FROM branch";
               $result = mysqli_query($conn,$sql);
               while  ($row = mysqli_fetch_assoc($result)) {
         ?>
             <tr>
                 <td><?php echo $row["branchName"]; ?></td>
-                <td><?php echo $row["branch_address"]; ?><br><?php echo $row["branch_subdistrict"]; ?> <?php echo $row["branch_district"]; ?> <?php echo $row["branch_province"]; ?></td>
+                <td><?php echo $row["branch_address"]; ?><br><?php echo $row["branch_subdistrict"]; ?> <?php echo $row["branch_district"]; ?> <?php echo $row["branch_province"]; ?> <?php echo $row["branch_postal"]; ?></td>
+                <td>
+                    <?php $format_phone = substr($row['branch_phone'], -10, -7) . "-" .substr($row['branch_phone'], -7, -4) . "-" .substr($row['branch_phone'], -4);
+                            echo  $format_phone;
+                    ?></td>
                 <td><a class="btn btn-secondary" href="edit-branch-info.php?branchID=<?php echo $row["branchID"]; ?>">Edit</a></td>
                 <td><a class="btn btn-danger" href="?branchID=<?php echo $row["branchID"]; ?>" onclick="return confirm('Are you sure ?')">Delete</a></td>
             </tr>
@@ -148,5 +137,7 @@
         </tbody>
         </table>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
+    <script src="js/branch_validation.js"></script>
 </body>
 </html>

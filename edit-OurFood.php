@@ -149,7 +149,6 @@ $all_cate = $conn->query($catesql);
             <?php
                 }
             ?>
-
                     </div>
         </div>
     </div>

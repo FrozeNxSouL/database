@@ -41,82 +41,77 @@ $menuset = $conn->query($sql2);
 
     if($_SERVER["REQUEST_METHOD"]=="POST")
     {
-        if(isset($_POST['Add_To_Cart']))
+        if(isset($_POST['Add_To_Set']))
         {
-            if(isset($_SESSION['cart']))
+            if(isset($_SESSION['setting']))
             {
-                $myfood=array_column($_SESSION['cart'],'food_name');
-                if(in_array($_POST['food_name'],$myfood))
+                $myset=array_column($_SESSION['setting'],'food_name');
+                if(in_array($_POST['food_name'],$myset))
                 {
                     ?>
                     <script>alert('food Already Added');</script>    
-                    <?php header('location: OurFood.php'); ?>
+                    <?php header('location: edit-OurSet.php'); ?>
 <?php
                 }
                 else
                 {
-                    $count=count($_SESSION['cart']);
-                    $_SESSION['cart'][$count] = array('food_id'=>$_POST['food_id'],'food_name'=>$_POST['food_name'],'food_price'=>$_POST['food_price'],'food_quantity'=>1); 
+                    $count=count($_SESSION['setting']);
+                    $_SESSION['setting'][$count] = array('food_id'=>$_POST['food_id'],'food_name'=>$_POST['food_name'],'food_price'=>$_POST['food_price'],'food_quantity'=>1); 
                     ?>
                     <script type='text/javascript'>alert('food Added');</script>    
-                    <?php header('location: OurFood.php'); ?>
+                    <?php header('location: edit-OurSet.php'); ?>
 <?php
                 }
             }
             else
             {
-                $_SESSION['cart'][0]=array('food_id'=>$_POST['food_id'],'food_name'=>$_POST['food_name'],'food_price'=>$_POST['food_price'],'food_quantity'=>1);
+                $_SESSION['setting'][0]=array('food_id'=>$_POST['food_id'],'food_name'=>$_POST['food_name'],'food_price'=>$_POST['food_price'],'food_quantity'=>1);
                 ?>
                 <script>alert('food Added');</script>    
-                <?php header('location: OurFood.php'); ?>
+                <?php header('location: edit-OurSet.php'); ?>
 <?php
             }
         }
         if(isset($_POST['Remove_Food']))
         {
-            foreach($_SESSION['cart'] as $key => $value)
+            foreach($_SESSION['setting'] as $key => $value)
             {
                 if($value['food_name']==$_POST['food_name'])
                 {
-                    unset($_SESSION['cart'][$key]);
-                    $_SESSION['cart']=array_values($_SESSION['cart']);
+                    unset($_SESSION['setting'][$key]);
+                    $_SESSION['setting']=array_values($_SESSION['setting']);
                     ?>
                     <script>alert('food Removed');</script>    
-                    <?php header('location: OurFood.php'); ?>
+                    <?php header('location: edit-OurSet.php'); ?>
 <?php
                 }
             }
         }
         if(isset($_POST['Mod_Quantity']))
         {
-            foreach($_SESSION['cart'] as $key => $value)
+            foreach($_SESSION['setting'] as $key => $value)
             {
                 if($value['food_name']==$_POST['food_name'])
                 {
-                    $_SESSION['cart'][$key]['food_quantity']=$_POST['Mod_Quantity'];
+                    $_SESSION['setting'][$key]['food_quantity']=$_POST['Mod_Quantity'];
                     echo"<script>
-                        window.location.href='mycart.php';
+                        window.location.href='myset.php';
                     </script>";
                 }
             }
         }
     }
-?>
 
+?>
     <?php require('login-signin.php'); ?>
 
     <div class="contain">
         <header id="header">
-            <?php require 'php/module/navbar.php' ?>
+            <?php require 'php/module/navbar.php'?>
         </header>
     </div>
-    <div class="content-header">
-        <ul class="nav-sub">
-            <li><a class="nav-sublink" href="#" onclick="cburger()">Burger</a></li>
-            <li><a class="nav-sublink" href="#" onclick="cset()">Set menu</a></li>
-            <li><a class="nav-sublink" href="#" onclick="csub()">Other menu</a></li>
-        </ul>
-    </div>
+
+    <?php include 'php/module/subnav-backdoor.html' ?>
     <div id="message"></div>
     <div class="burgercontent" id="burger">
         <div class="menu-title">
@@ -128,7 +123,7 @@ $menuset = $conn->query($sql2);
 
 
             ?>
-                <form action="OurFood.php" method="POST">
+                <form action="edit-OurSet.php" method="POST">
                     <div class="ourfood-card">
                         <div class="pic-container">
                             <?php echo '<img class="ourfood-img" src=" ' . ($row["food_pict"]) . '">'; ?>
@@ -138,7 +133,7 @@ $menuset = $conn->query($sql2);
                         </div>
                         <p class="pricehead">Price</p>
                         <h5>฿<?php echo ($row['food_price'] == (int)$row['food_price']) ? $row['food_price'] : number_format($row['food_price'], 2);?></h5>
-                        <button type="submit" name="Add_To_Cart" class="btn btn-danger">Order</button>
+                        <button type="submit" name="Add_To_Set" class="btn btn-danger">Add To Set</button>
                         <input type="hidden" name ="food_id" value = "<?php echo $row['food_id']; ?>" >
                         <input type="hidden" name ="food_name" value = "<?php echo ($row['food_name']); ?>" >
                         <input type="hidden" name ="food_price" value = "<?php echo $row['food_price']; ?>" >
@@ -152,39 +147,6 @@ $menuset = $conn->query($sql2);
         </div>
     </div>
 
-    <div class="setcontent" id="set">
-        <div class="menu-title">
-            <h2 style="font-weight: 700">Set Menu</h2>
-        </div>
-        <div class="menu">
-        <?php
-            while ($row = mysqli_fetch_assoc($menuset)) {
-
-
-            ?>
-                <form action="OurFood.php" method="POST">
-                    <div class="ourfood-card">
-                        <div class="pic-container">
-                            <?php echo '<img class="ourfood-img" src=" ' . ($row["set_pict"]) . '">'; ?>
-                        </div>
-                        <div class="text-container">
-                            <h4 class="food-name"><?php echo $row["set_name"]; ?></h4>
-                        </div>
-                        <p class="pricehead">Price</p>
-                        <h5>฿<?php echo ($row['set_price'] == (int)$row['set_price']) ? $row['set_price'] : number_format($row['set_price'], 2);?></h5>
-                        <button type="submit" name="Add_To_Cart" class="btn btn-danger">Order</button>
-                        <input type="hidden" name ="set_id" value = "<?php echo $row['set_id']; ?>" >
-                        <input type="hidden" name ="set_name" value = "<?php echo ($row['set_name']); ?>" >
-                        <input type="hidden" name ="set_price" value = "<?php echo $row['set_price']; ?>" >
-                        <input type="hidden" name ="set_pict" value = "<?php echo $row['set_pict']; ?>" >
-                    </div>
-                </form>
-            <?php
-            }
-            ?>
-
-        </div>
-    </div>
 
     <div class="submenucontent" id="other">
         <div class="menu-title">
@@ -196,7 +158,7 @@ $menuset = $conn->query($sql2);
 
 
                 ?>
-                    <form action="OurFood.php" method="POST">
+                    <form action="edit-OurSet.php" method="POST">
                         <div class="ourfood-card">
                             <div class="pic-container">
                                 <?php echo '<img class="ourfood-img" src=" ' . ($row["food_pict"]) . '">'; ?>
@@ -206,7 +168,7 @@ $menuset = $conn->query($sql2);
                             </div>
                             <p class="pricehead">Price</p>
                             <h5>฿<?php echo ($row['food_price'] == (int)$row['food_price']) ? $row['food_price'] : number_format($row['food_price'], 2);?></h5>
-                            <button type="submit" name="Add_To_Cart" class="btn btn-danger">Order</button>
+                            <button type="submit" name="Add_To_Set" class="btn btn-danger">Add To Set</button>
                             <input type="hidden" name ="food_id" value = "<?php echo $row['food_id']; ?>" >
                             <input type="hidden" name ="food_name" value = "<?php echo ($row['food_name']); ?>" >
                             <input type="hidden" name ="food_price" value = "<?php echo $row['food_price']; ?>" >
