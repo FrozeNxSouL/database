@@ -1,17 +1,16 @@
 $('document').ready(function() {
 
     var phone_state = false;
-    var email_state = false;
     var address_state = false;
 
-    $('#inputphonenum').on('blur', function() {
-        var phone = $('#inputphonenum').val();
+    $('#edit_branch_phone').on('blur', function() {
+        var phone = $('#edit_branch_phone').val();
         if (phone == '') {
             phone_state = false;
             return;
         }
         $.ajax({
-            url: 'index.php',
+            url: 'edit-branch.php',
             type: 'post',
             data: {
                 'phone_check': 1,
@@ -34,43 +33,17 @@ $('document').ready(function() {
         })
     });
 
-    $("#sign-up-email").on('blur', function() {
-        var email = $("#sign-up-email").val();
-        if (email == '') {
-            email_state = false;
-            return;
-        }
-        $.ajax({
-            url: 'index.php',
-            type: 'post',
-            data: {
-                'email_check': 1,
-                'email': email
-            },
-            success: function(response) {
-                if (response == 'taken') {
-                    email_state = false;
-                    $("#errorinput").text("Sorry... Email already taken");
-                } 
-                else if (response == "not_taken") {
-                    email_state = true;
-                    $("#errorinput").text('');
-                }
-            }
-        })
-    });
-
-    $("#inputsubdis").on('blur', function() {
-        var postal = $("#inputpostal").val();
-        var subdis = $("#inputsubdis").val();
-        var dis = $("#inputdis").val();
-        var provice = $("#inputprovice").val();
+    $("#edit_branch_subdistrict").on('blur', function() {
+        var postal = $("#edit_branch_postal").val();
+        var subdis = $("#edit_branch_subdistrict").val();
+        var dis = $("#edit_branch_district").val();
+        var provice = $("#edit_branch_province").val();
         if ((postal === '') || (subdis === '') || (dis === '') || (provice === '')) {
             address_state = false;
             return;
         }
         $.ajax({
-            url: 'index.php',
+            url: 'edit-branch.php',
             type: 'post',
             data: {
                 'postal_check': 1,
@@ -101,17 +74,17 @@ $('document').ready(function() {
         })
     });
 
-    $("#inputdis").on('blur', function() {
-        var postal = $("#inputpostal").val();
-        var subdis = $("#inputsubdis").val();
-        var dis = $("#inputdis").val();
-        var provice = $("#inputprovice").val();
+    $("#edit_branch_district").on('blur', function() {
+        var postal = $("#edit_branch_postal").val();
+        var subdis = $("#edit_branch_subdistrict").val();
+        var dis = $("#edit_branch_district").val();
+        var provice = $("#edit_branch_province").val();
         if ((postal === '') || (subdis === '') || (dis === '') || (provice === '')) {
             address_state = false;
             return;
         }
         $.ajax({
-            url: 'index.php',
+            url: 'edit-branch.php',
             type: 'post',
             data: {
                 'postal_check': 1,
@@ -142,17 +115,17 @@ $('document').ready(function() {
         })
     });
 
-    $("#inputprovice").on('blur', function() {
-        var postal = $("#inputpostal").val();
-        var subdis = $("#inputsubdis").val();
-        var dis = $("#inputdis").val();
-        var provice = $("#inputprovice").val();
+    $("#edit_branch_province").on('blur', function() {
+        var postal = $("#edit_branch_postal").val();
+        var subdis = $("#edit_branch_subdistrict").val();
+        var dis = $("#edit_branch_district").val();
+        var provice = $("#edit_branch_province").val();
         if ((postal === '') || (subdis === '') || (dis === '') || (provice === '')) {
             address_state = false;
             return;
         }
         $.ajax({
-            url: 'index.php',
+            url: 'edit-branch.php',
             type: 'post',
             data: {
                 'postal_check': 1,
@@ -183,17 +156,17 @@ $('document').ready(function() {
         })
     });
 
-    $("#inputpostal").on('blur', function() {
-        var postal = $("#inputpostal").val();
-        var subdis = $("#inputsubdis").val();
-        var dis = $("#inputdis").val();
-        var provice = $("#inputprovice").val();
+    $("#edit_branch_postal").on('blur', function() {
+        var postal = $("#edit_branch_postal").val();
+        var subdis = $("#edit_branch_subdistrict").val();
+        var dis = $("#edit_branch_district").val();
+        var provice = $("#edit_branch_province").val();
         if ((postal === '') || (subdis === '') || (dis === '') || (provice === '')) {
             address_state = false;
             return;
         }
         $.ajax({
-            url: 'index.php',
+            url: 'edit-branch.php',
             type: 'post',
             data: {
                 'postal_check': 1,
@@ -224,50 +197,80 @@ $('document').ready(function() {
         })
     });
 
-    $('#submitsignin').on("click", function(e) {
-        var name = $("#inputName").val();
-        var email = $("#sign-up-email").val();
-        var password = $("#sign-up-pw").val();
-        var phone = $("#inputphonenum").val();
-        var address = $("#inputaddress").val();
-        var subdis = $("#inputsubdis").val();
-        var dis = $("#inputdis").val();
-        var provice = $("#inputprovice").val();
-        var postal = $("#inputpostal").val();
-        if ((phone_state == false )|| (email_state == false) || (address_state == false)) {
+    $("#add_new").on("click", function(e) {
+        var name = $("#edit_branch_name").val();
+        var phone = $("#edit_branch_phone").val();
+        var address = $("#edit_branch_address").val();
+        var subdis = $("#edit_branch_subdistrict").val();
+        var dis = $("#edit_branch_district").val();
+        var provice = $("#edit_branch_province").val();
+        var postal = $("#edit_branch_postal").val();
+        if ((phone_state == false ) || (address_state == false)) {
             e.preventDefault();
             $("#errorinput").text("Check your form again!");
         } else {
             $.ajax({
-                url: 'index.php',
+                url: 'edit-branch.php',
                 type: 'post',
                 data: {
-                    'save': 1,
-                    'email': email,
-                    'name': name,
-                    'password': password,
-                    'phonenum' : phone,
-                    'address' : address,
-                    'subdis' : subdis,
-                    'dis' : dis,
-                    'provice' : provice,
-                    'postal' : postal
+                    'add_branch': 1,
+                    'branch_name': name,
+                    'branch_phone' : phone,
+                    'branch_address' : address,
+                    'branch_subdistrict' : subdis,
+                    'branch_district' : dis,
+                    'branch_province' : provice,
+                    'branch_postal' : postal
                 },
                 success: function(response) {
-                    if (response == 'Empty') {
-                        $("#errorinput").text("Empty input");
-                    } 
-                    else if (response == 'Error') {
+                    if (response == 'Error') {
                         $("#errorinput").text("Try again");
                     } 
                     else if (response == 'Saved') {
                         $("#errorinput").text('');
                         alert('SAVED');                 
-                        window.location.href='user.php';
                     } 
                 }
             })
         }
     });
+
+    $("#update").on("click", function(e) {
+        var id = $("#edit_branch_id").val();
+        var name = $("#edit_branch_name").val();
+        var phone = $("#edit_branch_phone").val();
+        var address = $("#edit_branch_address").val();
+        var subdis = $("#edit_branch_subdistrict").val();
+        var dis = $("#edit_branch_district").val();
+        var provice = $("#edit_branch_province").val();
+        var postal = $("#edit_branch_postal").val();
+        if ((phone_state == false ) || (address_state == false)) {
+            e.preventDefault();
+            $("#errorinput").text("Check your form again!");
+        } else {
+            $.ajax({
+                url: 'edit-branch-info.php',
+                type: 'post',
+                data: {
+                    'save_edit': 1,
+                    'branchID': id,
+                    'branchName': name,
+                    'branch_phone' : phone,
+                    'branch_address' : address,
+                    'branch_subdistrict' : subdis,
+                    'branch_district' : dis,
+                    'branch_province' : provice,
+                    'branch_postal' : postal
+                },
+                success: function(response) {
+                    $("#errorinput").text('');
+                    alert('Updated');
+                    window.location.href = 'edit-branch.php';             
+                    
+                }
+            })
+        }
+    });
+
 
 });

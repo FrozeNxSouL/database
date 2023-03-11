@@ -4,7 +4,9 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
 
 <?php
     require('php/connect.php');
+    require('php/process.php');
     $get_id = $_REQUEST['branchID'];
+
 
     // get edit user info
     $branchsql = "SELECT * FROM branch WHERE branchID = '$get_id';";
@@ -13,12 +15,12 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
     $row = mysqli_fetch_array($objQuery);
 
     // select subdistrict district province
-    $sqllocation = "SELECT provinces.id, provinces.name_th, districts.id, districts.name_th, amphures.id, amphures.name_th;
-    FROM provinces, districts, amphures;
-    WHERE districts.amphure_id = amphures.id, amphures.province_id = provinces.id;";
+    // $sqllocation = "SELECT provinces.id, provinces.name_th, districts.id, districts.name_th, amphures.id, amphures.name_th;
+    // FROM provinces, districts, amphures;
+    // WHERE districts.amphure_id = amphures.id, amphures.province_id = provinces.id;";
 
-    $locationQuery = mysqli_query($conn, $sqllocation);
-    $all_locate = mysqli_fetch_array($locationQuery);
+    // $locationQuery = mysqli_query($conn, $sqllocation);
+    // $all_locate = mysqli_fetch_array($locationQuery);
 
 ?>
 <!DOCTYPE html>
@@ -52,22 +54,25 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
                 <div class="col-6">
                     <div class="input-group">
                         <div class="input-group-text">ID</div>
-                        <input id="edit_branch_id" class="form-control" name="branchID">
+                        <input id="edit_branch_id" class="form-control" name="branchID" value="<?php echo $get_id; ?>" disabled>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="input-group">
                     <div class="input-group-text">Name</div>
-                    <input name="branchName" id="edit_branch_name" type="text" class="form-control" placeholder="Enter branch name" required>
+                    <input name="branchName" id="edit_branch_name" type="text" class="form-control" placeholder="Enter branch name" value="<?php echo $row['branchName']; ?>" required>
                     </div>
                 </div>
                 
                 <div class="col-12">
-                    <input name="branch_address" id="edit_branch_address" class="form-control" type="text" placeholder="Address" required>
+                    <input name="branch_address" id="edit_branch_address" class="form-control" type="text" placeholder="Address" value="<?php echo $row['branch_address']; ?>" required>
+                </div>
+                <div class="col-12">
+                    <input type="text" class="form-control" id="edit_branch_phone"  placeholder="Phone Number" value="<?php echo $row['branch_phone']; ?>" required>
                 </div>
                 <div class="col-12">
                     <div class="input-group">
-                        <input list="listsubdis" name="branch_subdistrict" id="edit_branch_subdistrict" type="text" class="form-control" placeholder="Subdistrict" required>
+                        <input list="listsubdis" name="branch_subdistrict" id="edit_branch_subdistrict" type="text" class="form-control" placeholder="Subdistrict" value="<?php echo $row['branch_subdistrict']; ?>" required>
                         <datalist id="listsubdis">
                                 <?php
                                     $subdistrictsql = "SELECT name_th FROM districts WHERE name_th NOT LIKE '%*%'";
@@ -78,7 +83,7 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
                                 <?php } ?>
                         </datalist>
 
-                        <input list="listdis" name="branch_district" id="edit_branch_district" type="text" class="form-control" placeholder="District" required>
+                        <input list="listdis" name="branch_district" id="edit_branch_district" type="text" class="form-control" placeholder="District" value="<?php echo $row['branch_district']; ?>" required>
                         <datalist  id="listdis">
                             <?php
                                 $districtsql = "SELECT name_th FROM amphures WHERE name_th NOT LIKE '%*%'";
@@ -89,7 +94,7 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
                             <?php } ?>
                         </datalist>
                         
-                        <input list="listprovice" name="branch_province" id="edit_branch_province" type="text" class="form-control" placeholder="Province" required>
+                        <input list="listprovice" name="branch_province" id="edit_branch_province" type="text" class="form-control" placeholder="Province" value="<?php echo $row['branch_province']; ?>" required>
                         <datalist id="listprovice">
                                 <?php
                                     $provincesql = "SELECT name_th FROM provinces";
@@ -102,21 +107,26 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
                     </div>
                         
                 </div>
-
                 <div class="col-12">
-                    <button id="save-edit" class="btn btn-primary" type="submit" name="save_edit">Save</button>
+                    <input type="text" class="form-control" id="edit_branch_postal" name="branch_postal" placeholder="Postal Code" value="<?php echo $row['branch_postal']; ?>" required>
+                </div>
+                <p id="errorinput"></p>
+                <div class="col-12">
+                    <button id="update" class="btn btn-primary" >Save</button>
                     <a id="cancel-edit" class="btn btn-danger" href="edit-branch.php">Cancel</a>
                 </div>
             </div>
         </form>
     </div>
-    <script>
+    <!-- <script>
         var input_id = document.getElementById('edit_branch_id');
         var input_name = document.getElementById('edit_branch_name');
         var input_address = document.getElementById('edit_branch_address');
         var input_subdistrict = document.getElementById('edit_branch_subdistrict');
         var input_district = document.getElementById('edit_branch_district');
-        var input_provice = document.getElementById('edit_branch_provice');
+        var input_provice = document.getElementById('edit_branch_province');
+        var input_phone = document.getElementById('edit_branch_phone');
+        var input_postal = document.getElementById('edit_branch_postal');
 
         function changeVal() {
 
@@ -126,39 +136,21 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
             input_subdistrict.value = '<?php echo $row['branch_subdistrict']; ?>';
             input_district.value = '<?php echo $row['branch_district']; ?>';
             input_provice.value = '<?php echo $row['branch_province']; ?>';
+            input_phone.value = '<?php echo $row['branch_phone']; ?>';
+            input_postal.value = '<?php echo $row['branch_postal']; ?>';
         }
         
         input_id.addEventListener('input', ()=> {
             changeVal();
         })
-        changeVal();
-    </script>
+        changeVal(); -->
+    <!-- </script> -->
     <?php include 'php/module/footer.html'?>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
+    <script src="js/branch_validation.js"></script>
 </body>
 </html>
 <?php
 
-if(isset($_POST['save_edit'])) {
-
-    $branchID   = $_REQUEST['branchID'];
-    $branchName		  = $_REQUEST['branchName'];
-    $branch_address		  = $_REQUEST['branch_address'];
-    $branch_subdistrict	  = $_REQUEST['branch_subdistrict'];
-    $branch_district	  = $_REQUEST['branch_district'];
-    $branch_province	  = $_REQUEST['branch_province'];
-
-    $sql = "
-        UPDATE branch
-        SET branchName = '$branchName',  
-        branch_address = '$branch_address', 
-        branch_subdistrict = '$branch_subdistrict', 
-        branch_district = '$branch_district', 
-        branch_province = '$branch_province'
-        WHERE branchID = '$get_id'; ";
-    
-    $objQuery = mysqli_query($conn, $sql);
-    header('Location: edit-branch.php');
-
-}
     mysqli_close($conn);
 ?>

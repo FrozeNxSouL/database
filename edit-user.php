@@ -1,6 +1,6 @@
 <?php 
    require('php/connect.php');
-   
+   require('php/process.php');
     // delete function 
     $delete_mail  = $_REQUEST['cus_email'];
 
@@ -64,7 +64,8 @@
                <tr>
                   <td><?php echo $row["cus_email"]; ?></td>
                   <td><?php echo $row["name"]; ?></td>
-                  <td><?php echo $row["phone_num"]; ?></td>
+                  <td><?php  $format_phone = substr($row['phone_num'], -10, -7) . "-" .substr($row['phone_num'], -7, -4) . "-" .substr($row['phone_num'], -4);
+                            echo  $format_phone; ?></td>
                   <td><?php echo $row["address"]; ?><br><?php echo $row["subdistrict"]; ?> <?php echo $row["district"]; ?> <?php echo $row["provice"]; ?></td>
                   <td><?php echo $row["role_name"]; ?></td>
                   <td><a class="btn btn-secondary" id="edit-btn" href="edit-user-info.php?cus_email=<?php echo $row["cus_email"]; ?>">Edit</a></td>
@@ -79,26 +80,10 @@
       </div>
       </div>
       <?php include 'php/module/footer.html' ?>
+      <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
+      <script src="js/user_validation.js"></script>
    </body>
 </html>
 <?php
-   if(isset($_POST['save_edit'])) {
-      $edit_food_id = $_POST['edit_food_id']; 
-      $edit_food_name = $_POST['edit_food_name'];
-      $edit_food_category = $_POST['edit_food_category'];
-      $edit_food_pict = $_POST['edit_food_pict'];
-      $edit_food_price = $_POST['edit_food_price'];
-      
-      $sqledit = "
-         UPDATE food_menu
-         SET food_name = '$edit_food_name',  
-         food_price = '$edit_food_price', 
-         food_pict = '$edit_food_pict', 
-         food_category = '$edit_food_category'
-         WHERE food_id = '$edit_food_id' ; ";
-      
-      $queryedit = mysqli_query($conn, $sqledit);
-   }
-
     mysqli_close($conn);
 ?>
