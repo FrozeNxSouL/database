@@ -32,7 +32,10 @@
                     <a class='nav-link' href='mycart.php'>Cart</a>
                 </li>
             </ul>
-                <a class='navbar-brand' href='mycart.php'><span class="material-symbols-outlined">shopping_basket</span></a>
+                <a class='navbar-brand' href='mycart.php'>
+                    <span class="badge text-bg-danger" style="font-size: .6rem">1</span>
+                    <span class="material-symbols-outlined">shopping_basket</span>
+                </a>
                 <?php 
                         if (isset($_SESSION['email'])) {
                             echo '
