@@ -201,20 +201,20 @@ $all_cate = $conn->query($catesql);
             WHERE food_id = '$edit_food_id' ; ";
         
         $queryedit = mysqli_query($conn, $sqledit);
-        // if ($queryedit) {
-        //     echo "
-        //     <script>
-        //         success_alert();
-        //     </script>
-        //     ";
-        // }
-        // else {
-        //     echo "
-        //     <script>
-        //         fail_alert();
-        //     </script>
-        //     ";
-        // }
+        if ($queryedit) {
+            echo "
+            <script>
+                success_alert();
+            </script>
+            ";
+        }
+        else {
+            echo "
+            <script>
+                fail_alert();
+            </script>
+            ";
+        }
     }
 
     mysqli_close($conn);
