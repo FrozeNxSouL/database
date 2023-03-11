@@ -2,7 +2,7 @@
    require('php/connect.php');
    require('php/process.php');
     // delete function 
-    $delete_mail  = $_REQUEST['cus_email'];
+    $delete_mail  = $_REQUEST['delete'];
 
     $delmailsql = "
         DELETE FROM customer
@@ -69,7 +69,7 @@
                   <td><?php echo $row["address"]; ?><br><?php echo $row["subdistrict"]; ?> <?php echo $row["district"]; ?> <?php echo $row["provice"]; ?></td>
                   <td><?php echo $row["role_name"]; ?></td>
                   <td><a class="btn btn-secondary" id="edit-btn" href="edit-user-info.php?cus_email=<?php echo $row["cus_email"]; ?>">Edit</a></td>
-                  <td><a class="btn btn-danger" href="?cus_email=<?php echo $row["cus_email"]; ?>" onclick="return confirm('Are you sure ?')">Delete</a></td>
+                  <td><a data-id="<?php echo $row["cus_email"]; ?>" class="btn btn-danger delete-btn" href="?delete=<?php echo $row["cus_email"]; ?>">Delete</a></td>
                </tr>
                <?php
                   }
@@ -82,6 +82,7 @@
       <?php include 'php/module/footer.html' ?>
       <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
       <script src="js/user_validation.js"></script>
+      <script src="js/alerts.js"></script>
    </body>
 </html>
 <?php

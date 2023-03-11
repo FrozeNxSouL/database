@@ -3,21 +3,6 @@
     require_once('php/connect.php');
     require_once('php/process.php'); 
 
-    if (isset($_REQUEST['cus_email'])) {
-        $delete_ID  = $_REQUEST['cus_email'];
-        $delsql = "
-        DELETE FROM customer
-        WHERE cus_email = '$delete_ID';
-        ";
-        $objQuery = mysqli_query($conn, $delsql);
-        session_destroy();
-        header('location: index.php');
-    }
-
-    if (isset($_POST['logout'])) {
-        session_destroy();
-        header('location: index.php');
-    }
 ?>
 
 <!DOCTYPE html>
@@ -150,7 +135,7 @@
         </div>
     
     </form>
-    <button id="del-button" class="btn btn-danger" onclick="delacc()">DELETE</button>
+    <button data-id="<?php echo $row['cus_email']; ?>" class="btn btn-danger delete-btn">DELETE</button>
     <button id="logout-button" class="btn btn-secondary" onclick="logout()">Logout</button>
      
         <!-- <form class="profileconfigure" id="profileconfigure" method="post" >
@@ -203,11 +188,27 @@
         <p class="warningtext" id="warningtext" >Logout?</p>
         <button type="submit" name="logout" class="logoutconfirm">LOG OUT</button>   
     </form>
-
     <script src="js/user.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
     <script src="js/edituserselector.js"></script>
     <?php include 'php/module/footer.html' ?>
+    <script src="js/alerts.js"></script>
 </body>
 </html>
-<?php mysqli_close($conn); ?>
+<?php 
+
+    if (isset($_REQUEST['delete'])) {
+        $delete_ID  = $_REQUEST['delete'];
+        $delsql = "
+        DELETE FROM customer
+        WHERE cus_email = '$delete_ID';
+        ";
+        $objQuery = mysqli_query($conn, $delsql);
+        session_destroy();
+    }
+
+    if (isset($_POST['logout'])) {
+        session_destroy();
+    }
+    mysqli_close($conn); 
+?>

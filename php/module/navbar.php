@@ -1,9 +1,10 @@
 
 <?php 
-session_start();
+    session_start();
 ?>
 
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
 <nav class='navbar navbar-expand-lg bg-body-tertiary'>
     <div class='container-fluid'>
 
@@ -30,22 +31,26 @@ session_start();
                 <li class='nav-item'>
                     <a class='nav-link' href='mycart.php'>Cart</a>
                 </li>
-                <?php 
-                    if (isset($_SESSION['email']) && ($_SESSION['role'] == 1)) {
-                        echo '
-                        <li id="backdoor-page" class="nav-item">
-                        <a class="nav-link" href="edit-user.php">Admin</a>
-                        </li>';
-                    }
-                ?>
             </ul>
-
+                <a class='navbar-brand' href='mycart.php'><span class="material-symbols-outlined">shopping_basket</span></a>
                 <?php 
                         if (isset($_SESSION['email'])) {
                             echo '
-                            <a class="navbar-brand" href="user.php">
-                                <span class="material-symbols-outlined" style="line-height: 2rem" id="material-symbols-outlined">person</span>
-                            </a>';
+                            <div class="logged-in">
+                                <a class="navbar-brand" href="#"><span class="material-symbols-outlined" style="line-height: 2rem" id="material-symbols-outlined">person</span></a>
+                                <ul class="user-content">
+                                    <li id="backdoor-page" class="nav-item">
+                                        <a class="nav-link" href="user.php">Edit profile</a>
+                                    </li>';
+                            if ($_SESSION['role'] == 1) {
+                                echo '<li id="backdoor-page" class="nav-item"><a class="nav-link" href="edit-user.php">Backend</a></li>';
+                            }
+                            echo '
+                                    <li id="backdoor-page" class="nav-item">
+                                        <a type="submit" name="logout" class="nav-link" href="#">Logout</a>
+                                    </li>
+                                </ul>
+                            </div>';
                         } else {
                             echo '
                             <a class="navbar-brand" href="#" onclick="signin()">
@@ -57,4 +62,10 @@ session_start();
         </div>
     </div>
 </nav>
+<?php 
+    if (isset($_POST['logout'])) {
+        session_destroy();
+        header('location: index.php');
+    }
+?>
    
