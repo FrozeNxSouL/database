@@ -10,7 +10,7 @@ $('document').ready(function() {
             return;
         }
         $.ajax({
-            url: 'index.php',
+            url: 'user.php',
             type: 'post',
             data: {
                 'phone_check': 1,
@@ -40,7 +40,7 @@ $('document').ready(function() {
     //         return;
     //     }
     //     $.ajax({
-    //         url: 'index.php',
+    //         url: 'user.php',
     //         type: 'post',
     //         data: {
     //             'email_check': 1,
@@ -65,7 +65,7 @@ $('document').ready(function() {
     //         return;
     //     }
     //     $.ajax({
-    //         url: 'index.php',
+    //         url: 'user.php',
     //         type: 'post',
     //         data: {
     //             'subdis_check': 1,
@@ -88,7 +88,7 @@ $('document').ready(function() {
     //         return;
     //     }
     //     $.ajax({
-    //         url: 'index.php',
+    //         url: 'user.php',
     //         type: 'post',
     //         data: {
     //             'dis_check': 1,
@@ -111,7 +111,7 @@ $('document').ready(function() {
     //         return;
     //     }
     //     $.ajax({
-    //         url: 'index.php',
+    //         url: 'user.php',
     //         type: 'post',
     //         data: {
     //             'provice_check': 1,
@@ -127,6 +127,126 @@ $('document').ready(function() {
     //         }
     //     })
     // });
+    $("#inputsubdis").on('blur', function() {
+        var postal = $("#inputpostal").val();
+        var subdis = $("#inputsubdis").val();
+        var dis = $("#inputdis").val();
+        var provice = $("#inputprovice").val();
+        if ((postal === '') || (subdis === '') || (dis === '') || (provice === '')) {
+            address_state = false;
+            return;
+        }
+        $.ajax({
+            url: 'user.php',
+            type: 'post',
+            data: {
+                'postal_check': 1,
+                'postal': postal,
+                'subdis' : subdis,
+                'dis' : dis,
+                'provice' : provice
+            },
+            success: function(response) {
+                if (response == 'error') {
+                    address_state = false;
+                    $("#errorinput").text("5 Number for Postal Number");
+                } 
+                else if (response == "errorletter") {
+                    address_state = false;
+                    $("#errorinput").text('Postal Number is Number');
+                }
+                else if (response == 'wad') {
+                    address_state = false;
+                    $("#errorinput").text("Address Not found");
+                } 
+                else if (response == "not_unfound") {
+                    address_state = true;
+                    $("#errorinput").text('');
+                }
+                
+            }
+        })
+    });
+    $("#inputdis").on('blur', function() {
+        var postal = $("#inputpostal").val();
+        var subdis = $("#inputsubdis").val();
+        var dis = $("#inputdis").val();
+        var provice = $("#inputprovice").val();
+        if ((postal === '') || (subdis === '') || (dis === '') || (provice === '')) {
+            address_state = false;
+            return;
+        }
+        $.ajax({
+            url: 'user.php',
+            type: 'post',
+            data: {
+                'postal_check': 1,
+                'postal': postal,
+                'subdis' : subdis,
+                'dis' : dis,
+                'provice' : provice
+            },
+            success: function(response) {
+                if (response == 'error') {
+                    address_state = false;
+                    $("#errorinput").text("5 Number for Postal Number");
+                } 
+                else if (response == "errorletter") {
+                    address_state = false;
+                    $("#errorinput").text('Postal Number is Number');
+                }
+                else if (response == 'wad') {
+                    address_state = false;
+                    $("#errorinput").text("Address Not found");
+                } 
+                else if (response == "not_unfound") {
+                    address_state = true;
+                    $("#errorinput").text('');
+                }
+                
+            }
+        })
+    });
+    $("#inputprovice").on('blur', function() {
+        var postal = $("#inputpostal").val();
+        var subdis = $("#inputsubdis").val();
+        var dis = $("#inputdis").val();
+        var provice = $("#inputprovice").val();
+        if ((postal === '') || (subdis === '') || (dis === '') || (provice === '')) {
+            address_state = false;
+            return;
+        }
+        $.ajax({
+            url: 'user.php',
+            type: 'post',
+            data: {
+                'postal_check': 1,
+                'postal': postal,
+                'subdis' : subdis,
+                'dis' : dis,
+                'provice' : provice
+            },
+            success: function(response) {
+                if (response == 'error') {
+                    address_state = false;
+                    $("#errorinput").text("5 Number for Postal Number");
+                } 
+                else if (response == "errorletter") {
+                    address_state = false;
+                    $("#errorinput").text('Postal Number is Number');
+                }
+                else if (response == 'wad') {
+                    address_state = false;
+                    $("#errorinput").text("Address Not found");
+                } 
+                else if (response == "not_unfound") {
+                    address_state = true;
+                    $("#errorinput").text('');
+                }
+                
+            }
+        })
+    });
 
     $("#inputpostal").on('blur', function() {
         var postal = $("#inputpostal").val();
@@ -138,7 +258,7 @@ $('document').ready(function() {
             return;
         }
         $.ajax({
-            url: 'index.php',
+            url: 'user.php',
             type: 'post',
             data: {
                 'postal_check': 1,
@@ -202,6 +322,7 @@ $('document').ready(function() {
                     } 
                 
                     else if (response == 'Saved') {
+                        $("#errorinput").text('');
                         alert('SAVED');                 
                         window.location.href='user.php';
                     } 

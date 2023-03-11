@@ -59,7 +59,7 @@ if (isset($_POST['postal_check'])) {
     if (strlen($postal)===5) {
         if (!preg_match("/^[0-9]*$/", $postal)) { 
             echo 'errorletter';
-            exit();
+            
         }
         else {
             $addresschecksql = "SELECT 
@@ -199,5 +199,83 @@ if (isset($_POST['update'])) {
         
     }
 }
+
+if (isset($_POST['add_branch'])) {
+    $branchid = '';
+    $branch_name = $_POST['branch_name'];
+    $branch_address = $_POST['branch_address'];
+    $branch_phone = $_POST['branch_phone'];
+    $branch_subdis = $_POST['branch_subdistrict'];
+    $branch_dis = $_POST['branch_district'];
+    $branch_province = $_POST['branch_province'];
+    $branch_postal = $_POST['branch_postal'];
+
+    $insertbsql = "INSERT INTO branch(branchID,branchName,branch_address,branch_subdistrict,branch_district,branch_province,branch_phone,branch_postal) VALUES (?,?,?, ?, ?, ?, ?, ?)";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt,$insertbsql)) {
+        echo 'Error';
+        exit();
+    } 
+    else {
+        mysqli_stmt_bind_param($stmt,"isssssss",$branchid,$branch_name,$branch_address,$branch_subdis,$branch_dis,$branch_province,$branch_phone,$branch_postal);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+        echo 'Saved';
+        exit();
+    }
+} 
+
+if(isset($_POST['save_edit'])) {
+
+    $branchID   = $_POST['branchID'];
+    $branchName		  = $_POST['branchName'];
+    $branch_phone = $_POST['branch_phone'];
+    $branch_address		  = $_POST['branch_address'];
+    $branch_subdistrict	  = $_POST['branch_subdistrict'];
+    $branch_district	  = $_POST['branch_district'];
+    $branch_province	  = $_POST['branch_province'];
+    $branch_postal = $_POST['branch_postal'];
+    $sql = "UPDATE branch 
+        SET branchName = '$branchName', 
+        branch_address = '$branch_address', 
+        branch_subdistrict = '$branch_subdistrict', 
+        branch_district = '$branch_district', 
+        branch_province = '$branch_province',
+        branch_phone = '$branch_phone',
+        branch_postal = '$branch_postal'
+        WHERE branchID = '$branchID' ";
+
+    $objQuery = mysqli_query($conn, $sql);
+    echo 'updated';
+    exit();
+}
+
+if(isset($_POST['admin_update'])) {
+    $cus_email    = $_POST['email'];
+    $name		  = $_POST['name'];
+    $phone_num 		  = $_POST['phonenum'];
+    $address		  = $_POST['address'];
+    $subdistrict	  = $_POST['subdis'];
+    $district	  = $_POST['dis'];
+    $provice	  = $_POST['provice'];
+    $user_role = $_POST['role'];
+    $postal = $_POST['postal'];
+
+    $usersql = "UPDATE customer
+        SET name = '$name',  
+        phone_num = '$phone_num', 
+        address = '$address', 
+        subdistrict = '$subdistrict', 
+        district = '$district', 
+        provice = '$provice' ,
+        user_role = '$user_role',
+        postal_num = '$postal'
+        WHERE cus_email = '$cus_email' ";
+    
+    $objQuery = mysqli_query($conn, $usersql);
+    echo 'admin_Saved';
+    exit();
+}
+
 
 ?>
