@@ -3,7 +3,7 @@
 require('php/connect.php');
 
 // delete function 
-$delete_ID  = $_REQUEST['food_id'];
+$delete_ID  = $_REQUEST['delete'];
 
 $delsql = '
     DELETE FROM food_menu
@@ -20,37 +20,6 @@ $all_food = $conn->query($sql);
 
 $catesql = 'SELECT * FROM category;';
 $all_cate = $conn->query($catesql);
-
-if(isset($_POST['add_menu']))
-{
-    $food_pict = $_POST['food_pict'];
-    $food_name = $_POST['food_name'];
-    $food_price = $_POST['food_price'];
-    $food_category = $_POST['food_category'];
-
-    $query = "INSERT INTO `food_menu`(`food_pict`,`food_name`,`food_price`,`food_category`) VALUES ('$food_pict','$food_name','$food_price', '$food_category')";
-    $query_run = mysqli_query($conn,$query);
-    header('location: edit-OurFood.php');
-    
-}
-if(isset($_POST['save_edit'])) {
-    $edit_food_id = $_POST['edit_food_id']; 
-    $edit_food_name = $_POST['edit_food_name'];
-    $edit_food_category = $_POST['edit_food_category'];
-    $edit_food_pict = $_POST['edit_food_pict'];
-    $edit_food_price = $_POST['edit_food_price'];
-    
-    $sqledit = "
-        UPDATE food_menu
-        SET food_name = '$edit_food_name',  
-        food_price = '$edit_food_price', 
-        food_pict = '$edit_food_pict', 
-        food_category = '$edit_food_category'
-        WHERE food_id = '$edit_food_id' ; ";
-    
-    $queryedit = mysqli_query($conn, $sqledit);
-    header('location: edit-OurFood.php');
-}
 
 ?>
 
@@ -72,6 +41,8 @@ if(isset($_POST['save_edit'])) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
 </head>
 
 <body>
@@ -114,7 +85,7 @@ if(isset($_POST['save_edit'])) {
                 </div>
             </form>
             <div class="list-edit">
-                <form id="edit-item-module" class="form-edit hide" method="POST">
+                <form id="edit-item-module" class="form-edit" method="POST">
                     <div class="row g-3">
                         <div class="col-12">
                             <div class="input-group">
@@ -145,8 +116,8 @@ if(isset($_POST['save_edit'])) {
                         </div>
 
                         <div class="col-12">
-                            <button id="save-edit" class="btn btn-primary" type="submit" name="save_edit">Save</button>
-                            <button id="cancel-edit" class="btn btn-danger">Cancel</button>
+                            <button id="save_edit" class="btn btn-primary" type="submit" name="save_edit">Save</button>
+                            <a id="cancel-edit" class="btn btn-danger">Cancel</a>
                         </div>
                     </div>
 
@@ -168,7 +139,7 @@ if(isset($_POST['save_edit'])) {
                                 <h6><span class="badge bg-secondary">ประเภท</span> <?php echo $row['food_category']; ?></h6>
                                 <h6><span class="badge bg-secondary">ราคา</span> <?php echo $row['food_price']; ?>฿</h6>
                             <div class="col">
-                                <a class="btn btn-danger" href="?food_id=<?php echo $row["food_id"]; ?>">Delete</a>
+                                <a data-id="<?php echo $row["food_id"]; ?>" href="?delete=<?php echo $row["food_id"]; ?>" class="btn btn-danger delete-btn">Delete</a>
                                 <a class="btn btn-secondary" id="edit-btn" href="#">Edit</a>
                             </div>
                             
@@ -180,16 +151,71 @@ if(isset($_POST['save_edit'])) {
             ?>
 
                     </div>
-
         </div>
     </div>
     <?php include 'php/module/footer.html'?>
     <script src="js/backdoor.js"></script>
+    <script src="js/alerts.js"></script>
 </body>
 </html>
 
 <?php
+    if(isset($_POST['add_menu']))
+    {
+        $food_pict = $_POST['food_pict'];
+        $food_name = $_POST['food_name'];
+        $food_price = $_POST['food_price'];
+        $food_category = $_POST['food_category'];
 
+        $query = "INSERT INTO `food_menu`(`food_pict`,`food_name`,`food_price`,`food_category`) VALUES ('$food_pict','$food_name','$food_price', '$food_category')";
+        $query_run = mysqli_query($conn,$query);
+        if ($query_run) {
+            echo "
+            <script>
+                success_alert();
+            </script>
+            ";
+        }
+        else {
+            echo "
+            <script>
+                fail_alert();
+            </script>
+            ";
+        }
+        
+    }
+    if(isset($_POST['save_edit'])) {
+        $edit_food_id = $_POST['edit_food_id']; 
+        $edit_food_name = $_POST['edit_food_name'];
+        $edit_food_category = $_POST['edit_food_category'];
+        $edit_food_pict = $_POST['edit_food_pict'];
+        $edit_food_price = $_POST['edit_food_price'];
+        
+        $sqledit = "
+            UPDATE food_menu
+            SET food_name = '$edit_food_name',  
+            food_price = '$edit_food_price', 
+            food_pict = '$edit_food_pict', 
+            food_category = '$edit_food_category'
+            WHERE food_id = '$edit_food_id' ; ";
+        
+        $queryedit = mysqli_query($conn, $sqledit);
+        // if ($queryedit) {
+        //     echo "
+        //     <script>
+        //         success_alert();
+        //     </script>
+        //     ";
+        // }
+        // else {
+        //     echo "
+        //     <script>
+        //         fail_alert();
+        //     </script>
+        //     ";
+        // }
+    }
 
     mysqli_close($conn);
 ?>
