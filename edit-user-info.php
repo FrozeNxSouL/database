@@ -128,6 +128,7 @@
     <?php include 'php/module/footer.html'?>
     <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
     <script src="js/user_validation.js"></script>
+    <script src="js/alerts.js"></script>
 </body>
 </html>
 <?php

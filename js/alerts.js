@@ -21,6 +21,7 @@ function fail_alert() {
 $(".delete-btn").click(function(e) {
     var id = $(this).data('id');
     e.preventDefault();
+    console.log(id);
     deleteConfirm(id);
 })
 

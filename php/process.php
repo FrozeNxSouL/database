@@ -17,8 +17,18 @@ if (isset($_POST['email_check'])) {
 
 // if (isset($_POST['subdis_check'])) {
 //     $subdis = $_POST['subdis'];
-//     $sql = "SELECT * FROM districts WHERE name_th = '$subdis'";
-//     $results = mysqli_query($conn, $sql);
+//     $dis = $_POST['dis'];
+//     $provice = $_POST['provice'];
+//     $addresschecksql = "SELECT 
+//     districts.name_th, amphures.name_th, provinces.name_th FROM districts 
+//     JOIN amphures ON 
+//     districts.amphure_id = amphures.id 
+//     JOIN provinces ON 
+//     provinces.id = amphures.province_id 
+//     WHERE districts.name_th = '$subdis' AND 
+//     amphures.name_th = '$dis' AND 
+//     provinces.name_th = '$provice' ";
+//     $results = mysqli_query($conn, $addresschecksql);
 //     if (mysqli_num_rows($results) > 0) {
 //         echo 'not_unfound';
 //     } else {
@@ -29,8 +39,14 @@ if (isset($_POST['email_check'])) {
 
 // if (isset($_POST['dis_check'])) {
 //     $dis = $_POST['dis'];
-//     $sql = "SELECT * FROM amphures WHERE name_th = '$dis'";
-//     $results = mysqli_query($conn, $sql);
+//     $provice = $_POST['provice'];
+//     $addresschecksql = "SELECT 
+//     amphures.name_th, provinces.name_th FROM amphures 
+//     JOIN provinces ON 
+//     provinces.id = amphures.province_id 
+//     WHERE amphures.name_th = '$dis' AND 
+//     provinces.name_th = '$provice' ";
+//     $results = mysqli_query($conn, $addresschecksql);
 //     if (mysqli_num_rows($results) > 0) {
 //         echo 'not_unfound';
 //     } else {

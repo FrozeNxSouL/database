@@ -38,11 +38,6 @@ require_once('php/process.php');
     </div>
     <div class="content-main">
         <div class="row">
-            <div class="col-lg-12 text-center border rounded bg-light my-5">
-                <br>
-                <h1>SHOPPING CART</h1>
-                </br>
-            </div>
             <div class="col-lg-9">
                 <table class="table">
                     <thead class = "text-center">

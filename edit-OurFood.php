@@ -41,8 +41,6 @@ $all_cate = $conn->query($catesql);
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
 </head>
 
 <body>
@@ -116,7 +114,7 @@ $all_cate = $conn->query($catesql);
                         </div>
 
                         <div class="col-12">
-                            <button id="save_edit" class="btn btn-primary" type="submit" name="save_edit">Save</button>
+                            <button class="btn btn-primary" name="save_edit">Save</button>
                             <a id="cancel-edit" class="btn btn-danger">Cancel</a>
                         </div>
                     </div>
@@ -140,7 +138,7 @@ $all_cate = $conn->query($catesql);
                                 <h6><span class="badge bg-secondary">ราคา</span> <?php echo $row['food_price']; ?>฿</h6>
                             <div class="col">
                                 <a data-id="<?php echo $row["food_id"]; ?>" href="?delete=<?php echo $row["food_id"]; ?>" class="btn btn-danger delete-btn">Delete</a>
-                                <a class="btn btn-secondary" id="edit-btn" href="#">Edit</a>
+                                <a class="btn btn-secondary" id="edit-btn">Edit</a>
                             </div>
                             
                         </div>
@@ -200,20 +198,21 @@ $all_cate = $conn->query($catesql);
             WHERE food_id = '$edit_food_id' ; ";
         
         $queryedit = mysqli_query($conn, $sqledit);
-        // if ($queryedit) {
-        //     echo "
-        //     <script>
-        //         success_alert();
-        //     </script>
-        //     ";
-        // }
-        // else {
-        //     echo "
-        //     <script>
-        //         fail_alert();
-        //     </script>
-        //     ";
-        // }
+        if ($queryedit) {
+            echo "
+            <script>
+                success_alert();
+                console.log('test');
+            </script>
+            ";
+        }
+        else {
+            echo "
+            <script>
+                fail_alert();
+            </script>
+            ";
+        }
     }
 
     mysqli_close($conn);
