@@ -102,7 +102,6 @@ $menuset = $conn->query($sql2);
         }
     }
 ?>
-
     <?php require('login-signin.php'); ?>
 
     <div class="contain">
@@ -172,7 +171,7 @@ $menuset = $conn->query($sql2);
                         </div>
                         <p class="pricehead">Price</p>
                         <h5>฿<?php echo ($row['set_price'] == (int)$row['set_price']) ? $row['set_price'] : number_format($row['set_price'], 2);?></h5>
-                        <button type="submit" name="Add_To_Cart" class="btn btn-danger">Order</button>
+                        <button type="submit" name="Add_To_Cart1" class="btn btn-danger">Order</button>
                         <input type="hidden" name ="set_id" value = "<?php echo $row['set_id']; ?>" >
                         <input type="hidden" name ="set_name" value = "<?php echo ($row['set_name']); ?>" >
                         <input type="hidden" name ="set_price" value = "<?php echo $row['set_price']; ?>" >
