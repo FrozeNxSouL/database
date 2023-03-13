@@ -297,8 +297,7 @@ $('document').ready(function() {
                 },
                 success: function(response) {
                         $("#errorinput").text('');
-                        alert('SAVED');                 
-                        window.location.href='edit-user.php';
+                        success_alert();
                 }
             })
         }

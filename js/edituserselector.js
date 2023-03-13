@@ -323,8 +323,7 @@ $('document').ready(function() {
                 
                     else if (response == 'Saved') {
                         $("#errorinput").text('');
-                        alert('SAVED');                 
-                        window.location.href='user.php';
+                        success_alert();
                     } 
                 }
             })

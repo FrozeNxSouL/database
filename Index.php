@@ -93,7 +93,7 @@ if (isset($_POST['logout'])) {
     <script src="js/checkfunc.js" ></script>
     <script src="js/footer.js"></script>
     <script src="js/account.js"></script>
-            
+    <script src="js/alerts.js"></script>
 
 </body>
 

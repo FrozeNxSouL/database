@@ -148,6 +148,7 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
     <?php include 'php/module/footer.html'?>
     <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
     <script src="js/branch_validation.js"></script>
+    <script src="js/alerts.js"></script>
 </body>
 </html>
 <?php

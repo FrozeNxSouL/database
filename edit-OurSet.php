@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once('php/connect.php');
-require_once('php/process.php'); 
 
 $sql = 'SELECT * FROM food_menu WHERE food_category = 1;';
 $burgermenu = $conn->query($sql);
@@ -34,6 +33,29 @@ $menuset = $conn->query($sql2);
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+    <style>
+		select[multiple] {
+			width: 100%;
+			height: 150px;
+			padding: 5px;
+			font-size: 16px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			background-color: #fff;
+			overflow-y: auto;
+		}
+
+		select[multiple] option {
+			padding: 5px;
+			font-size: 16px;
+			border-bottom: 1px solid #ccc;
+			background-color: #fff;
+		}
+
+		select[multiple] option:last-child {
+			border-bottom: none;
+		}
+	</style>
 </head>
 
 <body>
@@ -147,7 +169,6 @@ $menuset = $conn->query($sql2);
         </div>
     </div>
 
-
     <div class="submenucontent" id="other">
         <div class="menu-title">
             <h2 style="font-weight: 700">Other Menu</h2>
@@ -180,6 +201,60 @@ $menuset = $conn->query($sql2);
                 ?>
 
         </div>
+        <form>
+        <label for="fruits">Choose your favorite fruits:</label><br>
+        <select id="fruits" name="fruits" multiple>
+            <option value="apple">Apple</option>
+            <option value="banana">Banana</option>
+            <option value="orange">Orange</option>
+            <option value="pear">Pear</option>
+            <option value="strawberry">Strawberry</option>
+        </select><br><br>
+        <input type="submit" value="Submit">
+        </form>
+
+        <script>
+        var select = document.getElementById("fruits");
+        var isDragging = false;
+        var startX;
+        var startY;
+
+        select.addEventListener("mousedown", function(e) {
+            e.preventDefault();
+            isDragging = false;
+            startX = e.clientX;
+            startY = e.clientY;
+        });
+
+        select.addEventListener("mousemove", function(e) {
+            if (isDragging) {
+            var x = e.clientX;
+            var y = e.clientY;
+            var delta = y - startY;
+            select.scrollTop += delta;
+            startX = x;
+            startY = y;
+            }
+        });
+
+        select.addEventListener("mouseup", function(e) {
+            if (!isDragging) {
+            var clickedOption = e.target;
+            if (clickedOption.tagName === 'OPTION') {
+                clickedOption.selected = !clickedOption.selected;
+            }
+            }
+            isDragging = false;
+        });
+
+        select.addEventListener("mouseleave", function(e) {
+            isDragging = false;
+        });
+
+        select.addEventListener("mouseenter", function(e) {
+            isDragging = false;
+        });
+        </script>
     </div>
     <script src="js/foodselector.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>

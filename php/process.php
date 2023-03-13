@@ -73,7 +73,7 @@ if (isset($_POST['postal_check'])) {
     $provice = $_POST['provice'];
     $postal = $_POST['postal'];
     if (strlen($postal)===5) {
-        if (!preg_match("/^[0-9]*$/", $postal)) { 
+        if (!preg_match("/^[0-9]*$/", $postal)) {
             echo 'errorletter';
             
         }

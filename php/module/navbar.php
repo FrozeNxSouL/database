@@ -28,39 +28,36 @@
                 <li class='nav-item'>
                     <a class='nav-link' href='delivery.php'>Delivery</a>
                 </li>
-                <li class='nav-item'>
-                    <a class='nav-link' href='mycart.php'>Cart</a>
-                </li>
             </ul>
                 <a class='navbar-brand' href='mycart.php'>
-                    <span class="badge text-bg-danger" style="font-size: .6rem">1</span>
+                    <span class="badge text-bg-danger" style="font-size: .6rem"></span>
                     <span class="material-symbols-outlined">shopping_basket</span>
                 </a>
                 <?php 
                         if (isset($_SESSION['email'])) {
                             echo '
-                            <div class="logged-in">
-                                <a class="navbar-brand" href="#"><span class="material-symbols-outlined" style="line-height: 2rem" id="material-symbols-outlined">person</span></a>
-                                <ul class="user-content">
-                                    <li id="backdoor-page" class="nav-item">
-                                        <a class="nav-link" href="user.php">Edit profile</a>
-                                    </li>';
+                                <div class="logged-in">
+                                    <a class="navbar-brand" href="user.php" style="font-size: 1rem">' . $_SESSION['email'] . '</a>
+                                    <ul class="user-content">
+                                        <li id="backdoor-page" class="nav-item">
+                                            <a class="nav-link" href="user.php">Edit profile</a>
+                                        </li>';
                             if ($_SESSION['role'] == 1) {
                                 echo '<li id="backdoor-page" class="nav-item"><a class="nav-link" href="edit-user.php">Backend</a></li>';
                             }
                             echo '
-                                    <li id="backdoor-page" class="nav-item">
-                                        <form action="index.php" method="post">
-                                            <button type="submit" name="logout" style="border:none;background-color: transparent;" class="nav-link">Logout</button>
-                                        </form>
-                                    </li>
-                                </ul>
-                            </div>';
+                                        <li id="backdoor-page" class="nav-item">
+                                            <form action="index.php" method="post">
+                                                <button type="submit" name="logout" style="border:none;background-color: transparent;" class="nav-link">Logout</button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>';
                         } else {
                             echo '
-                            <a class="navbar-brand" href="#" onclick="signin()">
-                                <span class="material-symbols-outlined" style="line-height: 2rem" id="material-symbols-outlined">person</span>
-                            </a>';
+                                <a class="navbar-brand" href="#" onclick="signin()">
+                                    <span class="material-symbols-outlined" style="line-height: 2rem" id="material-symbols-outlined">person</span>
+                                </a>';
                         }
                 ?>
 

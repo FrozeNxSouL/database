@@ -223,6 +223,7 @@ $menuset = $conn->query($sql2);
     <script src="js/logincheckfunc.js" ></script>
     <script src="js/checkfunc.js" ></script>
     <script src="js/account.js"></script>
+    <script src="js/alerts.js"></script>
     <?php require 'php/module/footer.html' ?>
 </body>
 

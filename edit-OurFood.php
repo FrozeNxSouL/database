@@ -83,7 +83,7 @@ $all_cate = $conn->query($catesql);
                 </div>
             </form>
             <div class="list-edit">
-                <form id="edit-item-module" class="form-edit" method="POST">
+                <form id="edit-item-module" class="form-edit hide" method="POST">
                     <div class="row g-3">
                         <div class="col-12">
                             <div class="input-group">
