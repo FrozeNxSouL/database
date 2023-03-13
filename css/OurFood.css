@@ -84,3 +84,9 @@
   margin: 0;
   color: #D0021B;
 }
+.quantity-change {
+  font-family: 'Material Symbols Outlined';
+  font-size: 0.9rem;
+  border: none;
+  background-color: transparent;
+}
