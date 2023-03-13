@@ -28,13 +28,7 @@ require_once('php/process.php');
 </head>
 <body>
     <?php require('login-signin.php'); 
-    
-    $count=0;
-                if(isset($_SESSION['cart']))
-                {
-                    $count=count($_SESSION['cart']);
-                }
-        echo $count;?>
+    ?>
     <div class="contain">
         <header id="header">
             <?php require 'php/module/navbar.php' ?>

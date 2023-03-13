@@ -102,12 +102,6 @@ $menuset = $conn->query($sql2);
         }
     }
     
-        $count=0;
-                if(isset($_SESSION['cart']))
-                {
-                    $count=count($_SESSION['cart']);
-                }
-        echo $count;
                     
 ?>
     <?php require('login-signin.php'); ?>
