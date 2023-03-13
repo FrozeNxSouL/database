@@ -131,12 +131,11 @@
                 <p id="errorinput"></p>    
                 <div class="col-12" style="text-align: center;">
                     <button id="save" class="btn btn-primary" type="submit" name="submit">Save</button>
+                    <button data-id="<?php echo $row['cus_email']; ?>" class="btn btn-danger delete-btn">DELETE</button>
                 </div>
         </div>
     
     </form>
-    <button data-id="<?php echo $row['cus_email']; ?>" class="btn btn-danger delete-btn">DELETE</button>
-    <button id="logout-button" class="btn btn-secondary" onclick="logout()">Logout</button>
      
         <!-- <form class="profileconfigure" id="profileconfigure" method="post" >
             <h1>Profile / configure</h1>
@@ -182,12 +181,6 @@
         <p class="warningtext" id="warningtext" >Delete Account?</p>
         <a href="?cus_email=<?php echo $row["cus_email"]; ?>" class="delconfirm" onclick="delconfirm()">ACCEPT</a>   
     </div>
-
-    <form class="logoutbar" id="logoutbar" method="post">
-        <a href="#" class="closebtn" onclick="logoutexit()">close</a>
-        <p class="warningtext" id="warningtext" >Logout?</p>
-        <button type="submit" name="logout" class="logoutconfirm">LOG OUT</button>   
-    </form>
     <script src="js/user.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
     <script src="js/edituserselector.js"></script>
