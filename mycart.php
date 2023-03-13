@@ -50,7 +50,8 @@ require_once('php/process.php');
                         <th scope="col"></th>
                         </tr>
                     </thead>
-                    <tbody class ="text-center">
+                    
+                    <tbody class ="text-center" >
                         <?php
                             if(isset($_SESSION['cart']))
                             {
@@ -63,8 +64,10 @@ require_once('php/process.php');
                                             <td>$value[food_price]<input type='hidden' class='iprice' value = '$value[food_price]'></td>
                                             <td>
                                                 <form action='manage_cart.php' method='POST'>
-                                                    <input class='text-center iquantity' name = 'Mod_Quantity' onchange='this.form.submit();' type='number' value = '$value[food_quantity]' min = '1' max='9999'>
+                                                    <button class='quantity-change' id='minus' onclick='qtyminus()' >do_not_disturb_on</button>
+                                                    <input class='text-center iquantity' id='iquantity' name = 'Mod_Quantity' onchange='this.form.submit();' type='number' value = '$value[food_quantity]' min = '1' max='9999'>
                                                     <input type='hidden' name ='food_name' value='$value[food_name]'>
+                                                    <button class='quantity-change' id='plus' onclick='qtyplus()'>add_circle</button>
                                                 </form>
                                             </td>
                                             <td class = 'itotal'></td>
@@ -151,7 +154,19 @@ require_once('php/process.php');
             </div>
         </div>
     </div>
+<!-- <script>
+    const plus = document.querySelectorAll('#plus');
+    const minus = document.querySelectorAll('#minus');
+    const qty=document.querySelector('#iquantity');
 
+    plus.forEach(element => {
+        element.addEventListener('click', ()=> {
+            let qtyplus = element.closest('.iquantity').value + 1;
+
+            qty.setAttribute('value', qtyplus);
+        })
+    });
+</script> -->
 <script>
     var gt=0;
     var iprice=document.getElementsByClassName('iprice');
