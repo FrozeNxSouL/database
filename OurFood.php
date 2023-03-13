@@ -101,6 +101,14 @@ $menuset = $conn->query($sql2);
             }
         }
     }
+    
+        $count=0;
+                if(isset($_SESSION['cart']))
+                {
+                    $count=count($_SESSION['cart']);
+                }
+        echo $count;
+                    
 ?>
     <?php require('login-signin.php'); ?>
 
@@ -225,6 +233,7 @@ $menuset = $conn->query($sql2);
     <script src="js/account.js"></script>
     <script src="js/alerts.js"></script>
     <?php require 'php/module/footer.html' ?>
+
 </body>
 
 </html>

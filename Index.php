@@ -1,5 +1,11 @@
-<?php
+<?php 
 session_start();
+$count=0;
+if(isset($_SESSION['cart']))
+{
+  $count=count($_SESSION['cart']);
+}
+echo $count;
 require_once('php/connect.php');
 require_once('php/process.php'); 
 if (isset($_POST['logout'])) {
@@ -38,7 +44,8 @@ if (isset($_POST['logout'])) {
         <!-- start main section -->
 
         <!-- start Sign in/ Sign up form -->
-        <?php require('login-signin.php'); ?>
+        <?php require('login-signin.php');
+        ?>
 
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -62,7 +69,6 @@ if (isset($_POST['logout'])) {
             </button>
           </div>
         <!-- end slide -->
-
         <!-- start content -->
           <div class="content-header">
           <?php

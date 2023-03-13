@@ -30,7 +30,8 @@
                 </li>
             </ul>
                 <a class='navbar-brand' href='mycart.php'>
-                    <span class="badge text-bg-danger" style="font-size: .6rem"></span>
+                    
+                    <span class="badge text-bg-danger" style="font-size: .6rem"><?php echo $count; ?></span>
                     <span class="material-symbols-outlined">shopping_basket</span>
                 </a>
                 <?php 
