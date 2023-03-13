@@ -33,7 +33,7 @@
             <?php include 'php/module/navbar.php' ?>
         </header>
     </div>
-    
+
     <div class="content-header">
         <div class="head-input">
             <form class="input-container" method="POST">
@@ -48,7 +48,7 @@
                     <?php } ?>
                 </select>
 
-                <input type="text" class="searchbar" id="searchstore" name="search" placeholder="Search">
+                <input type="text" class="searchbar" id="searchstore" name="searchlocate" placeholder="Search">
                 <button type="submit" class="searchbtn" name="submit">Search</button>
             </form>
         </div>
@@ -62,7 +62,7 @@
             <?php 
                 if(isset($_POST['submit'])) {
                     $slpro = $_POST['select-province'];
-                    $search = $_POST['search'];
+                    $search = $_POST['searchlocate'];
                     if ($search == '') {
                         $storesql = "SELECT * FROM branch WHERE branch_province LIKE '%$slpro%'";
                     }
