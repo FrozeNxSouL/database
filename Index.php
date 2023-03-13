@@ -1,11 +1,5 @@
 <?php 
 session_start();
-$count=0;
-if(isset($_SESSION['cart']))
-{
-  $count=count($_SESSION['cart']);
-}
-echo $count;
 require_once('php/connect.php');
 require_once('php/process.php'); 
 if (isset($_POST['logout'])) {
