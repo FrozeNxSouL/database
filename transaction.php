@@ -65,6 +65,7 @@
                         <th scope="col">food price</th>
                         <th scope="col">food quantity</th>
                         <th scope="col">food id</th>
+                        <th scope="col">set id</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,6 +84,7 @@
                                     <td>$user_fetch[food_price]</td>
                                     <td>$user_fetch[food_quantity]</td>
                                     <td>$user_fetch[food_id]</td>
+                                    <td>$user_fetch[set_id]</td>
                                 </tr>
                                 ";
                             }

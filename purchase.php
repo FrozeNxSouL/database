@@ -19,17 +19,23 @@ if(mysqli_connect_error()){
             if(mysqli_query($conn,$query1))
             {
                 $Order_Id = mysqli_insert_id($conn);
-                $query2="INSERT INTO `user_orders`(`Order_Id`, `food_name`, `food_price`, `food_quantity`, `food_id`) VALUES (?,?,?,?,?)";
+                $query2="INSERT INTO `user_orders`(`Order_Id`, `food_name`, `food_price`, `food_quantity`, `food_id`, `set_id`) VALUES (?,?,?,?,?,?)";
                 $stmt=mysqli_prepare($conn,$query2);
                 if($stmt)
                 {
-                    mysqli_stmt_bind_param($stmt,"isdii",$Order_Id,$food_name,$food_price,$food_quantity,$food_id);
+                    mysqli_stmt_bind_param($stmt,"isdiis",$Order_Id,$food_name,$food_price,$food_quantity,$food_id,$set_id);
                     foreach($_SESSION['cart'] as $key => $values)
                     {
                         $food_name=$values['food_name'];
                         $food_price=$values['food_price'];
                         $food_quantity=$values['food_quantity'];
-                        $food_id=$values['food_id'];
+                        if (is_numeric($values['food_id'])) {
+                            $food_id = $values['food_id'];
+                            $set_id = -1;
+                        } else {
+                            $set_id = $values['food_id'];
+                            $food_id = -1;
+                        }
                         mysqli_stmt_execute($stmt);
                     }
                     unset($_SESSION['cart']);
