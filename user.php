@@ -176,11 +176,6 @@
                 <a id="clear" class="btn btn-danger" onclick="cancel()">Cancel</a>
         </form> -->
 </div>
-    <div class="warningbar" id="warningbar">
-        <a href="#" class="closebtn" onclick="exit()">close</a>
-        <p class="warningtext" id="warningtext" >Delete Account?</p>
-        <a href="?cus_email=<?php echo $row["cus_email"]; ?>" class="delconfirm" onclick="delconfirm()">ACCEPT</a>   
-    </div>
     <script src="js/user.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
     <script src="js/edituserselector.js"></script>

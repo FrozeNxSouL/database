@@ -30,35 +30,6 @@
 .ll {
     width: 50%;
 }
-.nameblock {
-    display: flex;
-    width: 100%;
-}
-.emailblock {
-    width: 100%;
-    margin-top: 1vh;
-    display: flex;
-}
-.phonenumblock {
-    width: 100%;
-    margin-top: 1vh;
-    display: flex;
-}
-.addressblock {
-    display: flex; 
-    justify-content: center; 
-    width: 100%;
-    flex-direction: column;
-}
-.addressblock h5 {
-    margin-top: 1vh;
-    width: 100%;
-}
-
-.addressfield {
-    display: flex;
-    justify-content: space-evenly;
-}
 .otherblock {
     display: flex;
     height: 3rem;  
@@ -120,14 +91,6 @@
 }
 .btn {
     width: 10rem;
-}
-
-.profileconfigure {
-    padding: 2rem 10rem 2rem 10rem;
-    font-size: 1.25rem;
-}
-.profileconfigure input {
-    margin-bottom:0.5rem ;
 }
 .buttonblock1 {
     display: flex; 

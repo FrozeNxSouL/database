@@ -57,8 +57,7 @@ $('document').ready(function() {
                     } 
                     else if (response == 'correct') {
                         $("#errorinput1").text('');
-                        alert('Connected');
-                        window.location.href='user.php';
+                        success_alert();
 
 
                         // var femail = $("#exampleInputEmail1").val();
@@ -80,4 +79,4 @@ $('document').ready(function() {
 
 });
 
-//little bug need to fixed
+//little bug need tos fixed
