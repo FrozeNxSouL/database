@@ -30,7 +30,12 @@
                 </li>
             </ul>
                 <a class='navbar-brand' href='mycart.php'>
-                    
+                    <?php
+                    $count=0;
+                    if(isset($_SESSION['cart']))
+                    {
+                    $count=count($_SESSION['cart']);
+                    } ?>
                     <span class="badge text-bg-danger" style="font-size: .6rem"><?php echo $count; ?></span>
                     <span class="material-symbols-outlined">shopping_basket</span>
                 </a>
