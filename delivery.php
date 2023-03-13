@@ -30,7 +30,6 @@
                 {
                     $count=count($_SESSION['cart']);
                 }
-        echo $count;
       ?>
     <div class="contain">
         <header id="header">

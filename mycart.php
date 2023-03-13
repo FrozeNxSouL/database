@@ -34,7 +34,7 @@ require_once('php/process.php');
                 {
                     $count=count($_SESSION['cart']);
                 }
-        echo $count;?>
+    ?>
     <div class="contain">
         <header id="header">
             <?php require 'php/module/navbar.php' ?>
