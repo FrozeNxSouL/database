@@ -96,7 +96,7 @@
                 </div>
                 <p id="errorinput" ></p>
                 <div class="col-12">
-                    <button class="btn btn-primary" id="add_new">Add new branch</button>
+                    <button class="btn btn-primary" id="add_new" type="button" >Add new branch</button>
                     <button class="btn btn-danger" type="reset">Clear</button>
                 </div>
             </div>

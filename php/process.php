@@ -189,10 +189,8 @@ if (isset($_POST['search'])) {
     exit();
 }
 
-if (isset($_POST['update'])) {
+if (isset($_POST['user-update'])) {
     $name= $_POST['name'];
-    // $password = $_POST['password'];
-    // $hashpass = md5($password) ;
     $email = $_POST['email'];
     $phonenum = $_POST['phonenum'];
     $address = $_POST['address'];
@@ -203,17 +201,15 @@ if (isset($_POST['update'])) {
     $role = 0;
     if (empty($name) || empty($phonenum) || empty($address) || empty($subdis) || empty($dis) || empty($provice) || empty($postal)) {
         echo 'Empty';      
-        exit();
     }
     else {
         $sql2 = "UPDATE customer
         SET name = '$name', phone_num = '$phonenum', address = '$address',subdistrict = '$subdis',district = '$dis',provice = '$provice',postal_num = '$postal'
         WHERE cus_email = '$email';";
         $query = mysqli_query($conn,$sql2);
-        echo 'Saved';
-        exit();
-        
+        echo 'user_saved';     
     }
+    exit();
 }
 
 if (isset($_POST['add_branch'])) {

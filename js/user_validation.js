@@ -1,7 +1,7 @@
 $('document').ready(function() {
 
-    var address_state = false;
-    var phone_state = false;
+    var address_state = true;
+    var phone_state = true;
 
     $('#edit_cus_phone').on('click', function() {
         var phone = $('#edit_cus_phone').val();
@@ -33,204 +33,94 @@ $('document').ready(function() {
         })
     });
 
-    $('#save-edit').on('click', function() {
-        var phone = $('#edit_cus_phone').val();
-        if (phone === '') {
-            phone_state = false;
+
+    
+    $("#edit_cus_subdistrict").on('click', function() {
+        var postal = $("#edit_cus_zip").val();
+        var subdis = $("#edit_cus_subdistrict").val();
+        var dis = $("#edit_cus_district").val();
+        var provice = $("#edit_cus_provice").val();
+        if (phone_state = false) {
+            address_state = false;
             return;
         }
         $.ajax({
             url: 'edit-user.php',
             type: 'post',
             data: {
-                'phone_check': 1,
-                'phonenum': phone
+                'postal_check': 1,
+                'postal': postal,
+                'subdis' : subdis,
+                'dis' : dis,
+                'provice' : provice
             },
             success: function(response) {
-                if (response == 'errorletter') {  
-                    phone_state = false;
-                    $("#errorinput").text("Phone number is Number");
+                if (response == 'error') {
+                    address_state = false;
+                    $("#errorinput").text("5 Number for Postal Number");
                 } 
-                else if (response == "error") {
-                    phone_state = false;
-                    $("#errorinput").text("10 letter for phone number");
+                else if (response == "errorletter") {
+                    address_state = false;
+                    $("#errorinput").text('Postal Number is Number');
                 }
-                else if (response == "pass") {
-                    phone_state = true;
+                else if (response == 'wad') {
+                    address_state = false;
+                    $("#errorinput").text("Address Not found");
+                } 
+                else if (response == "not_unfound") {
+                    address_state = true;
                     $("#errorinput").text('');
                 }
+                
             }
         })
     });
-    
-    // $("#edit_cus_subdistrict").on('click', function() {
-    //     var postal = $("#edit_cus_zip").val();
-    //     var subdis = $("#edit_cus_subdistrict").val();
-    //     var dis = $("#edit_cus_district").val();
-    //     var provice = $("#edit_cus_provice").val();
-    //     if (phone_state = false) {
-    //         address_state = false;
-    //         return;
-    //     }
-    //     $.ajax({
-    //         url: 'edit-user.php',
-    //         type: 'post',
-    //         data: {
-    //             'postal_check': 1,
-    //             'postal': postal,
-    //             'subdis' : subdis,
-    //             'dis' : dis,
-    //             'provice' : provice
-    //         },
-    //         success: function(response) {
-    //             if (response == 'error') {
-    //                 address_state = false;
-    //                 $("#errorinput").text("5 Number for Postal Number");
-    //             } 
-    //             else if (response == "errorletter") {
-    //                 address_state = false;
-    //                 $("#errorinput").text('Postal Number is Number');
-    //             }
-    //             else if (response == 'wad') {
-    //                 address_state = false;
-    //                 $("#errorinput").text("Address Not found");
-    //             } 
-    //             else if (response == "not_unfound") {
-    //                 address_state = true;
-    //                 $("#errorinput").text('');
-    //             }
-                
-    //         }
-    //     })
-    // });
-    // $("#edit_cus_district").on('click', function() {
-    //     var postal = $("#edit_cus_zip").val();
-    //     var subdis = $("#edit_cus_subdistrict").val();
-    //     var dis = $("#edit_cus_district").val();
-    //     var provice = $("#edit_cus_provice").val();
-    //     if (phone_state = false) {
-    //         address_state = false;
-    //         return;
-    //     }
-    //     $.ajax({
-    //         url: 'edit-user.php',
-    //         type: 'post',
-    //         data: {
-    //             'postal_check': 1,
-    //             'postal': postal,
-    //             'subdis' : subdis,
-    //             'dis' : dis,
-    //             'provice' : provice
-    //         },
-    //         success: function(response) {
-    //             if (response == 'error') {
-    //                 address_state = false;
-    //                 $("#errorinput").text("5 Number for Postal Number");
-    //             } 
-    //             else if (response == "errorletter") {
-    //                 address_state = false;
-    //                 $("#errorinput").text('Postal Number is Number');
-    //             }
-    //             else if (response == 'wad') {
-    //                 address_state = false;
-    //                 $("#errorinput").text("Address Not found");
-    //             } 
-    //             else if (response == "not_unfound") {
-    //                 address_state = true;
-    //                 $("#errorinput").text('');
-    //             }
-                
-    //         }
-    //     })
-    // });
-    // $("#edit_cus_provice").on('click', function() {
-    //     var postal = $("#edit_cus_zip").val();
-    //     var subdis = $("#edit_cus_subdistrict").val();
-    //     var dis = $("#edit_cus_district").val();
-    //     var provice = $("#edit_cus_provice").val();
-    //     if (phone_state = false) {
-    //         address_state = false;
-    //         return;
-    //     }
-    //     $.ajax({
-    //         url: 'edit-user.php',
-    //         type: 'post',
-    //         data: {
-    //             'postal_check': 1,
-    //             'postal': postal,
-    //             'subdis' : subdis,
-    //             'dis' : dis,
-    //             'provice' : provice
-    //         },
-    //         success: function(response) {
-    //             if (response == 'error') {
-    //                 address_state = false;
-    //                 $("#errorinput").text("5 Number for Postal Number");
-    //             } 
-    //             else if (response == "errorletter") {
-    //                 address_state = false;
-    //                 $("#errorinput").text('Postal Number is Number');
-    //             }
-    //             else if (response == 'wad') {
-    //                 address_state = false;
-    //                 $("#errorinput").text("Address Not found");
-    //             } 
-    //             else if (response == "not_unfound") {
-    //                 address_state = true;
-    //                 $("#errorinput").text('');
-    //             }
-                
-    //         }
-    //     })
-    // });
-
-        // $("#edit_cus_zip").on('click', function() {
-    //     var postal = $("#edit_cus_zip").val();
-    //     var subdis = $("#edit_cus_subdistrict").val();
-    //     var dis = $("#edit_cus_district").val();
-    //     var provice = $("#edit_cus_provice").val();
-    //     if (phone_state = false) {
-    //         address_state = false;
-    //         return;
-    //     }
-    //     $.ajax({
-    //         url: 'edit-user.php',
-    //         type: 'post',
-    //         data: {
-    //             'postal_check': 1,
-    //             'postal': postal,
-    //             'subdis' : subdis,
-    //             'dis' : dis,
-    //             'provice' : provice
-    //         },
-    //         success: function(response) {
-    //             if (response == 'error') {
-    //                 address_state = false;
-    //                 $("#errorinput").text("5 Number for Postal Number");
-    //             } 
-    //             else if (response == "errorletter") {
-    //                 address_state = false;
-    //                 $("#errorinput").text('Postal Number is Number');
-    //             }
-    //             else if (response == 'wad') {
-    //                 address_state = false;
-    //                 $("#errorinput").text("Address Not found");
-    //             } 
-    //             else if (response == "not_unfound") {
-    //                 address_state = true;
-    //                 $("#errorinput").text('');
-    //             }
-                
-    //         }
-    //     })
-    // });
-
-    $("#save-edit").on('click', function() {
+    $("#edit_cus_district").on('click', function() {
         var postal = $("#edit_cus_zip").val();
         var subdis = $("#edit_cus_subdistrict").val();
         var dis = $("#edit_cus_district").val();
         var provice = $("#edit_cus_provice").val();
-        if (phone_state == false) {
+        if (phone_state = false) {
+            address_state = false;
+            return;
+        }
+        $.ajax({
+            url: 'edit-user.php',
+            type: 'post',
+            data: {
+                'postal_check': 1,
+                'postal': postal,
+                'subdis' : subdis,
+                'dis' : dis,
+                'provice' : provice
+            },
+            success: function(response) {
+                if (response == 'error') {
+                    address_state = false;
+                    $("#errorinput").text("5 Number for Postal Number");
+                } 
+                else if (response == "errorletter") {
+                    address_state = false;
+                    $("#errorinput").text('Postal Number is Number');
+                }
+                else if (response == 'wad') {
+                    address_state = false;
+                    $("#errorinput").text("Address Not found");
+                } 
+                else if (response == "not_unfound") {
+                    address_state = true;
+                    $("#errorinput").text('');
+                }
+                
+            }
+        })
+    });
+    $("#edit_cus_provice").on('click', function() {
+        var postal = $("#edit_cus_zip").val();
+        var subdis = $("#edit_cus_subdistrict").val();
+        var dis = $("#edit_cus_district").val();
+        var provice = $("#edit_cus_provice").val();
+        if (phone_state = false) {
             address_state = false;
             return;
         }
@@ -266,6 +156,48 @@ $('document').ready(function() {
         })
     });
 
+    $("#edit_cus_zip").on('click', function() {
+        var postal = $("#edit_cus_zip").val();
+        var subdis = $("#edit_cus_subdistrict").val();
+        var dis = $("#edit_cus_district").val();
+        var provice = $("#edit_cus_provice").val();
+        if (phone_state = false) {
+            address_state = false;
+            return;
+        }
+        $.ajax({
+            url: 'edit-user.php',
+            type: 'post',
+            data: {
+                'postal_check': 1,
+                'postal': postal,
+                'subdis' : subdis,
+                'dis' : dis,
+                'provice' : provice
+            },
+            success: function(response) {
+                if (response == 'error') {
+                    address_state = false;
+                    $("#errorinput").text("5 Number for Postal Number");
+                } 
+                else if (response == "errorletter") {
+                    address_state = false;
+                    $("#errorinput").text('Postal Number is Number');
+                }
+                else if (response == 'wad') {
+                    address_state = false;
+                    $("#errorinput").text("Address Not found");
+                } 
+                else if (response == "not_unfound") {
+                    address_state = true;
+                    $("#errorinput").text('');
+                }
+                
+            }
+        })
+    });
+
+
     $('#save-edit').on("click", function(e) {
         var name = $("#edit_cus_name").val();
         var email = $("#edit_cus_email").val();
@@ -278,8 +210,9 @@ $('document').ready(function() {
         var role = $("#edit_cus_role").val();
         if ((phone_state == false ) || (address_state == false)) {
             e.preventDefault();
-            return;
-        } else {
+            $("#errorinput").text("Check your form again!");
+        } 
+        else {
             $.ajax({
                 url: 'edit-user-info.php',
                 type: 'post',
@@ -296,8 +229,8 @@ $('document').ready(function() {
                     'role':role
                 },
                 success: function(response) {
-                        $("#errorinput").text('');
-                        success_alert();
+                    $("#errorinput").text('');
+                    success_alert('edit-user.php','Edited success');
                 }
             })
         }

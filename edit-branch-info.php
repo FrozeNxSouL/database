@@ -112,7 +112,7 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
                 </div>
                 <p id="errorinput"></p>
                 <div class="col-12">
-                    <button id="update" class="btn btn-primary" >Save</button>
+                    <button id="update" class="btn btn-primary" type="button" >Save</button>
                     <a id="cancel-edit" class="btn btn-danger" href="edit-branch.php">Cancel</a>
                 </div>
             </div>
@@ -147,7 +147,7 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
     <!-- </script> -->
     <?php include 'php/module/footer.html'?>
     <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
-    <script src="js/branch_validation.js"></script>
+    <script src="js/branch_info_validation.js"></script>
     <script src="js/alerts.js"></script>
 </body>
 </html>

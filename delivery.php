@@ -71,8 +71,8 @@
                       <div>  
                         <?php echo $row['branch_subdistrict'];?> 
                         <?php echo $row['branch_district'];?>  
-
                         <?php echo $row['branch_province'];?>
+                        <?php echo $row['branch_postal'];?>
                       </div>
                 </div>
                 <div class = "info">

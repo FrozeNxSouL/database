@@ -1,5 +1,5 @@
 <?php 
-    session_start();
+
     require_once('php/connect.php');
     require_once('php/process.php'); 
 
@@ -49,7 +49,7 @@
     <div class="head">
         <h1 style="font-weight: 500">Profile</h1>
     </div>
-    <form method="post" id="profileconfigure">
+    <form method="POST" >
         <div class="row g-3">
             <div class="col-12">
                 <div class="input-group">
@@ -130,51 +130,13 @@
             </div>
                 <p id="errorinput"></p>    
                 <div class="col-12" style="text-align: center;">
-                    <button id="save" class="btn btn-primary" type="submit" name="submit">Save</button>
+                    <button id="user_save" class="btn btn-primary" type="button">Save</button>
                     <button data-id="<?php echo $row['cus_email']; ?>" class="btn btn-danger delete-btn">DELETE</button>
                 </div>
         </div>
     
     </form>
      
-        <!-- <form class="profileconfigure" id="profileconfigure" method="post" >
-            <h1>Profile / configure</h1>
-            <div class="nameblock">
-                <h5 class="tt">NAME</h5>
-                <input type="text" id="inputName" class="form-control" value="<?php echo $row['name']; ?>">
-            </div>
-            <div class="emailblock">
-                <h5 class="tt">EMAIL</h5>
-                <input type="email" id="sign-up-email" class="form-control" value="<?php echo $row['cus_email']; ?>" disabled>
-            </div>
-            <div class="phonenumblock">
-                <h5 class="tt">Phone Number</h5>
-                <input type="text" id="inputphonenum" class="form-control" value="<?php echo $row['phone_num']; ?>">
-            </div>
-            <div class="addressblock">
-                <h5 class="tt">ADDRESS</h5>
-                <input type="text" id="inputaddress" class="form-control" value="<?php echo $row['address']; ?>" >
-                <div class="addressfield">
-                    <div class="col">
-                        <h5>Subdistrict</h5>
-                        <input type="text" id="inputsubdis" class="form-control" value="<?php echo $row['subdistrict']; ?>" >
-                    </div>
-                    <div class="col">
-                        <h5>District</h5>
-                        <input type="text" id="inputdis" class="form-control" value="<?php echo $row['district']; ?>" >
-                    </div>
-                    <div class="col">
-                        <h5>Province</h5>
-                        <input type="text" id="inputprovice" class="form-control" value="<?php echo $row['provice']; ?>" >
-                    </div>
-                </div>
-                <h5>Postal Number</h5>
-                <input type="text" id="inputpostal" class="form-control" value="<?php echo $row['postal_num']; ?>" >
-            </div>
-            <p id="errorinput"></p>       
-                <a id="save" class="btn btn-primary" type="button" name="submit" >Confirm</a>
-                <a id="clear" class="btn btn-danger" onclick="cancel()">Cancel</a>
-        </form> -->
 </div>
     <script src="js/user.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
@@ -184,7 +146,6 @@
 </body>
 </html>
 <?php 
-
     if (isset($_REQUEST['delete'])) {
         $delete_ID  = $_REQUEST['delete'];
         $delsql = "
@@ -192,10 +153,6 @@
         WHERE cus_email = '$delete_ID';
         ";
         $objQuery = mysqli_query($conn, $delsql);
-        session_destroy();
-    }
-
-    if (isset($_POST['logout'])) {
         session_destroy();
     }
     mysqli_close($conn); 

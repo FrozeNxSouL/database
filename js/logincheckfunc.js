@@ -36,7 +36,6 @@ $('document').ready(function() {
         var loginpassword = $("#exampleInputPassword1").val();
         if (loginemail == ' ' || loginpassword == ' ' ) {
             e.preventDefault();
-
             $("#errorinput1").text("Check your form again!");
         } 
         else {
@@ -57,7 +56,8 @@ $('document').ready(function() {
                     } 
                     else if (response == 'correct') {
                         $("#errorinput1").text('');
-                        success_alert();
+                        success_alert('index.php','Login successfully');
+
 
 
                         // var femail = $("#exampleInputEmail1").val();
@@ -79,4 +79,4 @@ $('document').ready(function() {
 
 });
 
-//little bug need tos fixed
+//little bug need to fixed

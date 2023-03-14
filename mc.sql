@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 10, 2023 at 02:26 PM
+-- Generation Time: Mar 14, 2023 at 01:32 PM
 -- Server version: 8.0.17
 -- PHP Version: 7.3.10
 
@@ -1049,6 +1049,8 @@ INSERT INTO `amphures` (`id`, `code`, `name_th`, `name_en`, `province_id`) VALUE
 CREATE TABLE `banner` (
   `banner_id` int(11) NOT NULL,
   `banner_pict` varchar(400) NOT NULL,
+  `banner_header` varchar(100) NOT NULL,
+  `banner_text` varchar(100) NOT NULL,
   `banner_status` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1056,10 +1058,10 @@ CREATE TABLE `banner` (
 -- Dumping data for table `banner`
 --
 
-INSERT INTO `banner` (`banner_id`, `banner_pict`, `banner_status`) VALUES
-(1, 'https://d1vs91ctevllei.cloudfront.net/images/banner/th1673513739230103_MCD_mc-a-wish_Tourist-02_Web-Banner_2000x695px_Final_CO_CS6.jpg', 1),
-(2, 'https://d1vs91ctevllei.cloudfront.net/images/banner/th_responsive166196625206_Banner_web_re_motherday-set_944x944px.jpg', 0),
-(3, 'https://d1vs91ctevllei.cloudfront.net/images/banner/th_responsive166196625206_Banner_web_re_motherday-set_944x944px.jpg', 1);
+INSERT INTO `banner` (`banner_id`, `banner_pict`, `banner_header`, `banner_text`, `banner_status`) VALUES
+(1, 'https://d1vs91ctevllei.cloudfront.net/images/banner/th1673513739230103_MCD_mc-a-wish_Tourist-02_Web-Banner_2000x695px_Final_CO_CS6.jpg', '', '', 1),
+(2, 'https://d1vs91ctevllei.cloudfront.net/images/banner/th_responsive166196625206_Banner_web_re_motherday-set_944x944px.jpg', '', '', 0),
+(3, 'https://d1vs91ctevllei.cloudfront.net/images/banner/th_responsive166196625206_Banner_web_re_motherday-set_944x944px.jpg', '', '', 1);
 
 -- --------------------------------------------------------
 
@@ -1074,22 +1076,25 @@ CREATE TABLE `branch` (
   `branch_subdistrict` varchar(100) NOT NULL,
   `branch_district` varchar(100) NOT NULL,
   `branch_province` varchar(100) NOT NULL,
-  `branch_phone` varchar(100) NOT NULL
+  `branch_phone` varchar(100) NOT NULL,
+  `branch_postal` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `branch`
 --
 
-INSERT INTO `branch` (`branchID`, `branchName`, `branch_address`, `branch_subdistrict`, `branch_district`, `branch_province`, `branch_phone`) VALUES
-(2, 'Deep Dark Fantasy', '66/78', 'กระทุ่มราย', 'เขตหนองจอก', 'กรุงเทพมหานคร', '0805775849'),
-(3, 'Ohio', '44/2', 'หนองจอก', 'เขตหนองจอก', 'กรุงเทพมหานคร', '0805855848'),
-(4, 'คนรักโดนรังแก', '145/99', 'คู้ฝั่งเหนือ', 'เขตหนองจอก', 'กรุงเทพมหานคร', '0955855849'),
-(5, 'เจ็บใจ', '28/27', 'เสาชิงช้า', 'เขตพระนคร', 'กรุงเทพมหานคร', '0805875549'),
-(6, 'ปวดหัวละ', '124/5', 'ตลาดยอด', 'เขตดุสิต', 'กรุงเทพมหานคร', '0658648959'),
-(7, 'นิทิศ', '56/65', 'บางขุนพรหม', 'เขตดุสิต', 'กรุงเทพมหานคร', '0805855849'),
-(8, 'มหาราชานรก', '2/12', 'ศาลเจ้าพ่อเสือ', 'เขตพระนคร', 'กรุงเทพมหานคร', '0805855849'),
-(10, 'dee', '152', 'ศาลเจ้าพ่อเสือ', 'เขตพระนคร', 'กรุงเทพมหานคร', '0824856574');
+INSERT INTO `branch` (`branchID`, `branchName`, `branch_address`, `branch_subdistrict`, `branch_district`, `branch_province`, `branch_phone`, `branch_postal`) VALUES
+(2, 'Deep Dark Fantasy', '125', 'ดุสิต', 'เขตดุสิต', 'กรุงเทพมหานคร', '0828148264', '10300'),
+(3, 'Ohio', '44/1', 'หนองจอก', 'เขตหนองจอก', 'กรุงเทพมหานคร', '0805855840', '10530'),
+(4, 'คนรักโดนรังแก', '145/99', 'คู้ฝั่งเหนือ', 'เขตหนองจอก', 'กรุงเทพมหานคร', '0955855849', '10530'),
+(5, 'เจ็บใจ', '28/27', 'เสาชิงช้า', 'เขตพระนคร', 'กรุงเทพมหานคร', '0805875549', ''),
+(6, 'ปวดหัวละ', '124/5', 'ตลาดยอด', 'เขตดุสิต', 'กรุงเทพมหานคร', '0658648959', ''),
+(8, 'มหาราชานรก', '2/1231', 'ศาลเจ้าพ่อเสือ', 'เขตพระนคร', 'กรุงเทพมหานคร', '0805855849', '10200'),
+(10, 'ohohoh', '125', 'ศาลเจ้าพ่อเสือ', 'เขตพระนคร', 'กรุงเทพมหานคร', '0828148264', '10200'),
+(11, 'bOvOd', '155/4', 'วัดราชบพิธ', 'เขตพระนคร', 'กรุงเทพมหานคร', '0824578964', '10200'),
+(14, 'Over', '155/4', 'ดุสิต', 'เขตดุสิต', 'กรุงเทพมหานคร', '0824578964', '10300'),
+(15, 'Plain Croissant', '55/4', 'สำราญราษฎร์', 'เขตพระนคร', 'กรุงเทพมหานคร', '2515484640', '10200');
 
 -- --------------------------------------------------------
 
@@ -1134,8 +1139,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`cus_email`, `password`, `name`, `phone_num`, `address`, `subdistrict`, `district`, `provice`, `postal_num`, `user_role`) VALUES
-('app@gmail.com', '202cb962ac59075b964b07152d234b70', 'de', '0859564747', 'dff', 'พระบรมมหาราชวัง', 'เขตดุสิต', 'กรุงเทพมหานคร', '11150', 1),
-('deoererrr@gmail.com', '202cb962ac59075b964b07152d234b70', 'dfgf', '0828148264', '125', 'พระบรมมหาราชวัง', 'เขตพระนคร', 'กรุงเทพมหานคร', '10200', 0);
+('app@gmail.com', '202cb962ac59075b964b07152d234b70', 'Olo', '0824578975', '155/2', 'พระบรมมหาราชวัง', 'เขตพระนคร', 'กรุงเทพมหานคร', '10200', 1);
 
 -- --------------------------------------------------------
 
@@ -10017,18 +10021,6 @@ INSERT INTO `districts` (`id`, `zip_code`, `name_th`, `name_en`, `amphure_id`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `foodmenu_sales`
---
-
-CREATE TABLE `foodmenu_sales` (
-  `food_id` int(11) NOT NULL,
-  `receipt_id` int(11) NOT NULL,
-  `foodmenu_amount` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `food_menu`
 --
 
@@ -10112,9 +10104,19 @@ INSERT INTO `geographies` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `list_set` (
-  `setmenu_id` int(11) NOT NULL,
-  `food_id` int(11) NOT NULL
+  `setmenu_id` varchar(100) NOT NULL,
+  `food_id` int(11) NOT NULL,
+  `food_quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `list_set`
+--
+
+INSERT INTO `list_set` (`setmenu_id`, `food_id`, `food_quantity`) VALUES
+('s-0000', 9, 1),
+('s-0000', 11, 1),
+('s-0000', 18, 1);
 
 -- --------------------------------------------------------
 
@@ -10125,17 +10127,17 @@ CREATE TABLE `list_set` (
 CREATE TABLE `order_manager` (
   `Order_Id` int(11) NOT NULL,
   `cus_email` varchar(100) NOT NULL,
-  `Pay_Mode` varchar(100) NOT NULL
+  `Pay_Mode` varchar(100) NOT NULL,
+  `order_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `order_manager`
 --
 
-INSERT INTO `order_manager` (`Order_Id`, `cus_email`, `Pay_Mode`) VALUES
-(17, 'root@gmail.com', 'COD'),
-(18, 'app@gmail.com', 'OPM'),
-(19, 'app@gmail.com', 'OPM');
+INSERT INTO `order_manager` (`Order_Id`, `cus_email`, `Pay_Mode`, `order_date`) VALUES
+(1, 'app@gmail.com', 'OPM', '0000-00-00'),
+(2, 'app@gmail.com', 'OPM', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -10237,65 +10239,22 @@ INSERT INTO `provinces` (`id`, `code`, `name_th`, `name_en`, `geography_id`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `put`
---
-
-CREATE TABLE `put` (
-  `topping_id` int(11) NOT NULL,
-  `food_id` int(11) NOT NULL,
-  `receipt_id` int(11) NOT NULL,
-  `topping_status` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `receipt`
---
-
-CREATE TABLE `receipt` (
-  `receipt_date` datetime NOT NULL,
-  `receipt_id` int(11) NOT NULL,
-  `cus_email` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `setmenu_sales`
---
-
-CREATE TABLE `setmenu_sales` (
-  `receipt_id` int(11) NOT NULL,
-  `setmenu_id` int(11) NOT NULL,
-  `setmenu_amount` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `set_menu`
 --
 
 CREATE TABLE `set_menu` (
-  `set_id` int(11) NOT NULL,
+  `set_id` varchar(100) NOT NULL,
   `set_name` varchar(100) NOT NULL,
   `set_price` float NOT NULL,
   `set_pict` varchar(400) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `topping`
+-- Dumping data for table `set_menu`
 --
 
-CREATE TABLE `topping` (
-  `topping_id` int(11) NOT NULL,
-  `topping_name` varchar(100) NOT NULL,
-  `toppping_price` float NOT NULL,
-  `topping_pict` varchar(400) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `set_menu` (`set_id`, `set_name`, `set_price`, `set_pict`) VALUES
+('s-0000', 'E3', 100, 'https://coub-attachments.akamaized.net/coub_storage/coub/simple/cw_timeline_pic/a72b21d18a6/0aed1fa1542c464c11d8a/1437631748_image.jpg');
 
 -- --------------------------------------------------------
 
@@ -10305,30 +10264,28 @@ CREATE TABLE `topping` (
 
 CREATE TABLE `user_orders` (
   `Order_Id` int(11) NOT NULL,
-  `food_name` varchar(100) NOT NULL,
-  `food_price` float NOT NULL,
   `food_quantity` int(100) NOT NULL,
-  `food_id` int(11) NOT NULL
+  `food_id` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user_orders`
 --
 
-INSERT INTO `user_orders` (`Order_Id`, `food_name`, `food_price`, `food_quantity`, `food_id`) VALUES
-(14, 'Bacon Burger หมา', 165, 1, 5),
-(15, 'test1', 11, 1, 1),
-(15, 'ss', 22, 1, 4),
-(15, 'Bacon Burger หมา', 165, 1, 5),
-(16, 'test1', 11, 1, 1),
-(16, 'ss', 22, 1, 4),
-(16, 'Bacon Burger หมา', 165, 1, 5),
-(17, 'test1', 11, 1, 1),
-(17, 'ss', 22, 1, 4),
-(17, 'Bacon Burger หมา', 165, 1, 5),
-(18, 'Double Fish Burger', 145, 1, 12),
-(19, 'Big Mac', 235, 2, 10),
-(19, 'fee', 1000.75, 1, 14);
+INSERT INTO `user_orders` (`Order_Id`, `food_quantity`, `food_id`) VALUES
+(14, 1, '5'),
+(15, 1, '1'),
+(15, 1, '4'),
+(15, 1, '5'),
+(16, 1, '1'),
+(16, 1, '4'),
+(16, 1, '5'),
+(17, 1, '1'),
+(17, 1, '4'),
+(17, 1, '5'),
+(18, 1, '12'),
+(19, 2, '10'),
+(19, 1, '14');
 
 -- --------------------------------------------------------
 
@@ -10391,17 +10348,10 @@ ALTER TABLE `districts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `foodmenu_sales`
---
-ALTER TABLE `foodmenu_sales`
-  ADD PRIMARY KEY (`food_id`,`receipt_id`),
-  ADD KEY `receipt_id` (`receipt_id`);
-
---
 -- Indexes for table `food_menu`
 --
 ALTER TABLE `food_menu`
-  ADD PRIMARY KEY (`food_id`,`food_name`),
+  ADD PRIMARY KEY (`food_id`),
   ADD KEY `food_category` (`food_category`);
 
 --
@@ -10430,44 +10380,17 @@ ALTER TABLE `provinces`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `put`
---
-ALTER TABLE `put`
-  ADD PRIMARY KEY (`topping_id`,`food_id`,`receipt_id`),
-  ADD KEY `food_id` (`food_id`),
-  ADD KEY `receipt_id` (`receipt_id`);
-
---
--- Indexes for table `receipt`
---
-ALTER TABLE `receipt`
-  ADD PRIMARY KEY (`receipt_id`),
-  ADD KEY `cus_email` (`cus_email`);
-
---
--- Indexes for table `setmenu_sales`
---
-ALTER TABLE `setmenu_sales`
-  ADD PRIMARY KEY (`receipt_id`,`setmenu_id`),
-  ADD KEY `setmenu_id` (`setmenu_id`);
-
---
 -- Indexes for table `set_menu`
 --
 ALTER TABLE `set_menu`
   ADD PRIMARY KEY (`set_id`);
 
 --
--- Indexes for table `topping`
---
-ALTER TABLE `topping`
-  ADD PRIMARY KEY (`topping_id`);
-
---
 -- Indexes for table `user_orders`
 --
 ALTER TABLE `user_orders`
-  ADD KEY `food_orderlist` (`food_id`,`food_name`),
+  ADD PRIMARY KEY (`Order_Id`,`food_id`),
+  ADD KEY `food_orderlist` (`food_id`),
   ADD KEY `order_list_id` (`Order_Id`);
 
 --
@@ -10496,7 +10419,7 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT for table `branch`
 --
 ALTER TABLE `branch`
-  MODIFY `branchID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `branchID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -10508,7 +10431,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `food_menu`
 --
 ALTER TABLE `food_menu`
-  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `geographies`
@@ -10520,31 +10443,13 @@ ALTER TABLE `geographies`
 -- AUTO_INCREMENT for table `order_manager`
 --
 ALTER TABLE `order_manager`
-  MODIFY `Order_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `Order_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `provinces`
 --
 ALTER TABLE `provinces`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
-
---
--- AUTO_INCREMENT for table `receipt`
---
-ALTER TABLE `receipt`
-  MODIFY `receipt_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `set_menu`
---
-ALTER TABLE `set_menu`
-  MODIFY `set_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `topping`
---
-ALTER TABLE `topping`
-  MODIFY `topping_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -10557,45 +10462,10 @@ ALTER TABLE `customer`
   ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`user_role`) REFERENCES `user_role` (`role_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
--- Constraints for table `foodmenu_sales`
---
-ALTER TABLE `foodmenu_sales`
-  ADD CONSTRAINT `foodmenu_sales_ibfk_1` FOREIGN KEY (`food_id`) REFERENCES `food_menu` (`food_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `foodmenu_sales_ibfk_2` FOREIGN KEY (`receipt_id`) REFERENCES `receipt` (`receipt_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
 -- Constraints for table `food_menu`
 --
 ALTER TABLE `food_menu`
   ADD CONSTRAINT `food_menu_ibfk_1` FOREIGN KEY (`food_category`) REFERENCES `category` (`category_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
--- Constraints for table `list_set`
---
-ALTER TABLE `list_set`
-  ADD CONSTRAINT `list_set_ibfk_1` FOREIGN KEY (`food_id`) REFERENCES `food_menu` (`food_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `list_set_ibfk_2` FOREIGN KEY (`setmenu_id`) REFERENCES `set_menu` (`set_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
--- Constraints for table `put`
---
-ALTER TABLE `put`
-  ADD CONSTRAINT `put_ibfk_1` FOREIGN KEY (`topping_id`) REFERENCES `topping` (`topping_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `put_ibfk_2` FOREIGN KEY (`food_id`) REFERENCES `food_menu` (`food_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `put_ibfk_3` FOREIGN KEY (`receipt_id`) REFERENCES `receipt` (`receipt_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
--- Constraints for table `receipt`
---
-ALTER TABLE `receipt`
-  ADD CONSTRAINT `receipt_ibfk_1` FOREIGN KEY (`cus_email`) REFERENCES `customer` (`cus_email`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
--- Constraints for table `setmenu_sales`
---
-ALTER TABLE `setmenu_sales`
-  ADD CONSTRAINT `setmenu_sales_ibfk_1` FOREIGN KEY (`receipt_id`) REFERENCES `receipt` (`receipt_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `setmenu_sales_ibfk_2` FOREIGN KEY (`setmenu_id`) REFERENCES `set_menu` (`set_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

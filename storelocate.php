@@ -75,7 +75,7 @@
             ?>
             <div class="itemcard">
                 <h6><?php echo $store['branchName'] ?></h6>
-                <p><?php echo $store['branch_address'];?> <?php echo $store['branch_subdistrict'];?>,<?php echo $store['branch_district'];?>,<?php echo $store['branch_province']; ?></p>
+                <p><?php echo $store['branch_address'];?> <?php echo $store['branch_subdistrict'];?>,<?php echo $store['branch_district'];?>,<?php echo $store['branch_province']; ?> <?php echo $store['branch_postal']; ?></p>
             </div>
             <?php } ?>
         </div>

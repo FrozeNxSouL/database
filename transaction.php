@@ -3,21 +3,6 @@
     require_once('php/connect.php');
     require_once('php/process.php'); 
 
-    if (isset($_REQUEST['cus_email'])) {
-        $delete_ID  = $_REQUEST['cus_email'];
-        $delsql = "
-        DELETE FROM customer
-        WHERE cus_email = '$delete_ID';
-        ";
-        $objQuery = mysqli_query($conn, $delsql);
-        session_destroy();
-        header('location: index.php');
-    }
-
-    if (isset($_POST['logout'])) {
-        session_destroy();
-        header('location: index.php');
-    }
 ?>
 
 <!DOCTYPE html>

@@ -169,7 +169,7 @@ $all_cate = $conn->query($catesql);
         if ($query_run) {
             echo "
             <script>
-                success_alert();
+                success_alert('edit-OurFood.php','Completed');
             </script>
             ";
         }
@@ -201,7 +201,7 @@ $all_cate = $conn->query($catesql);
         if ($queryedit) {
             echo "
             <script>
-                success_alert();
+                success_alert('edit-OurFood.php','Success');
                 console.log('test');
             </script>
             ";

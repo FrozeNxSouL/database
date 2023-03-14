@@ -1,7 +1,7 @@
 $('document').ready(function() {
 
-    var address_state = false;
-    var phone_state = false;
+    var address_state = true;
+    var phone_state = true;
 
     $('#inputphonenum').on('blur', function() {
         var phone = $('#inputphonenum').val();
@@ -33,100 +33,7 @@ $('document').ready(function() {
         })
     });
     
-    // $("#sign-up-email").on('blur', function() {
-    //     var email = $("#sign-up-email").val();
-    //     if (email == '') {
-    //         email_state = false;
-    //         return;
-    //     }
-    //     $.ajax({
-    //         url: 'user.php',
-    //         type: 'post',
-    //         data: {
-    //             'email_check': 1,
-    //             'email': email
-    //         },
-    //         success: function(response) {
-    //             if (response == 'taken') {
-    //                 email_state = false;
-    //                 $("#errorinput").text("Sorry... Email already taken");
-    //             } 
-    //             else if (response == "not_taken") {
-    //                 email_state = true;
-    //                 $("#errorinput").text('');
-    //             }
-    //         }
-    //     })
-    // });
 
-    // $("#inputsubdis").on('blur', function() {
-    //     var subdis = $("#inputsubdis").val();
-    //     if (subdis == '') {
-    //         return;
-    //     }
-    //     $.ajax({
-    //         url: 'user.php',
-    //         type: 'post',
-    //         data: {
-    //             'subdis_check': 1,
-    //             'subdis': subdis
-    //         },
-    //         success: function(response) {
-    //             if (response == 'unfound') {
-    //                 $("#errorinput").text("Not found");
-    //             } 
-    //             else if (response == "not_unfound") {
-    //                 $("#errorinput").text('');
-    //             }
-    //         }
-    //     })
-    // });
-
-    // $("#inputdis").on('blur', function() {
-    //     var dis = $("#inputdis").val();
-    //     if (dis == '') {
-    //         return;
-    //     }
-    //     $.ajax({
-    //         url: 'user.php',
-    //         type: 'post',
-    //         data: {
-    //             'dis_check': 1,
-    //             'dis': dis
-    //         },
-    //         success: function(response) {
-    //             if (response == 'unfound') {
-    //                 $("#errorinput").text("Not found");
-    //             } 
-    //             else if (response == "not_unfound") {
-    //                 $("#errorinput").text('');
-    //             }
-    //         }
-    //     })
-    // });
-
-    // $("#inputprovice").on('blur', function() {
-    //     var provice = $("#inputprovice").val();
-    //     if (provice == '') {
-    //         return;
-    //     }
-    //     $.ajax({
-    //         url: 'user.php',
-    //         type: 'post',
-    //         data: {
-    //             'provice_check': 1,
-    //             'provice': provice
-    //         },
-    //         success: function(response) {
-    //             if (response == 'unfound') {
-    //                 $("#errorinput").text("Not found");
-    //             } 
-    //             else if (response == "not_unfound") {
-    //                 $("#errorinput").text('');
-    //             }
-    //         }
-    //     })
-    // });
     $("#inputsubdis").on('blur', function() {
         var postal = $("#inputpostal").val();
         var subdis = $("#inputsubdis").val();
@@ -289,7 +196,7 @@ $('document').ready(function() {
         })
     });
 
-    $('#save').on("click", function(e) {
+    $('#user_save').on("click", function(e) {
         var name = $("#inputName").val();
         var email = $("#sign-up-email").val();
         var phone = $("#inputphonenum").val();
@@ -301,12 +208,13 @@ $('document').ready(function() {
         if ((phone_state == false ) || (address_state == false)) {
             e.preventDefault();
             $("#errorinput").text("Check your form again!");
-        } else {
+        } 
+        else {
             $.ajax({
                 url: 'user.php',
                 type: 'post',
                 data: {
-                    'update': 1,
+                    'user-update': 1,
                     'email': email,
                     'name': name,
                     'postal': postal,
@@ -320,10 +228,9 @@ $('document').ready(function() {
                     if (response == 'Empty') {
                         $("#errorinput").text("Empty input");
                     } 
-                
-                    else if (response == 'Saved') {
+                    else if (response == 'user_saved') {
                         $("#errorinput").text('');
-                        success_alert();
+                        success_alert('user.php','Saved');
                     } 
                 }
             })

@@ -263,7 +263,8 @@ $('document').ready(function() {
                     } 
                     else if (response == 'Saved') {
                         $("#errorinput").text('');
-                        success_alert();
+                        success_alert('index.php','Sign up successfully');
+                        
                     } 
                 }
             })

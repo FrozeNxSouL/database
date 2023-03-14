@@ -36,8 +36,8 @@
                     {
                     $count=count($_SESSION['cart']);
                     } ?>
-                    <span class="badge text-bg-danger" style="font-size: .6rem"><?php echo $count; ?></span>
-                    <span class="material-symbols-outlined">shopping_basket</span>
+                    <span class="badge text-bg-danger" style="font-size: .6rem"><?php echo $count!=0 ? $count : ''; ?></span>
+                    <span class="material-symbols-outlined">shopping_cart</span>
                 </a>
                 <?php 
                         if (isset($_SESSION['email'])) {
