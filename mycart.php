@@ -65,10 +65,12 @@ require_once('php/process.php');
                                             <td>$value[food_price]<input type='hidden' class='iprice' value = '$value[food_price]'></td>
                                             <td>
                                                 <form action='manage_cart.php' method='POST'>
-                                                    <button class='quantity-change' id='minus' onclick='qtyminus()' >do_not_disturb_on</button>
-                                                    <input class='text-center iquantity' id='iquantity' name = 'Mod_Quantity' onchange='this.form.submit();' type='number' value = '$value[food_quantity]' min = '1' max='9999'>
+                                                    <div class='input-group'>
+                                                        <button id='decrease_cart' class='btn btn-secondary'>-</button>
+                                                        <input style='width:2rem' min='0' type='number' oninput='this.value = Math.round(this.value);' class='form-control text-center iquantity' id='iquantity' name = 'Mod_Quantity' onchange='this.form.submit();' value = '$value[food_quantity]'>
+                                                        <button id='increase_cart' class='btn btn-secondary'>+</button>
+                                                    </div>
                                                     <input type='hidden' name ='food_name' value='$value[food_name]'>
-                                                    <button class='quantity-change' id='plus' onclick='qtyplus()'>add_circle</button>
                                                 </form>
                                             </td>
                                             <td class = 'itotal'></td>
@@ -195,5 +197,7 @@ require_once('php/process.php');
 <script src="js/logincheckfunc.js" ></script>
 <script src="js/checkfunc.js" ></script>
 <script src="js/account.js"></script>
+<script src="js/cart.js"></script>
+
 </body>
 </html>
