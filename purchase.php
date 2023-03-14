@@ -15,15 +15,17 @@ if(mysqli_connect_error()){
     {
         if(isset($_POST['purchase']))
         {
-            $query1="INSERT INTO `order_manager`(`cus_email`, `Pay_Mode`) VALUES ('$_POST[cus_email]','$_POST[pay_mode]')";
+            date_default_timezone_set("Asia/Bangkok");
+            $order_date=date("Y-m-d H:i:s");
+            $query1="INSERT INTO `order_manager`(`cus_email`, `Pay_Mode`,`order_date`) VALUES ('$_POST[cus_email]','$_POST[pay_mode]','$order_date')";
             if(mysqli_query($conn,$query1))
             {
                 $Order_Id = mysqli_insert_id($conn);
-                $query2="INSERT INTO `user_orders`(`Order_Id`, `food_name`, `food_price`, `food_quantity`, `food_id`, `set_id`) VALUES (?,?,?,?,?,?)";
+                $query2="INSERT INTO `user_orders`(`Order_Id`, `food_quantity`, `food_id`) VALUES (?,?,?)";
                 $stmt=mysqli_prepare($conn,$query2);
                 if($stmt)
                 {
-                    mysqli_stmt_bind_param($stmt,"isdiis",$Order_Id,$food_name,$food_price,$food_quantity,$food_id,$set_id);
+                    mysqli_stmt_bind_param($stmt,"iis",$Order_Id,$food_quantity,$food_id);
                     foreach($_SESSION['cart'] as $key => $values)
                     {
                         $food_name=$values['food_name'];

@@ -55,10 +55,16 @@
                     </thead>
                     <tbody>
                         <?php 
+                            $data = $_SESSION['email'];
                             $query="SELECT *
                             FROM user_orders
                             JOIN order_manager
-                            ON user_orders.order_id = order_manager.order_id";
+                            ON user_orders.order_id = order_manager.order_id 
+                            JOIN food_menu 
+                            ON user_orders.food_id = food_menu.food_id
+                            JOIN set_menu 
+                            ON user_orders.food_id = set_menu.set_id  
+                            WHERE order_manager.cus_email = '$data'";
                             $user_result=mysqli_query($conn,$query);
                             while($user_fetch=mysqli_fetch_assoc($user_result))
                             {
