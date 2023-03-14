@@ -198,5 +198,6 @@ require_once('php/process.php');
 <script src="js/checkfunc.js" ></script>
 <script src="js/account.js"></script>
 <script src="js/cart.js"></script>
+
 </body>
 </html>

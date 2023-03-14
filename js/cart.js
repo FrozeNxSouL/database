@@ -8,7 +8,7 @@ increaseBtn.addEventListener('click', ()=> {
     }
 })
 decreaseBtn.addEventListener('click', ()=> {
-    if (quantity.value >= 0) {
+    if (quantity.value > 1) {
         quantity.value--;
     }
 })
