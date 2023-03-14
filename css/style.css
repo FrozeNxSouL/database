@@ -272,8 +272,8 @@ footer {
     display: none;
     flex-direction: column;
     position: absolute;
-    transform: translateX(-12rem);
-    min-width: 15rem;
+    transform: translateX(-3rem);
+    min-width: 10rem;
     z-index: 1;
     padding: 1rem;
     background-color: rgb(248, 249, 250);

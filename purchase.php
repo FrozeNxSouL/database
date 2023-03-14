@@ -29,21 +29,14 @@ if(mysqli_connect_error()){
                     foreach($_SESSION['cart'] as $key => $values)
                     {
                         $food_name=$values['food_name'];
-                        $food_price=$values['food_price'];
                         $food_quantity=$values['food_quantity'];
-                        if (is_numeric($values['food_id'])) {
-                            $food_id = $values['food_id'];
-                            $set_id = -1;
-                        } else {
-                            $set_id = $values['food_id'];
-                            $food_id = -1;
-                        }
+                        $food_id = $values['food_id'];
                         mysqli_stmt_execute($stmt);
                     }
                     unset($_SESSION['cart']);
                     echo"<script>
                         alert('Order Placed');
-                        window.location.href='mycart.php';
+                        window.location.href='OurFood.php';
                         </script>";
                 }
                 else

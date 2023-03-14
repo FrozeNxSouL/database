@@ -66,7 +66,7 @@
                   <td><?php echo $row["name"]; ?></td>
                   <td><?php  $format_phone = substr($row['phone_num'], -10, -7) . "-" .substr($row['phone_num'], -7, -4) . "-" .substr($row['phone_num'], -4);
                             echo  $format_phone; ?></td>
-                  <td><?php echo $row["address"]; ?><br><?php echo $row["subdistrict"]; ?> <?php echo $row["district"]; ?> <?php echo $row["provice"]; ?></td>
+                  <td><?php echo $row["address"]; ?><br><?php echo $row["subdistrict"]; ?> <?php echo $row["district"]; ?> <?php echo $row["provice"]; ?> <?php echo $row["postal_num"]; ?></td>
                   <td><?php echo $row["role_name"]; ?></td>
                   <td><a class="btn btn-secondary" id="edit-btn" href="edit-user-info.php?cus_email=<?php echo $row["cus_email"]; ?>">Edit</a></td>
                   <td><a data-id="<?php echo $row["cus_email"]; ?>" class="btn btn-danger delete-btn" href="?delete=<?php echo $row["cus_email"]; ?>">Delete</a></td>

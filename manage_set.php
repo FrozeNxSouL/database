@@ -14,7 +14,6 @@ include('php/connect.php');
                 if(in_array($_POST['food_name'],$myset))
                 {
                     echo"<script>
-                        alert('food Already Added');
                         window.location.href='edit-OurSet.php';
                     </script>";
                 }
@@ -23,7 +22,6 @@ include('php/connect.php');
                     $count=count($_SESSION['setting']);
                     $_SESSION['setting'][$count] = array('food_id'=>$_POST['food_id'],'food_name'=>$_POST['food_name'],'food_price'=>$_POST['food_price'],'food_quantity'=>1);
                     echo"<script>
-                            alert('food Added');
                             window.location.href='edit-OurSet.php';
                         </script>";
                 }
@@ -32,7 +30,6 @@ include('php/connect.php');
             {
                 $_SESSION['setting'][0]=array('food_id'=>$_POST['food_id'],'food_name'=>$_POST['food_name'],'food_price'=>$_POST['food_price'],'food_quantity'=>1);
                 echo"<script>
-                        alert('food Added');
                         window.location.href='edit-OurSet.php';
                     </script>";
             }
@@ -46,8 +43,7 @@ include('php/connect.php');
                     unset($_SESSION['setting'][$key]);
                     $_SESSION['setting']=array_values($_SESSION['setting']);
                     echo"<script>
-                        alert('Food Removed');
-                        window.location.href='myset.php';
+                        window.location.href='edit-OurSet.php';
                     </script>";
                 }
             }
@@ -60,7 +56,7 @@ include('php/connect.php');
                 {
                     $_SESSION['setting'][$key]['food_quantity']=$_POST['Mod_Quantity'];
                     echo"<script>
-                        window.location.href='myset.php';
+                        window.location.href='edit-OurSet.php';
                     </script>";
                 }
             }

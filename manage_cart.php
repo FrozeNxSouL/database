@@ -14,7 +14,6 @@ include('php/connect.php');
                 if(in_array($_POST['food_name'],$myfood))
                 {
                     echo"<script>
-                        alert('food Already Added');
                         window.location.href='OurFood.php';
                     </script>";
                 }
@@ -23,7 +22,6 @@ include('php/connect.php');
                     $count=count($_SESSION['cart']);
                     $_SESSION['cart'][$count] = array('food_id'=>$_POST['food_id'],'food_name'=>$_POST['food_name'],'food_price'=>$_POST['food_price'],'food_quantity'=>1);
                     echo"<script>
-                            alert('food Added');
                             window.location.href='OurFood.php';
                         </script>";
                 }
@@ -32,7 +30,6 @@ include('php/connect.php');
             {
                 $_SESSION['cart'][0]=array('food_id'=>$_POST['food_id'],'food_name'=>$_POST['food_name'],'food_price'=>$_POST['food_price'],'food_quantity'=>1);
                 echo"<script>
-                        alert('food Added');
                         window.location.href='OurFood.php';
                     </script>";
             }
@@ -46,7 +43,6 @@ include('php/connect.php');
                     unset($_SESSION['cart'][$key]);
                     $_SESSION['cart']=array_values($_SESSION['cart']);
                     echo"<script>
-                        alert('Food Removed');
                         window.location.href='mycart.php';
                     </script>";
                 }
@@ -78,7 +74,6 @@ include('php/connect.php');
                 if(in_array($_POST['set_name'],$myfood))
                 {
                     ?>
-                    <script>alert('set Already Added');</script>    
                     <?php header('location: OurFood.php'); ?>
 <?php
                 }
@@ -87,7 +82,6 @@ include('php/connect.php');
                     $count=count($_SESSION['cart']);
                     $_SESSION['cart'][$count] = array('set_id'=>$_POST['food_id'],'set_name'=>$_POST['food_name'],'set_price'=>$_POST['food_price'],'food_quantity'=>1); 
                     ?>
-                    <script type='text/javascript'>alert('set Added');</script>    
                     <?php header('location: OurFood.php'); ?>
 <?php
                 }
@@ -96,7 +90,6 @@ include('php/connect.php');
             {
                 $_SESSION['cart'][0]=array('set_id'=>$_POST['food_id'],'set_name'=>$_POST['food_name'],'set_price'=>$_POST['food_price'],'food_quantity'=>1);
                 ?>
-                <script>alert('set Added');</script>    
                 <?php header('location: OurFood.php'); ?>
 <?php
             }
@@ -110,7 +103,6 @@ include('php/connect.php');
                     unset($_SESSION['cart'][$key]);
                     $_SESSION['cart']=array_values($_SESSION['cart']);
                     ?>
-                    <script>alert('food Removed');</script>    
                     <?php header('location: OurFood.php'); ?>
 <?php
                 }

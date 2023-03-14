@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 14, 2023 at 01:32 PM
+-- Generation Time: Mar 14, 2023 at 10:38 PM
 -- Server version: 8.0.17
 -- PHP Version: 7.3.10
 
@@ -1139,7 +1139,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`cus_email`, `password`, `name`, `phone_num`, `address`, `subdistrict`, `district`, `provice`, `postal_num`, `user_role`) VALUES
-('app@gmail.com', '202cb962ac59075b964b07152d234b70', 'Olo', '0824578975', '155/2', 'พระบรมมหาราชวัง', 'เขตพระนคร', 'กรุงเทพมหานคร', '10200', 1);
+('app@gmail.com', '202cb962ac59075b964b07152d234b70', 'Olo', '0824578975', '155/2', 'วังบูรพาภิรมย์', 'เขตพระนคร', 'กรุงเทพมหานคร', '10200', 1);
 
 -- --------------------------------------------------------
 
@@ -10025,7 +10025,7 @@ INSERT INTO `districts` (`id`, `zip_code`, `name_th`, `name_en`, `amphure_id`) V
 --
 
 CREATE TABLE `food_menu` (
-  `food_id` int(11) NOT NULL,
+  `food_id` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `food_name` varchar(100) NOT NULL,
   `food_price` float NOT NULL,
   `food_pict` varchar(400) NOT NULL,
@@ -10038,41 +10038,27 @@ CREATE TABLE `food_menu` (
 --
 
 INSERT INTO `food_menu` (`food_id`, `food_name`, `food_price`, `food_pict`, `food_category`, `rec_status`) VALUES
-(8, 'McFlurry Oreo', 59, 'https://d1vs91ctevllei.cloudfront.net/images/product/1666941480McFlurry.png', 2, 1),
-(9, 'Iced Milk Tea', 55, 'https://d1vs91ctevllei.cloudfront.net/images/product/165951786815919540811579865227milky.png', 2, 0),
-(10, 'Big Mac (Beef)', 145, 'https://d1vs91ctevllei.cloudfront.net/images/product/16053547921604341598600x400.png', 1, 1),
-(11, 'Samurai Pork Burger (Pork)', 105, 'https://d1vs91ctevllei.cloudfront.net/images/product/16331456371593425785sm.jpg', 1, 0),
-(12, 'Double Filet-O-Fish (Fish)', 145, 'https://d1vs91ctevllei.cloudfront.net/images/product/1593425748df.jpg', 1, 0),
-(15, 'Quarter Pounder with Cheese', 155, 'https://d1vs91ctevllei.cloudfront.net/images/product/1657623608WOS-600x400-alc-qpc.png', 1, 0),
-(16, 'Double Quarter Pounder with Cheese', 215, 'https://d1vs91ctevllei.cloudfront.net/images/product/1657623717WOS-600x400-alc-dqpc.png', 1, 0),
-(17, 'McSpicy Chicken Burger (Chicken)', 119, 'https://d1vs91ctevllei.cloudfront.net/images/product/167643315204_WOS_new-McSpicy-Chicken-Burger_600x400px%20(1).png', 1, 0),
-(18, 'Quarter Pounder with Cheese Bacon', 175, 'https://d1vs91ctevllei.cloudfront.net/images/product/1657623807WOS-600x400-alc-qpcb.png', 1, 0),
-(19, 'Cheesy Chicken Burger', 109, 'https://d1vs91ctevllei.cloudfront.net/images/product/16781925001518.png', 1, 0),
-(20, 'Double Big Mac (Beef)', 195, 'https://d1vs91ctevllei.cloudfront.net/images/product/1593425672dbm.jpg', 1, 0),
-(21, 'Filet-O-Fish (Fish)', 105, 'https://d1vs91ctevllei.cloudfront.net/images/product/16334757681593425706f.jpg', 1, 0),
-(22, 'Pepper Chicken Burger (Chicken)', 45, 'https://d1vs91ctevllei.cloudfront.net/images/product/16318651241597829193HM-Burger3.png', 1, 0),
-(23, 'Cheeseburger (Beef)', 85, 'https://d1vs91ctevllei.cloudfront.net/images/product/1593425028c.jpg', 1, 0),
-(24, 'Double Cheeseburger (Beef)', 135, 'https://d1vs91ctevllei.cloudfront.net/images/product/1593425086035.jpg', 1, 0),
-(25, 'Triple Beef Cheeseburger (Beef)', 175, 'https://d1vs91ctevllei.cloudfront.net/images/product/1594018720072_MCD_Menu-Icon_600x400px_Alacarte_Triple-Beef-Cheese_Final.jpg', 1, 0),
-(26, 'McFlurry Kiss', 59, 'https://d1vs91ctevllei.cloudfront.net/images/product/167344732306_WOS_McFlurryKiss_600x400px.png', 2, 0),
-(27, 'Sweet Golden Pie', 39, 'https://d1vs91ctevllei.cloudfront.net/images/product/167344717706_WOS_Pie_600x400px.png', 2, 1),
-(28, '3 pcs. McPatongko with Condensed Milk Dip', 45, 'https://d1vs91ctevllei.cloudfront.net/images/product/16221918271605220334600.png', 2, 0),
-(29, '5 pcs. McPatongko Set', 69, 'https://d1vs91ctevllei.cloudfront.net/images/product/162219177416108959471233.png', 2, 0),
-(30, 'French Fries', 79, 'https://d1vs91ctevllei.cloudfront.net/images/product/1593426636ff.jpg', 2, 0),
-(31, 'Pineapple Pie', 35, 'https://d1vs91ctevllei.cloudfront.net/images/product/1540288254pp.png', 2, 0),
-(32, 'Corn Pie', 35, 'https://d1vs91ctevllei.cloudfront.net/images/product/1541497905cp.png', 2, 0),
-(33, 'Pie A-la-mode (Pineapple/Corn)', 55, 'https://d1vs91ctevllei.cloudfront.net/images/product/1658166003WOS_Pineapple.png', 2, 0),
-(34, 'Chocolate Sundae', 39, 'https://d1vs91ctevllei.cloudfront.net/images/product/15701794481540289151CSO_4550_DC_CHOSUN-copy.png', 2, 0),
-(35, 'Strawberry Sundae', 39, 'https://d1vs91ctevllei.cloudfront.net/images/product/15701802141540289146CSO_4550_DC_CHOSUN.png', 2, 0),
-(36, 'Sharing Box (McWings)', 149, 'https://d1vs91ctevllei.cloudfront.net/images/product/1663430949WOS_Sharing_Box_wings.png', 2, 0),
-(37, 'Sharing Box (Chic Stick)', 149, 'https://d1vs91ctevllei.cloudfront.net/images/product/1663430836WOS_Sharing_Box_stick.png', 2, 0),
-(38, '6 pc. McNuggets (Chicken)', 105, 'https://d1vs91ctevllei.cloudfront.net/images/product/15934264496ng.jpg', 2, 0),
-(39, 'Iced Ovaltine', 55, 'https://d1vs91ctevllei.cloudfront.net/images/product/16595178511579865202ovaltine.png', 2, 0),
-(40, 'Coke', 62, 'https://d1vs91ctevllei.cloudfront.net/images/product/1659517758156267177215517562111539593267223783.png', 2, 0),
-(41, 'Iced Lemon Tea', 45, 'https://d1vs91ctevllei.cloudfront.net/images/product/165951785916219058051579865187lemon.png', 2, 0),
-(42, 'Sprite No Sugar', 62, 'https://d1vs91ctevllei.cloudfront.net/images/product/1659517838156267183615517562321539593233223784.png', 2, 0),
-(43, 'Plain Croissant', 75, 'https://d1vs91ctevllei.cloudfront.net/images/product/1617555497600x400cs.png', 2, 0),
-(44, 'Chocolate Brownie', 65, 'https://d1vs91ctevllei.cloudfront.net/images/product/1594970042McCafe%20Bakery%20Brounie%20600x400.png', 2, 0);
+('0000', 'Quarter Pounder with Cheese Bacon', 175, 'https://d1vs91ctevllei.cloudfront.net/images/product/1657623807WOS-600x400-alc-qpcb.png', 1, 0),
+('0001', 'Samurai Pork Burger (Pork)', 105, 'https://d1vs91ctevllei.cloudfront.net/images/product/16331456371593425785sm.jpg', 1, 1),
+('0002', 'Pepper Chicken Burger (Chicken)', 45, 'https://d1vs91ctevllei.cloudfront.net/images/product/16318651241597829193HM-Burger3.png', 1, 0),
+('0003', 'Double Filet-O-Fish (Fish)', 145, 'https://d1vs91ctevllei.cloudfront.net/images/product/1593425748df.jpg', 1, 0),
+('0004', 'Big Mac (Beef)', 145, 'https://d1vs91ctevllei.cloudfront.net/images/product/16053547921604341598600x400.png', 1, 0),
+('0005', 'Double Cheeseburger (Beef)', 135, 'https://d1vs91ctevllei.cloudfront.net/images/product/1593425086035.jpg', 1, 0),
+('0006', 'McSpicy Chicken Burger (Chicken)', 119, 'https://d1vs91ctevllei.cloudfront.net/images/product/167643315204_WOS_new-McSpicy-Chicken-Burger_600x400px%20(1).png', 1, 0),
+('0007', 'Iced Milk Tea', 55, 'https://d1vs91ctevllei.cloudfront.net/images/product/165951786815919540811579865227milky.png', 2, 0),
+('0008', 'Iced Ovaltine', 55, 'https://d1vs91ctevllei.cloudfront.net/images/product/16595178511579865202ovaltine.png', 2, 0),
+('0009', 'Plain Croissant', 75, 'https://d1vs91ctevllei.cloudfront.net/images/product/1617555497600x400cs.png', 2, 1),
+('0010', 'Chocolate Brownie', 65, 'https://d1vs91ctevllei.cloudfront.net/images/product/1594970042McCafe%20Bakery%20Brounie%20600x400.png', 2, 0),
+('0011', 'McFlurry Kiss', 59, 'https://d1vs91ctevllei.cloudfront.net/images/product/167344732306_WOS_McFlurryKiss_600x400px.png', 2, 0),
+('0012', 'Sweet Golden Pie', 39, 'https://d1vs91ctevllei.cloudfront.net/images/product/167344717706_WOS_Pie_600x400px.png', 2, 0),
+('0013', 'Chocolate Sundae', 39, 'https://d1vs91ctevllei.cloudfront.net/images/product/15701794481540289151CSO_4550_DC_CHOSUN-copy.png', 2, 0),
+('0014', 'Strawberry Sundae', 39, 'https://d1vs91ctevllei.cloudfront.net/images/product/15701802141540289146CSO_4550_DC_CHOSUN.png', 2, 1),
+('0015', 'French Fries', 79, 'https://d1vs91ctevllei.cloudfront.net/images/product/1593426636ff.jpg', 2, 0),
+('0016', '3 pcs. McPatongko', 45, 'https://d1vs91ctevllei.cloudfront.net/images/product/16221918271605220334600.png', 2, 0),
+('0017', 'Coke', 62, 'https://d1vs91ctevllei.cloudfront.net/images/product/1659517758156267177215517562111539593267223783.png', 2, 0),
+('0018', '6 pc. McNuggets (Chicken)', 105, 'https://d1vs91ctevllei.cloudfront.net/images/product/15934264496ng.jpg', 2, 0),
+('0019', 'Corn Pie', 35, 'https://d1vs91ctevllei.cloudfront.net/images/product/1541497905cp.png', 2, 0),
+('0020', 'McChicken (Chicken) Bigger than ever 50%', 105, 'https://d1vs91ctevllei.cloudfront.net/images/product/1611081262ckalc.png', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -10105,7 +10091,7 @@ INSERT INTO `geographies` (`id`, `name`) VALUES
 
 CREATE TABLE `list_set` (
   `setmenu_id` varchar(100) NOT NULL,
-  `food_id` int(11) NOT NULL,
+  `food_id` varchar(100) NOT NULL,
   `food_quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -10114,9 +10100,20 @@ CREATE TABLE `list_set` (
 --
 
 INSERT INTO `list_set` (`setmenu_id`, `food_id`, `food_quantity`) VALUES
-('s-0000', 9, 1),
-('s-0000', 11, 1),
-('s-0000', 18, 1);
+('s-0000', '0015', 1),
+('s-0000', '0017', 1),
+('s-0000', '0020', 1),
+('s-0001', '0002', 1),
+('s-0001', '0015', 1),
+('s-0001', '0017', 1),
+('s-0001', '0018', 1),
+('s-0002', '0001', 1),
+('s-0002', '0015', 1),
+('s-0002', '0017', 1),
+('s-0002', '0018', 1),
+('s-0003', '0015', 1),
+('s-0003', '0017', 1),
+('s-0003', '0018', 1);
 
 -- --------------------------------------------------------
 
@@ -10128,7 +10125,7 @@ CREATE TABLE `order_manager` (
   `Order_Id` int(11) NOT NULL,
   `cus_email` varchar(100) NOT NULL,
   `Pay_Mode` varchar(100) NOT NULL,
-  `order_date` date NOT NULL
+  `order_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -10136,8 +10133,7 @@ CREATE TABLE `order_manager` (
 --
 
 INSERT INTO `order_manager` (`Order_Id`, `cus_email`, `Pay_Mode`, `order_date`) VALUES
-(1, 'app@gmail.com', 'OPM', '0000-00-00'),
-(2, 'app@gmail.com', 'OPM', '0000-00-00');
+(13, 'app@gmail.com', 'OPM', '2023-03-15 04:46:59');
 
 -- --------------------------------------------------------
 
@@ -10254,7 +10250,10 @@ CREATE TABLE `set_menu` (
 --
 
 INSERT INTO `set_menu` (`set_id`, `set_name`, `set_price`, `set_pict`) VALUES
-('s-0000', 'E3', 100, 'https://coub-attachments.akamaized.net/coub_storage/coub/simple/cw_timeline_pic/a72b21d18a6/0aed1fa1542c464c11d8a/1437631748_image.jpg');
+('s-0000', 'Imm Deaw Set', 165, 'https://d1vs91ctevllei.cloudfront.net/images/product/1675907696230113_MCD_Better%20Together%20Campaign_Menu%20Icon_01-03.jpg'),
+('s-0001', 'Pepper McNuggets Set', 99, 'https://d1vs91ctevllei.cloudfront.net/images/product/1645636209pn.png'),
+('s-0002', 'Im Kum Samurai Burger (Pork) Set', 159, 'https://d1vs91ctevllei.cloudfront.net/images/product/1678445592TPO-1446m.png'),
+('s-0003', 'McNuggets Set', 143, 'https://d1vs91ctevllei.cloudfront.net/images/product/16395064892232.png');
 
 -- --------------------------------------------------------
 
@@ -10273,19 +10272,8 @@ CREATE TABLE `user_orders` (
 --
 
 INSERT INTO `user_orders` (`Order_Id`, `food_quantity`, `food_id`) VALUES
-(14, 1, '5'),
-(15, 1, '1'),
-(15, 1, '4'),
-(15, 1, '5'),
-(16, 1, '1'),
-(16, 1, '4'),
-(16, 1, '5'),
-(17, 1, '1'),
-(17, 1, '4'),
-(17, 1, '5'),
-(18, 1, '12'),
-(19, 2, '10'),
-(19, 1, '14');
+(13, 1, '0000'),
+(13, 1, 's-0000');
 
 -- --------------------------------------------------------
 
@@ -10428,12 +10416,6 @@ ALTER TABLE `category`
   MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `food_menu`
---
-ALTER TABLE `food_menu`
-  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
-
---
 -- AUTO_INCREMENT for table `geographies`
 --
 ALTER TABLE `geographies`
@@ -10443,7 +10425,7 @@ ALTER TABLE `geographies`
 -- AUTO_INCREMENT for table `order_manager`
 --
 ALTER TABLE `order_manager`
-  MODIFY `Order_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Order_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `provinces`

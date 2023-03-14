@@ -68,6 +68,8 @@
                             $user_result=mysqli_query($conn,$query);
                             while($user_fetch=mysqli_fetch_assoc($user_result))
                             {
+                                
+                                $all_name = $user_fetch['food_name'];
                                 echo"
                                 <tr>
                                     <td>$user_fetch[Order_Id]</td>

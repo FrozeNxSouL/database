@@ -19,6 +19,7 @@ $menuset = $conn->query($sql2);
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="css/OurFood.css">
+    <link rel="stylesheet" href="css/backdoor.css">
     <title>MC</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <meta charset="UTF-8">
@@ -135,6 +136,188 @@ $menuset = $conn->query($sql2);
 
     <?php include 'php/module/subnav-backdoor.html' ?>
     <div id="message"></div>
+
+    <div class="content-main">
+    <div class="row">
+            <div class="col-lg-12 text-center border rounded bg-light my-5">
+                <br>
+                <h1>SET BUILD IN </h1>
+                </br>
+            </div>
+            <div class="col-lg-9">
+                <table class="table">
+                    <thead class = "text-center">
+                        <tr>
+                        <th scope="col">Food ID</th>
+                        <th scope="col">Food Name</th>
+                        <th scope="col">Food Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total</th>
+                        <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody class ="text-center">
+                        <?php
+                            if(isset($_SESSION['setting']))
+                            {
+                                foreach($_SESSION['setting'] as $key => $value)
+                                {
+                                    echo"
+                                        <tr>
+                                            <td>$value[food_id]</td>
+                                            <td>$value[food_name]</td>
+                                            <td>$value[food_price]<input type='hidden' class='iprice' value = '$value[food_price]'></td>
+                                            <td>
+                                                <form action='manage_set.php' method='POST'>
+                                                    <div class='input-group'>
+                                                        <button id='decrease_cart' class='btn btn-secondary'>-</button>
+                                                        <input style='width:2rem' min='0' type='number' oninput='this.value = Math.round(this.value);' class='form-control text-center iquantity' id='iquantity' name = 'Mod_Quantity' onchange='this.form.submit();' value = '$value[food_quantity]'>
+                                                        <button id='increase_cart' class='btn btn-secondary'>+</button>
+                                                    </div>
+                                                    <input type='hidden' name ='food_name' value='$value[food_name]'>
+                                                </form>
+                                            </td>
+                                            <td class = 'itotal'></td>
+                                            <td>
+                                                <form action='manage_set.php' method='POST'>
+                                                    <button name='Remove_Food' class='btn btn-sm btn-outline-danger'>REMOVE
+                                                    <input type='hidden' name ='food_name' value='$value[food_name]'>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    ";
+                                }
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-3">
+                <div class="border bg-light rounded p-4">
+                    <?php 
+                        if(isset($_SESSION['setting']) && count($_SESSION['setting'])>0)
+                        {
+                    ?>
+                    <form action ="set_complete.php" method="POST">
+                        <div class="mb-3">
+                            <label>Set Name</label>
+                            <input type="text" name="set_name" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Set Price</label>
+                            <input type="text" name="set_price" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Please input picture</label>
+                            <input type="text" name="set_pict" class="form-control" required>
+                        </div>
+                        <button class ="btn btn-danger" name="setcomp">Make Set</button>
+                    </form>
+                    <?php 
+                        }
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+    var iprice=document.getElementsByClassName('iprice');
+    var iquantity=document.getElementsByClassName('iquantity');
+    var itotal=document.getElementsByClassName('itotal');
+
+    function subTotal()
+    {
+        for(i=0;i<iprice.length;i++)
+        {
+            itotal[i].innerText=(iprice[i].value)*(iquantity[i].value);
+
+        }
+    }
+
+    subTotal();
+
+    </script>
+    <div class="setcontent" id="set">
+        <div class="menu-title">
+            <h2 style="font-weight: 700">Set Menu</h2>
+        </div>
+        <div class="menu">
+        <?php
+            while ($row = mysqli_fetch_assoc($menuset)) {
+
+
+            ?>
+                <form action="OurFood.php" method="POST">
+                    <div class="ourfood-card">
+                        <div class="pic-container">
+                            <?php echo '<img class="ourfood-img" src=" ' . ($row["set_pict"]) . '">'; ?>
+                        </div>
+                        <div class="text-container">
+                            <h4 class="food-name"><?php echo $row["set_name"]; ?></h4>
+                        </div>
+                        <p class="pricehead">Price</p>
+                        <h5>฿<?php echo ($row['set_price'] == (int)$row['set_price']) ? $row['set_price'] : number_format($row['set_price'], 2);?></h5>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#set_<?php echo $row['set_id']; ?>">
+                                <span class="material-symbols-outlined" style="color: white;">info</span>
+                            </button>
+                        </div>
+                        
+                        <input type="hidden" name ="food_id" value = "<?php echo $row['set_id']; ?>" >
+                        <input type="hidden" name ="food_name" value = "<?php echo ($row['set_name']); ?>" >
+                        <input type="hidden" name ="food_price" value = "<?php echo $row['set_price']; ?>" >
+                        <input type="hidden" name ="food_pict" value = "<?php echo $row['set_pict']; ?>" >
+                    </div>
+                    <div class="modal fade" id="set_<?php echo $row['set_id']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="set_<?php echo $row['set_id']; ?>_label" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="set_<?php echo $row['set_id']; ?>_label">Include in set</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Food</th>
+                                <th scope="col" style="text-align:center">Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php 
+                                $sql3 = "
+                                SELECT *
+                                FROM list_set JOIN food_menu
+                                ON list_set.food_id = food_menu.food_id
+                                WHERE list_set.setmenu_id = '". $row['set_id'] . "'
+                                ";
+                                $listset = $conn->query($sql3);
+                                while ($qr = mysqli_fetch_assoc($listset)) {
+                            ?>
+                                <tr>
+                                <td><img src="<?php echo $qr['food_pict']; ?>" style="width: 3rem"></td>
+                                <td><?php echo $qr['food_name']; ?></td>
+                                <td style="text-align:center"><?php echo $qr['food_quantity']; ?></td>
+                                </tr>
+                            <?php }?>
+                            </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </form>
+            <?php
+            }
+            ?>
+
+        </div>
+    </div>
     <div class="burgercontent" id="burger">
         <div class="menu-title">
             <h2 style="font-weight: 700">Menu</h2>
@@ -142,7 +325,6 @@ $menuset = $conn->query($sql2);
         <div class="menu">
             <?php
             while ($row = mysqli_fetch_assoc($burgermenu)) {
-
 
             ?>
                 <form action="edit-OurSet.php" method="POST">
@@ -201,7 +383,7 @@ $menuset = $conn->query($sql2);
                 ?>
 
         </div>
-        <form>
+        <!-- <form>
         <label for="fruits">Choose your favorite fruits:</label><br>
         <select id="fruits" name="fruits" multiple>
             <option value="apple">Apple</option>
@@ -211,49 +393,49 @@ $menuset = $conn->query($sql2);
             <option value="strawberry">Strawberry</option>
         </select><br><br>
         <input type="submit" value="Submit">
-        </form>
+        </form> -->
 
         <script>
-        var select = document.getElementById("fruits");
-        var isDragging = false;
-        var startX;
-        var startY;
+        // var select = document.getElementById("fruits");
+        // var isDragging = false;
+        // var startX;
+        // var startY;
 
-        select.addEventListener("mousedown", function(e) {
-            e.preventDefault();
-            isDragging = false;
-            startX = e.clientX;
-            startY = e.clientY;
-        });
+        // select.addEventListener("mousedown", function(e) {
+        //     e.preventDefault();
+        //     isDragging = false;
+        //     startX = e.clientX;
+        //     startY = e.clientY;
+        // });
 
-        select.addEventListener("mousemove", function(e) {
-            if (isDragging) {
-            var x = e.clientX;
-            var y = e.clientY;
-            var delta = y - startY;
-            select.scrollTop += delta;
-            startX = x;
-            startY = y;
-            }
-        });
+        // select.addEventListener("mousemove", function(e) {
+        //     if (isDragging) {
+        //     var x = e.clientX;
+        //     var y = e.clientY;
+        //     var delta = y - startY;
+        //     select.scrollTop += delta;
+        //     startX = x;
+        //     startY = y;
+        //     }
+        // });
 
-        select.addEventListener("mouseup", function(e) {
-            if (!isDragging) {
-            var clickedOption = e.target;
-            if (clickedOption.tagName === 'OPTION') {
-                clickedOption.selected = !clickedOption.selected;
-            }
-            }
-            isDragging = false;
-        });
+        // select.addEventListener("mouseup", function(e) {
+        //     if (!isDragging) {
+        //     var clickedOption = e.target;
+        //     if (clickedOption.tagName === 'OPTION') {
+        //         clickedOption.selected = !clickedOption.selected;
+        //     }
+        //     }
+        //     isDragging = false;
+        // });
 
-        select.addEventListener("mouseleave", function(e) {
-            isDragging = false;
-        });
+        // select.addEventListener("mouseleave", function(e) {
+        //     isDragging = false;
+        // });
 
-        select.addEventListener("mouseenter", function(e) {
-            isDragging = false;
-        });
+        // select.addEventListener("mouseenter", function(e) {
+        //     isDragging = false;
+        // });
         </script>
     </div>
     <script src="js/foodselector.js"></script>

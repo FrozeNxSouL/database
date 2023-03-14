@@ -90,9 +90,10 @@ require_once('php/process.php');
             </div>
             <div class="col-lg-3">
                 <div class="border bg-light rounded p-4">
-                    <h4>Grand Total:</h4>
-                    <h5 class = "text-center" id="gtotal"></h5>
-                    <br>
+                    <div class="text-center">
+                        <h4 style="border-bottom: 2px dashed rgb(74, 74, 74);">GRAND TOTAL</h4>
+                        <h4 class = "text-center" id="gtotal"></h4>
+                    </div>
                     <?php 
                         if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0)
                         {
@@ -186,7 +187,7 @@ require_once('php/process.php');
 
             gt=gt+(iprice[i].value)*(iquantity[i].value);
         }
-        gtotal.innerText=gt;
+        gtotal.innerText= '฿' + ' ' + gt;
     }
 
     subTotal();

@@ -118,7 +118,7 @@
                 </div>
                 <p id="errorinput"></p>
                 <div class="col-12">
-                    <button id="save-edit" class="btn btn-primary">Save</button>
+                    <button id="save-edit" class="btn btn-primary" type="button">Save</button>
                     <a id="cancel-edit" class="btn btn-danger" href="edit-user.php">Cancel</a>
                 </div>
             </div>

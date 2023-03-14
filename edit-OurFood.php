@@ -159,12 +159,15 @@ $all_cate = $conn->query($catesql);
 <?php
     if(isset($_POST['add_menu']))
     {
+        $GetIdNo=mysqli_query($conn, "SELECT * FROM `food_menu` ");
+        $GetIdNo1=mysqli_num_rows($GetIdNo);
+        $realid = str_pad($GetIdNo1, 4, '0', STR_PAD_LEFT);
         $food_pict = $_POST['food_pict'];
         $food_name = $_POST['food_name'];
         $food_price = $_POST['food_price'];
         $food_category = $_POST['food_category'];
 
-        $query = "INSERT INTO `food_menu`(`food_pict`,`food_name`,`food_price`,`food_category`) VALUES ('$food_pict','$food_name','$food_price', '$food_category')";
+        $query = "INSERT INTO `food_menu`(`food_id`,`food_pict`,`food_name`,`food_price`,`food_category`) VALUES ('$realid','$food_pict','$food_name','$food_price', '$food_category')";
         $query_run = mysqli_query($conn,$query);
         if ($query_run) {
             echo "
