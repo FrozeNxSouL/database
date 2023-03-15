@@ -440,6 +440,7 @@ $menuset = $conn->query($sql2);
     </div>
     <script src="js/foodselector.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
+    <script src="js/cart.js"></script>
     <script src="js/logincheckfunc.js" ></script>
     <script src="js/checkfunc.js" ></script>
     <script src="js/account.js"></script>

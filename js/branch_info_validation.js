@@ -39,7 +39,7 @@ $("#edit_branch_subdistrict").on('click', function() {
     var subdis = $("#edit_branch_subdistrict").val();
     var dis = $("#edit_branch_district").val();
     var provice = $("#edit_branch_province").val();
-    if (phone_state == false) {
+    if (subdis == '') {
         address_state = false;
         return;
     }
@@ -80,7 +80,7 @@ $("#edit_branch_district").on('click', function() {
     var subdis = $("#edit_branch_subdistrict").val();
     var dis = $("#edit_branch_district").val();
     var provice = $("#edit_branch_province").val();
-    if (phone_state == false) {
+    if (dis == '') {
         address_state = false;
         return;
     }
@@ -121,7 +121,7 @@ $("#edit_branch_province").on('click', function() {
     var subdis = $("#edit_branch_subdistrict").val();
     var dis = $("#edit_branch_district").val();
     var provice = $("#edit_branch_province").val();
-    if (phone_state == false) {
+    if (provice == '') {
         address_state = false;
         return;
     }
@@ -162,7 +162,7 @@ $("#edit_branch_postal").on('click', function() {
     var subdis = $("#edit_branch_subdistrict").val();
     var dis = $("#edit_branch_district").val();
     var provice = $("#edit_branch_province").val();
-    if (phone_state == false) {
+    if (postal == '') {
         address_state = false;
         return;
     }

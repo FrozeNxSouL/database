@@ -29,16 +29,31 @@
                     <a class='nav-link' href='delivery.php'>Delivery</a>
                 </li>
             </ul>
+            <?php
+                if (isset($_SESSION['email'])) { ?>
                 <a class='navbar-brand' href='mycart.php'>
                     <?php
-                    $count=0;
-                    if(isset($_SESSION['cart']))
-                    {
-                    $count=count($_SESSION['cart']);
-                    } ?>
-                    <span class="badge text-bg-danger" style="font-size: .6rem"><?php echo $count!=0 ? $count : ''; ?></span>
-                    <span class="material-symbols-outlined">shopping_cart</span>
+                            $count=0;
+                            if(isset($_SESSION['cart']))
+                            {
+                            $count=count($_SESSION['cart']);
+                            } ?>
+                            <span class="badge text-bg-danger" style="font-size: .6rem"><?php echo $count!=0 ? $count : ''; ?></span>
+                            <span class="material-symbols-outlined">shopping_cart</span> 
                 </a>
+                <?php } 
+                else { ?>
+                    <a class='navbar-brand' href='#'>
+                    <?php
+                            $count=0;
+                            if(isset($_SESSION['cart']))
+                            {
+                            $count=count($_SESSION['cart']);
+                            } ?>
+                            <span class="badge text-bg-danger" style="font-size: .6rem"><?php echo $count!=0 ? $count : ''; ?></span>
+                            <span class="material-symbols-outlined">shopping_cart</span> 
+                    </a>
+                <?php } ?>                 
                 <?php 
                         if (isset($_SESSION['email'])) {
                             echo '
@@ -46,7 +61,7 @@
                                     <a class="navbar-brand" href="user.php" style="font-size: 1rem">' . $_SESSION['email'] . '</a>
                                     <ul class="user-content">
                                         <li id="backdoor-page" class="nav-item">
-                                            <a class="nav-link" href="user.php">Edit profile</a>
+                                            <a class="nav-link" href="user.php">Profile</a>
                                         </li>';
                             if ($_SESSION['role'] == 1) {
                                 echo '<li id="backdoor-page" class="nav-item"><a class="nav-link" href="edit-user.php">Backend</a></li>';
