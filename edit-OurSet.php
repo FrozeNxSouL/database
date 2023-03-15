@@ -170,9 +170,7 @@ $menuset = $conn->query($sql2);
                                             <td>
                                                 <form action='manage_set.php' method='POST'>
                                                     <div class='input-group'>
-                                                        <button id='decrease_cart' class='btn btn-secondary'>-</button>
                                                         <input style='width:2rem' min='0' type='number' oninput='this.value = Math.round(this.value);' class='form-control text-center iquantity' id='iquantity' name = 'Mod_Quantity' onchange='this.form.submit();' value = '$value[food_quantity]'>
-                                                        <button id='increase_cart' class='btn btn-secondary'>+</button>
                                                     </div>
                                                     <input type='hidden' name ='food_name' value='$value[food_name]'>
                                                 </form>
