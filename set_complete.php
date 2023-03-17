@@ -25,7 +25,7 @@ if(mysqli_connect_error()){
                 $stmt=mysqli_prepare($conn,$query2);
                 if($stmt)
                 {
-                    mysqli_stmt_bind_param($stmt,"sii",$realid,$food_id,$food_quantity);
+                    mysqli_stmt_bind_param($stmt,"ssi",$realid,$food_id,$food_quantity);
                     foreach($_SESSION['setting'] as $key => $values)
                     {
                         $food_id=$values['food_id'];
@@ -35,14 +35,14 @@ if(mysqli_connect_error()){
                     unset($_SESSION['setting']);
                     echo"<script>
                         alert('Set Placed');
-                        window.location.href='myset.php';
+                        window.location.href='edit-OurSet.php';
                         </script>";
                 }
                 else
                 {
                     echo"<script>
                     alert('SQL Query Prepare Error');
-                    window.location.href='myset.php';
+                    window.location.href='edit-OurSet.php';
                     </script>";
                 }
             }
@@ -50,7 +50,7 @@ if(mysqli_connect_error()){
             {
                 echo"<script>
                     alert('SQL Error');
-                    window.location.href='myset.php';
+                    window.location.href='edit-OurSet.php';
                 </script>";
             }
         }

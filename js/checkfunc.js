@@ -224,6 +224,7 @@ $('document').ready(function() {
         })
     });
 
+
     $('#submitsignin').on("click", function(e) {
         var name = $("#inputName").val();
         var email = $("#sign-up-email").val();
@@ -236,7 +237,7 @@ $('document').ready(function() {
         var postal = $("#inputpostal").val();
         if ((phone_state == false )|| (email_state == false) || (address_state == false)) {
             e.preventDefault();
-            $("#errorinput").text("Check your form again!");
+            return;
         } else {
             $.ajax({
                 url: 'index.php',
@@ -262,8 +263,8 @@ $('document').ready(function() {
                     } 
                     else if (response == 'Saved') {
                         $("#errorinput").text('');
-                        alert('SAVED');                 
-                        window.location.href='user.php';
+                        success_alert('index.php','Sign up successfully');
+                        
                     } 
                 }
             })

@@ -1,9 +1,10 @@
 
 <?php 
-session_start();
+    session_start();
 ?>
 
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
 <nav class='navbar navbar-expand-lg bg-body-tertiary'>
     <div class='container-fluid'>
 
@@ -27,34 +28,67 @@ session_start();
                 <li class='nav-item'>
                     <a class='nav-link' href='delivery.php'>Delivery</a>
                 </li>
-                <li class='nav-item'>
-                    <a class='nav-link' href='mycart.php'>Cart</a>
-                </li>
-                <?php 
-                    if (isset($_SESSION['email']) && ($_SESSION['role'] == 1)) {
-                        echo '
-                        <li id="backdoor-page" class="nav-item">
-                        <a class="nav-link" href="edit-user.php">Admin</a>
-                        </li>';
-                    }
-                ?>
             </ul>
-
+            <?php
+                if (isset($_SESSION['email'])) { ?>
+                <a class='navbar-brand' href='mycart.php'>
+                    <?php
+                            $count=0;
+                            if(isset($_SESSION['cart']))
+                            {
+                            $count=count($_SESSION['cart']);
+                            } ?>
+                            <span class="badge text-bg-danger" style="font-size: .6rem"><?php echo $count!=0 ? $count : ''; ?></span>
+                            <span class="material-symbols-outlined">shopping_cart</span> 
+                </a>
+                <?php } 
+                else { ?>
+                    <a class='navbar-brand' href='#'>
+                    <?php
+                            $count=0;
+                            if(isset($_SESSION['cart']))
+                            {
+                            $count=count($_SESSION['cart']);
+                            } ?>
+                            <span class="badge text-bg-danger" style="font-size: .6rem"><?php echo $count!=0 ? $count : ''; ?></span>
+                            <span class="material-symbols-outlined">shopping_cart</span> 
+                    </a>
+                <?php } ?>                 
                 <?php 
                         if (isset($_SESSION['email'])) {
                             echo '
-                            <a class="navbar-brand" href="user.php">
-                                <span class="material-symbols-outlined" style="line-height: 2rem" id="material-symbols-outlined">person</span>
-                            </a>';
+                                <div class="logged-in">
+                                    <a class="navbar-brand" href="user.php" style="font-size: 1rem">' . $_SESSION['email'] . '</a>
+                                    <ul class="user-content">
+                                        <li id="backdoor-page" class="nav-item">
+                                            <a class="nav-link" href="user.php">Profile</a>
+                                        </li>';
+                            if ($_SESSION['role'] == 1) {
+                                echo '<li id="backdoor-page" class="nav-item"><a class="nav-link" href="edit-user.php">Backend</a></li>';
+                            }
+                            echo '
+                                        <li id="backdoor-page" class="nav-item">
+                                            <form action="index.php" method="post">
+                                                <button type="submit" name="logout" style="border:none;background-color: transparent;" class="nav-link">Logout</button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>';
                         } else {
                             echo '
-                            <a class="navbar-brand" href="#" onclick="signin()">
-                                <span class="material-symbols-outlined" style="line-height: 2rem" id="material-symbols-outlined">person</span>
-                            </a>';
+                                <a class="navbar-brand" href="#" onclick="signin()">
+                                    <span class="material-symbols-outlined" style="line-height: 2rem" id="material-symbols-outlined">person</span>
+                                </a>';
                         }
                 ?>
 
         </div>
     </div>
 </nav>
+<?php 
+    if (isset($_POST['logout'])) {
+        session_destroy();
+        header('location: index.php');
+    }
+?>
    

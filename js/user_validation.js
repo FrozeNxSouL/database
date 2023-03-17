@@ -1,9 +1,9 @@
 $('document').ready(function() {
 
-    var address_state = false;
-    var phone_state = false;
+    var address_state = true;
+    var phone_state = true;
 
-    $('#edit_cus_phone').on('blur', function() {
+    $('#edit_cus_phone').on('click', function() {
         var phone = $('#edit_cus_phone').val();
         if (phone === '') {
             phone_state = false;
@@ -32,13 +32,15 @@ $('document').ready(function() {
             }
         })
     });
+
+
     
-    $("#edit_cus_subdistrict").on('blur', function() {
+    $("#edit_cus_subdistrict").on('click', function() {
         var postal = $("#edit_cus_zip").val();
         var subdis = $("#edit_cus_subdistrict").val();
         var dis = $("#edit_cus_district").val();
         var provice = $("#edit_cus_provice").val();
-        if ((postal === '') || (subdis === '') || (dis === '') || (provice === '')) {
+        if (phone_state = false) {
             address_state = false;
             return;
         }
@@ -73,12 +75,12 @@ $('document').ready(function() {
             }
         })
     });
-    $("#edit_cus_district").on('blur', function() {
+    $("#edit_cus_district").on('click', function() {
         var postal = $("#edit_cus_zip").val();
         var subdis = $("#edit_cus_subdistrict").val();
         var dis = $("#edit_cus_district").val();
         var provice = $("#edit_cus_provice").val();
-        if ((postal === '') || (subdis === '') || (dis === '') || (provice === '')) {
+        if (phone_state = false) {
             address_state = false;
             return;
         }
@@ -113,12 +115,12 @@ $('document').ready(function() {
             }
         })
     });
-    $("#edit_cus_provice").on('blur', function() {
+    $("#edit_cus_provice").on('click', function() {
         var postal = $("#edit_cus_zip").val();
         var subdis = $("#edit_cus_subdistrict").val();
         var dis = $("#edit_cus_district").val();
         var provice = $("#edit_cus_provice").val();
-        if ((postal === '') || (subdis === '') || (dis === '') || (provice === '')) {
+        if (phone_state = false) {
             address_state = false;
             return;
         }
@@ -154,12 +156,12 @@ $('document').ready(function() {
         })
     });
 
-    $("#edit_cus_zip").on('blur', function() {
+    $("#edit_cus_zip").on('click', function() {
         var postal = $("#edit_cus_zip").val();
         var subdis = $("#edit_cus_subdistrict").val();
         var dis = $("#edit_cus_district").val();
         var provice = $("#edit_cus_provice").val();
-        if ((postal === '') || (subdis === '') || (dis === '') || (provice === '')) {
+        if (phone_state = false) {
             address_state = false;
             return;
         }
@@ -194,6 +196,7 @@ $('document').ready(function() {
             }
         })
     });
+
 
     $('#save-edit').on("click", function(e) {
         var name = $("#edit_cus_name").val();
@@ -208,7 +211,8 @@ $('document').ready(function() {
         if ((phone_state == false ) || (address_state == false)) {
             e.preventDefault();
             $("#errorinput").text("Check your form again!");
-        } else {
+        } 
+        else {
             $.ajax({
                 url: 'edit-user-info.php',
                 type: 'post',
@@ -225,9 +229,8 @@ $('document').ready(function() {
                     'role':role
                 },
                 success: function(response) {
-                        $("#errorinput").text('');
-                        alert('SAVED');                 
-                        window.location.href='edit-user.php';
+                    $("#errorinput").text('');
+                    success_alert('edit-user.php','Edited success');
                 }
             })
         }

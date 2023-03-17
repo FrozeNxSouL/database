@@ -1,8 +1,11 @@
-<?php
+<?php 
 session_start();
 require_once('php/connect.php');
 require_once('php/process.php'); 
-
+if (isset($_POST['logout'])) {
+  session_destroy();
+  header('location: index.php');
+}
 
 
 ?>
@@ -35,7 +38,8 @@ require_once('php/process.php');
         <!-- start main section -->
 
         <!-- start Sign in/ Sign up form -->
-        <?php require('login-signin.php'); ?>
+        <?php require('login-signin.php');
+        ?>
 
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -59,7 +63,6 @@ require_once('php/process.php');
             </button>
           </div>
         <!-- end slide -->
-
         <!-- start content -->
           <div class="content-header">
           <?php
@@ -90,7 +93,7 @@ require_once('php/process.php');
     <script src="js/checkfunc.js" ></script>
     <script src="js/footer.js"></script>
     <script src="js/account.js"></script>
-            
+    <script src="js/alerts.js"></script>
 
 </body>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 10, 2023 at 02:26 PM
+-- Generation Time: Mar 14, 2023 at 10:38 PM
 -- Server version: 8.0.17
 -- PHP Version: 7.3.10
 
@@ -1049,6 +1049,8 @@ INSERT INTO `amphures` (`id`, `code`, `name_th`, `name_en`, `province_id`) VALUE
 CREATE TABLE `banner` (
   `banner_id` int(11) NOT NULL,
   `banner_pict` varchar(400) NOT NULL,
+  `banner_header` varchar(100) NOT NULL,
+  `banner_text` varchar(100) NOT NULL,
   `banner_status` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1056,10 +1058,10 @@ CREATE TABLE `banner` (
 -- Dumping data for table `banner`
 --
 
-INSERT INTO `banner` (`banner_id`, `banner_pict`, `banner_status`) VALUES
-(1, 'https://d1vs91ctevllei.cloudfront.net/images/banner/th1673513739230103_MCD_mc-a-wish_Tourist-02_Web-Banner_2000x695px_Final_CO_CS6.jpg', 1),
-(2, 'https://d1vs91ctevllei.cloudfront.net/images/banner/th_responsive166196625206_Banner_web_re_motherday-set_944x944px.jpg', 0),
-(3, 'https://d1vs91ctevllei.cloudfront.net/images/banner/th_responsive166196625206_Banner_web_re_motherday-set_944x944px.jpg', 1);
+INSERT INTO `banner` (`banner_id`, `banner_pict`, `banner_header`, `banner_text`, `banner_status`) VALUES
+(1, 'https://d1vs91ctevllei.cloudfront.net/images/banner/th1673513739230103_MCD_mc-a-wish_Tourist-02_Web-Banner_2000x695px_Final_CO_CS6.jpg', '', '', 1),
+(2, 'https://d1vs91ctevllei.cloudfront.net/images/banner/th_responsive166196625206_Banner_web_re_motherday-set_944x944px.jpg', '', '', 0),
+(3, 'https://d1vs91ctevllei.cloudfront.net/images/banner/th_responsive166196625206_Banner_web_re_motherday-set_944x944px.jpg', '', '', 1);
 
 -- --------------------------------------------------------
 
@@ -1074,22 +1076,25 @@ CREATE TABLE `branch` (
   `branch_subdistrict` varchar(100) NOT NULL,
   `branch_district` varchar(100) NOT NULL,
   `branch_province` varchar(100) NOT NULL,
-  `branch_phone` varchar(100) NOT NULL
+  `branch_phone` varchar(100) NOT NULL,
+  `branch_postal` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `branch`
 --
 
-INSERT INTO `branch` (`branchID`, `branchName`, `branch_address`, `branch_subdistrict`, `branch_district`, `branch_province`, `branch_phone`) VALUES
-(2, 'Deep Dark Fantasy', '66/78', 'กระทุ่มราย', 'เขตหนองจอก', 'กรุงเทพมหานคร', '0805775849'),
-(3, 'Ohio', '44/2', 'หนองจอก', 'เขตหนองจอก', 'กรุงเทพมหานคร', '0805855848'),
-(4, 'คนรักโดนรังแก', '145/99', 'คู้ฝั่งเหนือ', 'เขตหนองจอก', 'กรุงเทพมหานคร', '0955855849'),
-(5, 'เจ็บใจ', '28/27', 'เสาชิงช้า', 'เขตพระนคร', 'กรุงเทพมหานคร', '0805875549'),
-(6, 'ปวดหัวละ', '124/5', 'ตลาดยอด', 'เขตดุสิต', 'กรุงเทพมหานคร', '0658648959'),
-(7, 'นิทิศ', '56/65', 'บางขุนพรหม', 'เขตดุสิต', 'กรุงเทพมหานคร', '0805855849'),
-(8, 'มหาราชานรก', '2/12', 'ศาลเจ้าพ่อเสือ', 'เขตพระนคร', 'กรุงเทพมหานคร', '0805855849'),
-(10, 'dee', '152', 'ศาลเจ้าพ่อเสือ', 'เขตพระนคร', 'กรุงเทพมหานคร', '0824856574');
+INSERT INTO `branch` (`branchID`, `branchName`, `branch_address`, `branch_subdistrict`, `branch_district`, `branch_province`, `branch_phone`, `branch_postal`) VALUES
+(2, 'Deep Dark Fantasy', '125', 'ดุสิต', 'เขตดุสิต', 'กรุงเทพมหานคร', '0828148264', '10300'),
+(3, 'Ohio', '44/1', 'หนองจอก', 'เขตหนองจอก', 'กรุงเทพมหานคร', '0805855840', '10530'),
+(4, 'คนรักโดนรังแก', '145/99', 'คู้ฝั่งเหนือ', 'เขตหนองจอก', 'กรุงเทพมหานคร', '0955855849', '10530'),
+(5, 'เจ็บใจ', '28/27', 'เสาชิงช้า', 'เขตพระนคร', 'กรุงเทพมหานคร', '0805875549', ''),
+(6, 'ปวดหัวละ', '124/5', 'ตลาดยอด', 'เขตดุสิต', 'กรุงเทพมหานคร', '0658648959', ''),
+(8, 'มหาราชานรก', '2/1231', 'ศาลเจ้าพ่อเสือ', 'เขตพระนคร', 'กรุงเทพมหานคร', '0805855849', '10200'),
+(10, 'ohohoh', '125', 'ศาลเจ้าพ่อเสือ', 'เขตพระนคร', 'กรุงเทพมหานคร', '0828148264', '10200'),
+(11, 'bOvOd', '155/4', 'วัดราชบพิธ', 'เขตพระนคร', 'กรุงเทพมหานคร', '0824578964', '10200'),
+(14, 'Over', '155/4', 'ดุสิต', 'เขตดุสิต', 'กรุงเทพมหานคร', '0824578964', '10300'),
+(15, 'Plain Croissant', '55/4', 'สำราญราษฎร์', 'เขตพระนคร', 'กรุงเทพมหานคร', '2515484640', '10200');
 
 -- --------------------------------------------------------
 
@@ -1134,8 +1139,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`cus_email`, `password`, `name`, `phone_num`, `address`, `subdistrict`, `district`, `provice`, `postal_num`, `user_role`) VALUES
-('app@gmail.com', '202cb962ac59075b964b07152d234b70', 'de', '0859564747', 'dff', 'พระบรมมหาราชวัง', 'เขตดุสิต', 'กรุงเทพมหานคร', '11150', 1),
-('deoererrr@gmail.com', '202cb962ac59075b964b07152d234b70', 'dfgf', '0828148264', '125', 'พระบรมมหาราชวัง', 'เขตพระนคร', 'กรุงเทพมหานคร', '10200', 0);
+('app@gmail.com', '202cb962ac59075b964b07152d234b70', 'Olo', '0824578975', '155/2', 'วังบูรพาภิรมย์', 'เขตพระนคร', 'กรุงเทพมหานคร', '10200', 1);
 
 -- --------------------------------------------------------
 
@@ -10017,23 +10021,11 @@ INSERT INTO `districts` (`id`, `zip_code`, `name_th`, `name_en`, `amphure_id`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `foodmenu_sales`
---
-
-CREATE TABLE `foodmenu_sales` (
-  `food_id` int(11) NOT NULL,
-  `receipt_id` int(11) NOT NULL,
-  `foodmenu_amount` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `food_menu`
 --
 
 CREATE TABLE `food_menu` (
-  `food_id` int(11) NOT NULL,
+  `food_id` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `food_name` varchar(100) NOT NULL,
   `food_price` float NOT NULL,
   `food_pict` varchar(400) NOT NULL,
@@ -10046,41 +10038,27 @@ CREATE TABLE `food_menu` (
 --
 
 INSERT INTO `food_menu` (`food_id`, `food_name`, `food_price`, `food_pict`, `food_category`, `rec_status`) VALUES
-(8, 'McFlurry Oreo', 59, 'https://d1vs91ctevllei.cloudfront.net/images/product/1666941480McFlurry.png', 2, 1),
-(9, 'Iced Milk Tea', 55, 'https://d1vs91ctevllei.cloudfront.net/images/product/165951786815919540811579865227milky.png', 2, 0),
-(10, 'Big Mac (Beef)', 145, 'https://d1vs91ctevllei.cloudfront.net/images/product/16053547921604341598600x400.png', 1, 1),
-(11, 'Samurai Pork Burger (Pork)', 105, 'https://d1vs91ctevllei.cloudfront.net/images/product/16331456371593425785sm.jpg', 1, 0),
-(12, 'Double Filet-O-Fish (Fish)', 145, 'https://d1vs91ctevllei.cloudfront.net/images/product/1593425748df.jpg', 1, 0),
-(15, 'Quarter Pounder with Cheese', 155, 'https://d1vs91ctevllei.cloudfront.net/images/product/1657623608WOS-600x400-alc-qpc.png', 1, 0),
-(16, 'Double Quarter Pounder with Cheese', 215, 'https://d1vs91ctevllei.cloudfront.net/images/product/1657623717WOS-600x400-alc-dqpc.png', 1, 0),
-(17, 'McSpicy Chicken Burger (Chicken)', 119, 'https://d1vs91ctevllei.cloudfront.net/images/product/167643315204_WOS_new-McSpicy-Chicken-Burger_600x400px%20(1).png', 1, 0),
-(18, 'Quarter Pounder with Cheese Bacon', 175, 'https://d1vs91ctevllei.cloudfront.net/images/product/1657623807WOS-600x400-alc-qpcb.png', 1, 0),
-(19, 'Cheesy Chicken Burger', 109, 'https://d1vs91ctevllei.cloudfront.net/images/product/16781925001518.png', 1, 0),
-(20, 'Double Big Mac (Beef)', 195, 'https://d1vs91ctevllei.cloudfront.net/images/product/1593425672dbm.jpg', 1, 0),
-(21, 'Filet-O-Fish (Fish)', 105, 'https://d1vs91ctevllei.cloudfront.net/images/product/16334757681593425706f.jpg', 1, 0),
-(22, 'Pepper Chicken Burger (Chicken)', 45, 'https://d1vs91ctevllei.cloudfront.net/images/product/16318651241597829193HM-Burger3.png', 1, 0),
-(23, 'Cheeseburger (Beef)', 85, 'https://d1vs91ctevllei.cloudfront.net/images/product/1593425028c.jpg', 1, 0),
-(24, 'Double Cheeseburger (Beef)', 135, 'https://d1vs91ctevllei.cloudfront.net/images/product/1593425086035.jpg', 1, 0),
-(25, 'Triple Beef Cheeseburger (Beef)', 175, 'https://d1vs91ctevllei.cloudfront.net/images/product/1594018720072_MCD_Menu-Icon_600x400px_Alacarte_Triple-Beef-Cheese_Final.jpg', 1, 0),
-(26, 'McFlurry Kiss', 59, 'https://d1vs91ctevllei.cloudfront.net/images/product/167344732306_WOS_McFlurryKiss_600x400px.png', 2, 0),
-(27, 'Sweet Golden Pie', 39, 'https://d1vs91ctevllei.cloudfront.net/images/product/167344717706_WOS_Pie_600x400px.png', 2, 1),
-(28, '3 pcs. McPatongko with Condensed Milk Dip', 45, 'https://d1vs91ctevllei.cloudfront.net/images/product/16221918271605220334600.png', 2, 0),
-(29, '5 pcs. McPatongko Set', 69, 'https://d1vs91ctevllei.cloudfront.net/images/product/162219177416108959471233.png', 2, 0),
-(30, 'French Fries', 79, 'https://d1vs91ctevllei.cloudfront.net/images/product/1593426636ff.jpg', 2, 0),
-(31, 'Pineapple Pie', 35, 'https://d1vs91ctevllei.cloudfront.net/images/product/1540288254pp.png', 2, 0),
-(32, 'Corn Pie', 35, 'https://d1vs91ctevllei.cloudfront.net/images/product/1541497905cp.png', 2, 0),
-(33, 'Pie A-la-mode (Pineapple/Corn)', 55, 'https://d1vs91ctevllei.cloudfront.net/images/product/1658166003WOS_Pineapple.png', 2, 0),
-(34, 'Chocolate Sundae', 39, 'https://d1vs91ctevllei.cloudfront.net/images/product/15701794481540289151CSO_4550_DC_CHOSUN-copy.png', 2, 0),
-(35, 'Strawberry Sundae', 39, 'https://d1vs91ctevllei.cloudfront.net/images/product/15701802141540289146CSO_4550_DC_CHOSUN.png', 2, 0),
-(36, 'Sharing Box (McWings)', 149, 'https://d1vs91ctevllei.cloudfront.net/images/product/1663430949WOS_Sharing_Box_wings.png', 2, 0),
-(37, 'Sharing Box (Chic Stick)', 149, 'https://d1vs91ctevllei.cloudfront.net/images/product/1663430836WOS_Sharing_Box_stick.png', 2, 0),
-(38, '6 pc. McNuggets (Chicken)', 105, 'https://d1vs91ctevllei.cloudfront.net/images/product/15934264496ng.jpg', 2, 0),
-(39, 'Iced Ovaltine', 55, 'https://d1vs91ctevllei.cloudfront.net/images/product/16595178511579865202ovaltine.png', 2, 0),
-(40, 'Coke', 62, 'https://d1vs91ctevllei.cloudfront.net/images/product/1659517758156267177215517562111539593267223783.png', 2, 0),
-(41, 'Iced Lemon Tea', 45, 'https://d1vs91ctevllei.cloudfront.net/images/product/165951785916219058051579865187lemon.png', 2, 0),
-(42, 'Sprite No Sugar', 62, 'https://d1vs91ctevllei.cloudfront.net/images/product/1659517838156267183615517562321539593233223784.png', 2, 0),
-(43, 'Plain Croissant', 75, 'https://d1vs91ctevllei.cloudfront.net/images/product/1617555497600x400cs.png', 2, 0),
-(44, 'Chocolate Brownie', 65, 'https://d1vs91ctevllei.cloudfront.net/images/product/1594970042McCafe%20Bakery%20Brounie%20600x400.png', 2, 0);
+('0000', 'Quarter Pounder with Cheese Bacon', 175, 'https://d1vs91ctevllei.cloudfront.net/images/product/1657623807WOS-600x400-alc-qpcb.png', 1, 0),
+('0001', 'Samurai Pork Burger (Pork)', 105, 'https://d1vs91ctevllei.cloudfront.net/images/product/16331456371593425785sm.jpg', 1, 1),
+('0002', 'Pepper Chicken Burger (Chicken)', 45, 'https://d1vs91ctevllei.cloudfront.net/images/product/16318651241597829193HM-Burger3.png', 1, 0),
+('0003', 'Double Filet-O-Fish (Fish)', 145, 'https://d1vs91ctevllei.cloudfront.net/images/product/1593425748df.jpg', 1, 0),
+('0004', 'Big Mac (Beef)', 145, 'https://d1vs91ctevllei.cloudfront.net/images/product/16053547921604341598600x400.png', 1, 0),
+('0005', 'Double Cheeseburger (Beef)', 135, 'https://d1vs91ctevllei.cloudfront.net/images/product/1593425086035.jpg', 1, 0),
+('0006', 'McSpicy Chicken Burger (Chicken)', 119, 'https://d1vs91ctevllei.cloudfront.net/images/product/167643315204_WOS_new-McSpicy-Chicken-Burger_600x400px%20(1).png', 1, 0),
+('0007', 'Iced Milk Tea', 55, 'https://d1vs91ctevllei.cloudfront.net/images/product/165951786815919540811579865227milky.png', 2, 0),
+('0008', 'Iced Ovaltine', 55, 'https://d1vs91ctevllei.cloudfront.net/images/product/16595178511579865202ovaltine.png', 2, 0),
+('0009', 'Plain Croissant', 75, 'https://d1vs91ctevllei.cloudfront.net/images/product/1617555497600x400cs.png', 2, 1),
+('0010', 'Chocolate Brownie', 65, 'https://d1vs91ctevllei.cloudfront.net/images/product/1594970042McCafe%20Bakery%20Brounie%20600x400.png', 2, 0),
+('0011', 'McFlurry Kiss', 59, 'https://d1vs91ctevllei.cloudfront.net/images/product/167344732306_WOS_McFlurryKiss_600x400px.png', 2, 0),
+('0012', 'Sweet Golden Pie', 39, 'https://d1vs91ctevllei.cloudfront.net/images/product/167344717706_WOS_Pie_600x400px.png', 2, 0),
+('0013', 'Chocolate Sundae', 39, 'https://d1vs91ctevllei.cloudfront.net/images/product/15701794481540289151CSO_4550_DC_CHOSUN-copy.png', 2, 0),
+('0014', 'Strawberry Sundae', 39, 'https://d1vs91ctevllei.cloudfront.net/images/product/15701802141540289146CSO_4550_DC_CHOSUN.png', 2, 1),
+('0015', 'French Fries', 79, 'https://d1vs91ctevllei.cloudfront.net/images/product/1593426636ff.jpg', 2, 0),
+('0016', '3 pcs. McPatongko', 45, 'https://d1vs91ctevllei.cloudfront.net/images/product/16221918271605220334600.png', 2, 0),
+('0017', 'Coke', 62, 'https://d1vs91ctevllei.cloudfront.net/images/product/1659517758156267177215517562111539593267223783.png', 2, 0),
+('0018', '6 pc. McNuggets (Chicken)', 105, 'https://d1vs91ctevllei.cloudfront.net/images/product/15934264496ng.jpg', 2, 0),
+('0019', 'Corn Pie', 35, 'https://d1vs91ctevllei.cloudfront.net/images/product/1541497905cp.png', 2, 0),
+('0020', 'McChicken (Chicken) Bigger than ever 50%', 105, 'https://d1vs91ctevllei.cloudfront.net/images/product/1611081262ckalc.png', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -10112,9 +10090,30 @@ INSERT INTO `geographies` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `list_set` (
-  `setmenu_id` int(11) NOT NULL,
-  `food_id` int(11) NOT NULL
+  `setmenu_id` varchar(100) NOT NULL,
+  `food_id` varchar(100) NOT NULL,
+  `food_quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `list_set`
+--
+
+INSERT INTO `list_set` (`setmenu_id`, `food_id`, `food_quantity`) VALUES
+('s-0000', '0015', 1),
+('s-0000', '0017', 1),
+('s-0000', '0020', 1),
+('s-0001', '0002', 1),
+('s-0001', '0015', 1),
+('s-0001', '0017', 1),
+('s-0001', '0018', 1),
+('s-0002', '0001', 1),
+('s-0002', '0015', 1),
+('s-0002', '0017', 1),
+('s-0002', '0018', 1),
+('s-0003', '0015', 1),
+('s-0003', '0017', 1),
+('s-0003', '0018', 1);
 
 -- --------------------------------------------------------
 
@@ -10125,17 +10124,16 @@ CREATE TABLE `list_set` (
 CREATE TABLE `order_manager` (
   `Order_Id` int(11) NOT NULL,
   `cus_email` varchar(100) NOT NULL,
-  `Pay_Mode` varchar(100) NOT NULL
+  `Pay_Mode` varchar(100) NOT NULL,
+  `order_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `order_manager`
 --
 
-INSERT INTO `order_manager` (`Order_Id`, `cus_email`, `Pay_Mode`) VALUES
-(17, 'root@gmail.com', 'COD'),
-(18, 'app@gmail.com', 'OPM'),
-(19, 'app@gmail.com', 'OPM');
+INSERT INTO `order_manager` (`Order_Id`, `cus_email`, `Pay_Mode`, `order_date`) VALUES
+(13, 'app@gmail.com', 'OPM', '2023-03-15 04:46:59');
 
 -- --------------------------------------------------------
 
@@ -10237,65 +10235,25 @@ INSERT INTO `provinces` (`id`, `code`, `name_th`, `name_en`, `geography_id`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `put`
---
-
-CREATE TABLE `put` (
-  `topping_id` int(11) NOT NULL,
-  `food_id` int(11) NOT NULL,
-  `receipt_id` int(11) NOT NULL,
-  `topping_status` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `receipt`
---
-
-CREATE TABLE `receipt` (
-  `receipt_date` datetime NOT NULL,
-  `receipt_id` int(11) NOT NULL,
-  `cus_email` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `setmenu_sales`
---
-
-CREATE TABLE `setmenu_sales` (
-  `receipt_id` int(11) NOT NULL,
-  `setmenu_id` int(11) NOT NULL,
-  `setmenu_amount` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `set_menu`
 --
 
 CREATE TABLE `set_menu` (
-  `set_id` int(11) NOT NULL,
+  `set_id` varchar(100) NOT NULL,
   `set_name` varchar(100) NOT NULL,
   `set_price` float NOT NULL,
   `set_pict` varchar(400) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `topping`
+-- Dumping data for table `set_menu`
 --
 
-CREATE TABLE `topping` (
-  `topping_id` int(11) NOT NULL,
-  `topping_name` varchar(100) NOT NULL,
-  `toppping_price` float NOT NULL,
-  `topping_pict` varchar(400) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `set_menu` (`set_id`, `set_name`, `set_price`, `set_pict`) VALUES
+('s-0000', 'Imm Deaw Set', 165, 'https://d1vs91ctevllei.cloudfront.net/images/product/1675907696230113_MCD_Better%20Together%20Campaign_Menu%20Icon_01-03.jpg'),
+('s-0001', 'Pepper McNuggets Set', 99, 'https://d1vs91ctevllei.cloudfront.net/images/product/1645636209pn.png'),
+('s-0002', 'Im Kum Samurai Burger (Pork) Set', 159, 'https://d1vs91ctevllei.cloudfront.net/images/product/1678445592TPO-1446m.png'),
+('s-0003', 'McNuggets Set', 143, 'https://d1vs91ctevllei.cloudfront.net/images/product/16395064892232.png');
 
 -- --------------------------------------------------------
 
@@ -10305,30 +10263,17 @@ CREATE TABLE `topping` (
 
 CREATE TABLE `user_orders` (
   `Order_Id` int(11) NOT NULL,
-  `food_name` varchar(100) NOT NULL,
-  `food_price` float NOT NULL,
   `food_quantity` int(100) NOT NULL,
-  `food_id` int(11) NOT NULL
+  `food_id` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user_orders`
 --
 
-INSERT INTO `user_orders` (`Order_Id`, `food_name`, `food_price`, `food_quantity`, `food_id`) VALUES
-(14, 'Bacon Burger หมา', 165, 1, 5),
-(15, 'test1', 11, 1, 1),
-(15, 'ss', 22, 1, 4),
-(15, 'Bacon Burger หมา', 165, 1, 5),
-(16, 'test1', 11, 1, 1),
-(16, 'ss', 22, 1, 4),
-(16, 'Bacon Burger หมา', 165, 1, 5),
-(17, 'test1', 11, 1, 1),
-(17, 'ss', 22, 1, 4),
-(17, 'Bacon Burger หมา', 165, 1, 5),
-(18, 'Double Fish Burger', 145, 1, 12),
-(19, 'Big Mac', 235, 2, 10),
-(19, 'fee', 1000.75, 1, 14);
+INSERT INTO `user_orders` (`Order_Id`, `food_quantity`, `food_id`) VALUES
+(13, 1, '0000'),
+(13, 1, 's-0000');
 
 -- --------------------------------------------------------
 
@@ -10391,17 +10336,10 @@ ALTER TABLE `districts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `foodmenu_sales`
---
-ALTER TABLE `foodmenu_sales`
-  ADD PRIMARY KEY (`food_id`,`receipt_id`),
-  ADD KEY `receipt_id` (`receipt_id`);
-
---
 -- Indexes for table `food_menu`
 --
 ALTER TABLE `food_menu`
-  ADD PRIMARY KEY (`food_id`,`food_name`),
+  ADD PRIMARY KEY (`food_id`),
   ADD KEY `food_category` (`food_category`);
 
 --
@@ -10430,44 +10368,17 @@ ALTER TABLE `provinces`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `put`
---
-ALTER TABLE `put`
-  ADD PRIMARY KEY (`topping_id`,`food_id`,`receipt_id`),
-  ADD KEY `food_id` (`food_id`),
-  ADD KEY `receipt_id` (`receipt_id`);
-
---
--- Indexes for table `receipt`
---
-ALTER TABLE `receipt`
-  ADD PRIMARY KEY (`receipt_id`),
-  ADD KEY `cus_email` (`cus_email`);
-
---
--- Indexes for table `setmenu_sales`
---
-ALTER TABLE `setmenu_sales`
-  ADD PRIMARY KEY (`receipt_id`,`setmenu_id`),
-  ADD KEY `setmenu_id` (`setmenu_id`);
-
---
 -- Indexes for table `set_menu`
 --
 ALTER TABLE `set_menu`
   ADD PRIMARY KEY (`set_id`);
 
 --
--- Indexes for table `topping`
---
-ALTER TABLE `topping`
-  ADD PRIMARY KEY (`topping_id`);
-
---
 -- Indexes for table `user_orders`
 --
 ALTER TABLE `user_orders`
-  ADD KEY `food_orderlist` (`food_id`,`food_name`),
+  ADD PRIMARY KEY (`Order_Id`,`food_id`),
+  ADD KEY `food_orderlist` (`food_id`),
   ADD KEY `order_list_id` (`Order_Id`);
 
 --
@@ -10496,19 +10407,13 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT for table `branch`
 --
 ALTER TABLE `branch`
-  MODIFY `branchID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `branchID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `food_menu`
---
-ALTER TABLE `food_menu`
-  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `geographies`
@@ -10520,31 +10425,13 @@ ALTER TABLE `geographies`
 -- AUTO_INCREMENT for table `order_manager`
 --
 ALTER TABLE `order_manager`
-  MODIFY `Order_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `Order_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `provinces`
 --
 ALTER TABLE `provinces`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
-
---
--- AUTO_INCREMENT for table `receipt`
---
-ALTER TABLE `receipt`
-  MODIFY `receipt_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `set_menu`
---
-ALTER TABLE `set_menu`
-  MODIFY `set_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `topping`
---
-ALTER TABLE `topping`
-  MODIFY `topping_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -10557,45 +10444,10 @@ ALTER TABLE `customer`
   ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`user_role`) REFERENCES `user_role` (`role_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
--- Constraints for table `foodmenu_sales`
---
-ALTER TABLE `foodmenu_sales`
-  ADD CONSTRAINT `foodmenu_sales_ibfk_1` FOREIGN KEY (`food_id`) REFERENCES `food_menu` (`food_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `foodmenu_sales_ibfk_2` FOREIGN KEY (`receipt_id`) REFERENCES `receipt` (`receipt_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
 -- Constraints for table `food_menu`
 --
 ALTER TABLE `food_menu`
   ADD CONSTRAINT `food_menu_ibfk_1` FOREIGN KEY (`food_category`) REFERENCES `category` (`category_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
--- Constraints for table `list_set`
---
-ALTER TABLE `list_set`
-  ADD CONSTRAINT `list_set_ibfk_1` FOREIGN KEY (`food_id`) REFERENCES `food_menu` (`food_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `list_set_ibfk_2` FOREIGN KEY (`setmenu_id`) REFERENCES `set_menu` (`set_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
--- Constraints for table `put`
---
-ALTER TABLE `put`
-  ADD CONSTRAINT `put_ibfk_1` FOREIGN KEY (`topping_id`) REFERENCES `topping` (`topping_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `put_ibfk_2` FOREIGN KEY (`food_id`) REFERENCES `food_menu` (`food_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `put_ibfk_3` FOREIGN KEY (`receipt_id`) REFERENCES `receipt` (`receipt_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
--- Constraints for table `receipt`
---
-ALTER TABLE `receipt`
-  ADD CONSTRAINT `receipt_ibfk_1` FOREIGN KEY (`cus_email`) REFERENCES `customer` (`cus_email`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
--- Constraints for table `setmenu_sales`
---
-ALTER TABLE `setmenu_sales`
-  ADD CONSTRAINT `setmenu_sales_ibfk_1` FOREIGN KEY (`receipt_id`) REFERENCES `receipt` (`receipt_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `setmenu_sales_ibfk_2` FOREIGN KEY (`setmenu_id`) REFERENCES `set_menu` (`set_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -228,49 +228,11 @@ $('document').ready(function() {
                     } 
                     else if (response == 'Saved') {
                         $("#errorinput").text('');
-                        alert('SAVED');                 
+                        success_alert('edit-branch.php','Saved');               
                     } 
                 }
             })
         }
     });
-
-    $("#update").on("click", function(e) {
-        var id = $("#edit_branch_id").val();
-        var name = $("#edit_branch_name").val();
-        var phone = $("#edit_branch_phone").val();
-        var address = $("#edit_branch_address").val();
-        var subdis = $("#edit_branch_subdistrict").val();
-        var dis = $("#edit_branch_district").val();
-        var provice = $("#edit_branch_province").val();
-        var postal = $("#edit_branch_postal").val();
-        if ((phone_state == false ) || (address_state == false)) {
-            e.preventDefault();
-            $("#errorinput").text("Check your form again!");
-        } else {
-            $.ajax({
-                url: 'edit-branch-info.php',
-                type: 'post',
-                data: {
-                    'save_edit': 1,
-                    'branchID': id,
-                    'branchName': name,
-                    'branch_phone' : phone,
-                    'branch_address' : address,
-                    'branch_subdistrict' : subdis,
-                    'branch_district' : dis,
-                    'branch_province' : provice,
-                    'branch_postal' : postal
-                },
-                success: function(response) {
-                    $("#errorinput").text('');
-                    alert('Updated');
-                    window.location.href = 'edit-branch.php';             
-                    
-                }
-            })
-        }
-    });
-
 
 });

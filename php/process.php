@@ -17,8 +17,18 @@ if (isset($_POST['email_check'])) {
 
 // if (isset($_POST['subdis_check'])) {
 //     $subdis = $_POST['subdis'];
-//     $sql = "SELECT * FROM districts WHERE name_th = '$subdis'";
-//     $results = mysqli_query($conn, $sql);
+//     $dis = $_POST['dis'];
+//     $provice = $_POST['provice'];
+//     $addresschecksql = "SELECT 
+//     districts.name_th, amphures.name_th, provinces.name_th FROM districts 
+//     JOIN amphures ON 
+//     districts.amphure_id = amphures.id 
+//     JOIN provinces ON 
+//     provinces.id = amphures.province_id 
+//     WHERE districts.name_th = '$subdis' AND 
+//     amphures.name_th = '$dis' AND 
+//     provinces.name_th = '$provice' ";
+//     $results = mysqli_query($conn, $addresschecksql);
 //     if (mysqli_num_rows($results) > 0) {
 //         echo 'not_unfound';
 //     } else {
@@ -29,8 +39,14 @@ if (isset($_POST['email_check'])) {
 
 // if (isset($_POST['dis_check'])) {
 //     $dis = $_POST['dis'];
-//     $sql = "SELECT * FROM amphures WHERE name_th = '$dis'";
-//     $results = mysqli_query($conn, $sql);
+//     $provice = $_POST['provice'];
+//     $addresschecksql = "SELECT 
+//     amphures.name_th, provinces.name_th FROM amphures 
+//     JOIN provinces ON 
+//     provinces.id = amphures.province_id 
+//     WHERE amphures.name_th = '$dis' AND 
+//     provinces.name_th = '$provice' ";
+//     $results = mysqli_query($conn, $addresschecksql);
 //     if (mysqli_num_rows($results) > 0) {
 //         echo 'not_unfound';
 //     } else {
@@ -57,7 +73,7 @@ if (isset($_POST['postal_check'])) {
     $provice = $_POST['provice'];
     $postal = $_POST['postal'];
     if (strlen($postal)===5) {
-        if (!preg_match("/^[0-9]*$/", $postal)) { 
+        if (!preg_match("/^[0-9]*$/", $postal)) {
             echo 'errorletter';
             
         }
@@ -173,10 +189,8 @@ if (isset($_POST['search'])) {
     exit();
 }
 
-if (isset($_POST['update'])) {
+if (isset($_POST['user-update'])) {
     $name= $_POST['name'];
-    // $password = $_POST['password'];
-    // $hashpass = md5($password) ;
     $email = $_POST['email'];
     $phonenum = $_POST['phonenum'];
     $address = $_POST['address'];
@@ -187,17 +201,15 @@ if (isset($_POST['update'])) {
     $role = 0;
     if (empty($name) || empty($phonenum) || empty($address) || empty($subdis) || empty($dis) || empty($provice) || empty($postal)) {
         echo 'Empty';      
-        exit();
     }
     else {
         $sql2 = "UPDATE customer
         SET name = '$name', phone_num = '$phonenum', address = '$address',subdistrict = '$subdis',district = '$dis',provice = '$provice',postal_num = '$postal'
         WHERE cus_email = '$email';";
         $query = mysqli_query($conn,$sql2);
-        echo 'Saved';
-        exit();
-        
+        echo 'user_saved';     
     }
+    exit();
 }
 
 if (isset($_POST['add_branch'])) {

@@ -112,42 +112,16 @@ Created by Mr.Earn SURIYACHAY | ComSci | KMUTNB | Bangkok | Apr 2018 */ ?>
                 </div>
                 <p id="errorinput"></p>
                 <div class="col-12">
-                    <button id="update" class="btn btn-primary" >Save</button>
+                    <button id="update" class="btn btn-primary" type="button" >Save</button>
                     <a id="cancel-edit" class="btn btn-danger" href="edit-branch.php">Cancel</a>
                 </div>
             </div>
         </form>
     </div>
-    <!-- <script>
-        var input_id = document.getElementById('edit_branch_id');
-        var input_name = document.getElementById('edit_branch_name');
-        var input_address = document.getElementById('edit_branch_address');
-        var input_subdistrict = document.getElementById('edit_branch_subdistrict');
-        var input_district = document.getElementById('edit_branch_district');
-        var input_provice = document.getElementById('edit_branch_province');
-        var input_phone = document.getElementById('edit_branch_phone');
-        var input_postal = document.getElementById('edit_branch_postal');
-
-        function changeVal() {
-
-            input_id.value = '<?php echo $get_id ?>';
-            input_name.value = '<?php echo $row['branchName']; ?>';
-            input_address.value = '<?php echo $row['branch_address']; ?>';
-            input_subdistrict.value = '<?php echo $row['branch_subdistrict']; ?>';
-            input_district.value = '<?php echo $row['branch_district']; ?>';
-            input_provice.value = '<?php echo $row['branch_province']; ?>';
-            input_phone.value = '<?php echo $row['branch_phone']; ?>';
-            input_postal.value = '<?php echo $row['branch_postal']; ?>';
-        }
-        
-        input_id.addEventListener('input', ()=> {
-            changeVal();
-        })
-        changeVal(); -->
-    <!-- </script> -->
     <?php include 'php/module/footer.html'?>
     <script src="https://code.jquery.com/jquery-3.6.3.js" ></script>
-    <script src="js/branch_validation.js"></script>
+    <script src="js/branch_info_validation.js"></script>
+    <script src="js/alerts.js"></script>
 </body>
 </html>
 <?php

@@ -170,7 +170,7 @@ main {
     align-self: center;
     justify-self: center;
     width: 100%;
-    display: flex
+    display: flex;
 }
 .col {
     justify-content: center;
@@ -263,4 +263,30 @@ footer {
     height: 1.5px;
     margin: 3vh 0 2vh 0;
     width: 100%;
+}
+.logged-in {
+    position: relative;
+    display: inline-block;
+}
+.user-content {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    transform: translateX(-3rem);
+    min-width: 10rem;
+    z-index: 1;
+    padding: 1rem;
+    background-color: rgb(248, 249, 250);
+    border-radius: 0 0 .3rem .3rem;
+    box-shadow: 0 .2rem 1rem rgba(33, 37, 41, 30%);
+}
+.logged-in:hover .user-content {display: flex;}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.swal2-styled.swal2-confirm {
+    background-color: #B90017 !important;
 }

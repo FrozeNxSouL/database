@@ -101,8 +101,9 @@ $menuset = $conn->query($sql2);
             }
         }
     }
+    
+                    
 ?>
-
     <?php require('login-signin.php'); ?>
 
     <div class="contain">
@@ -172,11 +173,59 @@ $menuset = $conn->query($sql2);
                         </div>
                         <p class="pricehead">Price</p>
                         <h5>฿<?php echo ($row['set_price'] == (int)$row['set_price']) ? $row['set_price'] : number_format($row['set_price'], 2);?></h5>
-                        <button type="submit" name="Add_To_Cart" class="btn btn-danger">Order</button>
-                        <input type="hidden" name ="set_id" value = "<?php echo $row['set_id']; ?>" >
-                        <input type="hidden" name ="set_name" value = "<?php echo ($row['set_name']); ?>" >
-                        <input type="hidden" name ="set_price" value = "<?php echo $row['set_price']; ?>" >
-                        <input type="hidden" name ="set_pict" value = "<?php echo $row['set_pict']; ?>" >
+                        <div class="btn-group">
+                            <button type="submit" name="Add_To_Cart" class="btn btn-danger">Order</button>
+                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#set_<?php echo $row['set_id']; ?>">
+                                <span class="material-symbols-outlined" style="color: white;">info</span>
+                            </button>
+                        </div>
+                        
+                        <input type="hidden" name ="food_id" value = "<?php echo $row['set_id']; ?>" >
+                        <input type="hidden" name ="food_name" value = "<?php echo ($row['set_name']); ?>" >
+                        <input type="hidden" name ="food_price" value = "<?php echo $row['set_price']; ?>" >
+                        <input type="hidden" name ="food_pict" value = "<?php echo $row['set_pict']; ?>" >
+                    </div>
+                    <div class="modal fade" id="set_<?php echo $row['set_id']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="set_<?php echo $row['set_id']; ?>_label" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="set_<?php echo $row['set_id']; ?>_label">Include in set</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Food</th>
+                                <th scope="col" style="text-align:center">Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php 
+                                $sql3 = "
+                                SELECT *
+                                FROM list_set JOIN food_menu
+                                ON list_set.food_id = food_menu.food_id
+                                WHERE list_set.setmenu_id = '". $row['set_id'] . "'
+                                ";
+                                $listset = $conn->query($sql3);
+                                while ($qr = mysqli_fetch_assoc($listset)) {
+                            ?>
+                                <tr>
+                                <td><img src="<?php echo $qr['food_pict']; ?>" style="width: 3rem"></td>
+                                <td><?php echo $qr['food_name']; ?></td>
+                                <td style="text-align:center"><?php echo $qr['food_quantity']; ?></td>
+                                </tr>
+                            <?php }?>
+                            </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        </div>
+                        </div>
+                    </div>
                     </div>
                 </form>
             <?php
@@ -224,7 +273,9 @@ $menuset = $conn->query($sql2);
     <script src="js/logincheckfunc.js" ></script>
     <script src="js/checkfunc.js" ></script>
     <script src="js/account.js"></script>
+    <script src="js/alerts.js"></script>
     <?php require 'php/module/footer.html' ?>
+
 </body>
 
 </html>

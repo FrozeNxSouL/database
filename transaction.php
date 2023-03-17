@@ -3,21 +3,6 @@
     require_once('php/connect.php');
     require_once('php/process.php'); 
 
-    if (isset($_REQUEST['cus_email'])) {
-        $delete_ID  = $_REQUEST['cus_email'];
-        $delsql = "
-        DELETE FROM customer
-        WHERE cus_email = '$delete_ID';
-        ";
-        $objQuery = mysqli_query($conn, $delsql);
-        session_destroy();
-        header('location: index.php');
-    }
-
-    if (isset($_POST['logout'])) {
-        session_destroy();
-        header('location: index.php');
-    }
 ?>
 
 <!DOCTYPE html>
@@ -60,29 +45,29 @@
                 <table class="table text-center table-striped">
                     <thead>
                         <tr>
-                        <th scope="col">Order ID</th>
+                        <th scope="col">Order Date</th>
                         <th scope="col">food name</th>
                         <th scope="col">food price</th>
                         <th scope="col">food quantity</th>
-                        <th scope="col">food id</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php 
-                            $query="SELECT *
-                            FROM user_orders
-                            JOIN order_manager
-                            ON user_orders.order_id = order_manager.order_id";
+                            $data = $_SESSION['email'];
+                            $query="SELECT order_manager.Order_Id,user_orders.food_quantity,order_manager.order_date,allfd.food_name,allfd.food_price FROM (SELECT food_menu.food_id,food_menu.food_name,food_menu.food_price FROM food_menu UNION SELECT set_id,set_name,set_price FROM set_menu) AS allfd JOIN user_orders ON user_orders.food_id = allfd.food_id JOIN order_manager ON user_orders.order_id = order_manager.order_id 
+                            WHERE order_manager.cus_email = '$data'";
                             $user_result=mysqli_query($conn,$query);
                             while($user_fetch=mysqli_fetch_assoc($user_result))
                             {
+                                
+                                $all_name = $user_fetch['food_name'];
+                                $totalprice = ($user_fetch['food_price'] * $user_fetch['food_quantity']);
                                 echo"
                                 <tr>
-                                    <td>$user_fetch[Order_Id]</td>
+                                    <td>$user_fetch[order_date]</td>
                                     <td>$user_fetch[food_name]</td>
-                                    <td>$user_fetch[food_price]</td>
+                                    <td>$totalprice</td>
                                     <td>$user_fetch[food_quantity]</td>
-                                    <td>$user_fetch[food_id]</td>
                                 </tr>
                                 ";
                             }

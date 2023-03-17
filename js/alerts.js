@@ -1,10 +1,10 @@
-function success_alert() {
+function success_alert(page,notice) {
     Swal.fire(
         'Good job!',
-        'Your data has been saved.',
+        notice,
         'success'
     ).then(function() {
-        document.location.href = window.location.href;
+        document.location.href = page;
     });
     
 }
@@ -21,10 +21,16 @@ function fail_alert() {
 $(".delete-btn").click(function(e) {
     var id = $(this).data('id');
     e.preventDefault();
-    deleteConfirm(id);
+    console.log(window.location.href);
+    if (window.location.href == 'http://localhost/project/Project/user.php') {
+        deleteConfirm(id,'index.php');
+    }
+    else {
+        deleteConfirm(id,window.location.href);
+    }
 })
 
-function deleteConfirm(id) {
+function deleteConfirm(id,page) {
     Swal.fire({
         title: 'Are you sure?',
         text: "It will be deleted permanently!",
@@ -45,7 +51,7 @@ function deleteConfirm(id) {
                             text: 'Data deleted successfully!',
                             icon: 'success',
                         }).then(() => {
-                            document.location.href = window.location.href;
+                            document.location.href = page;
                         })
                     })
                     .fail(function() {

@@ -30,35 +30,6 @@
 .ll {
     width: 50%;
 }
-.nameblock {
-    display: flex;
-    width: 100%;
-}
-.emailblock {
-    width: 100%;
-    margin-top: 1vh;
-    display: flex;
-}
-.phonenumblock {
-    width: 100%;
-    margin-top: 1vh;
-    display: flex;
-}
-.addressblock {
-    display: flex; 
-    justify-content: center; 
-    width: 100%;
-    flex-direction: column;
-}
-.addressblock h5 {
-    margin-top: 1vh;
-    width: 100%;
-}
-
-.addressfield {
-    display: flex;
-    justify-content: space-evenly;
-}
 .otherblock {
     display: flex;
     height: 3rem;  
@@ -118,86 +89,8 @@
     border: none;
     border-radius: 0.3vh;
 }
-.btn-primary {
-    width: 20%;
-}
-.btn-danger {
-    width: 15%;
-}
-.btn-secondary {
-    width: 15%;
-}
-.warningbar {
-    z-index: 200;
-    width: 25%;
-    background-color: white;
-    padding: 0 0.5rem 1rem 0.5rem;
-    height: 45%;
-    position: fixed;
-    top: -30%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-radius: 1rem;
-    transition: top .5s ease-in-out;
-    visibility: hidden;
-    box-shadow: 10px 10px 20px 5px #0000004e;
-}
-.warningbar-slide {
-    visibility: visible;
-    top: 50%;
-}
-.warningtext {
-    font-size: 2.5em;
-    text-align: center;
-}
-.closebtn {
-    font-family: 'Material Icons';
-    text-align: right;
-    font-size: 3rem;
-}
-
-.logoutbar {
-    z-index: 200;
-    width: 25%;
-    background-color: white;
-    padding: 0 0.5rem 1rem 0.5rem;
-    height: 45%;
-    position: fixed;
-    top: -30%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-radius: 1rem;
-    transition: top .5s ease-in-out;
-    visibility: hidden;
-    box-shadow: 10px 10px 20px 5px #0000004e;
-}
-.logoutbar-slide {
-    visibility: visible;
-    top: 50%;
-}
-.warningtext {
-    font-size: 2em;
-    text-align: center;
-}
-.closebtn {
-    font-family: 'Material Icons';
-    text-align: right;
-    font-size: 2rem;
-    color: #B90017;
-}
-
-.profileconfigure {
-    padding: 2rem 10rem 2rem 10rem;
-    font-size: 1.25rem;
-}
-.profileconfigure input {
-    margin-bottom:0.5rem ;
+.btn {
+    width: 10rem;
 }
 .buttonblock1 {
     display: flex; 
@@ -206,27 +99,4 @@
     box-sizing: border-box;
     justify-content: space-between;
     width: 100%;
-}
-.delconfirm {
-    width: 90%;
-    margin: 0 auto;
-    background-color: #B90017;
-    border-radius: .5rem;
-    color: #ffffff;
-    height: 2.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.logoutconfirm {
-    width: 90%;
-    margin: 0 auto;
-    background-color: #B90017;
-    border-radius: .5rem;
-    color: #ffffff;
-    height: 2.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
 }

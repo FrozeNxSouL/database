@@ -26,13 +26,14 @@
 
 <body>
 
-    <?php require('login-signin.php'); ?>
+    <?php require('login-signin.php');
+    ?>
     <div class="contain">
         <header id="header">
             <?php include 'php/module/navbar.php' ?>
         </header>
     </div>
-    
+
     <div class="content-header">
         <div class="head-input">
             <form class="input-container" method="POST">
@@ -47,7 +48,7 @@
                     <?php } ?>
                 </select>
 
-                <input type="text" class="searchbar" id="searchstore" name="search" placeholder="Search">
+                <input type="text" class="searchbar" id="searchstore" name="searchlocate" placeholder="Search">
                 <button type="submit" class="searchbtn" name="submit">Search</button>
             </form>
         </div>
@@ -61,7 +62,7 @@
             <?php 
                 if(isset($_POST['submit'])) {
                     $slpro = $_POST['select-province'];
-                    $search = $_POST['search'];
+                    $search = $_POST['searchlocate'];
                     if ($search == '') {
                         $storesql = "SELECT * FROM branch WHERE branch_province LIKE '%$slpro%'";
                     }
@@ -74,7 +75,7 @@
             ?>
             <div class="itemcard">
                 <h6><?php echo $store['branchName'] ?></h6>
-                <p><?php echo $store['branch_address'];?> <?php echo $store['branch_subdistrict'];?>,<?php echo $store['branch_district'];?>,<?php echo $store['branch_province']; ?></p>
+                <p><?php echo $store['branch_address'];?> <?php echo $store['branch_subdistrict'];?>,<?php echo $store['branch_district'];?>,<?php echo $store['branch_province']; ?> <?php echo $store['branch_postal']; ?></p>
             </div>
             <?php } ?>
         </div>
@@ -87,6 +88,7 @@
     <script src="js/logincheckfunc.js" ></script>
     <script src="js/checkfunc.js" ></script>
     <script src="js/account.js"></script>
+    <script src="js/alerts.js"></script>
     <?php include 'php/module/footer.html' ?>
 </body>
 </html>

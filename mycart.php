@@ -27,7 +27,8 @@ require_once('php/process.php');
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 </head>
 <body>
-    <?php require('login-signin.php'); ?>
+    <?php require('login-signin.php'); 
+    ?>
     <div class="contain">
         <header id="header">
             <?php require 'php/module/navbar.php' ?>
@@ -38,11 +39,6 @@ require_once('php/process.php');
     </div>
     <div class="content-main">
         <div class="row">
-            <div class="col-lg-12 text-center border rounded bg-light my-5">
-                <br>
-                <h1>SHOPPING CART</h1>
-                </br>
-            </div>
             <div class="col-lg-9">
                 <table class="table">
                     <thead class = "text-center">
@@ -55,7 +51,8 @@ require_once('php/process.php');
                         <th scope="col"></th>
                         </tr>
                     </thead>
-                    <tbody class ="text-center">
+                    
+                    <tbody class ="text-center" >
                         <?php
                             if(isset($_SESSION['cart']))
                             {
@@ -68,7 +65,9 @@ require_once('php/process.php');
                                             <td>$value[food_price]<input type='hidden' class='iprice' value = '$value[food_price]'></td>
                                             <td>
                                                 <form action='manage_cart.php' method='POST'>
-                                                    <input class='text-center iquantity' name = 'Mod_Quantity' onchange='this.form.submit();' type='number' value = '$value[food_quantity]' min = '1' max='9999'>
+                                                    <div class='input-group'>
+                                                        <input style='width:2rem' min='0' type='number' oninput='this.value = Math.round(this.value);' class='form-control text-center iquantity' id='iquantity' name = 'Mod_Quantity' onchange='this.form.submit();' value = '$value[food_quantity]'>
+                                                    </div>
                                                     <input type='hidden' name ='food_name' value='$value[food_name]'>
                                                 </form>
                                             </td>
@@ -89,9 +88,10 @@ require_once('php/process.php');
             </div>
             <div class="col-lg-3">
                 <div class="border bg-light rounded p-4">
-                    <h4>Grand Total:</h4>
-                    <h5 class = "text-center" id="gtotal"></h5>
-                    <br>
+                    <div class="text-center">
+                        <h4 style="border-bottom: 2px dashed rgb(74, 74, 74);">GRAND TOTAL</h4>
+                        <h4 class = "text-center" id="gtotal"></h4>
+                    </div>
                     <?php 
                         if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0)
                         {
@@ -156,7 +156,19 @@ require_once('php/process.php');
             </div>
         </div>
     </div>
+<!-- <script>
+    const plus = document.querySelectorAll('#plus');
+    const minus = document.querySelectorAll('#minus');
+    const qty=document.querySelector('#iquantity');
 
+    plus.forEach(element => {
+        element.addEventListener('click', ()=> {
+            let qtyplus = element.closest('.iquantity').value + 1;
+
+            qty.setAttribute('value', qtyplus);
+        })
+    });
+</script> -->
 <script>
     var gt=0;
     var iprice=document.getElementsByClassName('iprice');
@@ -173,7 +185,7 @@ require_once('php/process.php');
 
             gt=gt+(iprice[i].value)*(iquantity[i].value);
         }
-        gtotal.innerText=gt;
+        gtotal.innerText= '฿' + ' ' + gt;
     }
 
     subTotal();
@@ -184,5 +196,7 @@ require_once('php/process.php');
 <script src="js/logincheckfunc.js" ></script>
 <script src="js/checkfunc.js" ></script>
 <script src="js/account.js"></script>
+<script src="js/cart.js"></script>
+
 </body>
 </html>

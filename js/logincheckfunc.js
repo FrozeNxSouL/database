@@ -36,7 +36,6 @@ $('document').ready(function() {
         var loginpassword = $("#exampleInputPassword1").val();
         if (loginemail == ' ' || loginpassword == ' ' ) {
             e.preventDefault();
-
             $("#errorinput1").text("Check your form again!");
         } 
         else {
@@ -57,8 +56,8 @@ $('document').ready(function() {
                     } 
                     else if (response == 'correct') {
                         $("#errorinput1").text('');
-                        alert('Connected');
-                        window.location.href='user.php';
+                        success_alert('index.php','Login successfully');
+
 
 
                         // var femail = $("#exampleInputEmail1").val();
