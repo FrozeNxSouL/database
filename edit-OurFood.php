@@ -137,8 +137,8 @@ $all_cate = $conn->query($catesql);
                                 <h6><span class="badge bg-secondary">ประเภท</span> <?php echo $row['food_category']; ?></h6>
                                 <h6><span class="badge bg-secondary">ราคา</span> <?php echo $row['food_price']; ?>฿</h6>
                             <div class="col">
-                                <a data-id="<?php echo $row["food_id"]; ?>" href="?delete=<?php echo $row["food_id"]; ?>" class="btn btn-danger delete-btn">Delete</a>
                                 <a class="btn btn-secondary" id="edit-btn">Edit</a>
+                                <a data-id="<?php echo $row["food_id"]; ?>" href="?delete=<?php echo $row["food_id"]; ?>" class="btn btn-danger delete-btn">Delete</a>
                             </div>
                             
                         </div>
@@ -159,9 +159,15 @@ $all_cate = $conn->query($catesql);
 <?php
     if(isset($_POST['add_menu']))
     {
-        $GetIdNo=mysqli_query($conn, "SELECT * FROM `food_menu` ");
-        $GetIdNo1=mysqli_num_rows($GetIdNo);
-        $realid = str_pad($GetIdNo1, 4, '0', STR_PAD_LEFT);
+        if (mysqli_num_rows(mysqli_query($conn, "SELECT food_id FROM food_menu ORDER BY food_id DESC LIMIT 1"))==0){
+            $realid = '0000';
+        }
+        else {
+            $GetIdNo=mysqli_query($conn, "SELECT food_id FROM food_menu ORDER BY food_id DESC LIMIT 1");
+            $IdNo = mysqli_fetch_assoc($GetIdNo);
+            $GetIdNo1=(int) $IdNo['food_id'];
+            $realid = str_pad(($GetIdNo1+1), 4, '0', STR_PAD_LEFT);
+        }
         $food_pict = $_POST['food_pict'];
         $food_name = $_POST['food_name'];
         $food_price = $_POST['food_price'];
