@@ -150,9 +150,7 @@ $menuset = $conn->query($sql2);
                         <tr>
                         <th scope="col">Food ID</th>
                         <th scope="col">Food Name</th>
-                        <th scope="col">Food Price</th>
                         <th scope="col">Quantity</th>
-                        <th scope="col">Total</th>
                         <th scope="col"></th>
                         </tr>
                     </thead>
@@ -166,7 +164,6 @@ $menuset = $conn->query($sql2);
                                         <tr>
                                             <td>$value[food_id]</td>
                                             <td>$value[food_name]</td>
-                                            <td>$value[food_price]<input type='hidden' class='iprice' value = '$value[food_price]'></td>
                                             <td>
                                                 <form action='manage_set.php' method='POST'>
                                                     <div class='input-group'>
@@ -175,7 +172,6 @@ $menuset = $conn->query($sql2);
                                                     <input type='hidden' name ='food_name' value='$value[food_name]'>
                                                 </form>
                                             </td>
-                                            <td class = 'itotal'></td>
                                             <td>
                                                 <form action='manage_set.php' method='POST'>
                                                     <button name='Remove_Food' class='btn btn-sm btn-outline-danger'>REMOVE
@@ -218,24 +214,6 @@ $menuset = $conn->query($sql2);
             </div>
         </div>
     </div>
-    <script>
-
-    var iprice=document.getElementsByClassName('iprice');
-    var iquantity=document.getElementsByClassName('iquantity');
-    var itotal=document.getElementsByClassName('itotal');
-
-    function subTotal()
-    {
-        for(i=0;i<iprice.length;i++)
-        {
-            itotal[i].innerText=(iprice[i].value)*(iquantity[i].value);
-
-        }
-    }
-
-    subTotal();
-
-    </script>
     <div class="setcontent" id="set">
         <div class="menu-title">
             <h2 style="font-weight: 700">Set Menu</h2>

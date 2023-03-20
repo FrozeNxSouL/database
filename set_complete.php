@@ -15,9 +15,18 @@ if(mysqli_connect_error()){
     {
         if(isset($_POST['setcomp']))
         {
-            $GetIdNo=mysqli_query($conn, "SELECT * FROM `set_menu` ");
-            $GetIdNo1=mysqli_num_rows($GetIdNo);
-            $realid = 's-' . str_pad($GetIdNo1, 4, '0', STR_PAD_LEFT);
+            if (mysqli_num_rows(mysqli_query($conn, "SELECT set_id FROM set_menu ORDER BY set_id DESC LIMIT 1"))==0){
+                $realid = 's-0000';
+            }
+            else {
+                $GetIdNo=mysqli_query($conn, "SELECT set_id FROM set_menu ORDER BY set_id DESC LIMIT 1");
+                $IdNo = mysqli_fetch_assoc($GetIdNo);
+                $GetIdNo1=(int) substr($IdNo['set_id'], -4);
+                $realid = 's-' . str_pad(($GetIdNo1+1), 4, '0', STR_PAD_LEFT);
+                // $GetIdNo=mysqli_query($conn, "SELECT * FROM `set_menu` ");
+                // $GetIdNo1=mysqli_num_rows($GetIdNo);
+                // $realid = 's-' . str_pad($GetIdNo1, 4, '0', STR_PAD_LEFT);
+            }
             $query1="INSERT INTO `set_menu`(`set_id`,`set_name`, `set_price`, `set_pict`) VALUES ('$realid','$_POST[set_name]','$_POST[set_price]','$_POST[set_pict]')";
             if(mysqli_query($conn,$query1))
             {
