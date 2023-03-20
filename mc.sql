@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 14, 2023 at 10:38 PM
+-- Generation Time: Mar 20, 2023 at 06:47 AM
 -- Server version: 8.0.17
 -- PHP Version: 7.3.10
 
@@ -1043,29 +1043,6 @@ INSERT INTO `amphures` (`id`, `code`, `name_th`, `name_en`, `province_id`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `banner`
---
-
-CREATE TABLE `banner` (
-  `banner_id` int(11) NOT NULL,
-  `banner_pict` varchar(400) NOT NULL,
-  `banner_header` varchar(100) NOT NULL,
-  `banner_text` varchar(100) NOT NULL,
-  `banner_status` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `banner`
---
-
-INSERT INTO `banner` (`banner_id`, `banner_pict`, `banner_header`, `banner_text`, `banner_status`) VALUES
-(1, 'https://d1vs91ctevllei.cloudfront.net/images/banner/th1673513739230103_MCD_mc-a-wish_Tourist-02_Web-Banner_2000x695px_Final_CO_CS6.jpg', '', '', 1),
-(2, 'https://d1vs91ctevllei.cloudfront.net/images/banner/th_responsive166196625206_Banner_web_re_motherday-set_944x944px.jpg', '', '', 0),
-(3, 'https://d1vs91ctevllei.cloudfront.net/images/banner/th_responsive166196625206_Banner_web_re_motherday-set_944x944px.jpg', '', '', 1);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `branch`
 --
 
@@ -1085,16 +1062,13 @@ CREATE TABLE `branch` (
 --
 
 INSERT INTO `branch` (`branchID`, `branchName`, `branch_address`, `branch_subdistrict`, `branch_district`, `branch_province`, `branch_phone`, `branch_postal`) VALUES
-(2, 'Deep Dark Fantasy', '125', 'ดุสิต', 'เขตดุสิต', 'กรุงเทพมหานคร', '0828148264', '10300'),
-(3, 'Ohio', '44/1', 'หนองจอก', 'เขตหนองจอก', 'กรุงเทพมหานคร', '0805855840', '10530'),
-(4, 'คนรักโดนรังแก', '145/99', 'คู้ฝั่งเหนือ', 'เขตหนองจอก', 'กรุงเทพมหานคร', '0955855849', '10530'),
-(5, 'เจ็บใจ', '28/27', 'เสาชิงช้า', 'เขตพระนคร', 'กรุงเทพมหานคร', '0805875549', ''),
-(6, 'ปวดหัวละ', '124/5', 'ตลาดยอด', 'เขตดุสิต', 'กรุงเทพมหานคร', '0658648959', ''),
-(8, 'มหาราชานรก', '2/1231', 'ศาลเจ้าพ่อเสือ', 'เขตพระนคร', 'กรุงเทพมหานคร', '0805855849', '10200'),
-(10, 'ohohoh', '125', 'ศาลเจ้าพ่อเสือ', 'เขตพระนคร', 'กรุงเทพมหานคร', '0828148264', '10200'),
-(11, 'bOvOd', '155/4', 'วัดราชบพิธ', 'เขตพระนคร', 'กรุงเทพมหานคร', '0824578964', '10200'),
-(14, 'Over', '155/4', 'ดุสิต', 'เขตดุสิต', 'กรุงเทพมหานคร', '0824578964', '10300'),
-(15, 'Plain Croissant', '55/4', 'สำราญราษฎร์', 'เขตพระนคร', 'กรุงเทพมหานคร', '2515484640', '10200');
+(2, 'ดุสิต', '125', 'ดุสิต', 'เขตดุสิต', 'กรุงเทพมหานคร', '0828148264', '10300'),
+(3, 'หนองจอก', '44/1', 'หนองจอก', 'เขตหนองจอก', 'กรุงเทพมหานคร', '0805855840', '10530'),
+(4, 'คู้ฝั่งเหนือ', '145/99', 'คู้ฝั่งเหนือ', 'เขตหนองจอก', 'กรุงเทพมหานคร', '0955855845', '10530'),
+(8, 'ศาลเจ้าพ่อเสือ', '2/1231', 'ศาลเจ้าพ่อเสือ', 'เขตพระนคร', 'กรุงเทพมหานคร', '0805855849', '10200'),
+(11, 'วัดราชบพิธ', '155/4', 'วัดราชบพิธ', 'เขตพระนคร', 'กรุงเทพมหานคร', '0824578964', '10200'),
+(15, 'พระบรมมหาราชวัง', '55/4', 'พระบรมมหาราชวัง', 'เขตพระนคร', 'กรุงเทพมหานคร', '0659873155', '10200'),
+(16, 'final2', '55/1', 'วังบูรพาภิรมย์', 'เขตพระนคร', 'กรุงเทพมหานคร', '0958475675', '10200');
 
 -- --------------------------------------------------------
 
@@ -1139,7 +1113,9 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`cus_email`, `password`, `name`, `phone_num`, `address`, `subdistrict`, `district`, `provice`, `postal_num`, `user_role`) VALUES
-('app@gmail.com', '202cb962ac59075b964b07152d234b70', 'Olo', '0824578975', '155/2', 'วังบูรพาภิรมย์', 'เขตพระนคร', 'กรุงเทพมหานคร', '10200', 1);
+('app@gmail.com', '202cb962ac59075b964b07152d234b70', 'นิทิศ', '0824578975', '155/2', 'วังบูรพาภิรมย์', 'เขตพระนคร', 'กรุงเทพมหานคร', '10200', 1),
+('final@email.com', '202cb962ac59075b964b07152d234b70', 'final2', '0955855845', '55/4', 'พระบรมมหาราชวัง', 'เขตพระนคร', 'กรุงเทพมหานคร', '10200', 0),
+('yee@gmail.com', '202cb962ac59075b964b07152d234b70', 'Croissant', '0954568791', '55/4', 'วังบูรพาภิรมย์', 'เขตพระนคร', 'กรุงเทพมหานคร', '10200', 0);
 
 -- --------------------------------------------------------
 
@@ -10048,7 +10024,6 @@ INSERT INTO `food_menu` (`food_id`, `food_name`, `food_price`, `food_pict`, `foo
 ('0007', 'Iced Milk Tea', 55, 'https://d1vs91ctevllei.cloudfront.net/images/product/165951786815919540811579865227milky.png', 2, 0),
 ('0008', 'Iced Ovaltine', 55, 'https://d1vs91ctevllei.cloudfront.net/images/product/16595178511579865202ovaltine.png', 2, 0),
 ('0009', 'Plain Croissant', 75, 'https://d1vs91ctevllei.cloudfront.net/images/product/1617555497600x400cs.png', 2, 1),
-('0010', 'Chocolate Brownie', 65, 'https://d1vs91ctevllei.cloudfront.net/images/product/1594970042McCafe%20Bakery%20Brounie%20600x400.png', 2, 0),
 ('0011', 'McFlurry Kiss', 59, 'https://d1vs91ctevllei.cloudfront.net/images/product/167344732306_WOS_McFlurryKiss_600x400px.png', 2, 0),
 ('0012', 'Sweet Golden Pie', 39, 'https://d1vs91ctevllei.cloudfront.net/images/product/167344717706_WOS_Pie_600x400px.png', 2, 0),
 ('0013', 'Chocolate Sundae', 39, 'https://d1vs91ctevllei.cloudfront.net/images/product/15701794481540289151CSO_4550_DC_CHOSUN-copy.png', 2, 0),
@@ -10058,7 +10033,10 @@ INSERT INTO `food_menu` (`food_id`, `food_name`, `food_price`, `food_pict`, `foo
 ('0017', 'Coke', 62, 'https://d1vs91ctevllei.cloudfront.net/images/product/1659517758156267177215517562111539593267223783.png', 2, 0),
 ('0018', '6 pc. McNuggets (Chicken)', 105, 'https://d1vs91ctevllei.cloudfront.net/images/product/15934264496ng.jpg', 2, 0),
 ('0019', 'Corn Pie', 35, 'https://d1vs91ctevllei.cloudfront.net/images/product/1541497905cp.png', 2, 0),
-('0020', 'McChicken (Chicken) Bigger than ever 50%', 105, 'https://d1vs91ctevllei.cloudfront.net/images/product/1611081262ckalc.png', 1, 0);
+('0020', 'McChicken (Chicken) Bigger than ever 50%', 105, 'https://d1vs91ctevllei.cloudfront.net/images/product/1611081262ckalc.png', 1, 0),
+('0021', 'final', 2000.75, 'https://d1vs91ctevllei.cloudfront.net/images/product/16781915191514.png', 1, 0),
+('0022', 'Iced Lemon Tea', 45, 'https://d1vs91ctevllei.cloudfront.net/images/product/165951785916219058051579865187lemon.png', 2, 0),
+('0023', 'Pie A-la-mode (Pineapple/Corn)', 55, 'https://d1vs91ctevllei.cloudfront.net/images/product/1658166003WOS_Pineapple.png', 2, 0);
 
 -- --------------------------------------------------------
 
@@ -10100,6 +10078,10 @@ CREATE TABLE `list_set` (
 --
 
 INSERT INTO `list_set` (`setmenu_id`, `food_id`, `food_quantity`) VALUES
+('0001', '0011', 1),
+('0001', '0015', 1),
+('0001', '0017', 2),
+('0001', '0020', 2),
 ('s-0000', '0015', 1),
 ('s-0000', '0017', 1),
 ('s-0000', '0020', 1),
@@ -10113,7 +10095,18 @@ INSERT INTO `list_set` (`setmenu_id`, `food_id`, `food_quantity`) VALUES
 ('s-0002', '0018', 1),
 ('s-0003', '0015', 1),
 ('s-0003', '0017', 1),
-('s-0003', '0018', 1);
+('s-0003', '0018', 1),
+('s-0004', '0015', 1),
+('s-0004', '0017', 3),
+('s-0004', '0021', 2),
+('s-0005', '0011', 1),
+('s-0005', '0015', 1),
+('s-0005', '0017', 2),
+('s-0005', '0020', 2),
+('s-0006', '0015', 1),
+('s-0006', '0017', 1),
+('s-0006', '0018', 1),
+('s-0006', '0020', 1);
 
 -- --------------------------------------------------------
 
@@ -10133,7 +10126,11 @@ CREATE TABLE `order_manager` (
 --
 
 INSERT INTO `order_manager` (`Order_Id`, `cus_email`, `Pay_Mode`, `order_date`) VALUES
-(13, 'app@gmail.com', 'OPM', '2023-03-15 04:46:59');
+(13, 'app@gmail.com', 'OPM', '2023-03-15 04:46:59'),
+(14, 'app@gmail.com', 'OPM', '2023-03-15 11:30:05'),
+(15, 'app@gmail.com', 'OPM', '2023-03-15 12:19:22'),
+(16, 'yee@gmail.com', 'OPM', '2023-03-15 13:18:36'),
+(17, 'final@email.com', 'OPM', '2023-03-15 13:45:17');
 
 -- --------------------------------------------------------
 
@@ -10251,9 +10248,11 @@ CREATE TABLE `set_menu` (
 
 INSERT INTO `set_menu` (`set_id`, `set_name`, `set_price`, `set_pict`) VALUES
 ('s-0000', 'Imm Deaw Set', 165, 'https://d1vs91ctevllei.cloudfront.net/images/product/1675907696230113_MCD_Better%20Together%20Campaign_Menu%20Icon_01-03.jpg'),
-('s-0001', 'Pepper McNuggets Set', 99, 'https://d1vs91ctevllei.cloudfront.net/images/product/1645636209pn.png'),
 ('s-0002', 'Im Kum Samurai Burger (Pork) Set', 159, 'https://d1vs91ctevllei.cloudfront.net/images/product/1678445592TPO-1446m.png'),
-('s-0003', 'McNuggets Set', 143, 'https://d1vs91ctevllei.cloudfront.net/images/product/16395064892232.png');
+('s-0003', 'McNuggets Set', 143, 'https://d1vs91ctevllei.cloudfront.net/images/product/16395064892232.png'),
+('s-0004', 'final', 3000.75, 'https://d1vs91ctevllei.cloudfront.net/images/product/16776448672744.png'),
+('s-0005', 'Imm Kuu Set', 269, 'https://d1vs91ctevllei.cloudfront.net/images/product/1675907986230113_MCD_Better%20Together%20Campaign_Menu%20Icon_01-04%20(002).jpg'),
+('s-0006', 'Im Kum McChicken (Chicken) Set', 159, 'https://d1vs91ctevllei.cloudfront.net/images/product/1673054331TPO-1448m.png');
 
 -- --------------------------------------------------------
 
@@ -10273,7 +10272,14 @@ CREATE TABLE `user_orders` (
 
 INSERT INTO `user_orders` (`Order_Id`, `food_quantity`, `food_id`) VALUES
 (13, 1, '0000'),
-(13, 1, 's-0000');
+(13, 1, 's-0000'),
+(14, 1, '0000'),
+(15, 2, '0000'),
+(15, 1, 's-0001'),
+(16, 1, '0001'),
+(17, 2, '0001'),
+(17, 3, '0017'),
+(17, 3, 's-0004');
 
 -- --------------------------------------------------------
 
@@ -10303,12 +10309,6 @@ INSERT INTO `user_role` (`role_id`, `role_name`) VALUES
 --
 ALTER TABLE `amphures`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `banner`
---
-ALTER TABLE `banner`
-  ADD PRIMARY KEY (`banner_id`);
 
 --
 -- Indexes for table `branch`
@@ -10398,16 +10398,10 @@ ALTER TABLE `amphures`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1007;
 
 --
--- AUTO_INCREMENT for table `banner`
---
-ALTER TABLE `banner`
-  MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
 -- AUTO_INCREMENT for table `branch`
 --
 ALTER TABLE `branch`
-  MODIFY `branchID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `branchID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -10425,7 +10419,7 @@ ALTER TABLE `geographies`
 -- AUTO_INCREMENT for table `order_manager`
 --
 ALTER TABLE `order_manager`
-  MODIFY `Order_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `Order_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `provinces`

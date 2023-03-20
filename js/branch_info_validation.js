@@ -11,7 +11,7 @@ $('#edit_branch_phone').on('click', function() {
         return;
     }
     $.ajax({
-        url: 'edit-branch-info.php',
+        url: 'edit-branch.php',
         type: 'post',
         data: {
             'phone_check': 1,
@@ -44,7 +44,7 @@ $("#edit_branch_subdistrict").on('click', function() {
         return;
     }
     $.ajax({
-        url: 'edit-branch-info.php',
+        url: 'edit-branch.php',
         type: 'post',
         data: {
             'postal_check': 1,
@@ -85,7 +85,7 @@ $("#edit_branch_district").on('click', function() {
         return;
     }
     $.ajax({
-        url: 'edit-branch-info.php',
+        url: 'edit-branch.php',
         type: 'post',
         data: {
             'postal_check': 1,
@@ -126,7 +126,7 @@ $("#edit_branch_province").on('click', function() {
         return;
     }
     $.ajax({
-        url: 'edit-branch-info.php',
+        url: 'edit-branch.php',
         type: 'post',
         data: {
             'postal_check': 1,
@@ -167,7 +167,7 @@ $("#edit_branch_postal").on('click', function() {
         return;
     }
     $.ajax({
-        url: 'edit-branch-info.php',
+        url: 'edit-branch.php',
         type: 'post',
         data: {
             'postal_check': 1,
