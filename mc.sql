@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 20, 2023 at 06:47 AM
+-- Generation Time: Apr 03, 2023 at 10:43 AM
 -- Server version: 8.0.17
 -- PHP Version: 7.3.10
 
@@ -1113,9 +1113,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`cus_email`, `password`, `name`, `phone_num`, `address`, `subdistrict`, `district`, `provice`, `postal_num`, `user_role`) VALUES
-('app@gmail.com', '202cb962ac59075b964b07152d234b70', 'นิทิศ', '0824578975', '155/2', 'วังบูรพาภิรมย์', 'เขตพระนคร', 'กรุงเทพมหานคร', '10200', 1),
-('final@email.com', '202cb962ac59075b964b07152d234b70', 'final2', '0955855845', '55/4', 'พระบรมมหาราชวัง', 'เขตพระนคร', 'กรุงเทพมหานคร', '10200', 0),
-('yee@gmail.com', '202cb962ac59075b964b07152d234b70', 'Croissant', '0954568791', '55/4', 'วังบูรพาภิรมย์', 'เขตพระนคร', 'กรุงเทพมหานคร', '10200', 0);
+('app@gmail.com', '202cb962ac59075b964b07152d234b70', 'นิทิศ', '0824578975', '155/2', 'วังบูรพาภิรมย์', 'เขตพระนคร', 'กรุงเทพมหานคร', '10200', 1);
 
 -- --------------------------------------------------------
 
@@ -10401,7 +10399,7 @@ ALTER TABLE `amphures`
 -- AUTO_INCREMENT for table `branch`
 --
 ALTER TABLE `branch`
-  MODIFY `branchID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `branchID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `category`
